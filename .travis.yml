@@ -17,6 +17,8 @@ addons:
     organization: "carledriss-github"
     token:
       secure: $SONAR_TOKEN
+    branches:
+    - develop
 script:
 - gradle compileJava compileTestJava
 - sonar-scanner
