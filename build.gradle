@@ -1,0 +1,72 @@
+plugins {
+    id "io.qameta.allure" version "2.5"
+}
+group 'org.fundacionjala.trello'
+version '1.0'
+
+// Apply the java plugin to add support for Java
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'checkstyle'
+apply plugin: 'findbugs'
+
+sourceCompatibility = 1.8
+
+allprojects{
+    repositories {
+        mavenCentral()
+    }
+}
+
+// In this section you declare the dependencies for your production and test code
+dependencies {
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.14.0'
+    compile group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '3.0.0'
+    compile group: 'io.rest-assured', name: 'rest-assured', version: '3.2.0'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.11.0'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.11.0'
+
+    testCompile group: 'io.cucumber', name: 'cucumber-java', version: '4.0.0'
+    testCompile group: 'io.cucumber', name: 'cucumber-testng', version: '4.0.0'
+    testCompile group: 'io.cucumber', name: 'cucumber-picocontainer', version: '4.0.0'
+    testCompile group: 'io.qameta.allure', name: 'allure-cucumber2-jvm', version: '2.7.0'
+}
+
+allure {
+    version = '2.7.0'
+    autoconfigure = true
+}
+
+// Checkstyle configuration
+checkstyle {
+    toolVersion = '8.15'
+}
+
+// FindBugs configuration
+findbugs {
+    toolVersion = '3.0.1'
+}
+tasks.withType(FindBugs) {
+    reports {
+        xml.enabled = false
+        html.enabled = true
+    }
+}
+
+task executeFeatures(type: Test) {
+    doFirst {
+        useTestNG()
+        options {
+            useDefaultListeners = false
+            jvmArgs = ['-Dcucumber.options= ' +
+                               '--glue org.fundacionjala.trello.cucumber ' +
+                               '--plugin pretty ' +
+                               '--plugin io.qameta.allure.cucumber2jvm.AllureCucumber2Jvm']
+        }
+        testLogging.showStandardStreams = true
+        scanForTestClasses = false
+        ignoreFailures = false
+        reports.html.enabled = false
+    }
+    finalizedBy 'allureReport'
+}
