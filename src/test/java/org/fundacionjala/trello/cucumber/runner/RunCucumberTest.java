@@ -27,7 +27,7 @@ public class RunCucumberTest extends AbstractTestNGCucumberTests {
      */
     @BeforeClass
     public void open() {
-
+        // implement
     }
 
     /**

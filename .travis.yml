@@ -1,10 +1,8 @@
+sudo: required
+
 language: java
 jdk:
 - oraclejdk8
-sudo: required
-
-branches:
-only: develop
 
 before_script:
   - wget http://services.gradle.org/distributions/gradle-5.0-bin.zip
@@ -14,13 +12,10 @@ before_script:
 
 addons:
   sonarcloud:
-    organization: "carledriss-github"
+    organization: "at-08"
     token:
       secure: $SONAR_TOKEN
-    github_token:
-      secure: $GITHUB_TOKEN
-    branches:
-    - develop
+
 script:
 - gradle compileJava compileTestJava
 - sonar-scanner
