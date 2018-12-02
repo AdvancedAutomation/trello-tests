@@ -23,14 +23,6 @@ public class RunCucumberTest extends AbstractTestNGCucumberTests {
 
 
     /**
-     * this method execute before the tests.
-     */
-    @BeforeClass
-    public void open() {
-
-    }
-
-    /**
      * this method close the browser after the features finish.
      */
     @AfterClass
