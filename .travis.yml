@@ -1,10 +1,8 @@
+sudo: required
+
 language: java
 jdk:
 - oraclejdk8
-sudo: required
-
-branches:
-only: develop
 
 before_script:
   - wget http://services.gradle.org/distributions/gradle-5.0-bin.zip
@@ -17,8 +15,6 @@ addons:
     organization: "at-08"
     token:
       secure: $SONAR_TOKEN
-    branches:
-    - develop
 
 script:
 - gradle compileJava compileTestJava
