@@ -14,11 +14,12 @@ before_script:
 
 addons:
   sonarcloud:
-    organization: "carledriss-github"
+    organization: "at-08"
     token:
       secure: $SONAR_TOKEN
     branches:
     - develop
+
 script:
 - gradle compileJava compileTestJava
 - sonar-scanner
