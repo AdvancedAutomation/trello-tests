@@ -16,7 +16,7 @@ public class User {
         JSONParser parser = new JSONParser();
 
         try {
-            JSONObject jsonObject = (JSONObject) parser.parse(new FileReader("/home/rocku/acc.json"));
+            JSONObject jsonObject = (JSONObject) parser.parse(new FileReader("/home/geremy/acc.json"));
             usr = (String) jsonObject.get("user".concat(String.valueOf(numUser)));
             pwd = (String) jsonObject.get("pass".concat(String.valueOf(numUser)));
         } catch (IOException | ParseException e) {
