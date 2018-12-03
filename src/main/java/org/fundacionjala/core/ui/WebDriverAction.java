@@ -18,7 +18,7 @@ public class WebDriverAction {
      * Constructor.
      *
      * @param driver WebDriver
-     * @param wait WebDriverWait
+     * @param wait   WebDriverWait
      */
     public WebDriverAction(final WebDriver driver, final WebDriverWait wait) {
         this.driver = driver;
@@ -28,8 +28,9 @@ public class WebDriverAction {
 
     /**
      * wait and set a value.
+     *
      * @param element webelement
-     * @param value text
+     * @param value   text
      */
     public void setValue(final WebElement element, final String value) {
         wait.until(ExpectedConditions.visibilityOf(element));
@@ -48,7 +49,12 @@ public class WebDriverAction {
         js.executeScript("arguments[0].scrollIntoView();", element);
     }
 
-    public void click(WebElement element) {
+    /**
+     * Click event with explicit wait for click.
+     *
+     * @param element to click.
+     */
+    public void click(final WebElement element) {
         wait.until(ExpectedConditions.elementToBeClickable(element))
                 .click();
     }

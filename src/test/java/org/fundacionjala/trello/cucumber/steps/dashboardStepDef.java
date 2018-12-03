@@ -4,7 +4,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.cucumber.datatable.DataTable;
-import org.fundacionjala.core.User;
+import org.fundacionjala.core.Environment;
 import org.fundacionjala.trello.pages.*;
 
 import java.util.List;
@@ -24,7 +24,7 @@ public class dashboardStepDef {
     @When("I Log in with user {int}")
     public void logIn(int numUser) {
         login = home.clickInitLink();
-        User user = new User(numUser);
+        Environment user = new Environment(numUser);
         boards = login.loginAs(user.getUsr(), user.getPwd());
     }
 
