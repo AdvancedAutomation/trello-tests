@@ -3,7 +3,6 @@ package org.fundacionjala.trello.cucumber.steps;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import io.cucumber.datatable.DataTable;
 import org.fundacionjala.core.Environment;
 import org.fundacionjala.trello.pages.BoardCreation;
 import org.fundacionjala.trello.pages.Boards;
@@ -11,7 +10,7 @@ import org.fundacionjala.trello.pages.Home;
 import org.fundacionjala.trello.pages.Login;
 import org.fundacionjala.trello.pages.SelectedDashBoard;
 
-import java.util.List;
+import java.util.Map;
 
 /**
  * Step definitions for the Dashboard Creation.
@@ -49,10 +48,10 @@ public class DashboardStepDef {
      * @param dataTable input String.
      */
     @When("I create a dashboard with a:")
-    public void iCreateADashboardWithA(final DataTable dataTable) {
-        List<String> data = dataTable.asList(String.class);
+    public void iCreateADashboardWithA(final Map<String, String> dataTable) {
+
         BoardCreation newBoard = boards.clickAddBoard();
-        dashBoard = newBoard.createNewBoard(data);
+    dashBoard = newBoard.createNewBoard(dataTable);
     }
 
     /**
