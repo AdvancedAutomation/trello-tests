@@ -4,6 +4,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -23,10 +24,13 @@ public class Environment {
     public Environment(int numUser) {
         JSONParser parser = new JSONParser();
         try {
-            JSONObject jsonObject = (JSONObject) parser.parse(new FileReader("environment.json"));
+            BufferedReader br = new BufferedReader(new FileReader("environment.json"));
+            JSONObject jsonObject = (JSONObject) parser.parse(br.readLine());
             usr = (String) jsonObject.get("user".concat(String.valueOf(numUser)));
             pwd = (String) jsonObject.get("pass".concat(String.valueOf(numUser)));
-        } catch (IOException | ParseException e) {
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
             e.printStackTrace();
         }
     }
