@@ -47,4 +47,9 @@ public class WebDriverAction {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView();", element);
     }
+
+    public void click(WebElement element) {
+        wait.until(ExpectedConditions.elementToBeClickable(element))
+                .click();
+    }
 }
