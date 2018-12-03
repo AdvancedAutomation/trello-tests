@@ -6,3 +6,4 @@
 *.iml
 /logs/
 /target/
+environment.json
