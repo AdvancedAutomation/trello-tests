@@ -31,11 +31,4 @@ public class Home extends AbstractPage {
         action.click(linkInit);
         return new Login();
     }
-
-    /**
-     * Method for close the driver.
-     */
-    public void closeDriver() {
-        driver.close();
-    }
 }
