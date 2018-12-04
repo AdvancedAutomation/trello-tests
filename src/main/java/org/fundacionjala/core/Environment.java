@@ -4,8 +4,12 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import java.io.FileReader;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.nio.charset.StandardCharsets;
 
 /**
  * Class for set the environment of the project.
@@ -23,7 +27,9 @@ public class Environment {
     public Environment(int numUser) {
         JSONParser parser = new JSONParser();
         try {
-            JSONObject jsonObject = (JSONObject) parser.parse(new FileReader("environment.json"));
+            InputStream inputStream = new FileInputStream("environment.json");
+            Reader fileReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
+            JSONObject jsonObject = (JSONObject) parser.parse(fileReader);
             usr = (String) jsonObject.get("user".concat(String.valueOf(numUser)));
             pwd = (String) jsonObject.get("pass".concat(String.valueOf(numUser)));
         } catch (IOException | ParseException e) {
