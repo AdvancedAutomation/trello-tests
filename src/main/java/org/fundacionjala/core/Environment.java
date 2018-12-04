@@ -16,21 +16,24 @@ import java.nio.charset.StandardCharsets;
  */
 public class Environment {
 
-    private String usr;
-    private String pwd;
+    private String user;
+    private String pass;
+    private static final String USER_KEY = "user";
+    private static final String PASS_KEY = "pass";
+    private static final String CONF_FILE = "environment.json";
 
     /**
-     * Constructor for the Environment.
+     * Method for read the JSON file.
      *
-     * @param numUser Integer for select the user.
+     * @param numUser integer for select the user.
      */
-    public Environment(int numUser) {
+    public void readJSONUser(int numUser) {
         JSONParser parser = new JSONParser();
-        try (InputStream inputStream = new FileInputStream("environment.json");) {
+        try (InputStream inputStream = new FileInputStream(CONF_FILE)) {
             Reader fileReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
             JSONObject jsonObject = (JSONObject) parser.parse(fileReader);
-            usr = (String) jsonObject.get("user".concat(String.valueOf(numUser)));
-            pwd = (String) jsonObject.get("pass".concat(String.valueOf(numUser)));
+            user = (String) jsonObject.get(USER_KEY.concat(String.valueOf(numUser)));
+            pass = (String) jsonObject.get(PASS_KEY.concat(String.valueOf(numUser)));
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
@@ -41,8 +44,8 @@ public class Environment {
      *
      * @return the String of user.
      */
-    public String getUsr() {
-        return usr;
+    public String getUser() {
+        return user;
     }
 
     /**
@@ -50,7 +53,7 @@ public class Environment {
      *
      * @return the String of the password.
      */
-    public String getPwd() {
-        return pwd;
+    public String getPass() {
+        return pass;
     }
 }

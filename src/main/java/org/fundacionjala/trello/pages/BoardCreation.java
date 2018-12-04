@@ -46,7 +46,7 @@ public class BoardCreation extends AbstractPage {
      * @param data input map.
      */
     private void selectBackground(final Map<String, String> data) {
-        final String locatorColorBackgraundButton = String.format("[class='background-grid-trigger'] [title=' %s ']",
+        final String locatorColorBackgraundButton = String.format("[class='background-grid-trigger'][title='%s']",
                 data.get("Background"));
         WebElement selectColorBgButton = driver.findElement(By.cssSelector(locatorColorBackgraundButton));
         action.click(selectColorBgButton);

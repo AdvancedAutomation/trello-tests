@@ -37,8 +37,9 @@ public class DashboardStepDef {
     @When("I Log in with user {int}")
     public void logIn(int numUser) {
         Login login = home.clickInitLink();
-        Environment user = new Environment(numUser);
-        boards = login.loginAs(user.getUsr(), user.getPwd());
+        Environment user = new Environment();
+        user.readJSONUser(numUser);
+        boards = login.loginAs(user.getUser(), user.getPass());
     }
 
     /**
