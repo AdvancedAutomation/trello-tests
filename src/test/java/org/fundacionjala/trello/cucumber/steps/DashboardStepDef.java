@@ -50,7 +50,7 @@ public class DashboardStepDef {
     public void iCreateADashboardWithA(final Map<String, String> dataTable) {
 
         BoardCreation newBoard = boards.clickAddBoard();
-        SelectedDashBoard dashBoard = newBoard.createNewBoard(dataTable);
+        newBoard.createNewBoard(dataTable);
     }
 
     /**
