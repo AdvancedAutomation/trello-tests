@@ -52,7 +52,7 @@ public class BoardCreation extends AbstractPage {
     }
 
     /**
-     * Method for select Privacy.
+     * Method for select Privacy .
      *
      * @param data input map.
      */
