@@ -34,10 +34,10 @@ public class SelectedDashBoard extends AbstractPage {
     /**
      * @param nameList value or input.
      */
-    protected void addList(final String nameList) {
-        action.click(addListSpan);
-        action.setValue(listName, nameList);
-        action.click(addListButton);
+    public void addList(final String nameList) {
+//        action.click(addListSpan);
+//        action.setValue(listName, nameList);
+//        action.click(addListButton);
     }
 
     /**
