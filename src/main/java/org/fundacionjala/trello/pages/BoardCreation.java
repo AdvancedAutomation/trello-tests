@@ -46,8 +46,8 @@ public class BoardCreation extends AbstractPage {
      * @param data input map.
      */
     private void selectBackground(final Map<String, String> data) {
-        WebElement selectColorBgButton = driver.findElement(By.cssSelector("[class='background-grid-trigger']"
-                + "[title='" + data.get("Background") + "']"));
+        String string = String.format("[class='background-grid-trigger'] [title=' %s ']",data.get("Background") );
+        WebElement selectColorBgButton = driver.findElement(By.cssSelector(string));
         action.click(selectColorBgButton);
     }
 
@@ -58,8 +58,11 @@ public class BoardCreation extends AbstractPage {
      */
     private void selectPrivacy(final Map<String, String> data) {
         action.click(selectPrivacyButton);
-        WebElement selectPrivacyList = driver.findElement(By.cssSelector("[class$='icon-"
-                + data.get(KEY_PRIVACY) + "']"));
+
+
+        WebElement selectPrivacyList = driver.findElement(By.cssSelector("[class$='icon-"+ data.get(KEY_PRIVACY) + "']"));
+
+
         action.click(selectPrivacyList);
         if (data.get(KEY_PRIVACY).contains("public")) {
             WebElement confirmPublicButton = driver.findElement(By.cssSelector("[class='js-confirm full primary']"));
