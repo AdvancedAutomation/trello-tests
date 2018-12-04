@@ -35,7 +35,6 @@ public class SelectedDashBoard extends AbstractPage {
      * @param nameList value or input.
      */
     public void addList(final String nameList) {
-//        action.click(addListSpan);
         action.setValue(listName, nameList);
         action.click(addListButton);
     }
