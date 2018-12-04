@@ -12,6 +12,7 @@ import java.util.Map;
  * Page object of the Creation page for dashboards.
  */
 public class BoardCreation extends AbstractPage {
+    private static final String KEY_PRIVACY = "Privacy";
     @FindBy(className = "subtle-input")
     private WebElement titleTextInputField;
 
@@ -30,7 +31,7 @@ public class BoardCreation extends AbstractPage {
     public SelectedDashBoard createNewBoard(final Map<String, String> data) {
         Map<String, ISteps> dashboardSteps = new HashMap<>();
         dashboardSteps.put("Title", () -> action.setValue(titleTextInputField, data.get("Title")));
-        dashboardSteps.put("Privacy", () -> selectPrivacy(data));
+        dashboardSteps.put(KEY_PRIVACY, () -> selectPrivacy(data));
         dashboardSteps.put("Background", () -> selectBackground(data));
         for (String key : data.keySet()) {
             dashboardSteps.get(key).run();
@@ -51,18 +52,16 @@ public class BoardCreation extends AbstractPage {
     }
 
     /**
-     * Method for select privacy.
+     * Method for select Privacy.
      *
      * @param data input map.
      */
     private void selectPrivacy(final Map<String, String> data) {
         action.click(selectPrivacyButton);
-
         WebElement selectPrivacyList = driver.findElement(By.cssSelector("[class$='icon-"
-                + data.get("Privacy") + "']"));
+                + data.get(KEY_PRIVACY) + "']"));
         action.click(selectPrivacyList);
-
-        if (data.get("Privacy").contains("public")) {
+        if (data.get(KEY_PRIVACY).contains("public")) {
             WebElement confirmPublicButton = driver.findElement(By.cssSelector("[class='js-confirm full primary']"));
             action.click(confirmPublicButton);
         }

@@ -18,9 +18,8 @@ import java.util.Map;
 public class DashboardStepDef {
 
     private Home home;
-    private Login login;
     private Boards boards;
-    private SelectedDashBoard dashBoard;
+
 
     /**
      * Given of in page of trello.
@@ -37,7 +36,7 @@ public class DashboardStepDef {
      */
     @When("I Log in with user {int}")
     public void logIn(int numUser) {
-        login = home.clickInitLink();
+        Login login = home.clickInitLink();
         Environment user = new Environment(numUser);
         boards = login.loginAs(user.getUsr(), user.getPwd());
     }
@@ -51,7 +50,7 @@ public class DashboardStepDef {
     public void iCreateADashboardWithA(final Map<String, String> dataTable) {
 
         BoardCreation newBoard = boards.clickAddBoard();
-    dashBoard = newBoard.createNewBoard(dataTable);
+        SelectedDashBoard dashBoard = newBoard.createNewBoard(dataTable);
     }
 
     /**
