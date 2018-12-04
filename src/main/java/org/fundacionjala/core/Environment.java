@@ -26,8 +26,7 @@ public class Environment {
      */
     public Environment(int numUser) {
         JSONParser parser = new JSONParser();
-        try {
-            InputStream inputStream = new FileInputStream("environment.json");
+        try (InputStream inputStream = new FileInputStream("environment.json");) {
             Reader fileReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
             JSONObject jsonObject = (JSONObject) parser.parse(fileReader);
             usr = (String) jsonObject.get("user".concat(String.valueOf(numUser)));
