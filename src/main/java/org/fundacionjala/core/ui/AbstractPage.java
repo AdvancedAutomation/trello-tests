@@ -22,4 +22,11 @@ public abstract class AbstractPage {
         this.action = new WebDriverAction(driver, wait);
         PageFactory.initElements(this.driver, this);
     }
+
+    /**
+     * Method for close the driver.
+     */
+    public void closeDriver() {
+        driver.close();
+    }
 }
