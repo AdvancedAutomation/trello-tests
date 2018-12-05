@@ -1,18 +1,18 @@
 package org.fundacionjala.trello.pages;
 
+import java.util.EnumMap;
+import java.util.Map;
+
 import org.fundacionjala.core.ui.AbstractPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * Page object of the Creation page for dashboards.
  */
 public class BoardCreation extends AbstractPage {
-    private static final String KEY_PRIVACY = "Privacy";
+
     @FindBy(className = "subtle-input")
     private WebElement titleTextInputField;
 
@@ -28,12 +28,12 @@ public class BoardCreation extends AbstractPage {
      * @param data List of the data specs.
      * @return the PO of the Selected DashBoard.
      */
-    public SelectedDashBoard createNewBoard(final Map<String, String> data) {
-        Map<String, ISteps> dashboardSteps = new HashMap<>();
-        dashboardSteps.put("Title", () -> action.setValue(titleTextInputField, data.get("Title")));
-        dashboardSteps.put(KEY_PRIVACY, () -> selectPrivacy(data));
-        dashboardSteps.put("Background", () -> selectBackground(data));
-        for (String key : data.keySet()) {
+    public SelectedDashBoard createNewBoard(final Map<BoardFields, String> data) {
+        EnumMap<BoardFields, ISteps> dashboardSteps = new EnumMap<>(BoardFields.class);
+        dashboardSteps.put(BoardFields.TITLE, () -> action.setValue(titleTextInputField, data.get(BoardFields.TITLE)));
+        dashboardSteps.put(BoardFields.PRIVACY, () -> selectPrivacy(data));
+        dashboardSteps.put(BoardFields.BACKGROUND, () -> selectBackground(data));
+        for (BoardFields key : data.keySet()) {
             dashboardSteps.get(key).run();
         }
         action.click(createDashBoardButton);
@@ -45,9 +45,9 @@ public class BoardCreation extends AbstractPage {
      *
      * @param data input map.
      */
-    private void selectBackground(final Map<String, String> data) {
+    private void selectBackground(final Map<BoardFields, String> data) {
         final String locatorColorBackgraundButton = String.format("[class='background-grid-trigger'][title='%s']",
-                data.get("Background"));
+                data.get(BoardFields.BACKGROUND));
         WebElement selectColorBgButton = driver.findElement(By.cssSelector(locatorColorBackgraundButton));
         action.click(selectColorBgButton);
     }
@@ -57,12 +57,12 @@ public class BoardCreation extends AbstractPage {
      *
      * @param data input map.
      */
-    private void selectPrivacy(final Map<String, String> data) {
+    private void selectPrivacy(final Map<BoardFields, String> data) {
         action.click(selectPrivacyButton);
-        final String locatorPrivacyButton = String.format("[class$='icon-%s']", data.get(KEY_PRIVACY));
+        final String locatorPrivacyButton = String.format("[class$='icon-%s']", data.get(BoardFields.PRIVACY));
         WebElement selectPrivacyList = driver.findElement(By.cssSelector(locatorPrivacyButton));
         action.click(selectPrivacyList);
-        if (data.get(KEY_PRIVACY).contains("public")) {
+        if (data.get(BoardFields.PRIVACY).contains("public")) {
             WebElement confirmPublicButton = driver.findElement(By.cssSelector("[class='js-confirm full primary']"));
             action.click(confirmPublicButton);
         }
