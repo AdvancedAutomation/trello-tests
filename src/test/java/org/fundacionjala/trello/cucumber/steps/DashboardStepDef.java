@@ -5,6 +5,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.fundacionjala.core.Environment;
 import org.fundacionjala.trello.pages.BoardCreation;
+import org.fundacionjala.trello.pages.BoardFields;
 import org.fundacionjala.trello.pages.Boards;
 import org.fundacionjala.trello.pages.Home;
 import org.fundacionjala.trello.pages.Login;
@@ -48,8 +49,7 @@ public class DashboardStepDef {
      * @param dataTable input String.
      */
     @When("I create a dashboard with a:")
-    public void iCreateADashboardWithA(final Map<String, String> dataTable) {
-
+    public void iCreateADashboardWithA(final Map<BoardFields, String> dataTable) {
         BoardCreation newBoard = boards.clickAddBoard();
         dashBoard = newBoard.createNewBoard(dataTable);
     }
