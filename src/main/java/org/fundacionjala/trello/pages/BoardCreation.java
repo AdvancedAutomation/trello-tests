@@ -46,18 +46,6 @@ public class BoardCreation extends AbstractPage {
     }
 
     /**
-     * Method for create a team with some specs.
-     *
-     * @param data Map of the data specs.
-     */
-    private void selectTeam(final Map<BoardFields, String> data) {
-        action.click(selectTeamButton);
-        final String locatorTeamButton = String.format(".pop-over-list > li:nth-child(3)");
-        WebElement selectTeamList = driver.findElement(By.cssSelector(locatorTeamButton));
-        action.click(selectTeamList);
-    }
-
-    /**
      * Method for select a Background.
      *
      * @param data input map.
