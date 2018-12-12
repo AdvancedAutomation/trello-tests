@@ -6,5 +6,6 @@ package org.fundacionjala.trello.pages;
 public enum BoardFields {
     TITLE,
     PRIVACY,
-    BACKGROUND
+    BACKGROUND,
+    TEAM
 }

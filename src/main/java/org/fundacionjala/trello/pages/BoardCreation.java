@@ -22,6 +22,10 @@ public class BoardCreation extends AbstractPage {
     @FindBy(css = "[class='subtle-chooser-trigger unstyled-button vis-chooser-trigger']")
     private WebElement selectPrivacyButton;
 
+    @FindBy(css = "[class='subtle-chooser-trigger unstyled-button org-chooser-trigger']")
+    private WebElement selectTeamButton;
+
+
     /**
      * Method for create a dashboard with some specs.
      *
@@ -33,11 +37,19 @@ public class BoardCreation extends AbstractPage {
         dashboardSteps.put(BoardFields.TITLE, () -> action.setValue(titleTextInputField, data.get(BoardFields.TITLE)));
         dashboardSteps.put(BoardFields.PRIVACY, () -> selectPrivacy(data));
         dashboardSteps.put(BoardFields.BACKGROUND, () -> selectBackground(data));
+        dashboardSteps.put(BoardFields.TEAM, () -> selectTeam(data));
         for (BoardFields key : data.keySet()) {
             dashboardSteps.get(key).run();
         }
         action.click(createDashBoardButton);
         return new SelectedDashBoard();
+    }
+
+    private void selectTeam(Map<BoardFields, String> data) {
+        action.click(selectTeamButton);
+        final String locatorTeamButton = String.format(".pop-over-list > li:nth-child(3)");
+        WebElement selectTeamList = driver.findElement(By.cssSelector(locatorTeamButton));
+        action.click(selectTeamList);
     }
 
     /**
