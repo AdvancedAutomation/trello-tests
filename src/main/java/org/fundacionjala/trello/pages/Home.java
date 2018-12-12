@@ -12,7 +12,7 @@ public class Home extends AbstractPage {
     /**
      * All WebElements are identified by @FindBy annotation.
      */
-    @FindBy(linkText = "Log In")
+    @FindBy(css = "a.global-header-section-button")
     private WebElement linkInit;
 
     /**
