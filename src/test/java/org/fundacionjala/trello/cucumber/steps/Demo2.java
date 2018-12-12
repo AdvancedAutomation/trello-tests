@@ -72,10 +72,4 @@ public class Demo2 {
         dashBoard.verify(value);
         home.closeDriver();
     }
-
-//    @When("I create a team {string}:")
-//    public void iCreateATeam(final String nameTeam) {
-//        TeamCreation newTeam = boards.clickCreateTeam(nameTeam);
-//        newTeam.addMembers();
-//    }
 }
