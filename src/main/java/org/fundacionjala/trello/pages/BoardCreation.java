@@ -37,7 +37,6 @@ public class BoardCreation extends AbstractPage {
         dashboardSteps.put(BoardFields.TITLE, () -> action.setValue(titleTextInputField, data.get(BoardFields.TITLE)));
         dashboardSteps.put(BoardFields.PRIVACY, () -> selectPrivacy(data));
         dashboardSteps.put(BoardFields.BACKGROUND, () -> selectBackground(data));
-        dashboardSteps.put(BoardFields.TEAM, () -> selectTeam(data));
         for (BoardFields key : data.keySet()) {
             dashboardSteps.get(key).run();
         }
