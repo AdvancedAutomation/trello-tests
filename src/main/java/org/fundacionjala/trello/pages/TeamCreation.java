@@ -18,14 +18,11 @@ public class TeamCreation extends AbstractPage {
     @FindBy(css = "button.autocomplete-btn.primary")
     private WebElement buttonInvited;
 
+    /**
+     * Method for add a members.
+     *
+     */
     public void addMembers() {
         action.click(tabMenbers);
     }
-
-    /**
-     * Method for add a dashboard.
-     *
-     * @return the PO of Board Creation.
-     */
-
 }

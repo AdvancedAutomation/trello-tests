@@ -21,9 +21,8 @@ public class Environment {
     private static final String USER_KEY = "user";
     private static final String PASS_KEY = "pass";
     private static final String CONF_FILE = "environment.json";
-    private static final String USER_KEY_ = "user-";
-    private static final String PASS_KEY_ = "pass-";
-    private static String confFile = null;
+    private static final String USER_KEY_D = "user-";
+    private static final String PASS_KEY_D = "pass-";
 
     /**
      * Method for read the JSON file.
@@ -49,14 +48,14 @@ public class Environment {
      */
     public void readJSONUser(final String key) {
         String[] parts = key.split("\\.");
-        confFile = parts[0].substring(1).concat(".json");
-        String typeUser = parts[1].substring(0,parts[1].length()-1);
+        String confFile = parts[0].substring(1).concat(".json");
+        String typeUser = parts[1].substring(0, parts[1].length() - 1);
         JSONParser parser = new JSONParser();
         try (InputStream inputStream = new FileInputStream(confFile)) {
             Reader fileReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
             JSONObject jsonObject = (JSONObject) parser.parse(fileReader);
-            user = (String) jsonObject.get(USER_KEY_.concat(typeUser));
-            pass = (String) jsonObject.get(PASS_KEY_.concat(typeUser));
+            user = (String) jsonObject.get(USER_KEY_D.concat(typeUser));
+            pass = (String) jsonObject.get(PASS_KEY_D.concat(typeUser));
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }

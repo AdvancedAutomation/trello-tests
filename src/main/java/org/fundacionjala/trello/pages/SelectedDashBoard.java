@@ -5,8 +5,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import java.util.Map;
-
 /**
  * this class represent a selected dashboard page.
  */
@@ -67,14 +65,22 @@ public class SelectedDashBoard extends AbstractPage {
         return name.getText();
     }
 
-    public void clickAddCard(String data) {
+    /**
+     * Method for create a Card.
+     * @param data is name of card.
+     */
+    public void clickAddCard(final String data) {
         action.click(menuList);
         action.click(addCardList);
         action.setValue(inputTitleCardTextfield, data);
         action.click(addCardButton);
     }
 
-    public void verify(String value) {
+    /**
+     * Method for verify a new Card.
+     * @param value is name of create card.
+     */
+    public void verify(final String value) {
         action.click(buttonCard);
     }
 }

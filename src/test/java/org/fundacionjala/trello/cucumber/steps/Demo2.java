@@ -4,8 +4,12 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.fundacionjala.core.Environment;
-import org.fundacionjala.trello.pages.*;
-import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.fundacionjala.trello.pages.Boards;
+import org.fundacionjala.trello.pages.Home;
+import org.fundacionjala.trello.pages.Login;
+import org.fundacionjala.trello.pages.SelectedDashBoard;
+import org.fundacionjala.trello.pages.BoardCreation;
+import org.fundacionjala.trello.pages.BoardFields;
 
 import java.util.Map;
 
@@ -20,19 +24,19 @@ public class Demo2 {
 
     /**
      * Given of in page of trello.
+     * @param key for start session
      */
     @Given("I Log in with user {string}")
-    public void iLogInWithUser(String arg0) {
+    public void iLogInWithUser(final String key) {
         home = new Home();
         Login login = home.clickInitLink();
         Environment user = new Environment();
-        user.readJSONUser(arg0);
+        user.readJSONUser(key);
         boards = login.loginAs(user.getUser(), user.getPass());
     }
 
     /**
      * Creation of a dashboar with a specs.
-     *
      * @param dataTable input String.
      */
     @When("I create a basic dashboard with a:")
@@ -41,21 +45,32 @@ public class Demo2 {
         dashBoard = newBoard.createNewBoard(dataTable);
     }
 
+    /**
+     * Creation of list with a specs.
+     * @param value input String.
+     */
     @When("I create another lists:")
     public void iCreateAnotherLists(final String value) {
         dashBoard.addList(value);
     }
 
+    /**
+     * Creation of a card with a specs.
+     * @param data input String.
+     */
     @Given("I create a card with a:")
     public void iCreateACardWith(final String data) {
         dashBoard.clickAddCard(data);
     }
 
+    /**
+     * Method fo open card.
+     * @param value input String.
+     */
     @Then("I should see the card {string}")
-    public void iShouldSeeTheCard(String value) {
+    public void iShouldSeeTheCard(final String value) {
         dashBoard.verify(value);
         home.closeDriver();
-
     }
 
 //    @When("I create a team {string}:")

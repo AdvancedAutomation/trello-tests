@@ -6,7 +6,6 @@ Feature: Create a Card in Trello
       | Title | Version |
     And I create another lists:
       | To do |
-
   Scenario: I create a card as owner user
     Given I create a card with a:
       | card1 |
