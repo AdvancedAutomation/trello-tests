@@ -3,7 +3,8 @@ Feature: Create a Card in Trello
   Background:
     Given I Log in with user "{credentials.owner1}"
     And I create a basic dashboard with a:
-      | Title | Version |
+      | Title   | Version |
+      | Privacy | Public  |
     And I create another lists:
       | To do |
   Scenario: I create a card as owner user

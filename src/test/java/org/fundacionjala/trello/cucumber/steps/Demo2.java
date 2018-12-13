@@ -18,7 +18,7 @@ import java.util.Map;
  */
 public class Demo2 {
 
-    private Home home;
+    private Login login;
     private Boards boards;
     private SelectedDashBoard dashBoard;
 
@@ -28,8 +28,7 @@ public class Demo2 {
      */
     @Given("I Log in with user {string}")
     public void iLogInWithUser(final String key) {
-        home = new Home();
-        Login login = home.clickInitLink();
+        login = new Login();
         Environment user = new Environment();
         user.readJSONUser(key);
         boards = login.loginAs(user.getUser(), user.getPass());
@@ -70,6 +69,6 @@ public class Demo2 {
     @Then("I should see the card {string}")
     public void iShouldSeeTheCard(final String value) {
         dashBoard.verify(value);
-        home.closeDriver();
+        login.closeDriver();
     }
 }

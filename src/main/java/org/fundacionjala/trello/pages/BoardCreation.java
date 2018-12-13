@@ -62,11 +62,12 @@ public class BoardCreation extends AbstractPage {
      * @param data input map.
      */
     private void selectPrivacy(final Map<BoardFields, String> data) {
-        action.click(selectPrivacyButton);
-        final String locatorPrivacyButton = String.format("[class$='icon-%s']", data.get(BoardFields.PRIVACY));
-        WebElement selectPrivacyList = driver.findElement(By.cssSelector(locatorPrivacyButton));
-        action.click(selectPrivacyList);
-        if (data.get(BoardFields.PRIVACY).contains("public")) {
+        String privacyString = data.get(BoardFields.PRIVACY).toLowerCase();
+        if (privacyString.equals("public")) {
+            action.click(selectPrivacyButton);
+            final String locatorPrivacyButton = String.format("[class$='icon-%s']", privacyString);
+            WebElement selectPrivacyList = driver.findElement(By.cssSelector(locatorPrivacyButton));
+            action.click(selectPrivacyList);
             WebElement confirmPublicButton = driver.findElement(By.cssSelector("[class='js-confirm full primary']"));
             action.click(confirmPublicButton);
         }

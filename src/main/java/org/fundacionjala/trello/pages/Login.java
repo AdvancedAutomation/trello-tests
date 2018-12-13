@@ -10,6 +10,9 @@ import org.openqa.selenium.support.FindBy;
  */
 public class Login extends AbstractPage {
 
+    public Login() {
+        driver.get("https://trello.com/login?returnUrl=%2F");
+    }
 
     /**
      * Find user name text field of page.
