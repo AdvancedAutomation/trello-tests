@@ -60,6 +60,5 @@ public class DashboardStepDef {
     @Then("I should see the dashboard")
     public void seeDashboard() {
         dashBoard.addList("hi");
-        home.closeDriver();
     }
 }

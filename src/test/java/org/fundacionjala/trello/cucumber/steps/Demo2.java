@@ -22,18 +22,18 @@ public class Demo2 {
     private Boards boards;
     private SelectedDashBoard dashBoard;
 
-    /**
-     * Given of in page of trello.
-     * @param key for start session
-     */
-    @Given("I Log in with user {string}")
-    public void iLogInWithUser(final String key) {
-        home = new Home();
-        Login login = home.clickInitLink();
-        Environment user = new Environment();
-        user.readJSONUser(key);
-        boards = login.loginAs(user.getUser(), user.getPass());
-    }
+//    /**
+//     * Given of in page of trello.
+//     * @param key for start session
+//     */
+//    @Given("I Log in with user {string}")
+//    public void iLogInWithUser(final String key) {
+//        home = new Home();
+//        Login login = home.clickInitLink();
+//        Environment user = new Environment();
+//        user.readJSONUser(key);
+//        boards = login.loginAs(user.getUser(), user.getPass());
+//    }
 
     /**
      * Creation of a dashboar with a specs.

@@ -35,6 +35,10 @@ public class RunCucumberTest extends AbstractTestNGCucumberTests {
      */
     @AfterClass
     public void close() {
+
+        System.out.println("##############################################");
+
         DriverManager.getInstance().getDriver().close();
+        //@CleanAllBoards
     }
 }
