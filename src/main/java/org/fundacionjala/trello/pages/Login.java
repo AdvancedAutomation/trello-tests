@@ -11,7 +11,7 @@ import org.openqa.selenium.support.FindBy;
 public class Login extends AbstractPage {
 
     /**
-     *
+     * Constructor of the page object of Login.
      */
     public Login() {
         driver.get("https://trello.com/login?returnUrl=%2F");

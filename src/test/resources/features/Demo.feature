@@ -1,11 +1,11 @@
-Feature: Create a Dashboard in Trello
+Feature: Create a board in Trello
 
-  Scenario: Create dashboard
+  Scenario: Create a board
 
     Given I am on the Home page Trello
-    When I Log in with user 1
-    And I create a dashboard with a:
+    When I Log with user "{credentials.owner1}"
+    And I create a board with a:
       | Title      | abc1    |
       | Privacy    | private |
       | Background | green   |
-    Then I should see the dashboard
+    Then I should see the board

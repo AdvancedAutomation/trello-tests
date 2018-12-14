@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 /**
  * this class represent a selected dashboard page.
  */
-public class SelectedDashBoard extends AbstractPage {
+public class SelectedBoard extends AbstractPage {
 
     /**
      * Find span.

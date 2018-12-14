@@ -36,7 +36,7 @@ public class BoardCreation extends AbstractPage {
      * @param data List of the data specs.
      * @return the PO of the Selected DashBoard.
      */
-    public SelectedDashBoard createNewBoard(final Map<BoardFields, String> data) {
+    public SelectedBoard createNewBoard(final Map<BoardFields, String> data) {
         EnumMap<BoardFields, ISteps> dashboardSteps = new EnumMap<>(BoardFields.class);
         titleString = data.get(BoardFields.TITLE);
         dashboardSteps.put(BoardFields.TITLE, () -> action.setValue(titleTextInputField, titleString));
@@ -46,7 +46,7 @@ public class BoardCreation extends AbstractPage {
             dashboardSteps.get(key).run();
         }
         action.click(createDashBoardButton);
-        return new SelectedDashBoard();
+        return new SelectedBoard();
     }
 
     /**
