@@ -10,6 +10,7 @@ import org.fundacionjala.trello.pages.Boards;
 import org.fundacionjala.trello.pages.Home;
 import org.fundacionjala.trello.pages.Login;
 import org.fundacionjala.trello.pages.SelectedDashBoard;
+import org.junit.Assert;
 
 import java.util.Map;
 
@@ -60,9 +61,8 @@ public class DashboardStepDef {
      */
     @Then("I should see the dashboard")
     public void seeDashboard() {
-        System.out.println(newBoard.getTitleString().equals(dashBoard.getName()) ? "Passed" : "Failed");
-        System.out.println(newBoard.getPrivacyString().equals(dashBoard.getPrivacy()) ? "Passed" : "Failed");
-        //dashBoard.addList("hi");
+        Assert.assertEquals(newBoard.getTitleString(), dashBoard.getName());
+        Assert.assertEquals(newBoard.getPrivacyString(), dashBoard.getPrivacy());
         home.closeDriver();
     }
 }
