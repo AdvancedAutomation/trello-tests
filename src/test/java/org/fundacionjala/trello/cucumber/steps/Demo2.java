@@ -4,8 +4,8 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.fundacionjala.core.Environment;
+import org.fundacionjala.core.ui.CommonActions;
 import org.fundacionjala.trello.pages.Boards;
-import org.fundacionjala.trello.pages.Home;
 import org.fundacionjala.trello.pages.Login;
 import org.fundacionjala.trello.pages.SelectedDashBoard;
 import org.fundacionjala.trello.pages.BoardCreation;
@@ -18,7 +18,7 @@ import java.util.Map;
  */
 public class Demo2 {
 
-    private Home home;
+    private Login login;
     private Boards boards;
     private SelectedDashBoard dashBoard;
 
@@ -28,10 +28,10 @@ public class Demo2 {
      */
     @Given("I Log in with user {string}")
     public void iLogInWithUser(final String key) {
-        home = new Home();
-        Login login = home.clickInitLink();
+        login = new Login();
         Environment user = new Environment();
-        user.readJSONUser(key);
+        CommonActions decrypt = new CommonActions();
+        user.readJSONUser(decrypt.getUserFromKey(key));
         boards = login.loginAs(user.getUser(), user.getPass());
     }
 
@@ -70,6 +70,6 @@ public class Demo2 {
     @Then("I should see the card {string}")
     public void iShouldSeeTheCard(final String value) {
         dashBoard.verify(value);
-        home.closeDriver();
+        login.closeDriver();
     }
 }
