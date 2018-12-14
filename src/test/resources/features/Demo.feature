@@ -8,4 +8,5 @@ Feature: Create a Dashboard in Trello
       | Title      | abc1    |
       | Privacy    | private |
       | Background | green   |
-    Then I don't should see the board.
+    Then I should see the dashboard
+

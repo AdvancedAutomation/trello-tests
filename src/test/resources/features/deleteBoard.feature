@@ -4,4 +4,4 @@ Feature: Delete board in Trello
     Given I Log in with user "{credentials.owner1}"
   Scenario: I delete a board as owner user
     Given I delete the board with a:
-    Then I should see the card "card1"
+    Then Then I don't should see the board.
