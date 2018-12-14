@@ -21,6 +21,7 @@ public class DashboardStepDef {
     private Home home;
     private Boards boards;
     private SelectedDashBoard dashBoard;
+    private BoardCreation newBoard;
 
     /**
      * Given of in page of trello.
@@ -50,7 +51,7 @@ public class DashboardStepDef {
      */
     @When("I create a dashboard with a:")
     public void iCreateADashboardWithA(final Map<BoardFields, String> dataTable) {
-        BoardCreation newBoard = boards.clickAddBoard();
+        newBoard = boards.clickAddBoard();
         dashBoard = newBoard.createNewBoard(dataTable);
     }
 
@@ -59,7 +60,9 @@ public class DashboardStepDef {
      */
     @Then("I should see the dashboard")
     public void seeDashboard() {
-        dashBoard.addList("hi");
+        System.out.println(newBoard.getTitleString().equals(dashBoard.getName()) ? "Passed" : "Failed");
+        System.out.println(newBoard.getPrivacyString().equals(dashBoard.getPrivacy()) ? "Passed" : "Failed");
+        //dashBoard.addList("hi");
         home.closeDriver();
     }
 }

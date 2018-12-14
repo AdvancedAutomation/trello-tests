@@ -12,14 +12,15 @@ public class Home extends AbstractPage {
     /**
      * All WebElements are identified by @FindBy annotation.
      */
-    @FindBy(css = "a.global-header-section-button")
+    //@FindBy(css = "a.global-header-section-button")
+    @FindBy(css = "a[href='/login?returnUrl=%2F']")
     private WebElement linkInit;
 
     /**
      * Constructor of the page object of trello.
      */
     public Home() {
-        driver.get("https://trello.com/");
+        driver.get("https://trello.com");
     }
 
     /**
