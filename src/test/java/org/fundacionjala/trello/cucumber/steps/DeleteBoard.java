@@ -1,3 +1,4 @@
+/*
 package org.fundacionjala.trello.cucumber.steps;
 
 import cucumber.api.PendingException;
@@ -14,14 +15,17 @@ import org.fundacionjala.trello.pages.SelectedDashBoard;
 
 import java.util.Map;
 
+*/
 /**
  * Step definitions for the Dashboard Creation.
- */
+ *//*
+
 public class DeleteBoard {
 
     private Home home;
     private Boards boards;
     private SelectedDashBoard dashBoard;
+*/
 
 //    /**
 //     * Given of in page of trello.
@@ -37,4 +41,4 @@ public class DeleteBoard {
 //    }
 
 
-}
+

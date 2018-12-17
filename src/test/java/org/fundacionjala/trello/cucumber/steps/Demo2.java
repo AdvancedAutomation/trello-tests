@@ -6,6 +6,7 @@ import cucumber.api.java.en.When;
 import org.fundacionjala.core.Environment;
 import org.fundacionjala.core.ui.CommonActions;
 import org.fundacionjala.trello.pages.Boards;
+import org.fundacionjala.trello.pages.Home;
 import org.fundacionjala.trello.pages.Login;
 import org.fundacionjala.trello.pages.SelectedDashBoard;
 import org.fundacionjala.trello.pages.BoardCreation;
@@ -18,6 +19,7 @@ import java.util.Map;
  */
 public class Demo2 {
 
+    private Home home;
     private Login login;
     private Boards boards;
     private SelectedDashBoard dashBoard;
@@ -36,10 +38,27 @@ public class Demo2 {
     }
 
     /**
+     * Given of in page of trello.
+     */
+    @Given("I am on the Home page Trello")
+    public void onTrello() {
+        home = new Home();
+    }
+
+    /**
+     * Creation of a card with a specs.
+     * @param data input String.
+     */
+    @Given("I create a card with a:")
+    public void iCreateACardWith(final String data) {
+        dashBoard.clickAddCard(data);
+    }
+
+    /**
      * Creation of a dashboar with a specs.
      * @param dataTable input String.
      */
-    @When("I create a basic dashboard with a:")
+    @When("I create a dashboard with a:")
     public void iCreateADashboardWithA(final Map<BoardFields, String> dataTable) {
         BoardCreation newBoard = boards.clickAddBoard();
         dashBoard = newBoard.createNewBoard(dataTable);
@@ -55,15 +74,6 @@ public class Demo2 {
     }
 
     /**
-     * Creation of a card with a specs.
-     * @param data input String.
-     */
-    @Given("I create a card with a:")
-    public void iCreateACardWith(final String data) {
-        dashBoard.clickAddCard(data);
-    }
-
-    /**
      * Method fo open card.
      * @param value input String.
      */
@@ -71,5 +81,13 @@ public class Demo2 {
     public void iShouldSeeTheCard(final String value) {
         dashBoard.verify(value);
         login.closeDriver();
+    }
+
+    /**
+     * Dashboard page.
+     */
+    @Then("^I should see the board$")
+    public void iShouldSeeTheBoard() {
+        dashBoard.addList("hi");
     }
 }

@@ -1,6 +1,5 @@
 package org.fundacionjala.trello.cucumber.steps.ui;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 
 /**
