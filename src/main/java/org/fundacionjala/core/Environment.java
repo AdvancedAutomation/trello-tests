@@ -20,8 +20,8 @@ public class Environment {
 
     private String user;
     private String pass;
-    private String credUser = "$['";
-    private String credPass = "$['";
+    private String userCredentials = "$['";
+    private String passCredentials = "$['";
     private static final String CONF_FILE = "environment.json";
 
 
@@ -35,11 +35,11 @@ public class Environment {
         try (InputStream inputStream = new FileInputStream(CONF_FILE)) {
             Reader fileReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
             JSONObject jsonObject = (JSONObject) parser.parse(fileReader);
-            credUser = credUser.concat(key[0]).concat("']['").concat(key[1]).concat("']['username']");
-            credPass = credPass.concat(key[0]).concat("']['").concat(key[1]).concat("']['password']");
+            userCredentials = credUser.concat(key[0]).concat("']['").concat(key[1]).concat("']['username']");
+            passCredentials = credPass.concat(key[0]).concat("']['").concat(key[1]).concat("']['password']");
             DocumentContext jsonContext = JsonPath.parse(jsonObject);
-            user = jsonContext.read(credUser);
-            pass = jsonContext.read(credPass);
+            user = jsonContext.read(userCredentials);
+            pass = jsonContext.read(passCredentials);
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
