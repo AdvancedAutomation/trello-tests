@@ -4,6 +4,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.fundacionjala.core.Environment;
+import org.fundacionjala.core.ui.CommonActions;
 import org.fundacionjala.trello.pages.BoardCreation;
 import org.fundacionjala.trello.pages.BoardFields;
 import org.fundacionjala.trello.pages.Boards;
@@ -33,13 +34,14 @@ public class DashboardStepDef {
     /**
      * When of Log a user.
      *
-     * @param numUser int for select a user.
+     * @param key int for select a user.
      */
-    @When("I Log in with user {int}")
-    public void logIn(int numUser) {
+    @When("I Log with user {string}")
+    public void logIn(final String key) {
         Login login = home.clickInitLink();
         Environment user = new Environment();
-        user.readJSONUser(numUser);
+        CommonActions decrypt = new CommonActions();
+        user.readJSONUser(decrypt.getUserFromKey(key));
         boards = login.loginAs(user.getUser(), user.getPass());
     }
 

@@ -12,7 +12,7 @@ public class Home extends AbstractPage {
     /**
      * All WebElements are identified by @FindBy annotation.
      */
-    @FindBy(css="a[href='/login?returnUrl=%2F']")
+    @FindBy(css = "a[href='/login?returnUrl=%2F']")
     private WebElement linkInit;
 
     /**
