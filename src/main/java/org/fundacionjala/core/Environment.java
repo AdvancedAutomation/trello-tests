@@ -1,5 +1,7 @@
 package org.fundacionjala.core;
 
+import com.jayway.jsonpath.DocumentContext;
+import com.jayway.jsonpath.JsonPath;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -18,9 +20,8 @@ public class Environment {
 
     private String user;
     private String pass;
+    private String credentials = "$['credentials']['";
     private static final String CONF_FILE = "environment.json";
-    private static String userKey = "user-";
-    private static String passKey = "pass-";
 
 
     /**
@@ -33,8 +34,9 @@ public class Environment {
         try (InputStream inputStream = new FileInputStream(CONF_FILE)) {
             Reader fileReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
             JSONObject jsonObject = (JSONObject) parser.parse(fileReader);
-            user = (String) jsonObject.get(userKey.concat(key));
-            pass = (String) jsonObject.get(passKey.concat(key));
+            DocumentContext jsonContext = JsonPath.parse(jsonObject);
+            user = jsonContext.read(credentials.concat(key).concat("']['username']"));
+            pass = jsonContext.read(credentials.concat(key).concat("']['password']"));
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
