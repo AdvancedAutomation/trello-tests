@@ -1,5 +1,7 @@
 package org.fundacionjala.core;
 
+import com.jayway.jsonpath.DocumentContext;
+import com.jayway.jsonpath.JsonPath;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -18,23 +20,26 @@ public class Environment {
 
     private String user;
     private String pass;
+    private String credUser = "$['";
+    private String credPass = "$['";
     private static final String CONF_FILE = "environment.json";
-    private static String userKey = "user-";
-    private static String passKey = "pass-";
 
 
     /**
      * Method for read the JSON file.
      *
-     * @param key String for select the user.
+     * @param key String[] for select the user.
      */
-    public void readJSONUser(final String key) {
+    public void readJSONUser(final String[] key) {
         JSONParser parser = new JSONParser();
         try (InputStream inputStream = new FileInputStream(CONF_FILE)) {
             Reader fileReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
             JSONObject jsonObject = (JSONObject) parser.parse(fileReader);
-            user = (String) jsonObject.get(userKey.concat(key));
-            pass = (String) jsonObject.get(passKey.concat(key));
+            credUser = credUser.concat(key[0]).concat("']['").concat(key[1]).concat("']['username']");
+            credPass = credPass.concat(key[0]).concat("']['").concat(key[1]).concat("']['password']");
+            DocumentContext jsonContext = JsonPath.parse(jsonObject);
+            user = jsonContext.read(credUser);
+            pass = jsonContext.read(credPass);
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
