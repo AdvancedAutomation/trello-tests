@@ -20,22 +20,8 @@ import java.util.Map;
 public class Demo2 {
 
     private Home home;
-    private Login login;
     private Boards boards;
     private SelectedDashBoard dashBoard;
-
-    /**
-     * Given of in page of trello.
-     * @param key for start session
-     */
-    @Given("I Log in with user {string}")
-    public void iLogInWithUser(final String key) {
-        login = new Login();
-        Environment user = new Environment();
-        CommonActions decrypt = new CommonActions();
-        user.readJSONUser(decrypt.getUserFromKey(key));
-        boards = login.loginAs(user.getUser(), user.getPass());
-    }
 
     /**
      * Given of in page of trello.
@@ -43,6 +29,20 @@ public class Demo2 {
     @Given("I am on the Home page Trello")
     public void onTrello() {
         home = new Home();
+    }
+
+    /**
+     * Given of in page of trello.
+     * @param key for start session
+     */
+    @Given("I Log in with user {string}")
+    public void iLogInWithUser(final String key) {
+        home = new Home();
+        Login login = home.clickInitLink();
+        Environment user = new Environment();
+        CommonActions decrypt = new CommonActions();
+        user.readJSONUser(decrypt.getUserFromKey(key));
+        boards = login.loginAs(user.getUser(), user.getPass());
     }
 
     /**
@@ -80,7 +80,6 @@ public class Demo2 {
     @Then("I should see the card {string}")
     public void iShouldSeeTheCard(final String value) {
         dashBoard.verify(value);
-        login.closeDriver();
     }
 
     /**
