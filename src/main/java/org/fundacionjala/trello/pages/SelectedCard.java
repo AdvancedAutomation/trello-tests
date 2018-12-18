@@ -1,6 +1,7 @@
 package org.fundacionjala.trello.pages;
 
 import org.fundacionjala.core.ui.AbstractPage;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 
 /**
@@ -14,8 +15,7 @@ public class SelectedCard extends AbstractPage {
      */
     public void verify(final String expected) {
         String result = driver.findElement(By.cssSelector(".js-card-name")).getText();
-        if (expected.equals(result)) {
-            closeDriver();
-        }
+        Assert.assertEquals(expected, result);
+        closeDriver();
     }
 }
