@@ -1,10 +1,14 @@
 Feature: Add new list to an existing board.
   As a user owner I want to add a new list to my board.
 
-  Scenario: As a user owner loggin into trello's home page
+  Background:
+    Given I Log in with user "{credentials.owner1}"
+    And I create a board with a:
+      | Title      | Team Board |
+      | Privacy    | private    |
+      | Background | green       |
 
-    Given Trello's home page
-    When I logged as a owner
-    And I was create a new board
-    And I add new list into board
+  Scenario: As a user owner logged into trello's home page
+    When I add new list into board
+      | To Do |
     Then I should see the list
