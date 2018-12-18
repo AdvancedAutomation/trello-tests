@@ -4,21 +4,21 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.fundacionjala.trello.pages.SelectedCard;
-import org.fundacionjala.trello.pages.SelectedDashBoard;
+import org.fundacionjala.trello.pages.SelectedBoard;
 
 /**
  * Step definitions for the Dashboard Creation.
  */
 public class CreateCardStep {
 
-    private SelectedDashBoard board;
+    private SelectedBoard board;
     private SelectedCard card;
 
     /**
      * Constructor CreateCardStep.
      * @param board SelectedDashBoard.
      */
-    public CreateCardStep(final SelectedDashBoard board) {
+    public CreateCardStep(final SelectedBoard board) {
         this.board = board;
     }
 

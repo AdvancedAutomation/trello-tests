@@ -30,8 +30,9 @@ gradle/
 out/
 /build/
 /.allure/
+/out/
 *.iml
 /logs/
 /target/
-credentials.json
 environment.json
+credentials.json

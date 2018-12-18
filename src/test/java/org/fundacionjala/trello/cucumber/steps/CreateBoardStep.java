@@ -3,9 +3,10 @@ package org.fundacionjala.trello.cucumber.steps;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.fundacionjala.trello.pages.Boards;
-import org.fundacionjala.trello.pages.SelectedDashBoard;
+import org.fundacionjala.trello.pages.SelectedBoard;
 import org.fundacionjala.trello.pages.BoardCreation;
 import org.fundacionjala.trello.pages.BoardFields;
+import org.junit.Assert;
 
 import java.util.Map;
 
@@ -14,18 +15,19 @@ import java.util.Map;
  */
 public class CreateBoardStep {
 
-    private Boards boards;
-    private SelectedDashBoard dashBoard;
+    private Boards boardsPage;
+    private SelectedBoard board;
+    private BoardCreation newBoardCreation;
 
     /**
      * Constructor CreateBoardStep.
      *
-     * @param boards Boards.
+     * @param boardsPage Boards.
      * @param dashBoard SelectedDashBoard.
      */
-    public CreateBoardStep(final Boards boards, final SelectedDashBoard dashBoard) {
-        this.boards = boards;
-        this.dashBoard = dashBoard;
+    public CreateBoardStep(final Boards boardsPage, final SelectedBoard dashBoard) {
+        this.boardsPage = boardsPage;
+        this.board = dashBoard;
     }
 
     /**
@@ -34,8 +36,8 @@ public class CreateBoardStep {
      */
     @When("I create a board with a:")
     public void iCreateABoardWithA(final Map<BoardFields, String> dataTable) {
-        BoardCreation newBoard = boards.clickAddBoard();
-        dashBoard = newBoard.createNewBoard(dataTable);
+        newBoardCreation = boardsPage.clickAddBoard();
+        board = newBoardCreation.createNewBoard(dataTable);
     }
 
     /**
@@ -43,6 +45,10 @@ public class CreateBoardStep {
      */
     @Then("^I should see the board$")
     public void iShouldSeeTheBoard() {
-        dashBoard.addList("hi");
+        Assert.assertEquals(newBoardCreation.getTitleString(), board.getName());
+        if (newBoardCreation.getPrivacyString() != null) {
+            Assert.assertEquals(newBoardCreation.getPrivacyString(), board.getPrivacy());
+        }
+        boardsPage.closeDriver();
     }
 }

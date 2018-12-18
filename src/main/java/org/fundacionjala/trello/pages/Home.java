@@ -19,7 +19,7 @@ public class Home extends AbstractPage {
      * Constructor of the page object of trello.
      */
     public Home() {
-        driver.get("https://trello.com/");
+        driver.get("https://trello.com");
     }
 
     /**

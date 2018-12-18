@@ -1,6 +1,6 @@
 Feature: Create a Board in Trello
   Background:
-    Given I Log in with user "{credentials.owner1}"
+    Given I Log in with user "{credentials.member2}"
   Scenario: Create Board
     When I create a board with a:
       | Title      | abc1    |

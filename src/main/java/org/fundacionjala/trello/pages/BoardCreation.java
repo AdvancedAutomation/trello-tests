@@ -9,7 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 /**
- * Page object of the Creation page for dashboards.
+ * Page object of the Creation page for boards.
  */
 public class BoardCreation extends AbstractPage {
 
@@ -17,7 +17,7 @@ public class BoardCreation extends AbstractPage {
     private WebElement titleTextInputField;
 
     @FindBy(css = ".create-board-form button.primary")
-    private WebElement createDashBoardButton;
+    private WebElement createBoardButton;
 
     @FindBy(css = "[class='subtle-chooser-trigger unstyled-button vis-chooser-trigger']")
     private WebElement selectPrivacyButton;
@@ -25,23 +25,27 @@ public class BoardCreation extends AbstractPage {
     @FindBy(css = "[class='subtle-chooser-trigger unstyled-button org-chooser-trigger']")
     private WebElement selectTeamButton;
 
+    private String titleString = null;
+    private String privacyString = null;
+    private String backgroundString = null;
 
     /**
-     * Method for create a dashboard with some specs.
+     * Method for create a board with some specs.
      *
      * @param data List of the data specs.
-     * @return the PO of the Selected DashBoard.
+     * @return the PO of the Selected Board.
      */
-    public SelectedDashBoard createNewBoard(final Map<BoardFields, String> data) {
-        EnumMap<BoardFields, ISteps> dashboardSteps = new EnumMap<>(BoardFields.class);
-        dashboardSteps.put(BoardFields.TITLE, () -> action.setValue(titleTextInputField, data.get(BoardFields.TITLE)));
-        dashboardSteps.put(BoardFields.PRIVACY, () -> selectPrivacy(data));
-        dashboardSteps.put(BoardFields.BACKGROUND, () -> selectBackground(data));
+    public SelectedBoard createNewBoard(final Map<BoardFields, String> data) {
+        EnumMap<BoardFields, ISteps> boardSteps = new EnumMap<>(BoardFields.class);
+        titleString = data.get(BoardFields.TITLE);
+        boardSteps.put(BoardFields.TITLE, () -> action.setValue(titleTextInputField, titleString));
+        boardSteps.put(BoardFields.PRIVACY, () -> selectPrivacy(data));
+        boardSteps.put(BoardFields.BACKGROUND, () -> selectBackground(data));
         for (BoardFields key : data.keySet()) {
-            dashboardSteps.get(key).run();
+            boardSteps.get(key).run();
         }
-        action.click(createDashBoardButton);
-        return new SelectedDashBoard();
+        action.click(createBoardButton);
+        return new SelectedBoard();
     }
 
     /**
@@ -50,8 +54,9 @@ public class BoardCreation extends AbstractPage {
      * @param data input map.
      */
     private void selectBackground(final Map<BoardFields, String> data) {
+        backgroundString = data.get(BoardFields.BACKGROUND);
         final String locatorColorBackgraundButton = String.format("[class='background-grid-trigger'][title='%s']",
-                data.get(BoardFields.BACKGROUND));
+                backgroundString);
         WebElement selectColorBgButton = driver.findElement(By.cssSelector(locatorColorBackgraundButton));
         action.click(selectColorBgButton);
     }
@@ -62,13 +67,38 @@ public class BoardCreation extends AbstractPage {
      * @param data input map.
      */
     private void selectPrivacy(final Map<BoardFields, String> data) {
-        action.click(selectPrivacyButton);
-        final String locatorPrivacyButton = String.format("[class$='icon-%s']", data.get(BoardFields.PRIVACY));
-        WebElement selectPrivacyList = driver.findElement(By.cssSelector(locatorPrivacyButton));
-        action.click(selectPrivacyList);
-        if (data.get(BoardFields.PRIVACY).contains("public")) {
+        privacyString = data.get(BoardFields.PRIVACY).toLowerCase();
+        if (privacyString.equals("public")) {
+            action.click(selectPrivacyButton);
+            final String locatorPrivacyButton = String.format("[class$='icon-%s']", privacyString);
+            WebElement selectPrivacyList = driver.findElement(By.cssSelector(locatorPrivacyButton));
+            action.click(selectPrivacyList);
             WebElement confirmPublicButton = driver.findElement(By.cssSelector("[class='js-confirm full primary']"));
             action.click(confirmPublicButton);
         }
+    }
+
+    /**
+     *
+     * @return title of board created.
+     */
+    public String getTitleString() {
+        return titleString;
+    }
+
+    /**
+     *
+     * @return privacy of board created.
+     */
+    public String getPrivacyString() {
+        return privacyString;
+    }
+
+    /**
+     *
+     * @return background of board created.
+     */
+    public String getBackgroundString() {
+        return backgroundString;
     }
 }

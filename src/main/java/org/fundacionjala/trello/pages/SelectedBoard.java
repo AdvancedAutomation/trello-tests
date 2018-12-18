@@ -6,9 +6,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /**
- * this class represent a selected dashboard page.
+ * this class represent a selected board page.
  */
-public class SelectedDashBoard extends AbstractPage {
+public class SelectedBoard extends AbstractPage {
 
     /**
      * Find span.
@@ -50,6 +50,9 @@ public class SelectedDashBoard extends AbstractPage {
     @FindBy(xpath = "//a[contains(@class,'card-detail-title-assist js-title-helper')]")
     private WebElement nameCard;
 
+    @FindBy(xpath = "//a[contains(@class,'board-header-btn perms-btn js-change-vis')]")
+    private WebElement privacyName;
+
     /**
      * @param nameList value or input.
      */
@@ -61,9 +64,18 @@ public class SelectedDashBoard extends AbstractPage {
     /**
      * @return name.
      */
-    protected String getName() {
+    public String getName() {
         wait.until(ExpectedConditions.visibilityOf(name));
         return name.getText();
+    }
+
+    /**
+     *
+     * @return privacy name.
+     */
+    public String getPrivacy() {
+        wait.until(ExpectedConditions.visibilityOf(privacyName));
+        return privacyName.getText().toLowerCase();
     }
 
     /**
