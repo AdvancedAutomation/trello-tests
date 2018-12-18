@@ -11,15 +11,15 @@ import org.fundacionjala.trello.pages.SelectedDashBoard;
  */
 public class CreateCardStep {
 
-    private SelectedDashBoard dashBoard;
+    private SelectedDashBoard board;
     private SelectedCard card;
 
     /**
      * Constructor CreateCardStep.
-     * @param dashBoard SelectedDashBoard.
+     * @param board SelectedDashBoard.
      */
-    public CreateCardStep(final SelectedDashBoard dashBoard) {
-        this.dashBoard = dashBoard;
+    public CreateCardStep(final SelectedDashBoard board) {
+        this.board = board;
     }
 
     /**
@@ -28,7 +28,7 @@ public class CreateCardStep {
      */
     @Given("I create a card with a:")
     public void iCreateACardWith(final String data) {
-        dashBoard.clickAddCard(data);
+        board.clickAddCard(data);
     }
 
     /**
@@ -37,7 +37,7 @@ public class CreateCardStep {
      */
     @When("I create another lists:")
     public void iCreateAnotherLists(final String value) {
-        dashBoard.addList(value);
+        board.addList(value);
     }
 
     /**
@@ -54,6 +54,6 @@ public class CreateCardStep {
      */
     @When("I open the card new created")
     public void iSelectCardNewCreated() {
-        card = dashBoard.clickOpenCard();
+        card = board.clickOpenCard();
     }
 }
