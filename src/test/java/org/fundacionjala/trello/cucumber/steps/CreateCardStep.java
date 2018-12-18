@@ -3,6 +3,7 @@ package org.fundacionjala.trello.cucumber.steps;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.fundacionjala.trello.pages.SelectedCard;
 import org.fundacionjala.trello.pages.SelectedDashBoard;
 
 /**
@@ -10,14 +11,15 @@ import org.fundacionjala.trello.pages.SelectedDashBoard;
  */
 public class CreateCardStep {
 
-    private SelectedDashBoard dashBoard;
+    private SelectedDashBoard board;
+    private SelectedCard card;
 
     /**
      * Constructor CreateCardStep.
-     * @param dashBoard SelectedDashBoard.
+     * @param board SelectedDashBoard.
      */
-    public CreateCardStep(final SelectedDashBoard dashBoard) {
-        this.dashBoard = dashBoard;
+    public CreateCardStep(final SelectedDashBoard board) {
+        this.board = board;
     }
 
     /**
@@ -26,7 +28,7 @@ public class CreateCardStep {
      */
     @Given("I create a card with a:")
     public void iCreateACardWith(final String data) {
-        dashBoard.clickAddCard(data);
+        board.clickAddCard(data);
     }
 
     /**
@@ -35,15 +37,23 @@ public class CreateCardStep {
      */
     @When("I create another lists:")
     public void iCreateAnotherLists(final String value) {
-        dashBoard.addList(value);
+        board.addList(value);
     }
 
     /**
-     * Method fo open card.
-     * @param value input String.
+     * Method verify card new.
+     * @param expected input String.
      */
     @Then("I should see the card {string}")
-    public void iShouldSeeTheCard(final String value) {
-        dashBoard.verify(value);
+    public void iShouldSeeTheCard(final String expected) {
+        card.verify(expected);
+    }
+
+    /**
+     * Method for open card new created.
+     */
+    @When("I open the card new created")
+    public void iSelectCardNewCreated() {
+        card = board.clickOpenCard();
     }
 }

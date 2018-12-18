@@ -43,8 +43,9 @@ public class SelectedDashBoard extends AbstractPage {
     @FindBy(css = "input.primary.confirm.mod-compact.js-add-card")
     private WebElement addCardButton;
 
-    @FindBy(css = "span.list-card-title.js-card-name")
-    private WebElement buttonCard;
+    @FindBy(xpath = "//textarea[@aria-label=\"To do\"]/ancestor::div[contains(@class, 'js-list-content')]/descendant::"
+                    + "span[contains(text(), 'card1')]")
+    private WebElement buttonOpenCard;
 
     @FindBy(xpath = "//a[contains(@class,'card-detail-title-assist js-title-helper')]")
     private WebElement nameCard;
@@ -77,10 +78,11 @@ public class SelectedDashBoard extends AbstractPage {
     }
 
     /**
-     * Method for verify a new Card.
-     * @param value is name of create card.
+     * Method for to do click in the card new.
+     * @return SelectedCard.
      */
-    public void verify(final String value) {
-        action.click(buttonCard);
+    public SelectedCard clickOpenCard() {
+        action.click(buttonOpenCard);
+        return new SelectedCard();
     }
 }
