@@ -3,6 +3,7 @@ package org.fundacionjala.trello.cucumber.steps;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.fundacionjala.trello.pages.SelectedCard;
 import org.fundacionjala.trello.pages.SelectedDashBoard;
 
 /**
@@ -11,6 +12,7 @@ import org.fundacionjala.trello.pages.SelectedDashBoard;
 public class CreateCardStep {
 
     private SelectedDashBoard dashBoard;
+    private SelectedCard card;
 
     /**
      * Constructor CreateCardStep.
@@ -39,11 +41,19 @@ public class CreateCardStep {
     }
 
     /**
-     * Method fo open card.
-     * @param value input String.
+     * Method verify card new.
+     * @param expected input String.
      */
     @Then("I should see the card {string}")
-    public void iShouldSeeTheCard(final String value) {
-        dashBoard.verify(value);
+    public void iShouldSeeTheCard(final String expected) {
+        card.verify(expected);
+    }
+
+    /**
+     * Method for open card new created.
+     */
+    @When("I open the card new created")
+    public void iSelectCardNewCreated() {
+        card = dashBoard.clickOpenCard();
     }
 }
