@@ -31,7 +31,7 @@ public class Boards extends AbstractPage {
     private WebElement createTeamButton;
 
     /**
-     * Method for add a dashboard.
+     * Method for add a board.
      *
      * @return the PO of Board Creation.
      */

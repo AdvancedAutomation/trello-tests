@@ -9,7 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 /**
- * Page object of the Creation page for dashboards.
+ * Page object of the Creation page for boards.
  */
 public class BoardCreation extends AbstractPage {
 
@@ -17,7 +17,7 @@ public class BoardCreation extends AbstractPage {
     private WebElement titleTextInputField;
 
     @FindBy(css = ".create-board-form button.primary")
-    private WebElement createDashBoardButton;
+    private WebElement createBoardButton;
 
     @FindBy(css = "[class='subtle-chooser-trigger unstyled-button vis-chooser-trigger']")
     private WebElement selectPrivacyButton;
@@ -30,21 +30,21 @@ public class BoardCreation extends AbstractPage {
     private String backgroundString = null;
 
     /**
-     * Method for create a dashboard with some specs.
+     * Method for create a board with some specs.
      *
      * @param data List of the data specs.
-     * @return the PO of the Selected DashBoard.
+     * @return the PO of the Selected Board.
      */
     public SelectedBoard createNewBoard(final Map<BoardFields, String> data) {
-        EnumMap<BoardFields, ISteps> dashboardSteps = new EnumMap<>(BoardFields.class);
+        EnumMap<BoardFields, ISteps> boardSteps = new EnumMap<>(BoardFields.class);
         titleString = data.get(BoardFields.TITLE);
-        dashboardSteps.put(BoardFields.TITLE, () -> action.setValue(titleTextInputField, titleString));
-        dashboardSteps.put(BoardFields.PRIVACY, () -> selectPrivacy(data));
-        dashboardSteps.put(BoardFields.BACKGROUND, () -> selectBackground(data));
+        boardSteps.put(BoardFields.TITLE, () -> action.setValue(titleTextInputField, titleString));
+        boardSteps.put(BoardFields.PRIVACY, () -> selectPrivacy(data));
+        boardSteps.put(BoardFields.BACKGROUND, () -> selectBackground(data));
         for (BoardFields key : data.keySet()) {
-            dashboardSteps.get(key).run();
+            boardSteps.get(key).run();
         }
-        action.click(createDashBoardButton);
+        action.click(createBoardButton);
         return new SelectedBoard();
     }
 
