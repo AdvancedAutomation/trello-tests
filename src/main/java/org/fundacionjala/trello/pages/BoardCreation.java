@@ -1,6 +1,8 @@
 package org.fundacionjala.trello.pages;
 
+import java.util.Collections;
 import java.util.EnumMap;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.fundacionjala.core.ui.AbstractPage;
@@ -28,6 +30,16 @@ public class BoardCreation extends AbstractPage {
     private String titleString = null;
     private String privacyString = null;
     private String backgroundString = null;
+
+    private static final Map<String, String> COLORSBACKGROUND;
+    static {
+        Map<String, String> comp = new HashMap<>();
+        comp.put("green", "rgba(81, 152, 57, 1)");
+        comp.put("red", "rgba(176, 70, 50, 1)");
+        comp.put("blue", "rgba(0, 121, 191, 1)");
+        comp.put("orange", "rgba(210, 144, 52, 1)");
+        COLORSBACKGROUND = Collections.unmodifiableMap(comp);
+    }
 
     /**
      * Method for create a board with some specs.
@@ -99,6 +111,6 @@ public class BoardCreation extends AbstractPage {
      * @return background of board created.
      */
     public String getBackgroundString() {
-        return backgroundString;
+        return COLORSBACKGROUND.get(backgroundString.toLowerCase());
     }
 }

@@ -1,6 +1,7 @@
 package org.fundacionjala.trello.pages;
 
 import org.fundacionjala.core.ui.AbstractPage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -76,6 +77,15 @@ public class SelectedBoard extends AbstractPage {
     public String getPrivacy() {
         wait.until(ExpectedConditions.visibilityOf(privacyName));
         return privacyName.getText().toLowerCase();
+    }
+
+    /**
+     *
+     * @return color background of page.
+     */
+    public String getBG() {
+        wait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.cssSelector(".window-overlay .window"))));
+        return driver.findElement(By.id("classic-body")).getCssValue("background-color");
     }
 
     /**

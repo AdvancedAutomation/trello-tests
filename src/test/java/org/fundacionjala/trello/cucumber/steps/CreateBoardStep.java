@@ -49,6 +49,9 @@ public class CreateBoardStep {
         if (newBoardCreation.getPrivacyString() != null) {
             Assert.assertEquals(newBoardCreation.getPrivacyString(), board.getPrivacy());
         }
+        if (newBoardCreation.getBackgroundString() != null) {
+            Assert.assertEquals(newBoardCreation.getBackgroundString(), board.getBG());
+        }
         boardsPage.closeDriver();
     }
 }
