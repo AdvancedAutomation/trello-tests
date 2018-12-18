@@ -25,10 +25,9 @@ public class BoardCreation extends AbstractPage {
     @FindBy(css = "[class='subtle-chooser-trigger unstyled-button org-chooser-trigger']")
     private WebElement selectTeamButton;
 
-    private String titleString;
-    private String privacyString;
-    private String backgroundString;
-
+    private String titleString = null;
+    private String privacyString = null;
+    private String backgroundString = null;
 
     /**
      * Method for create a dashboard with some specs.

@@ -22,7 +22,7 @@ public class DashboardStepDef {
 
     private Home home;
     private Boards boards;
-    private SelectedBoard BoardMain;
+    private SelectedBoard boardMain;
     private BoardCreation newBoard;
 
     /**
@@ -55,7 +55,7 @@ public class DashboardStepDef {
     @When("I create a board with a:")
     public void iCreateABoardWithA(final Map<BoardFields, String> dataTable) {
         newBoard = boards.clickAddBoard();
-        BoardMain = newBoard.createNewBoard(dataTable);
+        boardMain = newBoard.createNewBoard(dataTable);
     }
 
     /**
@@ -63,8 +63,10 @@ public class DashboardStepDef {
      */
     @Then("I should see the board")
     public void seeBoard() {
-        Assert.assertEquals(newBoard.getTitleString(), BoardMain.getName());
-        Assert.assertEquals(newBoard.getPrivacyString(), BoardMain.getPrivacy());
+        Assert.assertEquals(newBoard.getTitleString(), boardMain.getName());
+        if (newBoard.getPrivacyString() != null) {
+            Assert.assertEquals(newBoard.getPrivacyString(), boardMain.getPrivacy());
+        }
         home.closeDriver();
     }
 }

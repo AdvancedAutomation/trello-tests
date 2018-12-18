@@ -7,5 +7,5 @@ Feature: Create a board in Trello
     And I create a board with a:
       | Title      | abc1    |
       | Privacy    | private |
-      | Background | green   |
+      | Background | red     |
     Then I should see the board
