@@ -1,9 +1,8 @@
-Feature: Create a Dashboard in Trello
-
-  Scenario: Create dashboard
-
+Feature: Create a Board in Trello
+  Background:
     Given I Log in with user "{credentials.owner1}"
-    When I create a dashboard with a:
+  Scenario: Create Board
+    When I create a board with a:
       | Title      | abc1    |
       | Privacy    | private |
       | Background | green   |
