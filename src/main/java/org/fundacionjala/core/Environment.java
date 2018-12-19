@@ -6,16 +6,9 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 
-/**
- * Class for set the environment of the project.
- */
 public class Environment {
 
     private String user;
@@ -23,13 +16,25 @@ public class Environment {
     private String credentials = "$['credentials']['";
     private static final String CONF_FILE = "environment.json";
 
+    private static Environment ourInstance;
+
+    /**
+     * Method for return the instance dof environment.
+     * @return the our instance.
+     */
+    public static Environment getInstance(final String key) {
+        if (ourInstance == null){
+            ourInstance = new Environment(key);
+        }
+        return ourInstance;
+    }
 
     /**
      * Method for read the JSON file.
      *
      * @param key String for select the user.
      */
-    public void readJSONUser(final String key) {
+    private Environment(final String key) {
         JSONParser parser = new JSONParser();
         try (InputStream inputStream = new FileInputStream(CONF_FILE)) {
             Reader fileReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
