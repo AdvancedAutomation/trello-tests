@@ -1,4 +1,4 @@
-package org.fundacionjala.pages;
+package org.fundacionjala.trello.pages.commons;
 
 import org.fundacionjala.core.ui.AbstractPage;
 import org.openqa.selenium.WebElement;
@@ -8,9 +8,9 @@ import org.openqa.selenium.support.FindBy;
  * Class to create a new side bar boards drawer.
  */
 public class SideBarBoardsDrawer extends AbstractPage {
-    @FindBy(className = "div[class='boards-drawer is-shown']")
+    @FindBy(css = ".boards-drawer.is-shown")
     private WebElement boardsDrawer;
-    @FindBy(className = "a.js-add-board")
+    @FindBy(css = ".js-add-board")
     private WebElement addBoard;
 
     /**

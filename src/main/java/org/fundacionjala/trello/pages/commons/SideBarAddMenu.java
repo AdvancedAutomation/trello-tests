@@ -1,4 +1,4 @@
-package org.fundacionjala.pages;
+package org.fundacionjala.trello.pages.commons;
 
 import org.fundacionjala.core.ui.AbstractPage;
 import org.openqa.selenium.WebElement;
@@ -8,11 +8,11 @@ import org.openqa.selenium.support.FindBy;
  * Class to create side bar add menu.
  */
 public class SideBarAddMenu extends AbstractPage {
-    @FindBy(className = "div[class='pop-over is-shown']")
+    @FindBy(css = ".pop-over.is-shown")
     private WebElement addMenu;
-    @FindBy(className = "a.js-new-board")
+    @FindBy(css = ".js-new-board")
     private WebElement newBoard;
-    @FindBy(className = "a.js-new-org")
+    @FindBy(css = ".js-new-org")
     private WebElement newTeam;
 
     /**
