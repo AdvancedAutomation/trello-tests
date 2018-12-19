@@ -3,7 +3,7 @@ package org.fundacionjala.trello.cucumber.steps;
 import cucumber.api.java.en.Given;
 
 import org.fundacionjala.core.Environment;
-import org.fundacionjala.core.ui.CommonActions;
+import org.fundacionjala.core.ui.Commons;
 import org.fundacionjala.trello.pages.Home;
 import org.fundacionjala.trello.pages.Login;
 
@@ -32,9 +32,7 @@ public class LoginStep {
     public void iLogInWithUser(final String key) {
         home = new Home();
         Login login = home.clickInitLink();
-        Environment user = new Environment();
-        CommonActions decrypt = new CommonActions();
-        user.readJSONUser(decrypt.getUserFromKey(key));
+        Environment user = Environment.getInstance(Commons.getUserFromKey(key));
         login.loginAs(user.getUser(), user.getPass());
     }
 }
