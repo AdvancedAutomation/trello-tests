@@ -13,15 +13,13 @@ import org.fundacionjala.trello.pages.Login;
  */
 public class LoginStep {
 
-    private Login login;
-
     /**
      * Given of in page of trello.
      * @param key for start session.
      */
     @Given("I Log in with user {string}")
     public void iLogInWithUser(final String key) {
-        login = new Login();
+        Login login = new Login();
         Environment user = Environment.getInstance(Commons.getUserFromKey(key));
         login.loginAs(user.getUser(), user.getPass());
     }
