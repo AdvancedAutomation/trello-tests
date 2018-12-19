@@ -14,6 +14,7 @@ import org.fundacionjala.trello.pages.Login;
  */
 public class LoginStep {
 
+    public static final Environment ENVIRONMENT = Environment.getInstance();
     private Home home;
 
     /**
@@ -32,7 +33,9 @@ public class LoginStep {
     public void iLogInWithUser(final String key) {
         home = new Home();
         Login login = home.clickInitLink();
-        Environment user = Environment.getInstance(Commons.getUserFromKey(key));
-        login.loginAs(user.getUser(), user.getPass());
+        String userNameKey = String.format("$['credentials']['%s']['username']", Commons.getUserFromKey(key));
+        String passwordKey = String.format("$['credentials']['%s']['password']", Commons.getUserFromKey(key));
+        login.loginAs(ENVIRONMENT.getValue(userNameKey),
+                ENVIRONMENT.getValue(passwordKey));
     }
 }

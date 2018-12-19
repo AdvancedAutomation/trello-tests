@@ -5,6 +5,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.fundacionjala.trello.pages.SelectedCard;
 import org.fundacionjala.trello.pages.SelectedBoard;
+import org.testng.Assert;
 
 /**
  * Step definitions for the Dashboard Creation.
@@ -46,7 +47,7 @@ public class CreateCardStep {
      */
     @Then("I should see the card {string}")
     public void iShouldSeeTheCard(final String expected) {
-        card.verify(expected);
+        Assert.assertTrue(expected.equals(card.getTitle()));
     }
 
     /**

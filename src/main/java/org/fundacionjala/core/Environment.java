@@ -18,38 +18,30 @@ import java.nio.charset.StandardCharsets;
  */
 public final class Environment {
 
-    private String user;
-    private String pass;
-    private String credentials = "$['credentials']['";
     private static final String CONF_FILE = "environment.json";
-
     private static Environment ourInstance;
+    private DocumentContext jsonContext;
 
     /**
      * Method for return the instance dof environment.
-     * @param key type string.
      * @return the our instance.
      */
-    public static Environment getInstance(final String key) {
+    public static Environment getInstance() {
         if (ourInstance == null) {
-            ourInstance = new Environment(key);
+            ourInstance = new Environment();
         }
         return ourInstance;
     }
 
     /**
      * Method for read the JSON file.
-     *
-     * @param key String for select the user.
      */
-    private Environment(final String key) {
+    private Environment() {
         JSONParser parser = new JSONParser();
         try (InputStream inputStream = new FileInputStream(CONF_FILE)) {
             Reader fileReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
             JSONObject jsonObject = (JSONObject) parser.parse(fileReader);
-            DocumentContext jsonContext = JsonPath.parse(jsonObject);
-            user = jsonContext.read(credentials.concat(key).concat("']['username']"));
-            pass = jsonContext.read(credentials.concat(key).concat("']['password']"));
+            jsonContext = JsonPath.parse(jsonObject);
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
@@ -57,19 +49,10 @@ public final class Environment {
 
     /**
      * Getter of the user name.
-     *
+     * @param key type String
      * @return the String of user.
      */
-    public String getUser() {
-        return user;
-    }
-
-    /**
-     * Getter of the password.
-     *
-     * @return the String of the password.
-     */
-    public String getPass() {
-        return pass;
+    public String getValue(final String key) {
+        return  jsonContext.read(key);
     }
 }
