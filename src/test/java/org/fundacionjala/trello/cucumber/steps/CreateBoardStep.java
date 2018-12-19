@@ -48,6 +48,5 @@ public class CreateBoardStep {
         Assert.assertEquals(newBoardCreation.getTitleString(), board.getName());
         Assert.assertEquals(newBoardCreation.getPrivacyString(), board.getPrivacy());
         Assert.assertEquals(newBoardCreation.getBackgroundString(), board.getBG());
-        boardsPage.closeDriver();
     }
 }
