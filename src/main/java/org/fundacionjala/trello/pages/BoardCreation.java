@@ -9,6 +9,7 @@ import org.fundacionjala.core.ui.AbstractPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /**
  * Page object of the Creation page for boards.
@@ -58,6 +59,7 @@ public class BoardCreation extends AbstractPage {
             boardSteps.get(key).run();
         }
         action.click(createBoardButton);
+        wait.until(ExpectedConditions.invisibilityOf(windowOverlay));
         SelectedBoard selectedBoard = new SelectedBoard();
         selectedBoard.setPrivacy(privacyString);
         selectedBoard.setBg(backgroundString);
