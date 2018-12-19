@@ -4,6 +4,7 @@ import org.fundacionjala.core.ui.AbstractPage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /**
  * this class represented a login page.
@@ -14,7 +15,7 @@ public class Login extends AbstractPage {
      * Constructor of the page object of Login.
      */
     public Login() {
-        driver.get("https://trello.com/login?returnUrl=%2F");
+        driver.get("https://trello.com/login");
     }
 
     /**
@@ -72,12 +73,15 @@ public class Login extends AbstractPage {
      * @return value of board type.
      */
     public Boards loginAs(final String strUserName, final String strPasword) {
-        //Fill user name
-        this.setUserNameTextField(strUserName);
-        //Fill passwordTextField
-        this.setPasswordTextField(strPasword);
-        //Click Login button
-        return this.clickLoginButton();
+        if (wait.until(ExpectedConditions.visibilityOf(loginButton)).isDisplayed()) {
+            //Fill user name
+            this.setUserNameTextField(strUserName);
+            //Fill passwordTextField
+            this.setPasswordTextField(strPasword);
+            //Click Login button
+            return this.clickLoginButton();
+        }
+        return new Boards();
     }
 }
 
