@@ -5,9 +5,15 @@ import java.time.LocalDateTime;
 /**
  * this class represented a action page.
  */
-public class Commons {
+public final class Commons {
 
     private static final String DATE_TIME = "dateTime";
+
+    /**
+     * Method constructor.
+     */
+    private Commons() {
+    }
 
     /**
      * Method for remove characters .{} .

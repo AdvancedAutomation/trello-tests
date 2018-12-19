@@ -6,10 +6,17 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
-public class Environment {
+/**
+ * Singleton Class of environment.
+ */
+public final class Environment {
 
     private String user;
     private String pass;
@@ -20,10 +27,11 @@ public class Environment {
 
     /**
      * Method for return the instance dof environment.
+     * @param key type string.
      * @return the our instance.
      */
     public static Environment getInstance(final String key) {
-        if (ourInstance == null){
+        if (ourInstance == null) {
             ourInstance = new Environment(key);
         }
         return ourInstance;
