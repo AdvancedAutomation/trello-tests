@@ -2,7 +2,7 @@ package org.fundacionjala.trello.cucumber.steps;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
-import org.fundacionjala.pages.Board;
+import org.fundacionjala.trello.pages.commons.Board;
 
 /**
  * Class to run testing add list to an existing board.
