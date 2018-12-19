@@ -46,12 +46,8 @@ public class CreateBoardStep {
     @Then("^I should see the board$")
     public void iShouldSeeTheBoard() {
         Assert.assertEquals(newBoardCreation.getTitleString(), board.getName());
-        if (newBoardCreation.getPrivacyString() != null) {
-            Assert.assertEquals(newBoardCreation.getPrivacyString(), board.getPrivacy());
-        }
-        if (newBoardCreation.getBackgroundString() != null) {
-            Assert.assertEquals(newBoardCreation.getBackgroundString(), board.getBG());
-        }
+        Assert.assertEquals(newBoardCreation.getPrivacyString(), board.getPrivacy());
+        Assert.assertEquals(newBoardCreation.getBackgroundString(), board.getBG());
         boardsPage.closeDriver();
     }
 }
