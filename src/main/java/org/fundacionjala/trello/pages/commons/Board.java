@@ -8,13 +8,13 @@ import org.openqa.selenium.support.FindBy;
  * Class board.
  */
 public class Board extends AbstractPage {
-    @FindBy(className = "list-name-input")
+    @FindBy(css = ".list-name-input")
     private WebElement listName;
 
-    @FindBy(className = "mod-list-add-button")
+    @FindBy(css = ".mod-list-add-button")
     private WebElement buttonAddList;
 
-    @FindBy(className = "js-add-a-card")
+    @FindBy(css = ".js-add-a-card")
     private WebElement buttonAddCard;
 
     /**

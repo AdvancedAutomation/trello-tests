@@ -10,9 +10,9 @@ import org.openqa.selenium.support.FindBy;
 public class Header extends AbstractPage {
     @FindBy(id = "header")
     private WebElement headerDiv;
-    @FindBy(className = "header-btn js-open-add-menu")
+    @FindBy(css = ".header-btn.js-open-add-menu")
     private WebElement openAddMenu;
-    @FindBy(className = "member-initials")
+    @FindBy(css = ".member-initials")
     private  WebElement memberInitials;
 
     /**
