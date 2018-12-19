@@ -57,7 +57,8 @@ public class SelectedBoard extends AbstractPage {
     @FindBy(css = ".window-overlay .window")
     private WebElement windowOverlay;
 
-    private String privacy, bg;
+    private String privacy;
+    private String bg;
 
     /**
      * @param nameList value or input.

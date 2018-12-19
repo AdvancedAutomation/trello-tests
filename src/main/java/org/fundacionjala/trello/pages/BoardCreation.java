@@ -61,7 +61,6 @@ public class BoardCreation extends AbstractPage {
         SelectedBoard selectedBoard = new SelectedBoard();
         selectedBoard.setPrivacy(privacyString);
         selectedBoard.setBg(backgroundString);
-        System.out.println(backgroundString);
         return selectedBoard;
     }
 
