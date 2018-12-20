@@ -54,14 +54,11 @@ public class Boards extends AbstractPage {
 
     /**
      * Method for create a team.
-     * @param nameTeam is name of team.
      * @return the TeamCreation.
      */
-    public TeamCreation clickCreateTeam(final String nameTeam) {
+    public TeamCreation clickCreateTeam() {
         action.click(btnPlus);
         action.click(linkCreateNewTeam);
-        action.setValue(nameTeamInputField, nameTeam);
-        action.click(createTeamButton);
         return new TeamCreation();
     }
 
