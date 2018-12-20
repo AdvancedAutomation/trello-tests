@@ -13,7 +13,7 @@ public class Boards extends AbstractPage {
     private WebElement linkCreateNewTablero;
 
 
-    @FindBy(className = "header-btn-text")
+    @FindBy(css = "span.header-btn-text")
     private WebElement btnTableros;
 
     @FindBy(css = "a.js-new-org")
@@ -52,5 +52,13 @@ public class Boards extends AbstractPage {
         return new TeamCreation();
     }
 
-
+    /**
+     * Method to click Button Header Board.
+     *
+     * @return PO BoardsDrawer.
+     */
+    public BoardsDrawer clickBtnHeaderBoard() {
+        action.click(btnTableros);
+        return new BoardsDrawer();
+    }
 }

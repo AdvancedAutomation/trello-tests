@@ -1,13 +1,14 @@
 package org.fundacionjala.trello.pages;
 
-import org.fundacionjala.core.ui.WebDriverAction;
+import org.fundacionjala.core.ui.AbstractPage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 /**
  * Page object of the Boards Drawer side bar page from Trello.
  */
-public class BoardsDrawer {
+public class BoardsDrawer extends AbstractPage {
 
     @FindBy(css = "a.quiet-button.js-add-board")
     private WebElement btnCreateNewBoard;
@@ -21,14 +22,16 @@ public class BoardsDrawer {
     @FindBy(css = "a.quiet-button.js-open-closed-boards")
     private WebElement btnSeeClosedBoards;
 
+
     /**
      * Method for select a board.
-     *
+     * @param titleBoard input String.
      * @return the PO of Selected Board.
      */
-    public SelectedBoard clickBoard(final String titleBoard) {
-        WebElement board = "";
-        WebDriverAction.click(board);
+    public SelectedBoard clickBoardInBoardsDrawer(final String titleBoard) {
+        WebElement board;
+        board = driver.findElement(By.cssSelector(String.format(".js-all-boards span[title='%s']", titleBoard)));
+        action.click(board);
         return new SelectedBoard();
     }
 }
