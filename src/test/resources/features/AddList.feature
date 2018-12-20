@@ -3,7 +3,7 @@ Feature: Add new list to an existing board.
 
   Background:
     Given I Log in with user "{credentials.owner1}"
-    And I create a board with a:
+    And I create a board from "board drawer" with a:
       | Title      | Team Board |
       | Privacy    | private    |
       | Background | green       |
