@@ -17,7 +17,7 @@ public class AddSeveralListsStep {
     /**
      * Explicit constructor method.
      *
-     * @param board
+     * @param board type Board.
      */
     public AddSeveralListsStep(final Board board) {
         this.selectedBoard = board;
@@ -30,13 +30,15 @@ public class AddSeveralListsStep {
      */
     @And("I add several lists into board")
     public void iAddSeveralListsIntoBoard(final List<String> lists) {
-        for (Iterator<String> it = lists.iterator(); it.hasNext(); ) {
+        for (Iterator<String> it = lists.iterator(); it.hasNext();) {
             selectedBoard.addList(it.next());
         }
     }
 
     /**
      * Method to assert expected number of list created.
+     *
+     * @param expectedListCreated type integer.
      */
     @Then("I should see these {int} lists")
     public void iShouldSeeTheseLists(final int expectedListCreated) {

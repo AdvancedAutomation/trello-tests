@@ -42,7 +42,8 @@ public class Board extends AbstractPage {
      */
     public String getTitleList() {
         wait.until(ExpectedConditions.visibilityOf(headerList));
-        return headerList.findElement(By.cssSelector("textarea.list-header-name.mod-list-name.js-list-name-input")).getText();
+        String selector = "textarea.list-header-name.mod-list-name.js-list-name-input";
+        return headerList.findElement(By.cssSelector(selector)).getText();
     }
 
     /**
