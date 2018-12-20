@@ -54,9 +54,6 @@ public class SelectedBoard extends AbstractPage {
     @FindBy(xpath = "//a[contains(@class,'board-header-btn perms-btn js-change-vis')]")
     private WebElement privacyName;
 
-    @FindBy(css = ".window-overlay .window")
-    private WebElement windowOverlay;
-
     private String privacy;
     private String bg;
 

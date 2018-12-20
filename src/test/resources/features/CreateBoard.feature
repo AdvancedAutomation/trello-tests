@@ -8,3 +8,10 @@ Feature: Create a Board in Trello
       | Background | green   |
     Then I should see the board
 
+  Scenario: Create new Board
+    When I create a board with a:
+      | Title      | baco    |
+      | Privacy    | private |
+      | Background | red     |
+    Then I should see the board
+
