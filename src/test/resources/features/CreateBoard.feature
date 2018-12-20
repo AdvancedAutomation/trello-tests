@@ -9,14 +9,14 @@ Feature: Create a Board in Trello
     Then I should see the board
 
   Scenario: Create new Board
-    When I create a board from "boards list" with a:
+    When I create a board from "boards page" with a:
       | Title      | baco    |
       | Privacy    | private |
       | Background | red     |
     Then I should see the board
 
   Scenario: Create new Board
-    When I create a board from "header user" with a:
+    When I create a board from "icon add" with a:
       | Title      | Caio    |
       | Privacy    | public  |
       | Background | red     |

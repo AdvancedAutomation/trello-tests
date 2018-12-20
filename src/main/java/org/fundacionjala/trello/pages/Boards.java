@@ -40,10 +40,10 @@ public class Boards extends AbstractPage {
      * @return the PO of Board Creation.
      */
     public BoardCreation clickAddBoard(final String place) {
-        if (place.equals("header user")) {
+        if (place.equals("icon add")) {
             action.click(btnPlus);
             action.click(linkCreateNewBoard);
-        } else if (place.equals("boards list")) {
+        } else if (place.equals("boards page")) {
             action.click(createBoardButton);
         } else {
             action.click(btnTableros);
