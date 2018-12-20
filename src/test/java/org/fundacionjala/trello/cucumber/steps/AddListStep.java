@@ -3,6 +3,9 @@ package org.fundacionjala.trello.cucumber.steps;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import org.fundacionjala.trello.pages.commons.Board;
+import org.junit.Assert;
+
+import java.util.Map;
 
 /**
  * Class to run testing add list to an existing board.
@@ -22,11 +25,11 @@ public class AddListStep {
     /**
      * Method to create a new list into board create above.
      *
-     * @param value type String.
+     * @param table type Map.
      */
     @And("I add new list into board")
-    public void iAddNewListIntoBoard(final String value) {
-        selectedBoard.addList(value);
+    public void iAddNewListIntoBoard(final Map<String, String> table) {
+        selectedBoard.addList(table.get("Name"));
     }
 
     /**
@@ -34,6 +37,8 @@ public class AddListStep {
      */
     @Then("I should see the list")
     public void iShouldSeeTheList() {
-        selectedBoard.canAddCard();
+        String expectedTitleList = "To Do";
+        System.out.println(selectedBoard.getTitleList());
+        Assert.assertTrue(expectedTitleList.equals(selectedBoard.getTitleList()));
     }
 }
