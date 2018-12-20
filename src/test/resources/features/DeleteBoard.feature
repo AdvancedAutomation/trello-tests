@@ -6,6 +6,6 @@ Feature: Delete board in Trello
       | Title      | Board test  |
   Scenario: I delete a board as owner user
     Given I select board "Board test"
-    And I close Board.
-    And I delete Board.
-    Then I don't should see the board.
+    And I close Board
+    And I delete Board
+    Then I don't should see the board

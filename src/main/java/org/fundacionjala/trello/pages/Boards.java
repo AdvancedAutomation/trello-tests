@@ -16,8 +16,6 @@ public class Boards extends AbstractPage {
     @FindBy(className = "header-btn-text")
     private WebElement btnTableros;
 
-
-
     @FindBy(css = "a.js-new-org")
     private WebElement linkCreateNewTeam;
 
@@ -53,4 +51,6 @@ public class Boards extends AbstractPage {
         action.click(createTeamButton);
         return new TeamCreation();
     }
+
+
 }
