@@ -8,12 +8,12 @@ import org.openqa.selenium.support.FindBy;
  * Class to create a new board.
  */
 public class CreateBoardForm extends AbstractPage {
-    @FindBy(className = "create-board-form")
+    @FindBy(css = ".create-board-form")
     private WebElement createBoardForm;
-    @FindBy(className = "subtle-input")
+    @FindBy(css = ".subtle-input")
     private WebElement subtitleInput;
-    @FindBy(className = "subtle-chooser-trigger")
+    @FindBy(css = ".subtle-chooser-trigger")
     private WebElement subititleChoose;
-    @FindBy(className = "button[type='submit']")
+    @FindBy(css = "button[type='submit']")
     private WebElement buttonSubmit;
 }

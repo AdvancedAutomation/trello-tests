@@ -1,6 +1,7 @@
 package org.fundacionjala.trello.pages;
 
 import org.fundacionjala.core.ui.AbstractPage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -53,6 +54,12 @@ public class SelectedBoard extends AbstractPage {
     @FindBy(xpath = "//a[contains(@class,'board-header-btn perms-btn js-change-vis')]")
     private WebElement privacyName;
 
+    @FindBy(css = ".window-overlay .window")
+    private WebElement windowOverlay;
+
+    private String privacy;
+    private String bg;
+
     /**
      * @param nameList value or input.
      */
@@ -74,8 +81,23 @@ public class SelectedBoard extends AbstractPage {
      * @return privacy name.
      */
     public String getPrivacy() {
-        wait.until(ExpectedConditions.visibilityOf(privacyName));
-        return privacyName.getText().toLowerCase();
+        if (privacy != null) {
+            wait.until(ExpectedConditions.visibilityOf(privacyName));
+            return privacyName.getText().toLowerCase();
+        }
+        return null;
+    }
+
+    /**
+     *
+     * @return color background of page.
+     */
+    public String getBG() {
+        if (bg != null) {
+            wait.until(ExpectedConditions.invisibilityOf(windowOverlay));
+            return driver.findElement(By.id("classic-body")).getCssValue("background-color");
+        }
+        return null;
     }
 
     /**
@@ -96,5 +118,21 @@ public class SelectedBoard extends AbstractPage {
     public SelectedCard clickOpenCard() {
         action.click(buttonOpenCard);
         return new SelectedCard();
+    }
+
+    /**
+     * It stores the privacy selected.
+     * @param privacy is the privacy selected.
+     */
+    public void setPrivacy(final String privacy) {
+        this.privacy = privacy;
+    }
+
+    /**
+     * It stores the color background selected.
+     * @param bg is the background color selected.
+     */
+    public void setBg(final String bg) {
+        this.bg = bg;
     }
 }
