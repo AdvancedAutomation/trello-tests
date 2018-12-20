@@ -12,6 +12,7 @@ import java.util.Map;
  */
 public class AddListStep {
     private Board selectedBoard;
+    private String listName;
 
     /**
      * Class constructor.
@@ -29,7 +30,8 @@ public class AddListStep {
      */
     @And("I add new list into board")
     public void iAddNewListIntoBoard(final Map<String, String> table) {
-        selectedBoard.addList(table.get("Name"));
+        listName = table.get("Name");
+        selectedBoard.addList(listName);
     }
 
     /**
@@ -37,8 +39,6 @@ public class AddListStep {
      */
     @Then("I should see the list")
     public void iShouldSeeTheList() {
-        String expectedTitleList = "To Do";
-        System.out.println(selectedBoard.getTitleList());
-        Assert.assertTrue(expectedTitleList.equals(selectedBoard.getTitleList()));
+        Assert.assertTrue(listName.equals(selectedBoard.getTitleList()));
     }
 }
