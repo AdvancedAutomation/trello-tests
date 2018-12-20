@@ -12,11 +12,4 @@ public class SelectedCard extends AbstractPage {
     @FindBy(css = ".js-card-name")
     private WebElement cardName;
 
-    /**
-     * Method for verify that card new to were created.
-     * @return the name of create card String.
-     */
-    public String getTitle() {
-        return cardName.getText();
-    }
 }

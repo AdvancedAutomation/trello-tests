@@ -13,6 +13,8 @@ import java.util.Map;
  */
 public class TeamCreation extends AbstractPage {
 
+    private String uniqueNameTeam;
+
     @FindBy(css = "input#org-display-name.js-autofocus.js-display-name")
     private WebElement nameTeamInputField;
 
@@ -45,7 +47,7 @@ public class TeamCreation extends AbstractPage {
      */
     public SelectedTeam createTeam(final Map<TeamFields, String> data) {
         EnumMap<TeamFields, ISteps> teamSteps = new EnumMap<>(TeamFields.class);
-        String uniqueNameTeam = Commons.getUserFromKey(data.get(TeamFields.NAME));
+        uniqueNameTeam = Commons.getUserFromKey(data.get(TeamFields.NAME));
         teamSteps.put(TeamFields.NAME, () -> action.setValue(nameTeamInputField,
                 uniqueNameTeam));
         teamSteps.put(TeamFields.DESCRIPTION, () -> action.setValue(descriptionTeamInputField,
@@ -55,5 +57,13 @@ public class TeamCreation extends AbstractPage {
         }
         action.click(createTeamButton);
         return new SelectedTeam();
+    }
+
+    /**
+     * Method for save unique name.
+     * @return the name of team
+     */
+    public String getUniqueNameTeam() {
+        return uniqueNameTeam;
     }
 }

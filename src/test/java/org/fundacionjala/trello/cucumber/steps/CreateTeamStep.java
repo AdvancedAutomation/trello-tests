@@ -6,6 +6,7 @@ import org.fundacionjala.trello.pages.Boards;
 import org.fundacionjala.trello.pages.SelectedTeam;
 import org.fundacionjala.trello.pages.TeamCreation;
 import org.fundacionjala.trello.pages.TeamFields;
+import org.testng.Assert;
 
 import java.util.Map;
 
@@ -16,6 +17,8 @@ public class CreateTeamStep {
 
     private Boards boards;
     private SelectedTeam team;
+    private TeamCreation newTeam;
+    public static final NamesStorage NAMES_STORAGE = NamesStorage.getInstance();
 
     /**
      * Constructor CreateBoardStep.
@@ -34,16 +37,8 @@ public class CreateTeamStep {
      */
     @When("I create a team with a:")
     public void iCreateATeamWith(final Map<TeamFields, String> dataTable) {
-        TeamCreation newTeam = boards.clickCreateTeam();
+        newTeam = boards.clickCreateTeam();
         team = newTeam.createTeam(dataTable);
-    }
-
-    /**
-     * Team page.
-     */
-    @Then("^I should see the team new$")
-    public void iShouldSeeTheBoard() {
-
     }
 
     /**
@@ -52,6 +47,17 @@ public class CreateTeamStep {
      */
     @When("I store as {string}")
     public void iStoreAs(final String value) {
+        NAMES_STORAGE.addName(value, newTeam.getUniqueNameTeam());
+    }
 
+    /**
+     * Team page.
+     * @param expected type String.
+     */
+    @Then("I should see the team new {string}")
+    public void iShouldSeeTheTeamNew(final String expected) {
+        System.out.println(NAMES_STORAGE.getName(expected));
+        System.out.println(team.getValue(".u-inline"));
+        Assert.assertTrue(NAMES_STORAGE.getName(expected).equals(team.getValue(".u-inline")));
     }
 }

@@ -6,7 +6,7 @@ Feature: Create a Team in Trello
   Scenario: Create Team
     When I create a team with a:
       | Name        | {dateTime.Team01} |
-      | Description | any                     |
+      | Description | any     |
     And I store as "Team01"
-    Then I should see the team new "{Team01.Name}"
+    Then I should see the team new "Team01"
 
