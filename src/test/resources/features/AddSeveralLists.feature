@@ -4,11 +4,13 @@ Feature: Add new list to an existing board.
   Background:
     Given I Log in with user "{credentials.owner1}"
     And I create a board from "board drawer" with a:
-      | Title      | Team Board |
-      | Privacy    | private    |
-      | Background | green      |
+      | Title      | Team List |
+      | Privacy    | private   |
+      | Background | green     |
 
   Scenario: As a user owner logged into trello's home page
-    When I add new list into board
-      | Name | To Do |
-    Then I should see the list
+    And I add several lists into board
+      | To Do       |
+      | In Progress |
+      | Done        |
+    Then I should see these 3 lists
