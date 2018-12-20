@@ -1,5 +1,6 @@
 package org.fundacionjala.core.ui;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -57,5 +58,24 @@ public class WebDriverAction {
     public void click(final WebElement element) {
         wait.until(ExpectedConditions.elementToBeClickable(element))
                 .click();
+    }
+
+    /**
+     * Method for return text of css.
+     * @param cssField have be in format css String.
+     * @return the text String.
+     */
+    public String getValue(final By cssField) {
+        wait.until(ExpectedConditions.presenceOfElementLocated(cssField));
+        return driver.findElement(cssField).getText();
+    }
+    /**
+     * Method for return text of css.
+     * @param xpathField have be in format css String.
+     * @return the text String.
+     */
+    public boolean existXPath(final By xpathField) {
+        wait.until(ExpectedConditions.presenceOfElementLocated(xpathField));
+        return driver.findElement(xpathField).isEnabled();
     }
 }

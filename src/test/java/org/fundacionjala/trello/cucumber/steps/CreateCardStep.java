@@ -47,7 +47,7 @@ public class CreateCardStep {
      */
     @Then("I should see the card {string}")
     public void iShouldSeeTheCard(final String expected) {
-        Assert.assertTrue(expected.equals(card.getValue(".js-card-name")));
+        Assert.assertTrue(expected.equals(card.getValue()));
     }
 
     /**
