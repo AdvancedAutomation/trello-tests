@@ -19,6 +19,9 @@ public class Boards extends AbstractPage {
     @FindBy(css = "a.js-new-org")
     private WebElement linkCreateNewTeam;
 
+    @FindBy(css = "a.js-new-board")
+    private WebElement linkCreateNewBoard;
+
     @FindBy(css = "a.header-btn.js-open-add-menu")
     private WebElement btnPlus;
 
@@ -28,14 +31,24 @@ public class Boards extends AbstractPage {
     @FindBy(css = "[class='primary wide js-save']")
     private WebElement createTeamButton;
 
+    @FindBy(css = ".boards-page-board-section-list .board-tile.mod-add")
+    private WebElement createBoardButton;
+
     /**
      * Method for add a board.
-     *
+     * @param place place where board will be created from.
      * @return the PO of Board Creation.
      */
-    public BoardCreation clickAddBoard() {
-        action.click(btnTableros);
-        action.click(linkCreateNewTablero);
+    public BoardCreation clickAddBoard(final String place) {
+        if (place.equals("header user")) {
+            action.click(btnPlus);
+            action.click(linkCreateNewBoard);
+        } else if (place.equals("boards list")) {
+            action.click(createBoardButton);
+        } else {
+            action.click(btnTableros);
+            action.click(linkCreateNewTablero);
+        }
         return new BoardCreation();
     }
 

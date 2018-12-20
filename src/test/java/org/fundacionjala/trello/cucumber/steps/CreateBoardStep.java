@@ -33,10 +33,11 @@ public class CreateBoardStep {
     /**
      * Creation of a dashboard with a specs.
      * @param dataTable input String.
+     * @param place place where board will be created from.
      */
-    @When("I create a board with a:")
-    public void iCreateABoardWithA(final Map<BoardFields, String> dataTable) {
-        newBoardCreation = boardsPage.clickAddBoard();
+    @When("I create a board from {string} with a:")
+    public void iCreateABoardWithA(final String place, final Map<BoardFields, String> dataTable) {
+        newBoardCreation = boardsPage.clickAddBoard(place);
         board = newBoardCreation.createNewBoard(dataTable);
     }
 
