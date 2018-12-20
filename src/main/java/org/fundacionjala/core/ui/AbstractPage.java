@@ -39,6 +39,16 @@ public abstract class AbstractPage {
         wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(cssField)));
         return driver.findElement(By.cssSelector(cssField)).getText();
     }
+    /**
+     * Method for return text of css.
+     * @param xpathField have be in format css String.
+     * @return the text String.
+     */
+    public boolean existXPath(final String xpathField) {
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpathField)));
+        return driver.findElement(By.xpath(xpathField)).isEnabled();
+    }
+
 
     /**
      * Method for close the driver.

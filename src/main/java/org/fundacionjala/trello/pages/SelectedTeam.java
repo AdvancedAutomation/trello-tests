@@ -9,9 +9,16 @@ import org.openqa.selenium.support.FindBy;
  */
 public class SelectedTeam extends AbstractPage {
 
-    @FindBy(css = ".tabbed-pane-header-details-name")
-    private WebElement headerDetailsName;
+    @FindBy(css = "a.tabbed-pane-nav-item-button.js-org-members")
+    private WebElement tabMenbers;
 
-    @FindBy(css = ".tabbed-pane-header-details-content")
-    private WebElement headerDetailsContent;
+    /**
+     * Method for add a members.
+     * @return class TabMember.
+     */
+    public TabMembers openTabMembers() {
+        action.click(tabMenbers);
+        return new TabMembers();
+    }
+
 }
