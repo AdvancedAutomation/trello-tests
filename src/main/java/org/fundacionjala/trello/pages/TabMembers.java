@@ -33,8 +33,9 @@ public class TabMembers extends AbstractPage {
     /**
      * Method for to do click a Invided button.
      * @param accountKey type string.
+     * @return type boolean.
      */
-    public boolean existXPath(String accountKey) {
+    public boolean existXPath(final String accountKey) {
         String xpath = String.format("//*[contains(text(), '@%s')]", accountKey);
         By value = By.xpath(xpath);
         return action.existXPath(value);

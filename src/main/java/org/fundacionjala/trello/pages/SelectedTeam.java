@@ -13,7 +13,7 @@ public class SelectedTeam extends AbstractPage {
     @FindBy(css = "a.tabbed-pane-nav-item-button.js-org-members")
     private WebElement tabMenbers;
 
-    By cardName = By.cssSelector(".u-inline");
+    private By cardName = By.cssSelector(".u-inline");
 
     /**
      * Method for add a members.
@@ -24,6 +24,10 @@ public class SelectedTeam extends AbstractPage {
         return new TabMembers();
     }
 
+    /**
+     * Method for return value.
+     * @return class TabMember.
+     */
     public String getValue() {
         return action.getValue(cardName);
     }
