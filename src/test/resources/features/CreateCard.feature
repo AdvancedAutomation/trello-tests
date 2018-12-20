@@ -2,7 +2,7 @@ Feature: Create a Card in Trello
 
   Background:
     Given I Log in with user "{credentials.owner1}"
-    And I create a board with a:
+    And I create a board from "board drawer" with a:
       | Title | Version |
     And I create another lists:
       | To do |
