@@ -46,8 +46,6 @@ public class Boards extends AbstractPage {
     public TeamCreation clickCreateTeam() {
         action.click(btnPlus);
         action.click(linkCreateNewTeam);
-//        action.setValue(nameTeamInputField, nameTeam);
-//        action.click(createTeamButton);
         return new TeamCreation();
     }
 

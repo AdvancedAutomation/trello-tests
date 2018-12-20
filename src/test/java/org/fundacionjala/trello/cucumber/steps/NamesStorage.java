@@ -25,7 +25,7 @@ public final class NamesStorage {
      * Method for read the JSON file.
      */
     private NamesStorage() {
-        container = new HashMap<String, String>();
+        container = new HashMap<>();
     }
 
     /**
