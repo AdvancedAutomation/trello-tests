@@ -6,6 +6,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import java.util.Iterator;
+import java.util.List;
+
 /**
  * Class board.
  */
@@ -33,6 +36,17 @@ public class Board extends AbstractPage {
     public void addList(final String name) {
         action.setValue(listName, name);
         action.click(buttonAddList);
+    }
+
+    /**
+     * Method to add several list into existing board.
+     *
+     * @param lists type list of string.
+     */
+    public void addSeveralList(final List<String> lists) {
+        for (Iterator<String> it = lists.iterator(); it.hasNext();) {
+            addList(it.next());
+        }
     }
 
     /**

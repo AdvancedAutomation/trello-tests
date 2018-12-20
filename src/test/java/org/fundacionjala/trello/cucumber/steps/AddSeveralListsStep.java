@@ -5,7 +5,6 @@ import cucumber.api.java.en.Then;
 import org.fundacionjala.trello.pages.commons.Board;
 import org.junit.Assert;
 
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -30,9 +29,7 @@ public class AddSeveralListsStep {
      */
     @And("I add several lists into board")
     public void iAddSeveralListsIntoBoard(final List<String> lists) {
-        for (Iterator<String> it = lists.iterator(); it.hasNext();) {
-            selectedBoard.addList(it.next());
-        }
+        selectedBoard.addSeveralList(lists);
     }
 
     /**
