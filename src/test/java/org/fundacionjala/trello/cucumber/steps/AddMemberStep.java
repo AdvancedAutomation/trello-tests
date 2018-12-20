@@ -51,6 +51,8 @@ public class AddMemberStep {
      */
     @Then("I should see to the member {string} in the tab members")
     public void iShouldSeeToTheMemberInTheTabMembers(final String member) {
-        Assert.assertTrue(tabMembers.existXPath("//*[contains(text(), '@jorgeflores129')]"));
+        String accountKey = String.format("$['credentials']['%s']['username']", Commons.getUserFromKey(member));
+        String xpath = String.format(String.format("//*[contains(text(), '@%s')]", accountKey));
+        Assert.assertTrue(tabMembers.existXPath(xpath));
     }
 }
