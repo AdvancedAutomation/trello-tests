@@ -1,6 +1,8 @@
 package org.fundacionjala.core.ui;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -57,5 +59,22 @@ public class WebDriverAction {
     public void click(final WebElement element) {
         wait.until(ExpectedConditions.elementToBeClickable(element))
                 .click();
+    }
+
+    /**
+     * Exist WebElement by cssSelector.
+     *
+     * @param element String Selector css.
+     * @return boolean exist element.
+     */
+    public boolean existSelectorByCss(final String element) {
+        boolean exist;
+        try {
+            driver.findElement(By.cssSelector(element));
+            exist = true;
+        } catch (NoSuchElementException e) {
+            exist = false;
+        }
+        return exist;
     }
 }

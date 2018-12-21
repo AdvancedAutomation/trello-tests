@@ -34,4 +34,14 @@ public class BoardsDrawer extends AbstractPage {
         action.click(board);
         return new SelectedBoard();
     }
+
+    /**
+     * Method Is Displayed Board.
+     * @param titleBoard String.
+     * @return boolean is displayed.
+     */
+    public boolean existBoard(final String titleBoard) {
+        String cssSelector = String.format(".js-all-boards span[title='%s']", titleBoard);
+        return action.existSelectorByCss(cssSelector);
+    }
 }

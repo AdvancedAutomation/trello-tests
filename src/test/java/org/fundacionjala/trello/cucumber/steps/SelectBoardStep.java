@@ -1,0 +1,50 @@
+package org.fundacionjala.trello.cucumber.steps;
+
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import org.fundacionjala.trello.pages.Boards;
+import org.fundacionjala.trello.pages.BoardsDrawer;
+
+import static org.testng.Assert.assertFalse;
+
+/**
+ * Step definitions for Delete dashboard.
+ */
+public class SelectBoardStep {
+
+    private Boards boards;
+    private BoardsDrawer boardsDrawer;
+
+    /**
+     * Constructor Delete Board.
+     * @param boards Boards.
+     * @param boardsDrawer BoardsDrawer.     *
+     */
+    public SelectBoardStep(final Boards boards, final BoardsDrawer boardsDrawer) {
+        this.boards = boards;
+        this.boardsDrawer = boardsDrawer;
+    }
+
+    /**
+     * Select Board by title.
+     *
+     * @param titleBoard input String.
+     */
+    @Given("I select board {string}")
+    public void iSelectBoard(final String titleBoard) {
+        boards.clickBtnHeaderBoard();
+        boardsDrawer.clickBoardInBoardsDrawer(titleBoard);
+    }
+
+    /**
+     * Verify if board exists .
+     * @param titleBoard title Board.
+     */
+    @Then("I don't should see the board {string}")
+    public void iDonTShouldSeeTheBoard(final String titleBoard) {
+        boards.clickBtnHeaderBoard();
+        boolean existBoard = boardsDrawer.existBoard(titleBoard);
+        assertFalse(existBoard);
+    }
+}
+
