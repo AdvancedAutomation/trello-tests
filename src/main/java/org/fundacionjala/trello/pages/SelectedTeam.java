@@ -1,6 +1,7 @@
 package org.fundacionjala.trello.pages;
 
 import org.fundacionjala.core.ui.AbstractPage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -9,9 +10,25 @@ import org.openqa.selenium.support.FindBy;
  */
 public class SelectedTeam extends AbstractPage {
 
-    @FindBy(css = ".tabbed-pane-header-details-name")
-    private WebElement headerDetailsName;
+    @FindBy(css = "a.tabbed-pane-nav-item-button.js-org-members")
+    private WebElement tabMenbers;
 
-    @FindBy(css = ".tabbed-pane-header-details-content")
-    private WebElement headerDetailsContent;
+    private By cardName = By.cssSelector(".u-inline");
+
+    /**
+     * Method for add a members.
+     * @return class TabMember.
+     */
+    public TabMembers openTabMembers() {
+        action.click(tabMenbers);
+        return new TabMembers();
+    }
+
+    /**
+     * Method for return value.
+     * @return class TabMember.
+     */
+    public String getValue() {
+        return action.getValue(cardName);
+    }
 }

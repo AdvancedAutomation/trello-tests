@@ -56,6 +56,6 @@ public class CreateTeamStep {
      */
     @Then("I should see the team new {string}")
     public void iShouldSeeTheTeamNew(final String expected) {
-        Assert.assertTrue(NAMES_STORAGE.getName(expected).equals(team.getValue(".u-inline")));
+        Assert.assertTrue(NAMES_STORAGE.getName(expected).equals(team.getValue()));
     }
 }

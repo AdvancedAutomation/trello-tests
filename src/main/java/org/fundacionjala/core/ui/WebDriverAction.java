@@ -62,6 +62,25 @@ public class WebDriverAction {
     }
 
     /**
+     * Method for return text of css.
+     * @param cssField have be in format css String.
+     * @return the text String.
+     */
+    public String getValue(final By cssField) {
+        wait.until(ExpectedConditions.presenceOfElementLocated(cssField));
+        return driver.findElement(cssField).getText();
+    }
+    /**
+     * Method for return text of css.
+     * @param xpathField have be in format css String.
+     * @return the text String.
+     */
+    public boolean existXPath(final By xpathField) {
+        wait.until(ExpectedConditions.presenceOfElementLocated(xpathField));
+        return driver.findElement(xpathField).isEnabled();
+    }
+
+    /**
      * Exist WebElement by cssSelector.
      *
      * @param element String Selector css.
