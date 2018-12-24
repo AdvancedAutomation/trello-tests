@@ -9,7 +9,7 @@ Feature: Add member a Team in Trello
 
   Scenario: Add a member to Team
     Given I select tab members
-    When I invit to member:
+    When I invite to member:
       |"{credentials.member1}"|
     Then I should see to the member "{credentials.member1}" in the tab members
 

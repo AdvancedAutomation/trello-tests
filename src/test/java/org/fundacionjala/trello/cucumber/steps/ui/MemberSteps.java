@@ -1,29 +1,30 @@
-package org.fundacionjala.trello.cucumber.steps;
+package org.fundacionjala.trello.cucumber.steps.ui;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.testng.Assert;
+
 import org.fundacionjala.core.Environment;
 import org.fundacionjala.core.ui.Commons;
 import org.fundacionjala.trello.pages.SelectedTeam;
 import org.fundacionjala.trello.pages.TabMembers;
-import org.testng.Assert;
 
 /**
  * Class to run testing add list to an existing board.
  */
-public class AddMemberStep {
+public class MemberSteps {
+
+    private static final Environment ENVIRONMENT = Environment.getInstance();
     private SelectedTeam selectedTeam;
     private TabMembers tabMembers;
-    public static final Environment ENVIRONMENT = Environment.getInstance();
-
 
     /**
      * Class constructor.
      *
      * @param team type SelectedTeam.
      */
-    public AddMemberStep(final SelectedTeam team) {
+    public MemberSteps(final SelectedTeam team) {
         this.selectedTeam = team;
     }
 
@@ -39,8 +40,8 @@ public class AddMemberStep {
      * Method to create a new list into board create above.
      * @param member type String.
      */
-    @When("I invit to member:")
-    public void iInvitToMember(final String member) {
+    @When("I invite to member:")
+    public void iInviteToMember(final String member) {
         String accountKey = String.format("$['credentials']['%s']['username']", Commons.getUserFromKey(member));
         tabMembers.clickInviteButton(ENVIRONMENT.getValue(accountKey));
     }
