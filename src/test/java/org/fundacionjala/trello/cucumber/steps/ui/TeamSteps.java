@@ -1,32 +1,35 @@
-package org.fundacionjala.trello.cucumber.steps;
+package org.fundacionjala.trello.cucumber.steps.ui;
+
+import java.util.Map;
 
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+
+import org.fundacionjala.trello.cucumber.steps.NamesStorage;
 import org.fundacionjala.trello.pages.Boards;
 import org.fundacionjala.trello.pages.SelectedTeam;
 import org.fundacionjala.trello.pages.TeamCreation;
 import org.fundacionjala.trello.pages.TeamFields;
-import org.testng.Assert;
 
-import java.util.Map;
+import static org.testng.Assert.assertEquals;
 
 /**
  * Step definitions for the Team Creation.
  */
-public class CreateTeamStep {
+public class TeamSteps {
 
+    private static final NamesStorage NAMES_STORAGE = NamesStorage.getInstance();
     private Boards boards;
     private SelectedTeam team;
     private TeamCreation newTeam;
-    public static final NamesStorage NAMES_STORAGE = NamesStorage.getInstance();
 
     /**
-     * Constructor CreateBoardStep.
+     * Constructor BoardSteps.
      *
      * @param boards Boards.
      * @param team SelectedTeam.
      */
-    public CreateTeamStep(final Boards boards, final SelectedTeam team) {
+    public TeamSteps(final Boards boards, final SelectedTeam team) {
         this.boards = boards;
         this.team = team;
     }
@@ -56,6 +59,6 @@ public class CreateTeamStep {
      */
     @Then("I should see the team new {string}")
     public void iShouldSeeTheTeamNew(final String expected) {
-        Assert.assertTrue(NAMES_STORAGE.getName(expected).equals(team.getValue()));
+        assertEquals(team.getValue(), NAMES_STORAGE.getName(expected));
     }
 }
