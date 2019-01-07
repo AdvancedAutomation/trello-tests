@@ -54,6 +54,7 @@ public class MemberSteps {
     @Then("I should see to the member {string} in the tab members")
     public void iShouldSeeToTheMemberInTheTabMembers(final String member) {
         String accountKey = String.format("$['credentials']['%s']['username']", Commons.getUserFromKey(member));
-        assertEquals(tabMembers.getXPath(ENVIRONMENT.getValue(accountKey)), String.format("@%s", ENVIRONMENT.getValue(accountKey)));
+        assertEquals(tabMembers.getXPath(ENVIRONMENT.getValue(accountKey)),
+                String.format("@%s", ENVIRONMENT.getValue(accountKey)));
     }
 }

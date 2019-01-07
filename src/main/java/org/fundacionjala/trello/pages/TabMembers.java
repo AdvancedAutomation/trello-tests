@@ -33,7 +33,7 @@ public class TabMembers extends AbstractPage {
     /**
      * Method for to do click a Invided button.
      * @param accountKey type string.
-     * @return type boolean.
+     * @return type String.
      */
     public String getXPath(final String accountKey) {
         String xpath = String.format("//*[contains(text(), '@%s')]", accountKey);
