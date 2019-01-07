@@ -20,16 +20,14 @@ public class CloseBoardWraper extends AbstractPage {
     private WebElement linkReOpen;
 
     /**
-     * Method for select link Permanently Delete Board in the object page CloseBoardWraper.
+     * Method for select link Permanently Delete Board in the object page CloseBoardWraper.     *
      *
-     * @return page object CloseBoardWraper.
      */
-    public CloseBoardWraper selectPermanentlyCloseBoard() {
+    public void selectPermanentlyCloseBoard() {
         action.click(linkPermanentlyDeleteBoard);
         WebElement btnConfirmDelete;
         btnConfirmDelete = driver.findElement(By.cssSelector("input.js-confirm.full.negate"));
         action.click(btnConfirmDelete);
-        return new CloseBoardWraper();
     }
 }
 

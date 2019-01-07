@@ -88,9 +88,9 @@ public class WebDriverAction {
      */
     public boolean existSelectorByCss(final String element) {
         boolean exist;
+        exist = true;
         try {
             driver.findElement(By.cssSelector(element));
-            exist = true;
         } catch (NoSuchElementException e) {
             exist = false;
         }
