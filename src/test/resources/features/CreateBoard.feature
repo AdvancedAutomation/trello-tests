@@ -1,6 +1,8 @@
 Feature: Create a Board in Trello
+
   Background:
     Given I Log in with user "{credentials.owner1}"
+
   Scenario: Create Board
     When I create a board from "board drawer" with a:
       | Title      | abc1    |
@@ -17,8 +19,8 @@ Feature: Create a Board in Trello
 
   Scenario: Create new Board
     When I create a board from "icon add" with a:
-      | Title      | Caio    |
-      | Privacy    | public  |
-      | Background | red     |
+      | Title      | Caio   |
+      | Privacy    | public |
+      | Background | red    |
     Then I should see the board
 

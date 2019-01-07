@@ -33,6 +33,7 @@ public class BoardCreation extends AbstractPage {
     private String backgroundString = null;
 
     private static final Map<String, String> COLORSBACKGROUND;
+
     static {
         Map<String, String> colors = new HashMap<>();
         colors.put("green", "rgba(81, 152, 57, 1)");
@@ -60,10 +61,7 @@ public class BoardCreation extends AbstractPage {
         }
         action.click(createBoardButton);
         wait.until(ExpectedConditions.invisibilityOf(windowOverlay));
-        SelectedBoard selectedBoard = new SelectedBoard();
-        selectedBoard.setPrivacy(privacyString);
-        selectedBoard.setBg(backgroundString);
-        return selectedBoard;
+        return new SelectedBoard();
     }
 
     /**
@@ -97,7 +95,6 @@ public class BoardCreation extends AbstractPage {
     }
 
     /**
-     *
      * @return title of board created.
      */
     public String getTitleString() {
@@ -105,7 +102,6 @@ public class BoardCreation extends AbstractPage {
     }
 
     /**
-     *
      * @return privacy of board created.
      */
     public String getPrivacyString() {
@@ -113,7 +109,6 @@ public class BoardCreation extends AbstractPage {
     }
 
     /**
-     *
      * @return background of board created.
      */
     public String getBackgroundString() {
