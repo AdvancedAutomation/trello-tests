@@ -28,9 +28,9 @@ public class BoardCreation extends AbstractPage {
     @FindBy(css = "[class='subtle-chooser-trigger unstyled-button org-chooser-trigger']")
     private WebElement selectTeamButton;
 
-    private String titleString = null;
-    private String privacyString = null;
-    private String backgroundString = null;
+    private String titleString;
+    private String privacyString;
+    private String backgroundString;
 
     private static final Map<String, String> COLORSBACKGROUND;
 
@@ -71,9 +71,9 @@ public class BoardCreation extends AbstractPage {
      */
     private void selectBackground(final Map<BoardFields, String> data) {
         backgroundString = data.get(BoardFields.BACKGROUND);
-        final String locatorColorBackgraundButton = String.format("[class='background-grid-trigger'][title='%s']",
+        final String locatorColorBackgroundButton = String.format("[class='background-grid-trigger'][title='%s']",
                 backgroundString);
-        WebElement selectColorBgButton = driver.findElement(By.cssSelector(locatorColorBackgraundButton));
+        WebElement selectColorBgButton = driver.findElement(By.cssSelector(locatorColorBackgroundButton));
         action.click(selectColorBgButton);
     }
 
