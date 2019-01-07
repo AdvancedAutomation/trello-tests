@@ -17,7 +17,8 @@ public class SelectBoardStep {
 
     /**
      * Constructor Delete Board.
-     * @param boards Boards.
+     *
+     * @param boards       Boards.
      * @param boardsDrawer BoardsDrawer.     *
      */
     public SelectBoardStep(final Boards boards, final BoardsDrawer boardsDrawer) {
@@ -38,13 +39,13 @@ public class SelectBoardStep {
 
     /**
      * Verify if board exists .
+     *
      * @param titleBoard title Board.
      */
     @Then("I don't should see the board {string}")
     public void iDonTShouldSeeTheBoard(final String titleBoard) {
         boards.clickBtnHeaderBoard();
-        boolean existBoard = boardsDrawer.existBoard(titleBoard);
-        assertFalse(existBoard);
+        assertFalse(boardsDrawer.doIsExistBoard(titleBoard));
     }
 }
 

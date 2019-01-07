@@ -40,7 +40,7 @@ public class BoardsDrawer extends AbstractPage {
      * @param titleBoard String.
      * @return boolean is displayed.
      */
-    public boolean existBoard(final String titleBoard) {
+    public boolean doIsExistBoard(final String titleBoard) {
         String cssSelector = String.format(".js-all-boards span[title='%s']", titleBoard);
         return action.existSelectorByCss(cssSelector);
     }

@@ -63,6 +63,7 @@ public class WebDriverAction {
 
     /**
      * Method for return text of css.
+     *
      * @param cssField have be in format css String.
      * @return the text String.
      */
@@ -70,8 +71,10 @@ public class WebDriverAction {
         wait.until(ExpectedConditions.presenceOfElementLocated(cssField));
         return driver.findElement(cssField).getText();
     }
+
     /**
      * Method for return text of css.
+     *
      * @param xpathField have be in format css String.
      * @return the text String.
      */
@@ -87,13 +90,11 @@ public class WebDriverAction {
      * @return boolean exist element.
      */
     public boolean existSelectorByCss(final String element) {
-        boolean exist;
-        exist = true;
         try {
             driver.findElement(By.cssSelector(element));
         } catch (NoSuchElementException e) {
-            exist = false;
+            return false;
         }
-        return exist;
+        return true;
     }
 }
