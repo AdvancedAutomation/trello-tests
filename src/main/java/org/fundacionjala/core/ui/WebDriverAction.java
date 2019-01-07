@@ -2,6 +2,7 @@ package org.fundacionjala.core.ui;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -62,6 +63,7 @@ public class WebDriverAction {
 
     /**
      * Method for return text of css.
+     *
      * @param cssField have be in format css String.
      * @return the text String.
      */
@@ -69,13 +71,30 @@ public class WebDriverAction {
         wait.until(ExpectedConditions.presenceOfElementLocated(cssField));
         return driver.findElement(cssField).getText();
     }
+
     /**
      * Method for return text of css.
+     *
      * @param xpathField have be in format css String.
      * @return the text String.
      */
     public boolean existXPath(final By xpathField) {
         wait.until(ExpectedConditions.presenceOfElementLocated(xpathField));
         return driver.findElement(xpathField).isEnabled();
+    }
+
+    /**
+     * Exist WebElement by cssSelector.
+     *
+     * @param element String Selector css.
+     * @return boolean exist element.
+     */
+    public boolean existSelectorByCss(final String element) {
+        try {
+            driver.findElement(By.cssSelector(element));
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+        return true;
     }
 }
