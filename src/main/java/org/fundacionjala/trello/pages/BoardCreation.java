@@ -28,11 +28,12 @@ public class BoardCreation extends AbstractPage {
     @FindBy(css = "[class='subtle-chooser-trigger unstyled-button org-chooser-trigger']")
     private WebElement selectTeamButton;
 
-    private String titleString = null;
-    private String privacyString = null;
-    private String backgroundString = null;
+    private String titleString;
+    private String privacyString;
+    private String backgroundString;
 
     private static final Map<String, String> COLORSBACKGROUND;
+
     static {
         Map<String, String> colors = new HashMap<>();
         colors.put("green", "rgba(81, 152, 57, 1)");
@@ -60,10 +61,7 @@ public class BoardCreation extends AbstractPage {
         }
         action.click(createBoardButton);
         wait.until(ExpectedConditions.invisibilityOf(windowOverlay));
-        SelectedBoard selectedBoard = new SelectedBoard();
-        selectedBoard.setPrivacy(privacyString);
-        selectedBoard.setBg(backgroundString);
-        return selectedBoard;
+        return new SelectedBoard();
     }
 
     /**
@@ -73,9 +71,9 @@ public class BoardCreation extends AbstractPage {
      */
     private void selectBackground(final Map<BoardFields, String> data) {
         backgroundString = data.get(BoardFields.BACKGROUND);
-        final String locatorColorBackgraundButton = String.format("[class='background-grid-trigger'][title='%s']",
+        final String locatorColorBackgroundButton = String.format("[class='background-grid-trigger'][title='%s']",
                 backgroundString);
-        WebElement selectColorBgButton = driver.findElement(By.cssSelector(locatorColorBackgraundButton));
+        WebElement selectColorBgButton = driver.findElement(By.cssSelector(locatorColorBackgroundButton));
         action.click(selectColorBgButton);
     }
 
@@ -97,7 +95,6 @@ public class BoardCreation extends AbstractPage {
     }
 
     /**
-     *
      * @return title of board created.
      */
     public String getTitleString() {
@@ -105,7 +102,6 @@ public class BoardCreation extends AbstractPage {
     }
 
     /**
-     *
      * @return privacy of board created.
      */
     public String getPrivacyString() {
@@ -113,7 +109,6 @@ public class BoardCreation extends AbstractPage {
     }
 
     /**
-     *
      * @return background of board created.
      */
     public String getBackgroundString() {

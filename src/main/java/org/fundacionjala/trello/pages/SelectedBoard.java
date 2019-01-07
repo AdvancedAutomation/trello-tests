@@ -54,6 +54,9 @@ public class SelectedBoard extends AbstractPage {
     @FindBy(xpath = "//a[contains(@class,'board-header-btn perms-btn js-change-vis')]")
     private WebElement privacyName;
 
+    @FindBy(css = ".js-show-sidebar")
+    private WebElement linkShowMenu;
+
     private String privacy;
     private String bg;
 
@@ -131,5 +134,17 @@ public class SelectedBoard extends AbstractPage {
      */
     public void setBg(final String bg) {
         this.bg = bg;
+    }
+
+    /**
+     * Method for click in the link Show menu.
+     *
+     * @return page object MenuBoard.
+     */
+    public MenuBoard clickShowMenu() {
+        if (action.existSelectorByCss(".board-menu.js-fill-board-menu.hide")) {
+            action.click(linkShowMenu);
+        }
+        return  new MenuBoard();
     }
 }
