@@ -1,31 +1,32 @@
-package org.fundacionjala.trello.cucumber.steps;
+package org.fundacionjala.trello.cucumber.steps.ui;
+
+import java.util.Map;
 
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.fundacionjala.trello.pages.Boards;
-import org.fundacionjala.trello.pages.SelectedBoard;
-import org.fundacionjala.trello.pages.BoardCreation;
-import org.fundacionjala.trello.pages.BoardFields;
 import org.junit.Assert;
 
-import java.util.Map;
+import org.fundacionjala.trello.pages.BoardCreation;
+import org.fundacionjala.trello.pages.BoardFields;
+import org.fundacionjala.trello.pages.Boards;
+import org.fundacionjala.trello.pages.SelectedBoard;
 
 /**
  * Step definitions for the board Creation.
  */
-public class CreateBoardStep {
+public class BoardSteps {
 
     private Boards boardsPage;
     private SelectedBoard board;
     private BoardCreation newBoardCreation;
 
     /**
-     * Constructor CreateBoardStep.
+     * Constructor BoardSteps.
      *
      * @param boardsPage Boards.
      * @param dashBoard SelectedDashBoard.
      */
-    public CreateBoardStep(final Boards boardsPage, final SelectedBoard dashBoard) {
+    public BoardSteps(final Boards boardsPage, final SelectedBoard dashBoard) {
         this.boardsPage = boardsPage;
         this.board = dashBoard;
     }

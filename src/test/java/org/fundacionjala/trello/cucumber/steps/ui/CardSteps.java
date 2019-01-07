@@ -1,25 +1,27 @@
-package org.fundacionjala.trello.cucumber.steps;
+package org.fundacionjala.trello.cucumber.steps.ui;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.fundacionjala.trello.pages.SelectedCard;
+
 import org.fundacionjala.trello.pages.SelectedBoard;
-import org.testng.Assert;
+import org.fundacionjala.trello.pages.SelectedCard;
+
+import static org.testng.Assert.assertEquals;
 
 /**
  * Step definitions for the Dashboard Creation.
  */
-public class CreateCardStep {
+public class CardSteps {
 
     private SelectedBoard board;
     private SelectedCard card;
 
     /**
-     * Constructor CreateCardStep.
+     * Constructor CardSteps.
      * @param board SelectedDashBoard.
      */
-    public CreateCardStep(final SelectedBoard board) {
+    public CardSteps(final SelectedBoard board) {
         this.board = board;
     }
 
@@ -47,7 +49,7 @@ public class CreateCardStep {
      */
     @Then("I should see the card {string}")
     public void iShouldSeeTheCard(final String expected) {
-        Assert.assertTrue(expected.equals(card.getValue()));
+        assertEquals(card.getValue(), expected);
     }
 
     /**

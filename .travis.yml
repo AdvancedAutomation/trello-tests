@@ -2,7 +2,7 @@ sudo: required
 
 language: java
 jdk:
-- oraclejdk8
+  - oraclejdk8
 
 before_script:
   - wget http://services.gradle.org/distributions/gradle-5.0-bin.zip
@@ -17,9 +17,9 @@ addons:
       secure: $SONAR_TOKEN
 
 script:
-- gradle compileJava compileTestJava
-- sonar-scanner
-- gradle check
+  - gradle compileJava compileTestJava
+  - sonar-scanner
+  - gradle check
 
 notifications:
   email: true

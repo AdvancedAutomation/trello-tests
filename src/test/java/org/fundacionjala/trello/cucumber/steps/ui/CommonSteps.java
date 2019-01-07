@@ -2,16 +2,26 @@ package org.fundacionjala.trello.cucumber.steps.ui;
 
 import cucumber.api.java.en.Given;
 
+import org.fundacionjala.core.Environment;
+import org.fundacionjala.core.ui.Commons;
+import org.fundacionjala.trello.pages.Login;
+
 /**
  * Common steps.
  */
 public class CommonSteps {
 
+    private static final Environment ENVIRONMENT = Environment.getInstance();
+
     /**
-     * Precondition, user must be logged in.
+     * Given of in page of trello.
+     * @param key for start session.
      */
-    @Given("^I log in$")
-    public void iLogInAs() {
-        // Implement
+    @Given("I Log in with user {string}")
+    public void iLogInWithUser(final String key) {
+        Login login = new Login();
+        String userNameKey = String.format("$['credentials']['%s']['username']", Commons.getUserFromKey(key));
+        String passwordKey = String.format("$['credentials']['%s']['password']", Commons.getUserFromKey(key));
+        login.loginAs(ENVIRONMENT.getValue(userNameKey), ENVIRONMENT.getValue(passwordKey));
     }
 }
