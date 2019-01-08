@@ -2,10 +2,10 @@ package org.fundacionjala.trello.cucumber.runner;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.testng.AbstractTestNGCucumberTests;
-import org.fundacionjala.core.ui.DriverManager;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
+import org.fundacionjala.core.ui.driver.DriverManager;
 
 /**
  * Class which runs all features.
