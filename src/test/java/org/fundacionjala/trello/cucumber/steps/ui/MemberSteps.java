@@ -7,8 +7,8 @@ import static org.testng.Assert.assertEquals;
 
 import org.fundacionjala.core.Environment;
 import org.fundacionjala.core.ui.Commons;
-import org.fundacionjala.trello.pages.SelectedTeam;
-import org.fundacionjala.trello.pages.TabMembers;
+import org.fundacionjala.trello.pages.team.SelectedTeam;
+import org.fundacionjala.trello.pages.team.TabMembers;
 
 
 /**

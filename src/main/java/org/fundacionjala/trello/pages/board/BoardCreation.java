@@ -1,4 +1,4 @@
-package org.fundacionjala.trello.pages;
+package org.fundacionjala.trello.pages.board;
 
 import java.util.Collections;
 import java.util.EnumMap;
@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.fundacionjala.core.ui.AbstractPage;
+import org.fundacionjala.trello.pages.common.ISteps;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

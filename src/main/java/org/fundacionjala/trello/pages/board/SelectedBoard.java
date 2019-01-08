@@ -1,6 +1,7 @@
-package org.fundacionjala.trello.pages;
+package org.fundacionjala.trello.pages.board;
 
 import org.fundacionjala.core.ui.AbstractPage;
+import org.fundacionjala.trello.pages.card.SelectedCard;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

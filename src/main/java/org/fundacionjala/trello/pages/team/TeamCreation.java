@@ -1,7 +1,8 @@
-package org.fundacionjala.trello.pages;
+package org.fundacionjala.trello.pages.team;
 
 import org.fundacionjala.core.ui.AbstractPage;
 import org.fundacionjala.core.ui.Commons;
+import org.fundacionjala.trello.pages.common.ISteps;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 

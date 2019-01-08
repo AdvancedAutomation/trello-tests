@@ -1,6 +1,7 @@
 package org.fundacionjala.trello.pages;
 
 import org.fundacionjala.core.ui.AbstractPage;
+import org.fundacionjala.trello.pages.common.Login;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 

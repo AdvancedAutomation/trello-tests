@@ -6,10 +6,10 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
 
-import org.fundacionjala.trello.pages.BoardCreation;
-import org.fundacionjala.trello.pages.BoardFields;
-import org.fundacionjala.trello.pages.Boards;
-import org.fundacionjala.trello.pages.SelectedBoard;
+import org.fundacionjala.trello.pages.board.BoardCreation;
+import org.fundacionjala.trello.pages.board.BoardFields;
+import org.fundacionjala.trello.pages.board.Boards;
+import org.fundacionjala.trello.pages.board.SelectedBoard;
 
 /**
  * Step definitions for the board Creation.

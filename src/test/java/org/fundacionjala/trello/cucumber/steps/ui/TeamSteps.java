@@ -6,10 +6,10 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 import org.fundacionjala.trello.cucumber.steps.NamesStorage;
-import org.fundacionjala.trello.pages.Boards;
-import org.fundacionjala.trello.pages.SelectedTeam;
-import org.fundacionjala.trello.pages.TeamCreation;
-import org.fundacionjala.trello.pages.TeamFields;
+import org.fundacionjala.trello.pages.board.Boards;
+import org.fundacionjala.trello.pages.team.SelectedTeam;
+import org.fundacionjala.trello.pages.team.TeamCreation;
+import org.fundacionjala.trello.pages.team.TeamFields;
 
 import static org.testng.Assert.assertEquals;
 

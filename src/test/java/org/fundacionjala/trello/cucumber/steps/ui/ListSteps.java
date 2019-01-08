@@ -6,7 +6,7 @@ import java.util.Map;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 
-import org.fundacionjala.trello.pages.commons.Board;
+import org.fundacionjala.trello.pages.common.Board;
 
 import static org.testng.Assert.assertEquals;
 

@@ -2,8 +2,8 @@ package org.fundacionjala.trello.cucumber.steps;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
-import org.fundacionjala.trello.pages.Boards;
-import org.fundacionjala.trello.pages.BoardsDrawer;
+import org.fundacionjala.trello.pages.board.Boards;
+import org.fundacionjala.trello.pages.board.BoardsDrawer;
 
 import static org.testng.Assert.assertFalse;
 

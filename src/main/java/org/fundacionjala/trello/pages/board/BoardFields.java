@@ -1,4 +1,4 @@
-package org.fundacionjala.trello.pages;
+package org.fundacionjala.trello.pages.board;
 
 /**
  * class for Fields to create a Board.

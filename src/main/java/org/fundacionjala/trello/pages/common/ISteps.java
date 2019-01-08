@@ -1,4 +1,4 @@
-package org.fundacionjala.trello.pages;
+package org.fundacionjala.trello.pages.common;
 
 /**
  * Interface of the Steps for process the data table.

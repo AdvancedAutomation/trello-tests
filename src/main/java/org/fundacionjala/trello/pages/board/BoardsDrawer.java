@@ -1,4 +1,4 @@
-package org.fundacionjala.trello.pages;
+package org.fundacionjala.trello.pages.board;
 
 import org.fundacionjala.core.ui.AbstractPage;
 import org.openqa.selenium.By;
@@ -29,8 +29,8 @@ public class BoardsDrawer extends AbstractPage {
      * @return the PO of Selected Board.
      */
     public SelectedBoard clickBoardInBoardsDrawer(final String titleBoard) {
-        WebElement board;
-        board = driver.findElement(By.cssSelector(String.format(".js-all-boards span[title='%s']", titleBoard)));
+        WebElement board = driver.findElement(
+                By.cssSelector(String.format(".js-all-boards span[title='%s']", titleBoard)));
         action.click(board);
         return new SelectedBoard();
     }
