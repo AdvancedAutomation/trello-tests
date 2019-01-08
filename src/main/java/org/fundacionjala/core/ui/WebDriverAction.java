@@ -78,9 +78,9 @@ public class WebDriverAction {
      * @param xpathField have be in format css String.
      * @return the text String.
      */
-    public boolean existXPath(final By xpathField) {
+    public String getValueXPath(final By xpathField) {
         wait.until(ExpectedConditions.presenceOfElementLocated(xpathField));
-        return driver.findElement(xpathField).isEnabled();
+        return driver.findElement(xpathField).getText();
     }
 
     /**

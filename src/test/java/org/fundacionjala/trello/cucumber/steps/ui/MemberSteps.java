@@ -3,12 +3,13 @@ package org.fundacionjala.trello.cucumber.steps.ui;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.testng.Assert;
+import static org.testng.Assert.assertEquals;
 
 import org.fundacionjala.core.Environment;
 import org.fundacionjala.core.ui.Commons;
 import org.fundacionjala.trello.pages.SelectedTeam;
 import org.fundacionjala.trello.pages.TabMembers;
+
 
 /**
  * Class to run testing add list to an existing board.
@@ -53,6 +54,7 @@ public class MemberSteps {
     @Then("I should see to the member {string} in the tab members")
     public void iShouldSeeToTheMemberInTheTabMembers(final String member) {
         String accountKey = String.format("$['credentials']['%s']['username']", Commons.getUserFromKey(member));
-        Assert.assertTrue(tabMembers.existXPath(accountKey));
+        assertEquals(tabMembers.getXPath(ENVIRONMENT.getValue(accountKey)),
+                String.format("@%s", ENVIRONMENT.getValue(accountKey)));
     }
 }
