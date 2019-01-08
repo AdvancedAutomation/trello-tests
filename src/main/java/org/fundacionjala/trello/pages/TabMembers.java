@@ -31,13 +31,12 @@ public class TabMembers extends AbstractPage {
     }
 
     /**
-     * Method for to do click a Invided button.
+     * Method for get String of XPath.
      * @param accountKey type string.
      * @return type String.
      */
     public String getXPath(final String accountKey) {
         String xpath = String.format("//*[contains(text(), '@%s')]", accountKey);
-        By value = By.xpath(xpath);
-        return action.getValueXPath(value);
+        return action.getValueXPath(By.xpath(xpath));
     }
 }
