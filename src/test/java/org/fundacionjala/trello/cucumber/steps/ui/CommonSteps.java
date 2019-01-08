@@ -4,7 +4,7 @@ import cucumber.api.java.en.Given;
 
 import org.fundacionjala.core.Environment;
 import org.fundacionjala.core.ui.Commons;
-import org.fundacionjala.trello.pages.Login;
+import org.fundacionjala.trello.pages.common.Login;
 
 /**
  * Common steps.

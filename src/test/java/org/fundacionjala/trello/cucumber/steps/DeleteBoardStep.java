@@ -2,10 +2,10 @@ package org.fundacionjala.trello.cucumber.steps;
 
 
 import cucumber.api.java.en.And;
-import org.fundacionjala.trello.pages.CloseBoardWraper;
-import org.fundacionjala.trello.pages.MenuBoard;
-import org.fundacionjala.trello.pages.MenuMoreBoard;
-import org.fundacionjala.trello.pages.SelectedBoard;
+import org.fundacionjala.trello.pages.board.CloseBoardWraper;
+import org.fundacionjala.trello.pages.board.MenuBoard;
+import org.fundacionjala.trello.pages.board.MenuMoreBoard;
+import org.fundacionjala.trello.pages.board.SelectedBoard;
 
 /**
  * Step definitions for Delete dashboard.

@@ -1,4 +1,4 @@
-package org.fundacionjala.trello.pages;
+package org.fundacionjala.trello.pages.card;
 
 import org.fundacionjala.core.ui.AbstractPage;
 import org.openqa.selenium.By;

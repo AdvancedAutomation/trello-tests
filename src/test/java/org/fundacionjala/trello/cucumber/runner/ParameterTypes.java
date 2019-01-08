@@ -6,8 +6,8 @@ import cucumber.api.TypeRegistry;
 import cucumber.api.TypeRegistryConfigurer;
 import io.cucumber.datatable.DataTableType;
 import io.cucumber.datatable.TableCellTransformer;
-import org.fundacionjala.trello.pages.BoardFields;
-import org.fundacionjala.trello.pages.TeamFields;
+import org.fundacionjala.trello.pages.board.BoardFields;
+import org.fundacionjala.trello.pages.team.TeamFields;
 
 /**
  * Registers parameters types.

@@ -1,4 +1,4 @@
-package org.fundacionjala.trello.pages;
+package org.fundacionjala.trello.pages.team;
 
 /**
  * Class of characteristics to a new team.
