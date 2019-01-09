@@ -3,6 +3,7 @@ package org.fundacionjala.trello.cucumber.steps.ui;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+
 import static org.testng.Assert.assertEquals;
 
 import org.fundacionjala.core.Environment;
@@ -39,16 +40,18 @@ public class MemberSteps {
 
     /**
      * Method to create a new list into board create above.
+     *
      * @param member type String.
      */
-    @When("I invite to member:")
-    public void iInviteToMember(final String member) {
+    @When("I invite a member to the Team:")
+    public void iInviteToMemberToTeam(final String member) {
         String accountKey = String.format("$['credentials']['%s']['username']", Commons.getUserFromKey(member));
         tabMembers.clickInviteButton(ENVIRONMENT.getValue(accountKey));
     }
 
     /**
      * Method to create a new list into board create above.
+     *
      * @param member type String.
      */
     @Then("I should see to the member {string} in the tab members")

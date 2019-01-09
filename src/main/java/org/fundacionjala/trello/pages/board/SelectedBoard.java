@@ -45,9 +45,6 @@ public class SelectedBoard extends AbstractPage {
     @FindBy(css = "input.primary.confirm.mod-compact.js-add-card")
     private WebElement addCardButton;
 
-    @FindBy(xpath = "//textarea[@aria-label=\"To do\"]/ancestor::div[contains(@class, 'js-list-content')]/descendant::"
-                    + "span[contains(text(), 'card1')]")
-    private WebElement buttonOpenCard;
 
     @FindBy(xpath = "//a[contains(@class,'card-detail-title-assist js-title-helper')]")
     private WebElement nameCard;
@@ -57,6 +54,18 @@ public class SelectedBoard extends AbstractPage {
 
     @FindBy(css = ".js-show-sidebar")
     private WebElement linkShowMenu;
+
+    @FindBy(css = ".js-open-manage-board-members")
+    private WebElement inviteMemberButton;
+
+    @FindBy(css = ".autocomplete-btn.primary")
+    private WebElement sendInvitationButton;
+
+    @FindBy(css = ".autocomplete-input")
+    private WebElement searchMemberInputText;
+
+    @FindBy(css = "[class=full-name]")
+    private WebElement memberItem;
 
     private String privacy;
     private String bg;
@@ -78,7 +87,6 @@ public class SelectedBoard extends AbstractPage {
     }
 
     /**
-     *
      * @return privacy name.
      */
     public String getPrivacy() {
@@ -90,7 +98,6 @@ public class SelectedBoard extends AbstractPage {
     }
 
     /**
-     *
      * @return color background of page.
      */
     public String getBG() {
@@ -103,6 +110,7 @@ public class SelectedBoard extends AbstractPage {
 
     /**
      * Method for create a Card.
+     *
      * @param data is name of card.
      */
     public void clickAddCard(final String data) {
@@ -114,15 +122,25 @@ public class SelectedBoard extends AbstractPage {
 
     /**
      * Method for to do click in the card new.
-     * @return SelectedCard.
+     *
+     * @param listName Input list name.
+     * @param cardName Input card name.
+     * @return SelectedCard object.
      */
-    public SelectedCard clickOpenCard() {
+    public SelectedCard selectCard(final String listName, final String cardName) {
+        String firstLevel = String.format("//textarea[@aria-label='%s']", listName);
+        String secondLevel = "/ancestor::div[contains(@class, 'js-list-content')]";
+        String thirdLevel = String.format("/descendant::span[contains(text(), '%s')]", cardName);
+        String cardXpath = firstLevel.concat(secondLevel).concat(thirdLevel);
+        WebElement buttonOpenCard = driver.findElement(By.xpath(cardXpath));
+
         action.click(buttonOpenCard);
         return new SelectedCard();
     }
 
     /**
      * It stores the privacy selected.
+     *
      * @param privacy is the privacy selected.
      */
     public void setPrivacy(final String privacy) {
@@ -131,6 +149,7 @@ public class SelectedBoard extends AbstractPage {
 
     /**
      * It stores the color background selected.
+     *
      * @param bg is the background color selected.
      */
     public void setBg(final String bg) {
@@ -146,6 +165,19 @@ public class SelectedBoard extends AbstractPage {
         if (action.existSelectorByCss(".board-menu.js-fill-board-menu.hide")) {
             action.click(linkShowMenu);
         }
-        return  new MenuBoard();
+        return new MenuBoard();
+    }
+
+    /**
+     * Method for invite a member to board.
+     *
+     * @param memberName Input name of the member.
+     */
+    public void inviteMember(final String memberName) {
+        action.click(inviteMemberButton);
+        action.setValue(searchMemberInputText, memberName);
+        action.waitVisibility(memberItem);
+        action.click(memberItem);
+        action.click(sendInvitationButton);
     }
 }

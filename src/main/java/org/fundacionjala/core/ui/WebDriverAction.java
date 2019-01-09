@@ -62,6 +62,15 @@ public class WebDriverAction {
     }
 
     /**
+     * Method for wait visibility of an element.
+     *
+     * @param element Input WebElement.
+     */
+    public void waitVisibility(final WebElement element) {
+        wait.until(ExpectedConditions.visibilityOf(element));
+    }
+
+    /**
      * Method for return text of css.
      *
      * @param cssField have be in format css String.
@@ -82,6 +91,7 @@ public class WebDriverAction {
         wait.until(ExpectedConditions.presenceOfElementLocated(xpathField));
         return driver.findElement(xpathField).getText();
     }
+
 
     /**
      * Exist WebElement by cssSelector.
