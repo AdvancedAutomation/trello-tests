@@ -16,6 +16,9 @@ public class Home extends AbstractPage {
     @FindBy(css = "a[href='/login?returnUrl=%2F']")
     private WebElement linkInit;
 
+    @FindBy(css = ".header-logo-default")
+    private WebElement trelloHeaderIcon;
+
     /**
      * Constructor of the page object of trello.
      */
@@ -31,5 +34,9 @@ public class Home extends AbstractPage {
     public Login clickInitLink() {
         action.click(linkInit);
         return new Login();
+    }
+
+    public void goMainPage() {
+        action.click(trelloHeaderIcon);
     }
 }

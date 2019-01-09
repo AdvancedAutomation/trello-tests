@@ -1,9 +1,11 @@
 package org.fundacionjala.trello.cucumber.steps.ui;
 
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 
 import org.fundacionjala.core.Environment;
 import org.fundacionjala.core.ui.Commons;
+import org.fundacionjala.trello.pages.Home;
 import org.fundacionjala.trello.pages.common.Login;
 
 /**
@@ -15,6 +17,7 @@ public class CommonSteps {
 
     /**
      * Given of in page of trello.
+     *
      * @param key for start session.
      */
     @Given("I Log in with user {string}")
@@ -23,5 +26,11 @@ public class CommonSteps {
         String userNameKey = String.format("$['credentials']['%s']['username']", Commons.getUserFromKey(key));
         String passwordKey = String.format("$['credentials']['%s']['password']", Commons.getUserFromKey(key));
         login.loginAs(ENVIRONMENT.getValue(userNameKey), ENVIRONMENT.getValue(passwordKey));
+    }
+
+    @And("I go to the trello page")
+    public void iGoToTheTrelloPage() {
+        Home home = new Home();
+        home.goMainPage();
     }
 }
