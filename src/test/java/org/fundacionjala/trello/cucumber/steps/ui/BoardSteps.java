@@ -13,6 +13,8 @@ import org.junit.Assert;
 
 import java.util.Map;
 
+import static org.testng.Assert.*;
+
 /**
  * Step definitions for the board Creation.
  */
@@ -68,5 +70,41 @@ public class BoardSteps {
         String member = Commons.getUserFromKey(data.get("Member"));
         String accountKey = String.format("$['credentials']['%s']['username']", member);
         board.inviteMember(ENVIRONMENT.getValue(accountKey));
+    }
+
+    /**
+     * Stepdef for invite a member to the board.
+     *
+     * @param member Input dataTable.
+     */
+    @Then("I should see to the member {string} in the board")
+    public void iShouldSeeToTheMemberInTheBoard(final String member) {
+        String accountKey = String.format("$['credentials']['%s']['username']", Commons.getUserFromKey(member));
+        assertEquals(String.format("@%s",ENVIRONMENT.getValue(accountKey)),
+                board.clickBoardMembers(ENVIRONMENT.getValue(accountKey)));
+    }
+
+    /**
+     * Stepdef for invite a member to the board.
+     *
+     * @param data Input dataTable.
+     */
+    @When("I remove from boar to member")
+    public void iRemoveFromBoarToMember(final Map<String, String> data) {
+        String member = Commons.getUserFromKey(data.get("Member"));
+        String accountKey = String.format("$['credentials']['%s']['username']", member);
+        board.clickBoardMembers(ENVIRONMENT.getValue(accountKey));
+        board.deleteMember();
+    }
+
+    /**
+     * Stepdef for invite a member to the board.
+     *
+     * @param member Input dataTable.
+     */
+    @Then("I not should see to the member {string}")
+    public void iNotShouldSeeToTheMember(final String member) {
+        String accountKey = String.format("$['credentials']['%s']['username']", Commons.getUserFromKey(member));
+        assertFalse(board.verifyMemberExist(ENVIRONMENT.getValue(accountKey)));
     }
 }

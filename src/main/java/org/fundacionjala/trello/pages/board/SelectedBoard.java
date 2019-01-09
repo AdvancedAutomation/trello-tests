@@ -67,6 +67,17 @@ public class SelectedBoard extends AbstractPage {
     @FindBy(css = "[class=full-name]")
     private WebElement memberItem;
 
+    @FindBy(css = ".js-fill-board-member-count")
+    private WebElement boardMembers;
+
+    @FindBy(css = ".js-remove-member")
+    private WebElement removeMemberToBoard;
+
+    @FindBy(css = ".js-confirm.full.negate")
+    private WebElement removeMemberBotton;
+
+    private By memberAccountTextField = By.cssSelector(".quiet.u-bottom");
+
     private String privacy;
     private String bg;
 
@@ -179,5 +190,38 @@ public class SelectedBoard extends AbstractPage {
         action.waitVisibility(memberItem);
         action.click(memberItem);
         action.click(sendInvitationButton);
+    }
+
+    /**
+     * Method for invite a member to board.
+     *
+     * @param accountKey Input name of the member.
+     */
+    public String clickBoardMembers(final String accountKey) {
+        action.click(boardMembers);
+        String xpath = String.format("//*[@class='board-header-popover js-all-members'] //*[contains(@title,'%s')]",
+                accountKey);
+        action.clickXPath(By.xpath(xpath));
+        String value = action.getValue(memberAccountTextField);
+        return value;
+    }
+
+    /**
+     * Method for delete a member to board.
+     *
+     */
+    public void deleteMember() {
+        action.click(removeMemberToBoard);
+        action.click(removeMemberBotton);
+    }
+
+    /**
+     * Method for verify a member to board.
+     *
+     * @param element Input name of the member.
+     */
+    public boolean verifyMemberExist(final String element) {
+        String selectorXpath = String.format("//*[contains(@class,'board-header-popover js-all-members')] //*[contains(@class,'member js-member ui-draggable')] //*[contains(@title,'%s')]", element);
+        return action.existSelectorByXPath(selectorXpath);
     }
 }

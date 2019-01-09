@@ -92,6 +92,16 @@ public class WebDriverAction {
         return driver.findElement(xpathField).getText();
     }
 
+    /**
+     * Method for do click to XPath.
+     *
+     * @param xpathField have be in format css String.
+     * @return the text String.
+     */
+    public void clickXPath(final By xpathField) {
+//        wait.until(ExpectedConditions.presenceOfElementLocated(xpathField));
+        driver.findElement(xpathField).click();
+    }
 
     /**
      * Exist WebElement by cssSelector.
@@ -102,6 +112,21 @@ public class WebDriverAction {
     public boolean existSelectorByCss(final String element) {
         try {
             driver.findElement(By.cssSelector(element));
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Method to verify Exist XPath.
+     *
+     * @param element String Selector XPath.
+     * @return boolean exist element.
+     */
+    public boolean existSelectorByXPath(final String element) {
+        try {
+            driver.findElement(By.xpath(element));
         } catch (NoSuchElementException e) {
             return false;
         }
