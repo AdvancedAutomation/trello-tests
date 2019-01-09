@@ -93,7 +93,7 @@ public class CardSteps {
      */
     @Then("I expect the card doesn't appear")
     public void iExpectTheCardDoesnTAppear() {
-
+        // WIP
     }
 
     /**
@@ -115,5 +115,6 @@ public class CardSteps {
      */
     @Then("I see the member in the card")
     public void iSeeTheMemberInTheCard(final Map<String, String> data) {
+        // WIP
     }
 }
