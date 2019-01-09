@@ -64,6 +64,9 @@ public class SelectedBoard extends AbstractPage {
     @FindBy(css = ".autocomplete-input")
     private WebElement searchMemberInputText;
 
+    @FindBy(css = "[class=full-name]")
+    private WebElement memberItem;
+
     private String privacy;
     private String bg;
 
@@ -120,7 +123,9 @@ public class SelectedBoard extends AbstractPage {
     /**
      * Method for to do click in the card new.
      *
-     * @return SelectedCard.
+     * @param listName Input list name.
+     * @param cardName Input card name.
+     * @return SelectedCard object.
      */
     public SelectedCard selectCard(final String listName, final String cardName) {
         String firstLevel = String.format("//textarea[@aria-label='%s']", listName);
@@ -163,14 +168,16 @@ public class SelectedBoard extends AbstractPage {
         return new MenuBoard();
     }
 
-    public void inviteMember(String memberName) {
+    /**
+     * Method for invite a member to board.
+     *
+     * @param memberName Input name of the member.
+     */
+    public void inviteMember(final String memberName) {
         action.click(inviteMemberButton);
         action.setValue(searchMemberInputText, memberName);
-        action.pause();
-        By member = By.xpath(String.format("//*[contains(@title,'%s')]/ancestor::div[@class='member-container']"
-                , memberName));
-        action.waitVisibility(driver.findElement(member));
-        action.click(driver.findElement(member));
+        action.waitVisibility(memberItem);
+        action.click(memberItem);
         action.click(sendInvitationButton);
     }
 }

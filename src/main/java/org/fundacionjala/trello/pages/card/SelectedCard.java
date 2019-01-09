@@ -22,6 +22,9 @@ public class SelectedCard extends AbstractPage {
     @FindBy(css = ".js-search-mem.js-autofocus")
     private WebElement searchMemberInputText;
 
+    @FindBy(css = ".js-change-card-members")
+    private WebElement membersButton;
+
     private By cardName = By.cssSelector(".js-card-name");
 
 
@@ -34,16 +37,28 @@ public class SelectedCard extends AbstractPage {
         return action.getValue(cardName);
     }
 
+    /**
+     * Method for archive the card.
+     */
     public void archiveCard() {
         action.click(archiveCardButton);
     }
 
+    /**
+     * Method for delete card.
+     */
     public void deleteCard() {
         action.click(deleteCardButton);
         action.click(confirmDeleteCardButton);
     }
 
+    /**
+     * Method for assing member to a card.
+     *
+     * @param memberName Input string of member name.
+     */
     public void assignMemberToCard(final String memberName) {
+        action.click(membersButton);
         action.setValue(searchMemberInputText, memberName);
         By member = By.xpath(String.format("//*[contains(text(),'%s')]/ancestor::a", memberName));
         action.click(driver.findElement(member));

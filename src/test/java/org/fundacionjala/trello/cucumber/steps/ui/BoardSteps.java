@@ -58,8 +58,13 @@ public class BoardSteps {
         Assert.assertEquals(newBoardCreation.getBackgroundString(), board.getBG());
     }
 
+    /**
+     * Stepdef for invite a member to the board.
+     *
+     * @param data Input dataTable.
+     */
     @Given("I invite a member to the Board:")
-    public void iInviteAMemberToTheBoard(Map<String, String> data) {
+    public void iInviteAMemberToTheBoard(final Map<String, String> data) {
         String member = Commons.getUserFromKey(data.get("Member"));
         String accountKey = String.format("$['credentials']['%s']['username']", member);
         board.inviteMember(ENVIRONMENT.getValue(accountKey));

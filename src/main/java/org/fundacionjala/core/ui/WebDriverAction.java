@@ -61,16 +61,13 @@ public class WebDriverAction {
                 .click();
     }
 
+    /**
+     * Method for wait visibility of an element.
+     *
+     * @param element Input WebElement.
+     */
     public void waitVisibility(final WebElement element) {
         wait.until(ExpectedConditions.visibilityOf(element));
-    }
-
-    public void pause() {
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
     /**

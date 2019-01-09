@@ -19,4 +19,3 @@ Feature: Add member to Card in Trello
       | Member | "{credentials.member1}" |
     Then I see the member in the card
       | Member | "{credentials.member1}" |
-

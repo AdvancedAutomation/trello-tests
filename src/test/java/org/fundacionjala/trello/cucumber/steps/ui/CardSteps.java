@@ -64,35 +64,56 @@ public class CardSteps {
 
     /**
      * Method for open card new created.
+     *
+     * @param dataTable Input dataTable.
      */
     @When("I select the card:")
     public void iSelectTheCard(final Map<String, String> dataTable) {
         card = board.selectCard(dataTable.get("List Name"), dataTable.get("Card Name"));
     }
 
+    /**
+     * Stepdef for archive the card.
+     */
     @When("I archive the card")
     public void iArchiveTheCard() {
         card.archiveCard();
     }
 
+    /**
+     * Stepdef for delete the card.
+     */
     @And("I delete the card")
     public void iDeleteTheCard() {
         card.deleteCard();
     }
 
+    /**
+     * Stepdef for verify if the card was deleted.
+     */
     @Then("I expect the card doesn't appear")
     public void iExpectTheCardDoesnTAppear() {
 
     }
 
+    /**
+     * Stepdef for assign a member to the card.
+     *
+     * @param data Input dataTable.
+     */
     @When("I assign a member to the card:")
-    public void iAssignAMemberToTheCard(Map<String, String> data) {
+    public void iAssignAMemberToTheCard(final Map<String, String> data) {
         String member = Commons.getUserFromKey(data.get("Member"));
         String accountKey = String.format("$['credentials']['%s']['username']", member);
         card.assignMemberToCard(ENVIRONMENT.getValue(accountKey));
     }
 
+    /**
+     * Stepdef for verify if a member was invited to te card.
+     *
+     * @param data Input dataTable.
+     */
     @Then("I see the member in the card")
-    public void iSeeTheMemberInTheCard() {
+    public void iSeeTheMemberInTheCard(final Map<String, String> data) {
     }
 }
