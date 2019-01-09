@@ -1,21 +1,24 @@
 package org.fundacionjala.trello.cucumber.steps.ui;
 
-import java.util.Map;
-
+import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.junit.Assert;
-
+import org.fundacionjala.core.Environment;
+import org.fundacionjala.core.ui.Commons;
 import org.fundacionjala.trello.pages.board.BoardCreation;
 import org.fundacionjala.trello.pages.board.BoardFields;
 import org.fundacionjala.trello.pages.board.Boards;
 import org.fundacionjala.trello.pages.board.SelectedBoard;
+import org.junit.Assert;
+
+import java.util.Map;
 
 /**
  * Step definitions for the board Creation.
  */
 public class BoardSteps {
 
+    private static final Environment ENVIRONMENT = Environment.getInstance();
     private Boards boardsPage;
     private SelectedBoard board;
     private BoardCreation newBoardCreation;
@@ -53,5 +56,12 @@ public class BoardSteps {
         Assert.assertEquals(newBoardCreation.getTitleString(), board.getName());
         Assert.assertEquals(newBoardCreation.getPrivacyString(), board.getPrivacy());
         Assert.assertEquals(newBoardCreation.getBackgroundString(), board.getBG());
+    }
+
+    @Given("I invite a member to the Board:")
+    public void iInviteAMemberToTheBoard(Map<String, String> data) {
+        String member = Commons.getUserFromKey(data.get("Member"));
+        String accountKey = String.format("$['credentials']['%s']['username']", member);
+        board.inviteMember(ENVIRONMENT.getValue(accountKey));
     }
 }

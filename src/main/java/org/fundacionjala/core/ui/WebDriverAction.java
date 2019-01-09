@@ -61,6 +61,18 @@ public class WebDriverAction {
                 .click();
     }
 
+    public void waitVisibility(final WebElement element) {
+        wait.until(ExpectedConditions.visibilityOf(element));
+    }
+
+    public void pause() {
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
     /**
      * Method for return text of css.
      *
@@ -82,6 +94,7 @@ public class WebDriverAction {
         wait.until(ExpectedConditions.presenceOfElementLocated(xpathField));
         return driver.findElement(xpathField).getText();
     }
+
 
     /**
      * Exist WebElement by cssSelector.
