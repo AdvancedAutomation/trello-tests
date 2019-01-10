@@ -6,6 +6,7 @@ import java.util.Map;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 
+import cucumber.api.java.en.When;
 import org.fundacionjala.trello.pages.common.Board;
 
 import static org.testng.Assert.assertEquals;
@@ -63,5 +64,15 @@ public class ListSteps {
     @Then("I should see these {int} lists")
     public void iShouldSeeTheseLists(final int expectedListCreated) {
         assertEquals(selectedBoard.getSizeList(), expectedListCreated);
+    }
+
+    /**
+     * Method to edit the name of list
+     *
+     * @param table new name
+     */
+    @When("I select and edit the list")
+    public void iSelectTheList(final Map<String, String> table) {
+        selectedBoard.editList(table.get("Name"));
     }
 }

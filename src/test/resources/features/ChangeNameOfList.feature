@@ -1,5 +1,4 @@
-Feature: Add new list to an existing board.
-  As a user owner I want to add a new list to my board.
+Feature: Edit list name
 
   Background:
     Given I Log in with user "{credentials.owner1}"
@@ -10,7 +9,6 @@ Feature: Add new list to an existing board.
     When I add new list into board
       | Name | To Do |
     Then I should see the list
-  Scenario: As a user owner logged into trello's home page
-    When I selcet the list into board
-      | Name | To Do |
-    Then I should see the edit the list
+  Scenario: As a user owner logged into trello's home page edit list name
+    When I select and edit the list
+      | Name | new name |
