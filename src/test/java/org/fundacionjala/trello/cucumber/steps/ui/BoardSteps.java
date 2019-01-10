@@ -13,6 +13,9 @@ import org.junit.Assert;
 
 import java.util.Map;
 
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertFalse;
+
 /**
  * Step definitions for the board Creation.
  */
@@ -22,6 +25,7 @@ public class BoardSteps {
     private Boards boardsPage;
     private SelectedBoard board;
     private BoardCreation newBoardCreation;
+    private String readJsonUsername = "$['credentials']['%s']['username']";
 
     /**
      * Constructor BoardSteps.
@@ -66,7 +70,43 @@ public class BoardSteps {
     @Given("I invite a member to the Board:")
     public void iInviteAMemberToTheBoard(final Map<String, String> data) {
         String member = Commons.getUserFromKey(data.get("Member"));
-        String accountKey = String.format("$['credentials']['%s']['username']", member);
+        String accountKey = String.format(readJsonUsername, member);
         board.inviteMember(ENVIRONMENT.getValue(accountKey));
+    }
+
+    /**
+     * Method for verify if a member exist in the board.
+     *
+     * @param member Input dataTable.
+     */
+    @Then("I should see to the member {string} in the board")
+    public void iShouldSeeToTheMemberInTheBoard(final String member) {
+        String accountKey = String.format(readJsonUsername, Commons.getUserFromKey(member));
+        assertEquals(String.format("@%s", ENVIRONMENT.getValue(accountKey)),
+                board.membersManageToBoard(ENVIRONMENT.getValue(accountKey)));
+    }
+
+    /**
+     * Method to delete a member to the board.
+     *
+     * @param data Input dataTable.
+     */
+    @When("I remove from boar to member")
+    public void iRemoveFromBoarToMember(final Map<String, String> data) {
+        String member = Commons.getUserFromKey(data.get("Member"));
+        String accountKey = String.format(readJsonUsername, member);
+        board.membersManageToBoard(ENVIRONMENT.getValue(accountKey));
+        board.deleteMember();
+    }
+
+    /**
+     * Method for verify a member not exist in the board.
+     *
+     * @param member account type String.
+     */
+    @Then("I not should see to the member {string}")
+    public void iNotShouldSeeToTheMember(final String member) {
+        String accountKey = String.format(readJsonUsername, Commons.getUserFromKey(member));
+        assertFalse(board.verifyMemberExist(ENVIRONMENT.getValue(accountKey)));
     }
 }

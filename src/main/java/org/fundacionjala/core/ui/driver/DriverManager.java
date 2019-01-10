@@ -1,9 +1,9 @@
-package org.fundacionjala.core.ui;
+package org.fundacionjala.core.ui.driver;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import org.fundacionjala.core.Environment;
 
 /**
  * Webdriver singleton pattern.
@@ -26,8 +26,8 @@ public final class DriverManager {
      * Constructor of class.
      */
     private DriverManager() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+        String browser = Environment.getInstance().getValue("$['local']['browser']").toUpperCase();
+        driver = DriverFactory.getDriverManager(DriverType.valueOf(browser));
         driver.manage().window().maximize();
         wait = new WebDriverWait(driver, TIME_OUT_IN_SECONDS);
     }

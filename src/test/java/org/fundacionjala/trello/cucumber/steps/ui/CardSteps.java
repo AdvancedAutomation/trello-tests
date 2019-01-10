@@ -12,6 +12,7 @@ import org.fundacionjala.trello.pages.card.SelectedCard;
 import java.util.Map;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertFalse;
 
 
 /**
@@ -23,6 +24,8 @@ public class CardSteps {
     private SelectedBoard board;
     private SelectedCard card;
 
+    private String member = "Member";
+    private String readJsonUsername = "$['credentials']['%s']['username']";
     /**
      * Constructor CardSteps.
      *
@@ -103,8 +106,8 @@ public class CardSteps {
      */
     @When("I assign a member to the card:")
     public void iAssignAMemberToTheCard(final Map<String, String> data) {
-        String member = Commons.getUserFromKey(data.get("Member"));
-        String accountKey = String.format("$['credentials']['%s']['username']", member);
+        String accountMember = Commons.getUserFromKey(data.get(member));
+        String accountKey = String.format(readJsonUsername, accountMember);
         card.assignMemberToCard(ENVIRONMENT.getValue(accountKey));
     }
 
@@ -116,5 +119,29 @@ public class CardSteps {
     @Then("I see the member in the card")
     public void iSeeTheMemberInTheCard(final Map<String, String> data) {
         // WIP
+    }
+
+    /**
+     * Method for delete a member in the card.
+     *
+     * @param data Input dataTable.
+     */
+    @When("I remove from card to user:")
+    public void iRemoveFromCardToUser(final Map<String, String> data) {
+        String accountMember = Commons.getUserFromKey(data.get(member));
+        String accountKey = String.format(readJsonUsername, accountMember);
+        card.removeMember(ENVIRONMENT.getValue(accountKey));
+    }
+
+    /**
+     * Method for verify if the member to be delete.
+     *
+     * @param data Input dataTable.
+     */
+    @Then("I should see the card without the user:")
+    public void iShouldSeeTheCardWithoutTheUser(final Map<String, String> data) {
+        String accountMember = Commons.getUserFromKey(data.get(member));
+        String accountKey = String.format(readJsonUsername, accountMember);
+        assertFalse(card.verifyMemberExist(ENVIRONMENT.getValue(accountKey)));
     }
 }

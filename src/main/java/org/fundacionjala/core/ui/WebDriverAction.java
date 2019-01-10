@@ -31,7 +31,7 @@ public class WebDriverAction {
     /**
      * wait and set a value.
      *
-     * @param element webelement
+     * @param element webElement
      * @param value   text
      */
     public void setValue(final WebElement element, final String value) {
@@ -71,37 +71,25 @@ public class WebDriverAction {
     }
 
     /**
-     * Method for return text of css.
+     * Method for return text By element.
      *
-     * @param cssField have be in format css String.
-     * @return the text String.
+     * @param element By type.
+     * @return the value of String type.
      */
-    public String getValue(final By cssField) {
-        wait.until(ExpectedConditions.presenceOfElementLocated(cssField));
-        return driver.findElement(cssField).getText();
+    public String getValue(final By element) {
+        wait.until(ExpectedConditions.presenceOfElementLocated(element));
+        return driver.findElement(element).getText();
     }
 
     /**
-     * Method for return text of css.
+     * Method for verify Exist WebElement.
      *
-     * @param xpathField have be in format css String.
-     * @return the text String.
+     * @param element By type.
+     * @return boolean if exist element.
      */
-    public String getValueXPath(final By xpathField) {
-        wait.until(ExpectedConditions.presenceOfElementLocated(xpathField));
-        return driver.findElement(xpathField).getText();
-    }
-
-
-    /**
-     * Exist WebElement by cssSelector.
-     *
-     * @param element String Selector css.
-     * @return boolean exist element.
-     */
-    public boolean existSelectorByCss(final String element) {
+    public boolean existSelectorBy(final By element) {
         try {
-            driver.findElement(By.cssSelector(element));
+            driver.findElement(element);
         } catch (NoSuchElementException e) {
             return false;
         }
