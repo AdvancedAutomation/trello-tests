@@ -43,12 +43,14 @@ public class TeamCreation extends AbstractPage {
 
     /**
      * Method for add a members.
+     *
      * @param data is type map.
      * @return the instance of SelectedTeam
      */
     public SelectedTeam createTeam(final Map<TeamFields, String> data) {
         EnumMap<TeamFields, ISteps> teamSteps = new EnumMap<>(TeamFields.class);
         uniqueNameTeam = Commons.getUserFromKey(data.get(TeamFields.NAME));
+        action.waitVisibility(nameTeamInputField);
         teamSteps.put(TeamFields.NAME, () -> action.setValue(nameTeamInputField,
                 uniqueNameTeam));
         teamSteps.put(TeamFields.DESCRIPTION, () -> action.setValue(descriptionTeamInputField,
@@ -62,6 +64,7 @@ public class TeamCreation extends AbstractPage {
 
     /**
      * Method for save unique name.
+     *
      * @return the name of team
      */
     public String getUniqueNameTeam() {
