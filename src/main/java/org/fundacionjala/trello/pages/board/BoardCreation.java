@@ -20,7 +20,7 @@ public class BoardCreation extends AbstractPage {
     @FindBy(className = "subtle-input")
     private WebElement titleTextInputField;
 
-    @FindBy(css = ".create-board-form button.primary")
+    @FindBy(css = "button.primary")
     private WebElement createBoardButton;
 
     @FindBy(css = "[class='subtle-chooser-trigger unstyled-button vis-chooser-trigger']")
