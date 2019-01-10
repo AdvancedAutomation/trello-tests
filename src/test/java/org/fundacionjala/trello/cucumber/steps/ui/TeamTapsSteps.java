@@ -17,8 +17,6 @@ import java.util.Map;
 public class TeamTapsSteps {
     private TabSettings tabSettings;
     private TabBoards tabBoards;
-    private SelectedBoard board;
-    private BoardCreation newBoardCreation;
     private TabMembers tabMembers;
 
     /**
@@ -50,8 +48,8 @@ public class TeamTapsSteps {
      */
     @When("I create a team board:")
     public void iCreateATeamBoard(final Map<BoardFields, String> dataTable) {
-
-        newBoardCreation = tabBoards.clickAddBoard();
+        BoardCreation newBoardCreation = tabBoards.clickAddBoard();
+        SelectedBoard board;
         board = newBoardCreation.createNewBoard(dataTable);
         board.setPrivacy(dataTable.get(BoardFields.PRIVACY));
         board.setBg(dataTable.get(BoardFields.BACKGROUND));
