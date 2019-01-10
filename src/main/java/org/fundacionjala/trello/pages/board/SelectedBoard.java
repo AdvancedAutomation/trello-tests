@@ -200,11 +200,10 @@ public class SelectedBoard extends AbstractPage {
      */
     public String clickBoardMembers(final String accountKey) {
         action.click(boardMembers);
-        String xpath = String.format("//*[@class='board-header-popover js-all-members'] //*[contains(@title,'%s')]",
+        String selectorXPath = String.format("//*[contains(@class,'board-header-popover')] //*[contains(@title,'%s')]",
                 accountKey);
-        action.clickXPath(By.xpath(xpath));
-        String value = action.getValue(memberAccountTextField);
-        return value;
+        action.clickXPath(By.xpath(selectorXPath));
+        return action.getValue(memberAccountTextField);
     }
 
     /**
