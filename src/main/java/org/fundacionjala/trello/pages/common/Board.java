@@ -106,14 +106,4 @@ public class Board extends AbstractPage {
         action.setValue(searchDrawer, boardName);
         action.click(firstFoundFile);
     }
-
-    /**
-     * Method to verify if the list be another board.
-     *
-     * @param board type String board destination.
-     * @return type boolean.
-     */
-    public boolean verifyList(final String board) {
-        return action.existSelectorBy(By.xpath(String.format("//*[text()='@s']", board)));
-    }
 }
