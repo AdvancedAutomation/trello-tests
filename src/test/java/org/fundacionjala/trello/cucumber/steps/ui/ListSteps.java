@@ -11,7 +11,7 @@ import cucumber.api.java.en.When;
 import org.fundacionjala.trello.pages.common.Board;
 
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.assertFalse;
 
 /**
  * Class to run testing add list to an existing board.
@@ -95,6 +95,6 @@ public class ListSteps {
      */
     @Then("I should see the list in the board:")
     public void iShouldSeeTheListInTheBoard(final Map<String, String> data) {
-        assertEquals(selectedBoard.getTitleList(), data.get("Board"));
+        assertFalse(selectedBoard.verifyList(data.get("Board")));
     }
 }
