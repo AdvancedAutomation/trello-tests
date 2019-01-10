@@ -103,7 +103,7 @@ public class Board extends AbstractPage {
      * @param boardName type String.
      */
     public void openBoardDrawer(final String boardName) {
-        action.setValue(searchDrawer,boardName);
+        action.setValue(searchDrawer, boardName);
         action.click(firstFoundFile);
     }
 
