@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.Iterator;
 import java.util.List;
@@ -27,6 +28,19 @@ public class Board extends AbstractPage {
 
     @FindBy(xpath = "//*[@id=\"board\"]")
     private WebElement lists;
+
+    @FindBy(css = "a.list-header-extras-menu.dark-hover.js-open-list-menu.icon-lg.icon-overflow-menu-horizontal")
+    private WebElement menuList;
+
+    @FindBy(css = ".js-move-list")
+    private WebElement moveList;
+
+    @FindBy(css = ".header-search-input")
+    private WebElement searchDrawer;
+
+    @FindBy(css = ".search-results-section .compact-board-tile-link-text-name")
+    private WebElement firstFoundFile;
+
 
     /**
      * Method to add a new list into board.
@@ -67,5 +81,29 @@ public class Board extends AbstractPage {
      */
     public int getSizeList() {
         return lists.findElements(By.cssSelector("div.js-list.list-wrapper")).size();
+    }
+
+    /**
+     * Method to change list to another board.
+     *
+     * @param board type String board destination.
+     */
+    public void changeListToBoard(final String board) {
+        action.click(menuList);
+        action.click(moveList);
+        Select dropdown = new Select(driver.findElement(By.cssSelector("select.js-select-board")));
+        dropdown.selectByVisibleText(board);
+        By moveButton = By.xpath("//*[@class='primary wide js-commit-position']");
+        action.click(driver.findElement(moveButton));
+    }
+
+    /**
+     * Method to open a board.
+     *
+     * @param boardName type String.
+     */
+    public void openBoardDrawer(final String boardName) {
+        action.setValue(searchDrawer,boardName);
+        action.click(firstFoundFile);
     }
 }
