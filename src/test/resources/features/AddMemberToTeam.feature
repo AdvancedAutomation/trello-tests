@@ -1,4 +1,5 @@
-Feature: Add member a Team in Trello
+@bvt
+Feature: Add member to Team in Trello
 
   Background:
     Given I Log in with user "{credentials.owner1}"

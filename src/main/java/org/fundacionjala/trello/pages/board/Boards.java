@@ -37,6 +37,7 @@ public class Boards extends AbstractPage {
 
     /**
      * Method for add a board.
+     *
      * @param place place where board will be created from.
      * @return the PO of Board Creation.
      */
@@ -55,10 +56,13 @@ public class Boards extends AbstractPage {
 
     /**
      * Method for create a team.
+     *
      * @return the TeamCreation.
      */
     public TeamCreation clickCreateTeam() {
+        action.waitVisibility(btnPlus);
         action.click(btnPlus);
+        action.waitVisibility(linkCreateNewTeam);
         action.click(linkCreateNewTeam);
         return new TeamCreation();
     }
