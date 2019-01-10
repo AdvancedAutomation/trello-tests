@@ -10,8 +10,7 @@ import org.openqa.selenium.support.FindBy;
  */
 public class TabBoards extends AbstractPage {
 
-    @FindBy(xpath =
-            "//div[@class='tabbed-pane-main-col-wrapper js-content']/descendant::*[@class='board-tile mod-add']")
+    @FindBy(xpath = "//div[@class='board-tile mod-add']")
     private WebElement createBoardButton;
 
     /**

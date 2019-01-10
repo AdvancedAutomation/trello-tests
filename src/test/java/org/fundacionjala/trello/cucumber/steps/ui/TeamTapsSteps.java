@@ -49,8 +49,7 @@ public class TeamTapsSteps {
     @When("I create a team board:")
     public void iCreateATeamBoard(final Map<BoardFields, String> dataTable) {
         BoardCreation newBoardCreation = tabBoards.clickAddBoard();
-        SelectedBoard board;
-        board = newBoardCreation.createNewBoard(dataTable);
+        SelectedBoard board = newBoardCreation.createNewBoard(dataTable);
         board.setPrivacy(dataTable.get(BoardFields.PRIVACY));
         board.setBg(dataTable.get(BoardFields.BACKGROUND));
     }
