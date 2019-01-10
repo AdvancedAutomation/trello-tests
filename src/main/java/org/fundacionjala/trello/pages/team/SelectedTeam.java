@@ -10,7 +10,7 @@ import org.openqa.selenium.support.FindBy;
  */
 public class SelectedTeam extends AbstractPage {
 
-    @FindBy(css = "a.tabbed-pane-nav-item-button.js-org-members")
+    @FindBy(css = ".js-org-members")
     private WebElement tabMembers;
 
     private By cardName = By.cssSelector(".u-inline");

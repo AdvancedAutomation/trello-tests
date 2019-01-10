@@ -5,8 +5,6 @@ Feature: Add member to Team in Trello
     Given I Log in with user "{credentials.owner1}"
     When I create a team with a:
       | Name        | {dateTime.Team01} |
-      | Description | any               |
-    And I store as "Team01"
 
   Scenario: Add a member to Team
     Given I select tab members
