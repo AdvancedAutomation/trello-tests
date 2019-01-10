@@ -67,6 +67,17 @@ public class SelectedBoard extends AbstractPage {
     @FindBy(css = "[class=full-name]")
     private WebElement memberItem;
 
+    @FindBy(css = ".js-fill-board-member-count")
+    private WebElement boardMembers;
+
+    @FindBy(css = ".js-remove-member")
+    private WebElement removeMemberToBoard;
+
+    @FindBy(css = ".js-confirm.full.negate")
+    private WebElement removeMemberBotton;
+
+    private By memberAccountTextField = By.cssSelector(".quiet.u-bottom");
+
     private String privacy;
     private String bg;
 
@@ -162,7 +173,8 @@ public class SelectedBoard extends AbstractPage {
      * @return page object MenuBoard.
      */
     public MenuBoard clickShowMenu() {
-        if (action.existSelectorByCss(".board-menu.js-fill-board-menu.hide")) {
+        By element = By.cssSelector(".board-menu.js-fill-board-menu.hide");
+        if (action.existSelectorBy(element)) {
             action.click(linkShowMenu);
         }
         return new MenuBoard();
@@ -179,5 +191,39 @@ public class SelectedBoard extends AbstractPage {
         action.waitVisibility(memberItem);
         action.click(memberItem);
         action.click(sendInvitationButton);
+    }
+
+    /**
+     * Method for get a username to member.
+     *
+     * @param accountKey Input name of the member.
+     * @return type String.
+     */
+    public String membersManageToBoard(final String accountKey) {
+        action.click(boardMembers);
+        By member = By.xpath(String.format("//*[contains(@class,'board-header-popover')] //*[contains(@title,'%s')]",
+                accountKey));
+        action.click(driver.findElement(member));
+        return action.getValue(memberAccountTextField);
+    }
+
+    /**
+     * Method for delete a member to board.
+     *
+     */
+    public void deleteMember() {
+        action.click(removeMemberToBoard);
+        action.click(removeMemberBotton);
+    }
+
+    /**
+     * Method for verify if the member exist in the board.
+     *
+     * @param member username String type.
+     * @return type boolean if exist the member.
+     */
+    public boolean verifyMemberExist(final String member) {
+        By element = By.xpath(String.format("//*[contains(@title,'%s')]", member));
+        return action.existSelectorBy(element);
     }
 }

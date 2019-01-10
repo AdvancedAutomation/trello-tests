@@ -35,8 +35,8 @@ public class TabMembers extends AbstractPage {
      * @param accountKey type string.
      * @return type String.
      */
-    public String getXPath(final String accountKey) {
-        String xpath = String.format("//*[contains(text(), '@%s')]", accountKey);
-        return action.getValueXPath(By.xpath(xpath));
+    public String getMemberAccount(final String accountKey) {
+        By member = By.xpath(String.format("//*[contains(text(), '@%s')]", accountKey));
+        return action.getValue(member);
     }
 }
