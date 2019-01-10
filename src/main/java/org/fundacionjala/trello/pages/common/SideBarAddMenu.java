@@ -15,6 +15,7 @@ public class SideBarAddMenu extends AbstractPage {
     @FindBy(css = ".js-new-org")
     private WebElement newTeam;
 
+
     /**
      * Method to create a new board form.
      *

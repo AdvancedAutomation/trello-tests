@@ -6,9 +6,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 /**
- * Page object of the Home page of Trello.
+ * Page object of the Navigator page of Trello.
  */
-public class Home extends AbstractPage {
+public class Navigator extends AbstractPage {
 
     /**
      * All WebElements are identified by @FindBy annotation.
@@ -16,10 +16,13 @@ public class Home extends AbstractPage {
     @FindBy(css = "a[href='/login?returnUrl=%2F']")
     private WebElement linkInit;
 
+    @FindBy(css = ".header-logo-default")
+    private WebElement trelloHeaderIcon;
+
     /**
      * Constructor of the page object of trello.
      */
-    public Home() {
+    public Navigator() {
         driver.get("https://trello.com");
     }
 
@@ -31,5 +34,12 @@ public class Home extends AbstractPage {
     public Login clickInitLink() {
         action.click(linkInit);
         return new Login();
+    }
+
+    /**
+     * Method to go to the main page.
+     */
+    public void goMainPage() {
+        action.click(trelloHeaderIcon);
     }
 }
