@@ -12,6 +12,7 @@ import org.fundacionjala.trello.pages.board.SelectedBoard;
 import org.fundacionjala.trello.pages.common.SideBarMain;
 import org.fundacionjala.trello.pages.team.SelectedTeam;
 import org.fundacionjala.trello.pages.team.TabBoards;
+import org.fundacionjala.trello.pages.team.TabMembers;
 import org.fundacionjala.trello.pages.team.TabSettings;
 import org.fundacionjala.trello.pages.team.TeamCreation;
 import org.fundacionjala.trello.pages.team.TeamFields;
@@ -31,9 +32,12 @@ public class TeamSteps {
     private TeamCreation newTeam;
     private SideBarMain sideBarMain;
     private TabSettings tabSettings;
+
     private TabBoards tabBoards;
     private SelectedBoard board;
     private BoardCreation newBoardCreation;
+
+    private TabMembers tabMembers;
 
     /**
      * Constructor BoardSteps.
@@ -42,15 +46,18 @@ public class TeamSteps {
      * @param team        SelectedTeam.
      * @param sideBarMain Side Bar Main.
      * @param tabSettings Tab Settings.
+     * @param tabMembers  Tab Members.
      * @param tabBoards   Tab Boards.
      */
     public TeamSteps(final Boards boards, final SelectedTeam team,
-                     final SideBarMain sideBarMain, final TabSettings tabSettings, final TabBoards tabBoards) {
+                     final SideBarMain sideBarMain, final TabSettings tabSettings, final TabMembers tabMembers, final TabBoards tabBoards) {
+
         this.boards = boards;
         this.team = team;
         this.sideBarMain = sideBarMain;
         this.tabSettings = tabSettings;
         this.tabBoards = tabBoards;
+        this.tabMembers = tabMembers;
     }
 
     /**
@@ -135,5 +142,25 @@ public class TeamSteps {
         board.setBg(dataTable.get(BoardFields.BACKGROUND));
     }
 
+
+    /**
+     * When Step for delete a member.
+     *
+     * @param dataTable Input dataTable.
+     */
+    @When("I delete the team member:")
+    public void iDeleteTheTeamMember(final Map<String, String> dataTable) {
+        tabMembers.deleteTeamMember(dataTable.get("Name"));
+    }
+
+    /**
+     * Step for verify if the member was deleted.
+     *
+     * @param dataTable Input datable.
+     */
+    @Then("I didnt see the member in the list")
+    public void iDidntSeeTheMemberInTheList(final Map<String, String> dataTable) {
+        // WIP
+    }
 
 }
