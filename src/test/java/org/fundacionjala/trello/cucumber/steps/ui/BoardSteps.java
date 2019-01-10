@@ -13,7 +13,8 @@ import org.junit.Assert;
 
 import java.util.Map;
 
-import static org.testng.Assert.*;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertFalse;
 
 /**
  * Step definitions for the board Creation.
@@ -80,7 +81,7 @@ public class BoardSteps {
     @Then("I should see to the member {string} in the board")
     public void iShouldSeeToTheMemberInTheBoard(final String member) {
         String accountKey = String.format("$['credentials']['%s']['username']", Commons.getUserFromKey(member));
-        assertEquals(String.format("@%s",ENVIRONMENT.getValue(accountKey)),
+        assertEquals(String.format("@%s", ENVIRONMENT.getValue(accountKey)),
                 board.clickBoardMembers(ENVIRONMENT.getValue(accountKey)));
     }
 

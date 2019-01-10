@@ -196,6 +196,7 @@ public class SelectedBoard extends AbstractPage {
      * Method for invite a member to board.
      *
      * @param accountKey Input name of the member.
+     * @return type String.
      */
     public String clickBoardMembers(final String accountKey) {
         action.click(boardMembers);
@@ -219,9 +220,10 @@ public class SelectedBoard extends AbstractPage {
      * Method for verify a member to board.
      *
      * @param element Input name of the member.
+     * @return type boolean.
      */
     public boolean verifyMemberExist(final String element) {
-        String selectorXpath = String.format("//*[contains(@class,'board-header-popover js-all-members')] //*[contains(@class,'member js-member ui-draggable')] //*[contains(@title,'%s')]", element);
+        String selectorXpath = String.format("//*[contains(@title,'%s')]", element);
         return action.existSelectorByXPath(selectorXpath);
     }
 }

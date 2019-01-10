@@ -96,10 +96,9 @@ public class WebDriverAction {
      * Method for do click to XPath.
      *
      * @param xpathField have be in format css String.
-     * @return the text String.
      */
     public void clickXPath(final By xpathField) {
-//        wait.until(ExpectedConditions.presenceOfElementLocated(xpathField));
+        wait.until(ExpectedConditions.presenceOfElementLocated(xpathField));
         driver.findElement(xpathField).click();
     }
 
