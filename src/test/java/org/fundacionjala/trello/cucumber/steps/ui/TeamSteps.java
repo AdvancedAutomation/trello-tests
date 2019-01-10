@@ -1,19 +1,11 @@
 package org.fundacionjala.trello.cucumber.steps.ui;
-
-import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.fundacionjala.trello.cucumber.steps.NamesStorage;
-import org.fundacionjala.trello.pages.board.BoardCreation;
-import org.fundacionjala.trello.pages.board.BoardFields;
 import org.fundacionjala.trello.pages.board.Boards;
-import org.fundacionjala.trello.pages.board.SelectedBoard;
 import org.fundacionjala.trello.pages.common.SideBarMain;
 import org.fundacionjala.trello.pages.team.SelectedTeam;
-import org.fundacionjala.trello.pages.team.TabBoards;
-import org.fundacionjala.trello.pages.team.TabMembers;
-import org.fundacionjala.trello.pages.team.TabSettings;
 import org.fundacionjala.trello.pages.team.TeamCreation;
 import org.fundacionjala.trello.pages.team.TeamFields;
 
@@ -31,13 +23,6 @@ public class TeamSteps {
     private SelectedTeam team;
     private TeamCreation newTeam;
     private SideBarMain sideBarMain;
-    private TabSettings tabSettings;
-
-    private TabBoards tabBoards;
-    private SelectedBoard board;
-    private BoardCreation newBoardCreation;
-
-    private TabMembers tabMembers;
 
     /**
      * Constructor BoardSteps.
@@ -45,19 +30,12 @@ public class TeamSteps {
      * @param boards      Board.
      * @param team        SelectedTeam.
      * @param sideBarMain Side Bar Main.
-     * @param tabSettings Tab Settings.
-     * @param tabMembers  Tab Members.
-     * @param tabBoards   Tab Boards.
      */
     public TeamSteps(final Boards boards, final SelectedTeam team,
-                     final SideBarMain sideBarMain, final TabSettings tabSettings, final TabMembers tabMembers, final TabBoards tabBoards) {
-
+                     final SideBarMain sideBarMain) {
         this.boards = boards;
         this.team = team;
         this.sideBarMain = sideBarMain;
-        this.tabSettings = tabSettings;
-        this.tabBoards = tabBoards;
-        this.tabMembers = tabMembers;
     }
 
     /**
@@ -111,13 +89,6 @@ public class TeamSteps {
         sideBarMain.goTeamSettings();
     }
 
-    /**
-     * Step for delete a team.
-     */
-    @And("I delete the team")
-    public void iDeleteTheTeam() {
-        tabSettings.deleteTeam();
-    }
 
     /**
      * Then Step for verify if the team was deleted.
@@ -127,31 +98,6 @@ public class TeamSteps {
         // WIP
     }
 
-
-    /**
-     * Creation of a dashboard with a specs.
-     *
-     * @param dataTable input String.
-     */
-    @When("I create a team board:")
-    public void iCreateATeamBoard(final Map<BoardFields, String> dataTable) {
-
-        newBoardCreation = tabBoards.clickAddBoard();
-        board = newBoardCreation.createNewBoard(dataTable);
-        board.setPrivacy(dataTable.get(BoardFields.PRIVACY));
-        board.setBg(dataTable.get(BoardFields.BACKGROUND));
-    }
-
-
-    /**
-     * When Step for delete a member.
-     *
-     * @param dataTable Input dataTable.
-     */
-    @When("I delete the team member:")
-    public void iDeleteTheTeamMember(final Map<String, String> dataTable) {
-        tabMembers.deleteTeamMember(dataTable.get("Name"));
-    }
 
     /**
      * Step for verify if the member was deleted.
