@@ -9,8 +9,7 @@ import org.openqa.selenium.support.FindBy;
  * this class represent a team board.
  */
 public class TabBoards extends AbstractPage {
-
-    @FindBy(xpath = "//div[@class='board-tile mod-add']")
+    @FindBy(xpath = "//div[contains(@class,'tabbed-pane-main-col')]/descendant::*[@class='board-tile mod-add']")
     private WebElement createBoardButton;
 
     /**

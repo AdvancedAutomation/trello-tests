@@ -71,6 +71,15 @@ public class WebDriverAction {
     }
 
     /**
+     * element stale .
+     *
+     * @param element input .
+     */
+    public void staleElement(final WebElement element) {
+        wait.until(ExpectedConditions.stalenessOf(element));
+    }
+
+    /**
      * Method for return text By element.
      *
      * @param element By type.
@@ -94,5 +103,17 @@ public class WebDriverAction {
             return false;
         }
         return true;
+    }
+
+    /**
+     * this element make to pause.
+     */
+    public void pause() {
+        final int time = 500;
+        try {
+            Thread.sleep(time);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
