@@ -75,7 +75,7 @@ public class BoardSteps {
     }
 
     /**
-     * Stepdef for invite a member to the board.
+     * Method for verify if a member exist in the board.
      *
      * @param member Input dataTable.
      */
@@ -83,11 +83,11 @@ public class BoardSteps {
     public void iShouldSeeToTheMemberInTheBoard(final String member) {
         String accountKey = String.format(readJsonUsername, Commons.getUserFromKey(member));
         assertEquals(String.format("@%s", ENVIRONMENT.getValue(accountKey)),
-                board.clickBoardMembers(ENVIRONMENT.getValue(accountKey)));
+                board.membersManageToBoard(ENVIRONMENT.getValue(accountKey)));
     }
 
     /**
-     * Stepdef for invite a member to the board.
+     * Method to delete a member to the board.
      *
      * @param data Input dataTable.
      */
@@ -95,14 +95,14 @@ public class BoardSteps {
     public void iRemoveFromBoarToMember(final Map<String, String> data) {
         String member = Commons.getUserFromKey(data.get("Member"));
         String accountKey = String.format(readJsonUsername, member);
-        board.clickBoardMembers(ENVIRONMENT.getValue(accountKey));
+        board.membersManageToBoard(ENVIRONMENT.getValue(accountKey));
         board.deleteMember();
     }
 
     /**
-     * Stepdef for invite a member to the board.
+     * Method for verify a member not exist in the board.
      *
-     * @param member Input dataTable.
+     * @param member account type String.
      */
     @Then("I not should see to the member {string}")
     public void iNotShouldSeeToTheMember(final String member) {

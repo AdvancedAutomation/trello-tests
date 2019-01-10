@@ -173,7 +173,8 @@ public class SelectedBoard extends AbstractPage {
      * @return page object MenuBoard.
      */
     public MenuBoard clickShowMenu() {
-        if (action.existSelectorByCss(".board-menu.js-fill-board-menu.hide")) {
+        By element = By.cssSelector(".board-menu.js-fill-board-menu.hide");
+        if (action.existSelectorBy(element)) {
             action.click(linkShowMenu);
         }
         return new MenuBoard();
@@ -193,16 +194,16 @@ public class SelectedBoard extends AbstractPage {
     }
 
     /**
-     * Method for invite a member to board.
+     * Method for get a username to member.
      *
      * @param accountKey Input name of the member.
      * @return type String.
      */
-    public String clickBoardMembers(final String accountKey) {
+    public String membersManageToBoard(final String accountKey) {
         action.click(boardMembers);
-        String selectorXPath = String.format("//*[contains(@class,'board-header-popover')] //*[contains(@title,'%s')]",
-                accountKey);
-        action.clickXPath(By.xpath(selectorXPath));
+        By member = By.xpath(String.format("//*[contains(@class,'board-header-popover')] //*[contains(@title,'%s')]",
+                accountKey));
+        action.click(driver.findElement(member));
         return action.getValue(memberAccountTextField);
     }
 
@@ -216,13 +217,13 @@ public class SelectedBoard extends AbstractPage {
     }
 
     /**
-     * Method for verify a member to board.
+     * Method for verify if the member exist in the board.
      *
-     * @param element Input name of the member.
-     * @return type boolean.
+     * @param member username String type.
+     * @return type boolean if exist the member.
      */
-    public boolean verifyMemberExist(final String element) {
-        String selectorXpath = String.format("//*[contains(@title,'%s')]", element);
-        return action.existSelectorByXPath(selectorXpath);
+    public boolean verifyMemberExist(final String member) {
+        By element = By.xpath(String.format("//*[contains(@title,'%s')]", member));
+        return action.existSelectorBy(element);
     }
 }
