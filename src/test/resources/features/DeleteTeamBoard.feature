@@ -1,12 +1,12 @@
+@bvt
 Feature: Delete team board
 
   Background:
     Given I Log in with user "{credentials.owner1}"
-    And I create a team with a:
+    When I create a team with a:
       | Name        | {dateTime.Team01} |
-      | Description | any     |
-    And I store as "Team01"
-    And I create a board from "boards page" with a:
+      | Description | any               |
+    And I create a team board:
       | Title | New Board |
 
   Scenario: I delete a board to team

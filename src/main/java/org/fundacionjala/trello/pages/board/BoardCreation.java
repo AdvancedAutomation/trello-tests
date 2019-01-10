@@ -54,6 +54,7 @@ public class BoardCreation extends AbstractPage {
     public SelectedBoard createNewBoard(final Map<BoardFields, String> data) {
         EnumMap<BoardFields, ISteps> boardSteps = new EnumMap<>(BoardFields.class);
         titleString = data.get(BoardFields.TITLE);
+        action.waitVisibility(titleTextInputField);
         boardSteps.put(BoardFields.TITLE, () -> action.setValue(titleTextInputField, titleString));
         boardSteps.put(BoardFields.PRIVACY, () -> selectPrivacy(data));
         boardSteps.put(BoardFields.BACKGROUND, () -> selectBackground(data));
