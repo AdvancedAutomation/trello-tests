@@ -200,6 +200,7 @@ public class SelectedBoard extends AbstractPage {
      * @return type String.
      */
     public String membersManageToBoard(final String accountKey) {
+        action.waitVisibility(boardMembers);
         action.click(boardMembers);
         By member = By.xpath(String.format("//*[contains(@class,'board-header-popover')] //*[contains(@title,'%s')]",
                 accountKey));
@@ -209,7 +210,6 @@ public class SelectedBoard extends AbstractPage {
 
     /**
      * Method for delete a member to board.
-     *
      */
     public void deleteMember() {
         action.click(removeMemberToBoard);
