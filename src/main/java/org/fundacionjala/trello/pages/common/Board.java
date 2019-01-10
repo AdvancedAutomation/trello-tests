@@ -94,7 +94,7 @@ public class Board extends AbstractPage {
         Select dropdown = new Select(driver.findElement(By.cssSelector("select.js-select-board")));
         dropdown.selectByVisibleText(board);
         By moveButton = By.xpath("//*[@class='primary wide js-commit-position']");
-        action.waitVisibility((WebElement) moveButton);
+        action.waitVisibility(driver.findElement(moveButton));
         action.click(driver.findElement(moveButton));
     }
 
