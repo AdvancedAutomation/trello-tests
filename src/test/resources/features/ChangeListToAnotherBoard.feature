@@ -1,3 +1,4 @@
+@bvt
 Feature: Change list to another board.
 
   Background:
