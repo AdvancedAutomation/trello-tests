@@ -32,8 +32,10 @@ public class TeamSteps {
     /**
      * Constructor BoardSteps.
      *
-     * @param boards Boards.
-     * @param team   SelectedTeam.
+     * @param boards      Boards.
+     * @param team        SelectedTeam.
+     * @param sideBarMain Side Bar Main.
+     * @param tabSettings Tab Settings.
      */
     public TeamSteps(final Boards boards, final SelectedTeam team,
                      final SideBarMain sideBarMain, final TabSettings tabSettings) {
@@ -75,23 +77,37 @@ public class TeamSteps {
         assertEquals(team.getValue(), NAMES_STORAGE.getName(expected));
     }
 
+    /**
+     * Given step for select a team.
+     *
+     * @param key Input key for recognize the team.
+     */
     @Given("I select the Team {string}")
-    public void iSelectTheTeam(String key) {
+    public void iSelectTheTeam(final String key) {
         sideBarMain.selectTeam(NAMES_STORAGE.getName(key));
     }
 
+    /**
+     * When step for go to the team setting.
+     */
     @When("I go to team setting")
     public void iGoToTeamSetting() {
         sideBarMain.goTeamSettings();
     }
 
+    /**
+     * Step for delete a team.
+     */
     @And("I delete the team")
     public void iDeleteTheTeam() {
         tabSettings.deleteTeam();
     }
 
+    /**
+     * Then Step for verify if the team was deleted.
+     */
     @Then("I shouldn't see the team in the left bar")
     public void iShouldnTSeeTheTeamInTheLeftBar() {
-
+        // WIP
     }
 }

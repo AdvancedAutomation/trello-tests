@@ -5,7 +5,7 @@ import cucumber.api.java.en.Given;
 
 import org.fundacionjala.core.Environment;
 import org.fundacionjala.core.ui.Commons;
-import org.fundacionjala.trello.pages.Home;
+import org.fundacionjala.trello.pages.Navigator;
 import org.fundacionjala.trello.pages.common.Login;
 
 /**
@@ -28,9 +28,12 @@ public class CommonSteps {
         login.loginAs(ENVIRONMENT.getValue(userNameKey), ENVIRONMENT.getValue(passwordKey));
     }
 
+    /**
+     * Step to go to the main page.
+     */
     @And("I go to the trello page")
     public void iGoToTheTrelloPage() {
-        Home home = new Home();
-        home.goMainPage();
+        Navigator navigator = new Navigator();
+        navigator.goMainPage();
     }
 }
