@@ -9,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.fundacionjala.core.ui.browser.Browser;
 import org.fundacionjala.core.ui.browser.BrowserStack;
 import org.fundacionjala.core.ui.browser.Chrome;
+import org.fundacionjala.core.ui.browser.ChromeHeadless;
 import org.fundacionjala.core.ui.browser.DockerChrome;
 import org.fundacionjala.core.ui.browser.DockerFirefox;
 import org.fundacionjala.core.ui.browser.Firefox;
@@ -23,6 +24,7 @@ public final class DriverFactory {
     static {
         BROWSERS.put(DriverType.CHROME, Chrome::new);
         BROWSERS.put(DriverType.FIREFOX, Firefox::new);
+        BROWSERS.put(DriverType.CHROME_HEADLESS, ChromeHeadless::new);
         BROWSERS.put(DriverType.DOCKER_CHROME, DockerChrome::new);
         BROWSERS.put(DriverType.DOCKER_FIREFOX, DockerFirefox::new);
         BROWSERS.put(DriverType.SAUCE_LABS, SauceLabs::new);

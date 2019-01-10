@@ -2,8 +2,8 @@ package org.fundacionjala.trello.cucumber.runner;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.testng.AbstractTestNGCucumberTests;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 
 import org.fundacionjala.core.ui.driver.DriverManager;
 
@@ -14,18 +14,14 @@ import org.fundacionjala.core.ui.driver.DriverManager;
         features = "src/test/resources/features",
         glue = {"org.fundacionjala.trello.cucumber"},
         plugin = {
-                "pretty",
-                "html:target/cucumber-reports/cucumber-pretty",
-                "json:target/cucumber-reports/CucumberTestReport.json",
-                "rerun:target/cucumber-reports/rerun.txt"
+                "pretty"
         })
 public class RunCucumberTest extends AbstractTestNGCucumberTests {
-
 
     /**
      * this method execute before the tests.
      */
-    @BeforeClass
+    @BeforeTest
     public void open() {
         // implement
     }
@@ -33,8 +29,8 @@ public class RunCucumberTest extends AbstractTestNGCucumberTests {
     /**
      * this method close the browser after the features finish.
      */
-    @AfterClass
+    @AfterTest
     public void close() {
-        DriverManager.getInstance().getDriver().close();
+        DriverManager.getInstance().getDriver().quit();
     }
 }

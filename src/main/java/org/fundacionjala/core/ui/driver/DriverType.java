@@ -6,6 +6,7 @@ package org.fundacionjala.core.ui.driver;
 public enum DriverType {
     CHROME,
     FIREFOX,
+    CHROME_HEADLESS,
     DOCKER_CHROME,
     DOCKER_FIREFOX,
     SAUCE_LABS,
