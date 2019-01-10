@@ -1,3 +1,4 @@
+@bvt
 Feature: Delete Team
 
   Background:
