@@ -25,6 +25,9 @@ public class SelectedCard extends AbstractPage {
     @FindBy(css = ".js-change-card-members")
     private WebElement membersButton;
 
+    @FindBy(css = ".js-remove-member")
+    private WebElement removeFromCardButton;
+
     private By cardName = By.cssSelector(".js-card-name");
 
 
@@ -62,5 +65,29 @@ public class SelectedCard extends AbstractPage {
         action.setValue(searchMemberInputText, memberName);
         By member = By.xpath(String.format("//*[contains(text(),'%s')]/ancestor::a", memberName));
         action.click(driver.findElement(member));
+    }
+
+    /**
+     * Method for remove a member to a card.
+     *
+     * @param memberName Input string of member name.
+     */
+    public void removeMember(final String memberName) {
+        By member = By.xpath(String
+                .format("//*[contains(@class,'js-card-detail-members')]//*[contains(@title,'%s')]", memberName));
+        action.click(driver.findElement(member));
+        action.click(removeFromCardButton);
+    }
+
+    /**
+     * Method for verify if member exist in the card.
+     *
+     * @param memberName Input string of member name.
+     * @return boolean type.
+     */
+    public boolean verifyMemberExist(final String memberName) {
+        By member = By.xpath(String
+                .format("//*[contains(@class,'js-card-detail-members')]//*[contains(@title,'%s')]", memberName));
+        return action.existSelectorBy(member);
     }
 }

@@ -1,4 +1,4 @@
-Feature: Add member to Board in Trello
+Feature: Delete member to Board in Trello
 
   Background: Create list to board in Trello
     Given I Log in with user "{credentials.owner1}"
@@ -6,7 +6,7 @@ Feature: Add member to Board in Trello
       | Title | ATB |
     And I invite a member to the Board:
       | Member | "{credentials.member1}" |
-  Scenario: Add Member to board
+  Scenario: Delete Member to board
     When I remove from boar to member
       | Member | "{credentials.member1}" |
     Then I not should see to the member "{credentials.member1}"
