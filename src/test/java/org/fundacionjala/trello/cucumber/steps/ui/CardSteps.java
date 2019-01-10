@@ -24,6 +24,8 @@ public class CardSteps {
     private SelectedBoard board;
     private SelectedCard card;
 
+    private final static String MEMBER = "Member";
+    private String readJsonUsername = "$['credentials']['%s']['username']";
     /**
      * Constructor CardSteps.
      *
@@ -104,8 +106,8 @@ public class CardSteps {
      */
     @When("I assign a member to the card:")
     public void iAssignAMemberToTheCard(final Map<String, String> data) {
-        String member = Commons.getUserFromKey(data.get("Member"));
-        String accountKey = String.format("$['credentials']['%s']['username']", member);
+        String member = Commons.getUserFromKey(data.get(MEMBER));
+        String accountKey = String.format(readJsonUsername, member);
         card.assignMemberToCard(ENVIRONMENT.getValue(accountKey));
     }
 
@@ -126,8 +128,8 @@ public class CardSteps {
      */
     @When("I remove from card to user:")
     public void iRemoveFromCardToUser(final Map<String, String> data) {
-        String member = Commons.getUserFromKey(data.get("Member"));
-        String accountKey = String.format("$['credentials']['%s']['username']", member);
+        String member = Commons.getUserFromKey(data.get(MEMBER));
+        String accountKey = String.format(readJsonUsername, member);
         card.removeMember(ENVIRONMENT.getValue(accountKey));
     }
 
@@ -138,8 +140,8 @@ public class CardSteps {
      */
     @Then("I should see the card without the user:")
     public void iShouldSeeTheCardWithoutTheUser(final Map<String, String> data) {
-        String member = Commons.getUserFromKey(data.get("Member"));
-        String accountKey = String.format("$['credentials']['%s']['username']", member);
+        String member = Commons.getUserFromKey(data.get(MEMBER));
+        String accountKey = String.format(readJsonUsername, member);
         assertFalse(card.verifyMemberExist(ENVIRONMENT.getValue(accountKey)));
     }
 }
