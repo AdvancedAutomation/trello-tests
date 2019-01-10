@@ -24,7 +24,7 @@ public class CardSteps {
     private SelectedBoard board;
     private SelectedCard card;
 
-    private final String member = "Member";
+    private String member = "Member";
     private String readJsonUsername = "$['credentials']['%s']['username']";
     /**
      * Constructor CardSteps.
