@@ -16,3 +16,8 @@ Feature: Change card position.
     Given I select the card:
       | List Name | list 1 |
       | Card Name | card1  |
+    And move card to list:
+      | Name | list 2 |
+    Then I see to card in another list:
+      | List Name | list 2 |
+      | Card Name | card1  |
