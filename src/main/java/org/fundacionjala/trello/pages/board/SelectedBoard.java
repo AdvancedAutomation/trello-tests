@@ -237,10 +237,10 @@ public class SelectedBoard extends AbstractPage {
     public ListAction openMenuList(final String nameList) {
         final String ansestor = "ancestor::div[contains(@class,'list js-list-content')]";
         final String descendant = "descendant::*[@class='list-header-extras']";
-        By name = By.xpath(String.format(
+        By nameListSelected = By.xpath(String.format(
                 "//textarea[@aria-label='%s']/%s/%s",
                 nameList, ansestor, descendant));
-        action.click(driver.findElement(name));
+        action.click(driver.findElement(nameListSelected));
         return new ListAction();
     }
 
