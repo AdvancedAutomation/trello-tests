@@ -1,4 +1,4 @@
-@bvt
+@wip
 Feature: Change Commenting permissions to Board
 
   Background:
