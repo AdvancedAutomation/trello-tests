@@ -3,7 +3,6 @@ package org.fundacionjala.trello.pages.board;
 import org.fundacionjala.core.ui.AbstractPage;
 import org.fundacionjala.trello.pages.common.ISteps;
 import org.fundacionjala.trello.pages.team.TeamCreation;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -35,6 +34,10 @@ public class Boards extends AbstractPage {
 
     @FindBy(css = "[class='primary wide js-save']")
     private WebElement createTeamButton;
+
+    @FindBy(xpath = "//*[contains(text(),'Personal Boards')]/ancestor::div[contains(@class,'mod-no-sidebar')]"
+            + "/descendant::*[@class='board-tile mod-add']")
+    private WebElement createBoardButton;
 
     private static final String WAY_BOARDS_PAGE = "boards page";
     private static final String WAY_QUICK_ADD = "quick add";
@@ -75,10 +78,6 @@ public class Boards extends AbstractPage {
      * Way to create a Board by Board Button on the main page.
      */
     private void createBoardByBoardButton() {
-        String xpathAddBoard = "//*[contains(text(),'Personal Boards')]"
-                .concat("/ancestor::div[contains(@class,'mod-no-sidebar')]")
-                .concat("/descendant::*[@class='board-tile mod-add']");
-        WebElement createBoardButton = driver.findElement(By.xpath(xpathAddBoard));
         action.waitVisibility(createBoardButton);
         action.click(createBoardButton);
     }
