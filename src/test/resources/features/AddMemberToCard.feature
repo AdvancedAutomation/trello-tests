@@ -1,4 +1,4 @@
-@bvt
+@wip
 Feature: Add member to Card in Trello
 
   Background: Create list to board in Trello

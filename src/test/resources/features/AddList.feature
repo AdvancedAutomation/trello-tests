@@ -1,4 +1,4 @@
-@bvt
+@wip
 Feature: Add new list to an existing board.
   As a user owner I want to add a new list to my board.
 
