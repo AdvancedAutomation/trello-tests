@@ -38,9 +38,9 @@ public class Boards extends AbstractPage {
     @FindBy(css = ".boards-page-board-section-list .board-tile.mod-add")
     private WebElement createBoardButton;
 
-    private static final String WAY_BOARDS_PAGE = "Boards page";
-    private static final String WAY_QUICK_ADD = "Quick add";
-    private static final String WAY_BOARD_DRAWER = "Board drawer";
+    private static final String WAY_BOARDS_PAGE = "boards page";
+    private static final String WAY_QUICK_ADD = "quick add";
+    private static final String WAY_BOARD_DRAWER = "board drawer";
 
     /**
      * Method for add a board.
