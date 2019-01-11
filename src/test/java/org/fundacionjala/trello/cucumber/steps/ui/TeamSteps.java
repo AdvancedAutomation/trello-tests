@@ -143,7 +143,6 @@ public class TeamSteps {
     @When("I go to tab setting")
     public void iGoToTabSetting() {
         team.openTabSettings();
-        //   tabSettings.changePrivacyTeam();
     }
 
     /**
@@ -166,7 +165,6 @@ public class TeamSteps {
     public void iSeePrivacyTeam(final Map<String, String> dataTable) {
         final String listName = dataTable.get("privacy");
         assertTrue(tabSettings.verifyChangePrivacyToTeam(listName));
-
     }
 
 }
