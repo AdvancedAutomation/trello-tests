@@ -19,12 +19,12 @@ public class MenuSettingBoard extends AbstractPage {
     /**
      * Method for select link permmision board in the object page MenuSettings Board.
      *
-     * @param permmision Link permmision name.
+     * @param permmission Link permmision name.
      */
-    public void changeCommentingPermmisionBoard(final String permmision) {
+    public void changeCommentingPermmissionBoard(final String permmission) {
         action.click(linkCommentingPermissions);
         WebElement linkPermmisions;
-        linkPermmisions = driver.findElement(By.xpath(String.format("//*[@name='%s']", permmision)));
+        linkPermmisions = driver.findElement(By.xpath(String.format("//*[@name='%s']", permmission)));
         action.click(linkPermmisions);
     }
 }

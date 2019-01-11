@@ -42,11 +42,11 @@ public class MenuMoreBoard extends AbstractPage {
 
     /**
      * Method for get the commenting permission of the board.
-     * @param permmision String type.
+     * @param permmission String type.
      * @return string type of actual permission.
      */
-    public String getPermmisionActual(final String permmision) {
-        By actualpermmision = By.xpath(String.format("//*[@class='js-change-comments']//*[text()='%s']", permmision));
+    public String getPermmissionActual(final String permmission) {
+        By actualpermmision = By.xpath(String.format("//*[@class='js-change-comments']//*[text()='%s']", permmission));
         return action.getValue(actualpermmision);
     }
 }

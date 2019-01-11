@@ -55,7 +55,7 @@ public class SettingsBoardSteps {
      */
     @And("I change commenting permissions to {string}")
     public void iChangeCommentingPermissionsTo(final String permmision) {
-        menuSettingBoard.changeCommentingPermmisionBoard(permmision.toLowerCase());
+        menuSettingBoard.changeCommentingPermmissionBoard(permmision.toLowerCase());
     }
 
     /**
@@ -65,6 +65,6 @@ public class SettingsBoardSteps {
      */
     @Then("I should see the commenting permissions is {string}")
     public void iShouldSeeTheCommentingPermissionsIs(final String permmision) {
-        assertEquals(menuMoreBoard.getPermmisionActual(permmision), permmision);
+        assertEquals(menuMoreBoard.getPermmissionActual(permmision), permmision);
     }
 }
