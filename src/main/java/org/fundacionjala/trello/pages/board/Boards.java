@@ -78,6 +78,7 @@ public class Boards extends AbstractPage {
      * @return PO BoardsDrawer.
      */
     public BoardsDrawer clickBtnHeaderBoard() {
+        action.waitVisibility(btnTableros);
         action.click(btnTableros);
         return new BoardsDrawer();
     }

@@ -83,6 +83,15 @@ public class WebDriverAction {
     }
 
     /**
+     * Method for wait Presence of an element.
+     *
+     * @param element Input WebElement.
+     */
+    public void waitPresenceOfElement(final By element) {
+        wait.until(ExpectedConditions.presenceOfElementLocated(element));
+    }
+
+    /**
      * Method for return text By element.
      *
      * @param element By type.

@@ -113,6 +113,7 @@ public class SelectedBoard extends AbstractPage {
      */
     public String getBG() {
         if (bg != null) {
+            action.waitVisibility(windowOverlay);
             wait.until(ExpectedConditions.invisibilityOf(windowOverlay));
             return driver.findElement(By.id("classic-body")).getCssValue("background-color");
         }
@@ -204,6 +205,7 @@ public class SelectedBoard extends AbstractPage {
         action.click(boardMembers);
         By member = By.xpath(String.format("//*[contains(@class,'board-header-popover')] //*[contains(@title,'%s')]",
                 accountKey));
+        action.waitVisibility(driver.findElement(member));
         action.click(driver.findElement(member));
         return action.getValue(memberAccountTextField);
     }
