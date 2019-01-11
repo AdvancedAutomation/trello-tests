@@ -1,21 +1,21 @@
 package org.fundacionjala.core.ui.driver;
 
+import org.fundacionjala.core.Environment;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import org.fundacionjala.core.Environment;
 
 /**
  * Webdriver singleton pattern.
  */
 public final class DriverManager {
     private static DriverManager ourInstance = new DriverManager();
-    private static final int TIME_OUT_IN_SECONDS = 30;
+    private static final int TIME_OUT_IN_SECONDS = 60;
     private WebDriver driver;
     private WebDriverWait wait;
 
     /**
      * Getter of singleton instance.
+     *
      * @return DriverManager object .
      */
     public static DriverManager getInstance() {
@@ -34,6 +34,7 @@ public final class DriverManager {
 
     /**
      * Gets of WebDriver.
+     *
      * @return WebDriver object.
      */
     public WebDriver getDriver() {
@@ -42,6 +43,7 @@ public final class DriverManager {
 
     /**
      * Gets of WebDriverWait.
+     *
      * @return WebDriverWait object
      */
     public WebDriverWait getWait() {
