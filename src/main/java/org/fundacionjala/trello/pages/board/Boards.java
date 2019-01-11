@@ -44,7 +44,7 @@ public class Boards extends AbstractPage {
     private static final String WAY_BOARD_DRAWER = "board drawer";
 
     /**
-     * Method for add a board.
+     * Method for add a board using map.
      *
      * @param way way where board will be created from.
      * @return the PO of Board Creation.
