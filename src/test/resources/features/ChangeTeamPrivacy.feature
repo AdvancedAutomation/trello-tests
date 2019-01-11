@@ -1,14 +1,17 @@
+
 @wip
 Feature: change team privacy
 
   Background: Create a team in Trello
     Given I Log in with user "{credentials.owner1}"
     When I create a team with a:
-      | teamName | AT-08 |
+      | Name        | {dateTime.Team01} |
+      | Description | any               |
 
 
   Scenario: change  team privacy
-    When I select tab settings:
+    When I go to tab setting
     And I change the privacy of the team:
       | privacy | public |
-    Then I see the privacy change in team
+    Then I see the privacy change in team:
+      | privacy | public |
