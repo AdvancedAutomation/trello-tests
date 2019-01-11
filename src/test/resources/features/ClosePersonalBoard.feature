@@ -1,3 +1,4 @@
+@wip
 Feature: Delete board in Trello
 
   Background:
