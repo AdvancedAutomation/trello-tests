@@ -65,7 +65,9 @@ public class Boards extends AbstractPage {
      * @return the TeamCreation.
      */
     public TeamCreation clickCreateTeam() {
+        action.waitVisibility(btnPlus);
         action.click(btnPlus);
+        action.waitVisibility(linkCreateNewTeam);
         action.click(linkCreateNewTeam);
         return new TeamCreation();
     }
