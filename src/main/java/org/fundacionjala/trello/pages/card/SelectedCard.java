@@ -5,6 +5,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.Map;
+
 /**
  * this class represent a selected card page.
  */
@@ -27,6 +29,12 @@ public class SelectedCard extends AbstractPage {
 
     @FindBy(css = ".js-remove-member")
     private WebElement removeFromCardButton;
+
+    @FindBy(css = ".js-edit-labels")
+    private WebElement labelsCardButton;
+
+    @FindBy(css = ".pop-over-header-close-btn")
+    private WebElement closePanelLabel;
 
     private By cardName = By.cssSelector(".js-card-name");
 
@@ -89,5 +97,29 @@ public class SelectedCard extends AbstractPage {
         By member = By.xpath(String
                 .format("//*[contains(@class,'js-card-detail-members')]//*[contains(@title,'%s')]", memberName));
         return action.existSelectorBy(member);
+    }
+
+    /**
+     * Method for label change to a card.
+     *
+     * @param data Input Map of color.
+     */
+    public void changeLabel(final Map<String, String> data) {
+        action.click(labelsCardButton);
+        By labelColorButton = By.xpath(String
+                .format("//*[contains(@class,'od-selectable card-label-%s')]", data.get("Color")));
+        action.click(driver.findElement(labelColorButton));
+        action.click(closePanelLabel);
+    }
+
+    /**
+     * Method for verify if new label exist in the card.
+     *
+     * @param color Input string of label.
+     * @return boolean type.
+     */
+    public boolean getverifyLabelExist(final String color) {
+        By element = By.cssSelector(String.format(".card-label-%s", color));
+        return action.existSelectorBy(element);
     }
 }

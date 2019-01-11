@@ -6,6 +6,7 @@ import org.fundacionjala.trello.pages.board.Boards;
 import org.fundacionjala.trello.pages.board.BoardsDrawer;
 
 import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.assertEquals;
 
 /**
  * Step definitions for Delete dashboard.
@@ -46,6 +47,16 @@ public class SelectBoardStep {
     public void iDonTShouldSeeTheBoard(final String titleBoard) {
         boards.clickBtnHeaderBoard();
         assertFalse(boardsDrawer.doIsExistBoard(titleBoard));
+    }
+    /**
+     * Verify if board is close.
+     *
+     * @param titleBoard title Board.
+     */
+    @Then("The {string} board should be close")
+    public void theBoardShouldBeClose(final String titleBoard) {
+        boards.clickBtnHeaderBoard();
+        assertEquals(boardsDrawer.getTitle().split("\n")[0], String.format("%s is closed.", titleBoard));
     }
 }
 
