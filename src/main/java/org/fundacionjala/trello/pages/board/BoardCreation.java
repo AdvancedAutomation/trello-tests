@@ -17,10 +17,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
  */
 public class BoardCreation extends AbstractPage {
 
-    @FindBy(className = "subtle-input")
+    @FindBy(className = "input.subtle-input")
     private WebElement titleTextInputField;
 
-    @FindBy(css = ".create-board-form button.primary")
+    @FindBy(css = "button.primary")
     private WebElement createBoardButton;
 
     @FindBy(css = "[class='subtle-chooser-trigger unstyled-button vis-chooser-trigger']")
@@ -60,6 +60,7 @@ public class BoardCreation extends AbstractPage {
         for (BoardFields key : data.keySet()) {
             boardSteps.get(key).run();
         }
+        action.waitVisibility(createBoardButton);
         action.click(createBoardButton);
         wait.until(ExpectedConditions.invisibilityOf(windowOverlay));
         return new SelectedBoard();
