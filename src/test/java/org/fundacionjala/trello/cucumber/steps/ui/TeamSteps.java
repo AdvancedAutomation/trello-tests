@@ -16,6 +16,7 @@ import org.fundacionjala.trello.pages.team.TeamFields;
 import java.util.Map;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 /**
  * Step definitions for the Team Creation.
@@ -29,6 +30,7 @@ public class TeamSteps {
     private SideBarMain sideBarMain;
     private TabSettings tabSettings;
     private TabMembers tabMembers;
+
 
     /**
      * Constructor BoardSteps.
@@ -133,4 +135,36 @@ public class TeamSteps {
     public void iDidntSeeTheMemberInTheList(final Map<String, String> dataTable) {
         // WIP
     }
+
+
+    /**
+     * When step for go to the team setting.
+     */
+    @When("I go to tab setting")
+    public void iGoToTabSetting() {
+        team.openTabSettings();
+    }
+
+    /**
+     * When step for change the privacy of the team.
+     *
+     * @param dataTable input data table value.
+     */
+    @When("I change the privacy of the team:")
+    public void iChangePrivacyTeam(final Map<String, String> dataTable) {
+        final String listName = dataTable.get("privacy");
+        tabSettings.changePrivacyTeam(listName);
+    }
+
+    /**
+     * Then see the privacy change in team.
+     *
+     * @param dataTable input value.
+     */
+    @Then("I see the privacy change in team:")
+    public void iSeePrivacyTeam(final Map<String, String> dataTable) {
+        final String listName = dataTable.get("privacy");
+        assertTrue(tabSettings.verifyChangePrivacyToTeam(listName));
+    }
+
 }
