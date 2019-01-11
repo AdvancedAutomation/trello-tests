@@ -14,7 +14,7 @@ import java.util.Map;
 /**
  * Step definitions for the Team taps Step.
  */
-public class TeamTapsSteps {
+public class TeamTabsSteps {
     private TabSettings tabSettings;
     private TabBoards tabBoards;
     private TabMembers tabMembers;
@@ -26,7 +26,7 @@ public class TeamTapsSteps {
      * @param tabMembers  Tab Members.
      * @param tabBoards   Tab Boards.
      */
-    public TeamTapsSteps(final TabSettings tabSettings,
+    public TeamTabsSteps(final TabSettings tabSettings,
                          final TabMembers tabMembers, final TabBoards tabBoards) {
         this.tabSettings = tabSettings;
         this.tabBoards = tabBoards;

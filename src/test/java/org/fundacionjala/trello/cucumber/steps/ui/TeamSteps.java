@@ -1,4 +1,6 @@
 package org.fundacionjala.trello.cucumber.steps.ui;
+
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -6,12 +8,15 @@ import org.fundacionjala.trello.cucumber.steps.NamesStorage;
 import org.fundacionjala.trello.pages.board.Boards;
 import org.fundacionjala.trello.pages.common.SideBarMain;
 import org.fundacionjala.trello.pages.team.SelectedTeam;
+import org.fundacionjala.trello.pages.team.TabMembers;
+import org.fundacionjala.trello.pages.team.TabSettings;
 import org.fundacionjala.trello.pages.team.TeamCreation;
 import org.fundacionjala.trello.pages.team.TeamFields;
 
 import java.util.Map;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 /**
  * Step definitions for the Team Creation.
@@ -23,19 +28,25 @@ public class TeamSteps {
     private SelectedTeam team;
     private TeamCreation newTeam;
     private SideBarMain sideBarMain;
+    private TabSettings tabSettings;
+    private TabMembers tabMembers;
 
     /**
      * Constructor BoardSteps.
      *
-     * @param boards      Board.
+     * @param boards      Boards.
      * @param team        SelectedTeam.
      * @param sideBarMain Side Bar Main.
+     * @param tabSettings Tab Settings.
+     * @param tabMembers  Tab Members.
      */
     public TeamSteps(final Boards boards, final SelectedTeam team,
-                     final SideBarMain sideBarMain) {
+                     final SideBarMain sideBarMain, final TabSettings tabSettings, final TabMembers tabMembers) {
         this.boards = boards;
         this.team = team;
         this.sideBarMain = sideBarMain;
+        this.tabSettings = tabSettings;
+        this.tabMembers = tabMembers;
     }
 
     /**
@@ -48,7 +59,6 @@ public class TeamSteps {
         newTeam = boards.clickCreateTeam();
         team = newTeam.createTeam(dataTable);
         NAMES_STORAGE.addName("Team", newTeam.getUniqueNameTeam());
-
     }
 
     /**
@@ -89,7 +99,6 @@ public class TeamSteps {
         sideBarMain.goTeamSettings();
     }
 
-
     /**
      * Then Step for verify if the team was deleted.
      */
@@ -97,7 +106,6 @@ public class TeamSteps {
     public void iShouldnTSeeTheTeamInTheLeftBar() {
         // WIP
     }
-
 
     /**
      * Step for verify if the member was deleted.
@@ -107,6 +115,37 @@ public class TeamSteps {
     @Then("I didnt see the member in the list")
     public void iDidntSeeTheMemberInTheList(final Map<String, String> dataTable) {
         // WIP
+    }
+
+
+    /**
+     * When step for go to the team setting.
+     */
+    @When("I go to tab setting")
+    public void iGoToTabSetting() {
+        team.openTabSettings();
+    }
+
+    /**
+     * When step for change the privacy of the team.
+     *
+     * @param dataTable input data table value.
+     */
+    @When("I change the privacy of the team:")
+    public void iChangePrivacyTeam(final Map<String, String> dataTable) {
+        final String listName = dataTable.get("privacy");
+        tabSettings.changePrivacyTeam(listName);
+    }
+
+    /**
+     * Then see the privacy change in team.
+     *
+     * @param dataTable input value.
+     */
+    @Then("I see the privacy change in team:")
+    public void iSeePrivacyTeam(final Map<String, String> dataTable) {
+        final String listName = dataTable.get("privacy");
+        assertTrue(tabSettings.verifyChangePrivacyToTeam(listName));
     }
 
 }
