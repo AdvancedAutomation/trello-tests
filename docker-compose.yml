@@ -3,8 +3,10 @@ version: "3"
 services:
   hub:
     image: selenium/hub
+    environment:
+      SE_OPTS: "-port 7680"
     ports:
-      - "4444:4444"
+      - "7680:7680"
 
   chrome:
     image: selenium/node-chrome-debug

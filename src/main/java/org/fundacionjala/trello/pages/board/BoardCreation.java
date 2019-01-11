@@ -52,8 +52,10 @@ public class BoardCreation extends AbstractPage {
      * @return the PO of the Selected Board.
      */
     public SelectedBoard createNewBoard(final Map<BoardFields, String> data) {
+        action.pause();
         EnumMap<BoardFields, ISteps> boardSteps = new EnumMap<>(BoardFields.class);
         titleString = data.get(BoardFields.TITLE);
+        action.waitVisibility(titleTextInputField);
         boardSteps.put(BoardFields.TITLE, () -> action.setValue(titleTextInputField, titleString));
         boardSteps.put(BoardFields.PRIVACY, () -> selectPrivacy(data));
         boardSteps.put(BoardFields.BACKGROUND, () -> selectBackground(data));
@@ -62,6 +64,7 @@ public class BoardCreation extends AbstractPage {
         }
         action.waitVisibility(createBoardButton);
         action.click(createBoardButton);
+        action.waitVisibility(windowOverlay);
         wait.until(ExpectedConditions.invisibilityOf(windowOverlay));
         return new SelectedBoard();
     }

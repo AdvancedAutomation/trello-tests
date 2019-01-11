@@ -13,6 +13,7 @@ import java.util.Map;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.assertTrue;
 
 
 /**
@@ -143,5 +144,25 @@ public class CardSteps {
         String accountMember = Commons.getUserFromKey(data.get(member));
         String accountKey = String.format(readJsonUsername, accountMember);
         assertFalse(card.verifyMemberExist(ENVIRONMENT.getValue(accountKey)));
+    }
+
+    /**
+     * Method for change label.
+     *
+     * @param data Input dataTable.
+     */
+    @When("I change label to:")
+    public void iChangeLabelTo(final Map<String, String> data) {
+        card.changeLabel(data);
+    }
+
+    /**
+     * Method for verify change label.
+     *
+     * @param color String type.
+     */
+    @Then("I should see the card with label {string}")
+    public void iShouldSeeTheCardWithLabel(final String color) {
+        assertTrue(card.getverifyLabelExist(color));
     }
 }
