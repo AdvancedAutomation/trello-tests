@@ -1,5 +1,7 @@
 package org.fundacionjala.core.ui;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
@@ -12,6 +14,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  * Class with common actions to execute.
  */
 public class WebDriverAction {
+    private static final Logger LOGGER = LogManager.getLogger(WebDriverAction.class.getName());
 
     private WebDriver driver;
     private WebDriverWait wait;
@@ -100,6 +103,7 @@ public class WebDriverAction {
         try {
             driver.findElement(element);
         } catch (NoSuchElementException e) {
+            LOGGER.error("No such element: ", e);
             return false;
         }
         return true;
@@ -113,7 +117,7 @@ public class WebDriverAction {
         try {
             Thread.sleep(time);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            LOGGER.error("Error in the sleep: ", e);
         }
     }
 }
