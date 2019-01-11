@@ -10,4 +10,3 @@ Feature: Delete board in Trello
   Scenario: I delete a board as owner user
     And I close Board
     Then The "New Board" board should be close
-    
