@@ -2,6 +2,7 @@ package org.fundacionjala.trello.pages.board;
 
 import org.fundacionjala.core.ui.AbstractPage;
 import org.fundacionjala.trello.pages.card.SelectedCard;
+import org.fundacionjala.trello.pages.list.ListAction;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -226,4 +227,33 @@ public class SelectedBoard extends AbstractPage {
         By element = By.xpath(String.format("//*[contains(@title,'%s')]", member));
         return action.existSelectorBy(element);
     }
+
+    /**
+     * this method open menu lsit.
+     *
+     * @param nameList input parameter.
+     * @return object listAction type.
+     */
+    public ListAction openMenuList(final String nameList) {
+        final String ansestor = "ancestor::div[contains(@class,'list js-list-content')]";
+        final String descendant = "descendant::*[@class='list-header-extras']";
+        By name = By.xpath(String.format(
+                "//textarea[@aria-label='%s']/%s/%s",
+                nameList, ansestor, descendant));
+        action.click(driver.findElement(name));
+        return new ListAction();
+    }
+
+
+    /**
+     * Method for verify if the list exist in the board.
+     *
+     * @param nameList input  parameter.
+     * @return type boolean if exist list.
+     */
+    public boolean verifyListExist(final String nameList) {
+        By element = By.xpath(String.format("//textarea[@aria-label='%s']", nameList));
+        return action.existSelectorBy(element);
+    }
+
 }
