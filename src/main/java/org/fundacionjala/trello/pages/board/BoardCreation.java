@@ -17,7 +17,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
  */
 public class BoardCreation extends AbstractPage {
 
-    @FindBy(className = "subtle-input")
+    @FindBy(css = "input.subtle-input")
     private WebElement titleTextInputField;
 
     @FindBy(css = "button.primary")

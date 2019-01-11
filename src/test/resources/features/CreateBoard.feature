@@ -19,7 +19,7 @@ Feature: Create a Board in Trello
     Then I should see the board
 
   Scenario: Create new Board with Icon add
-    When I create a board from "icon add" with a:
+    When I create a board from "quick add" with a:
       | Title      | Caio   |
       | Privacy    | public |
       | Background | red    |

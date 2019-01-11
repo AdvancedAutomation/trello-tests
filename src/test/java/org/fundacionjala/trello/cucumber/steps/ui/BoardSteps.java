@@ -42,12 +42,12 @@ public class BoardSteps {
     /**
      * Creation of a dashboard with a specs.
      *
-     * @param dataTable input String.
-     * @param place     place where board will be created from.
+     * @param dataTable        input String.
+     * @param wayToCreateBoard wayToCreateBoard where board will be created from.
      */
     @When("I create a board from {string} with a:")
-    public void iCreateABoardWithA(final String place, final Map<BoardFields, String> dataTable) {
-        newBoardCreation = boardsPage.clickAddBoard(place);
+    public void iCreateABoardWithA(final String wayToCreateBoard, final Map<BoardFields, String> dataTable) {
+        newBoardCreation = boardsPage.clickAddBoard(wayToCreateBoard);
         board = newBoardCreation.createNewBoard(dataTable);
         board.setPrivacy(dataTable.get(BoardFields.PRIVACY));
         board.setBg(dataTable.get(BoardFields.BACKGROUND));
