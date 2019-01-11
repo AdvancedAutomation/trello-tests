@@ -43,12 +43,17 @@ public class Boards extends AbstractPage {
      */
     public BoardCreation clickAddBoard(final String place) {
         if (place.equals("icon add")) {
+            action.waitVisibility(btnPlus);
             action.click(btnPlus);
+            action.waitVisibility(linkCreateNewBoard);
             action.click(linkCreateNewBoard);
         } else if (place.equals("boards page")) {
+            action.waitVisibility(createBoardButton);
             action.click(createBoardButton);
         } else {
+            action.waitVisibility(btnTableros);
             action.click(btnTableros);
+            action.waitVisibility(linkCreateNewTablero);
             action.click(linkCreateNewTablero);
         }
         return new BoardCreation();

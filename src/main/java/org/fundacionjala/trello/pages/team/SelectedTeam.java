@@ -13,6 +13,9 @@ public class SelectedTeam extends AbstractPage {
     @FindBy(css = ".js-org-members")
     private WebElement tabMembers;
 
+    @FindBy(css = ".js-org-account")
+    private WebElement tabSettings;
+
     private By cardName = By.cssSelector(".u-inline");
 
     /**
@@ -24,6 +27,18 @@ public class SelectedTeam extends AbstractPage {
         action.waitVisibility(tabMembers);
         action.click(tabMembers);
         return new TabMembers();
+    }
+
+
+    /**
+     * Method for open tab setting.
+     *
+     * @return class TabSettings.
+     */
+    public TabSettings openTabSettings() {
+        action.waitVisibility(tabSettings);
+        action.click(tabSettings);
+        return new TabSettings();
     }
 
     /**
