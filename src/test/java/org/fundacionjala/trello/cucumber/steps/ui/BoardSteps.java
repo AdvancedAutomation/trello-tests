@@ -9,6 +9,7 @@ import org.fundacionjala.trello.pages.board.BoardCreation;
 import org.fundacionjala.trello.pages.board.BoardFields;
 import org.fundacionjala.trello.pages.board.Boards;
 import org.fundacionjala.trello.pages.board.SelectedBoard;
+import org.fundacionjala.trello.pages.list.ListAction;
 import org.junit.Assert;
 
 import java.util.Map;
@@ -108,5 +109,27 @@ public class BoardSteps {
     public void iNotShouldSeeToTheMember(final String member) {
         String accountKey = String.format(readJsonUsername, Commons.getUserFromKey(member));
         assertFalse(board.verifyMemberExist(ENVIRONMENT.getValue(accountKey)));
+    }
+
+    /**
+     * method for archive list.
+     * @param data input data table.
+     */
+    @Then("I archive the list:")
+    public void iArchiveList(final Map<String, String> data) {
+        final String nameList = data.get("Name");
+        board.openMenuList(nameList);
+        ListAction listAction = new ListAction();
+        listAction.archiveList();
+    }
+
+    /**
+     * method for verify the lsit as archive.
+     * @param table input data table.
+     */
+    @Then("I don't should see the list:")
+    public void iShouldSeeTheListsInActivity(final Map<String, String> table) {
+        final String nameList = table.get("Name");
+        assertFalse(board.verifyListExist(nameList));
     }
 }
