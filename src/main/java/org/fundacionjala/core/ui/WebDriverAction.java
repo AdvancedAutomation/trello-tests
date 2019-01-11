@@ -118,6 +118,7 @@ public class WebDriverAction {
             Thread.sleep(time);
         } catch (InterruptedException e) {
             LOGGER.error("Error in the sleep: ", e);
+            Thread.currentThread().interrupt();
         }
     }
 }
