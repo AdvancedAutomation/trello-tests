@@ -1,3 +1,4 @@
+@wip
 Feature: Delete member to Card in Trello
 
   Background: Create list to board in Trello
