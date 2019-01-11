@@ -2,6 +2,7 @@ package org.fundacionjala.trello.pages.board;
 
 import org.fundacionjala.core.ui.AbstractPage;
 import org.fundacionjala.trello.pages.card.SelectedCard;
+import org.fundacionjala.trello.pages.list.ListAction;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -113,6 +114,7 @@ public class SelectedBoard extends AbstractPage {
      */
     public String getBG() {
         if (bg != null) {
+            action.waitVisibility(windowOverlay);
             wait.until(ExpectedConditions.invisibilityOf(windowOverlay));
             return driver.findElement(By.id("classic-body")).getCssValue("background-color");
         }
@@ -204,6 +206,7 @@ public class SelectedBoard extends AbstractPage {
         action.click(boardMembers);
         By member = By.xpath(String.format("//*[contains(@class,'board-header-popover')] //*[contains(@title,'%s')]",
                 accountKey));
+        action.waitVisibility(driver.findElement(member));
         action.click(driver.findElement(member));
         return action.getValue(memberAccountTextField);
     }
@@ -226,4 +229,33 @@ public class SelectedBoard extends AbstractPage {
         By element = By.xpath(String.format("//*[contains(@title,'%s')]", member));
         return action.existSelectorBy(element);
     }
+
+    /**
+     * this method open menu lsit.
+     *
+     * @param nameList input parameter.
+     * @return object listAction type.
+     */
+    public ListAction openMenuList(final String nameList) {
+        final String ancestor = "ancestor::div[contains(@class,'list js-list-content')]";
+        final String descendant = "descendant::*[@class='list-header-extras']";
+        By nameListSelected = By.xpath(String.format(
+                "//textarea[@aria-label='%s']/%s/%s",
+                nameList, ancestor, descendant));
+        action.click(driver.findElement(nameListSelected));
+        return new ListAction();
+    }
+
+
+    /**
+     * Method for verify if the list exist in the board.
+     *
+     * @param nameList input  parameter.
+     * @return type boolean if exist list.
+     */
+    public boolean verifyListExist(final String nameList) {
+        By element = By.xpath(String.format("//textarea[@aria-label='%s']", nameList));
+        return action.existSelectorBy(element);
+    }
+
 }

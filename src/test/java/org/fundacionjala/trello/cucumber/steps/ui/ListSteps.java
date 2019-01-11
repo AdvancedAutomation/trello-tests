@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import cucumber.api.java.en.And;
+import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 
 import cucumber.api.java.en.When;
@@ -75,4 +76,35 @@ public class ListSteps {
     public void iSelectTheList(final Map<String, String> table) {
         selectedBoard.editList(table.get("Name"));
     }
-}
+
+        /**
+         * Method for change the list to the board.
+         *
+         * @param data Input dataTable.
+         */
+        @Given("I change the list to other board:")
+        public void iChangeTheListToOtherBoard ( final Map<String, String> data){
+            selectedBoard.changeListToBoard(data.get("Board"));
+        }
+
+        /**
+         * Method for open the board.
+         *
+         * @param data Input dataTable.
+         */
+        @When("I open the board")
+        public void iOpenTheBoard ( final Map<String, String> data){
+            selectedBoard.openBoardDrawer(data.get("Board"));
+        }
+
+        /**
+         * Method for verify that the list exist in the board.
+         *
+         * @param data Input dataTable.
+         */
+        @Then("I should see the list in the board:")
+        public void iShouldSeeTheListInTheBoard ( final Map<String, String> data){
+            // WIP
+
+        }
+    }

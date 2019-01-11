@@ -13,6 +13,7 @@ import java.util.Map;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.assertTrue;
 
 
 /**
@@ -26,6 +27,7 @@ public class CardSteps {
 
     private String member = "Member";
     private String readJsonUsername = "$['credentials']['%s']['username']";
+
     /**
      * Constructor CardSteps.
      *
@@ -144,4 +146,48 @@ public class CardSteps {
         String accountKey = String.format(readJsonUsername, accountMember);
         assertFalse(card.verifyMemberExist(ENVIRONMENT.getValue(accountKey)));
     }
+
+    /**
+     * Method for change label.
+     *
+     * @param data Input dataTable.
+     */
+    @When("I change label to:")
+    public void iChangeLabelTo(final Map<String, String> data) {
+        card.changeLabel(data);
+    }
+
+    /**
+     * Method for verify change label.
+     *
+     * @param color String type.
+     */
+    @Then("I should see the card with label {string}")
+    public void iShouldSeeTheCardWithLabel(final String color) {
+        assertTrue(card.getverifyLabelExist(color));
+    }
+
+    /**
+     * method for move car to another list.
+     *
+     * @param data data input data.
+     */
+    @And("move card to list:")
+    public void moveToCard(final Map<String, String> data) {
+        card.moveCard(data.get("Name"));
+        card.closeWindowsCardbutton();
+    }
+
+    /**
+     * this method verify the move card to another list.
+     * @param data input data table.
+     */
+    @And("I see to card in another list:")
+    public void verify(final Map<String, String> data) {
+        assertTrue(card.verifyMove(data.get("List Name"), data.get("Card Name")));
+    }
+
 }
+
+
+

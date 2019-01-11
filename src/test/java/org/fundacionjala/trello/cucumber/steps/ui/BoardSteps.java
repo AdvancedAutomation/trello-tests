@@ -9,6 +9,7 @@ import org.fundacionjala.trello.pages.board.BoardCreation;
 import org.fundacionjala.trello.pages.board.BoardFields;
 import org.fundacionjala.trello.pages.board.Boards;
 import org.fundacionjala.trello.pages.board.SelectedBoard;
+import org.fundacionjala.trello.pages.list.ListAction;
 import org.junit.Assert;
 
 import java.util.Map;
@@ -41,12 +42,12 @@ public class BoardSteps {
     /**
      * Creation of a dashboard with a specs.
      *
-     * @param dataTable input String.
-     * @param place     place where board will be created from.
+     * @param dataTable        input String.
+     * @param wayToCreateBoard wayToCreateBoard where board will be created from.
      */
     @When("I create a board from {string} with a:")
-    public void iCreateABoardWithA(final String place, final Map<BoardFields, String> dataTable) {
-        newBoardCreation = boardsPage.clickAddBoard(place);
+    public void iCreateABoardWithA(final String wayToCreateBoard, final Map<BoardFields, String> dataTable) {
+        newBoardCreation = boardsPage.clickAddBoard(wayToCreateBoard);
         board = newBoardCreation.createNewBoard(dataTable);
         board.setPrivacy(dataTable.get(BoardFields.PRIVACY));
         board.setBg(dataTable.get(BoardFields.BACKGROUND));
@@ -108,5 +109,27 @@ public class BoardSteps {
     public void iNotShouldSeeToTheMember(final String member) {
         String accountKey = String.format(readJsonUsername, Commons.getUserFromKey(member));
         assertFalse(board.verifyMemberExist(ENVIRONMENT.getValue(accountKey)));
+    }
+
+    /**
+     * method for archive list.
+     * @param data input data table.
+     */
+    @Then("I archive the list:")
+    public void iArchiveList(final Map<String, String> data) {
+        final String nameList = data.get("Name");
+        board.openMenuList(nameList);
+        ListAction listAction = new ListAction();
+        listAction.archiveList();
+    }
+
+    /**
+     * method for verify the lsit as archive.
+     * @param table input data table.
+     */
+    @Then("I don't should see the list:")
+    public void iShouldSeeTheListsInActivity(final Map<String, String> table) {
+        final String nameList = table.get("Name");
+        assertFalse(board.verifyListExist(nameList));
     }
 }

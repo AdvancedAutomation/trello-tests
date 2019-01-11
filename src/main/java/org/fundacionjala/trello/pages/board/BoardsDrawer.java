@@ -22,6 +22,7 @@ public class BoardsDrawer extends AbstractPage {
     @FindBy(css = "a.quiet-button.js-open-closed-boards")
     private WebElement btnSeeClosedBoards;
 
+    private By label = By.cssSelector(".big-message.quiet");
 
     /**
      * Method for select a board.
@@ -43,5 +44,13 @@ public class BoardsDrawer extends AbstractPage {
     public boolean doIsExistBoard(final String titleBoard) {
         By element = By.xpath(String.format(".js-all-boards span[title='%s']", titleBoard));
         return action.existSelectorBy(element);
+    }
+
+    /**
+     * Method Is obtein Board.
+     * @return String is displayed.
+     */
+    public String getTitle() {
+        return action.getValue(label);
     }
 }

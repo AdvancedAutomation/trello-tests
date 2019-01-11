@@ -20,7 +20,7 @@ public class Navigator extends AbstractPage {
     private WebElement trelloHeaderIcon;
 
     /**
-     * Constructor of the page object of trello.
+     * Constructor of the page object of Trello.
      */
     public Navigator() {
         driver.get("https://trello.com");
