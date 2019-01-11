@@ -14,7 +14,7 @@ addons:
     token:
       secure: "$SONAR_TOKEN"
 before_install:
-  - openssl aes-256-cbc -K $encrypted_7673b6e8444a_key -iv $encrypted_7673b6e8444a_iv
+  - openssl aes-256-cbc -K $encrypted_15bdc0751ab4_key -iv $encrypted_15bdc0751ab4_iv
     -in environment.json.enc -out environment.json -d
   - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
 script:
@@ -24,4 +24,3 @@ script:
   - gradle executeFeatures
 notifications:
   email: true
-
