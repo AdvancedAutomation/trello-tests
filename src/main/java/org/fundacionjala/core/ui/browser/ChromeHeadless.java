@@ -18,8 +18,8 @@ public class ChromeHeadless implements Browser {
     public WebDriver getBrowser() {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless");
-        options.addArguments("--disable-gpu");
+        options.addArguments("headless");
+        options.addArguments("disable-gpu");
         return new ChromeDriver(options);
     }
 }
