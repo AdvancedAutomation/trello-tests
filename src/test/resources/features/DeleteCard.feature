@@ -1,9 +1,9 @@
-@bvt
+@wip
 Feature: Delete card of a list
 
   Background: Create card to board in Trello
     Given I Log in with user "{credentials.owner1}"
-    When I create a board from "board drawer" with a:
+    And I create a board from "board drawer" with a:
       | Title | ATB |
     And I add new list into board
       | Name | List Test |
