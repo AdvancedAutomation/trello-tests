@@ -24,4 +24,3 @@ Feature: Create a Board in Trello
       | Privacy    | public |
       | Background | red    |
     Then I should see the board
-

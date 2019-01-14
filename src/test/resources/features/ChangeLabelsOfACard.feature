@@ -17,5 +17,3 @@ Feature: Change labels of a card
     When I change label to:
       | Color | green |
     Then I should see the card with label "green"
-
-

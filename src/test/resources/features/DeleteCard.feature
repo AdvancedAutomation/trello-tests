@@ -3,7 +3,7 @@ Feature: Delete card of a list
 
   Background: Create card to board in Trello
     Given I Log in with user "{credentials.owner1}"
-    When I create a board from "board drawer" with a:
+    And I create a board from "board drawer" with a:
       | Title | ATB |
     And I add new list into board
       | Name | List Test |
@@ -17,4 +17,3 @@ Feature: Delete card of a list
     When I archive the card
     And I delete the card
     Then I expect the card doesn't appear
-

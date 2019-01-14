@@ -1,4 +1,3 @@
-
 @wip
 Feature: change team privacy
 
