@@ -1,4 +1,4 @@
-@wip
+@bvt
 Feature: Add member to Team in Trello
 
   Background:
