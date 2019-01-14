@@ -1,4 +1,4 @@
-@wip
+@bvt
 Feature: Delete Team
 
   Background:
