@@ -1,4 +1,4 @@
-@bvt
+@wip
 Feature: change team privacy
 
   Background: Create a team in Trello
