@@ -1,4 +1,4 @@
-@wip
+@bvt
 Feature: Delete member to Card in Trello
 
   Background: Create list to board in Trello
@@ -22,4 +22,3 @@ Feature: Delete member to Card in Trello
       | Member | "{credentials.member1}" |
     Then I should see the card without the user:
       | Member | "{credentials.member1}" |
-

@@ -1,4 +1,4 @@
-@wip
+@bvt
 Feature: Delete card of a list
 
   Background: Create card to board in Trello
@@ -17,4 +17,3 @@ Feature: Delete card of a list
     When I archive the card
     And I delete the card
     Then I expect the card doesn't appear
-
