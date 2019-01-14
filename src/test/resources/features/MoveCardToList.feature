@@ -1,9 +1,9 @@
-@bvt
+@wip
 Feature: Change card position.
 
   Background:
     Given I Log in with user "{credentials.owner1}"
-    And I create a board from "new board" with a:
+    And I create a board from "quick add" with a:
       | Title | Test Board |
     And I add new list into board
       | Name | list 1 |
