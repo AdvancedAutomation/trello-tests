@@ -22,4 +22,3 @@ Feature: Delete member to Card in Trello
       | Member | "{credentials.member1}" |
     Then I should see the card without the user:
       | Member | "{credentials.member1}" |
-

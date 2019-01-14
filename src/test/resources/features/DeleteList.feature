@@ -10,6 +10,5 @@ Feature: Delete list to an existing board.
       | Name | new list |
 
   Scenario: I delete a list to board
-
-    And I delete the list:
+    And I delete the list
     Then I don't should see the list

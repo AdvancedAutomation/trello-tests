@@ -1,4 +1,4 @@
-@bvt
+@wip
 Feature: Archive list to an existing board.
   As a user owner I want to archive list to my board.
 

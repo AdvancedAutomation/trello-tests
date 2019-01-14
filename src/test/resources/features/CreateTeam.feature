@@ -10,4 +10,3 @@ Feature: Create a Team in Trello
       | Description | any     |
 #    And I store as "Team01"
     Then I should see the team new "Team"
-
