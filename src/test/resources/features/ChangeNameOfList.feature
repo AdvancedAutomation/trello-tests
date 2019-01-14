@@ -11,4 +11,4 @@ Feature: Edit list name
     Then I should see the list
   Scenario: As a user owner logged into trello's home page edit list name
     When I select and edit the list
-      | Name | new name |
+      | Name | new name

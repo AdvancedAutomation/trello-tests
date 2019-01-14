@@ -68,7 +68,7 @@ public class ListSteps {
     }
 
     /**
-     * Method to edit the name of list
+     * Method to edit the name of list.
      *
      * @param table new name
      */
@@ -83,7 +83,7 @@ public class ListSteps {
          * @param data Input dataTable.
          */
         @Given("I change the list to other board:")
-        public void iChangeTheListToOtherBoard ( final Map<String, String> data){
+        public void iChangeTheListToOtherBoard(final Map<String, String> data) {
             selectedBoard.changeListToBoard(data.get("Board"));
         }
 
@@ -93,7 +93,7 @@ public class ListSteps {
          * @param data Input dataTable.
          */
         @When("I open the board")
-        public void iOpenTheBoard ( final Map<String, String> data){
+        public void iOpenTheBoard(final Map<String, String> data) {
             selectedBoard.openBoardDrawer(data.get("Board"));
         }
 
@@ -103,8 +103,6 @@ public class ListSteps {
          * @param data Input dataTable.
          */
         @Then("I should see the list in the board:")
-        public void iShouldSeeTheListInTheBoard ( final Map<String, String> data){
-            // WIP
-
+        public void iShouldSeeTheListInTheBoard(final Map<String, String> data) {
         }
     }

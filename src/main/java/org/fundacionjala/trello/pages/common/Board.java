@@ -49,7 +49,7 @@ public class Board extends AbstractPage {
     private WebElement firstFoundFile;
 
     /**
-     * Method to edit a list into board
+     * Method to edit a list into board.
      *
      * @param name type String
      */
@@ -77,7 +77,7 @@ public class Board extends AbstractPage {
      * @param lists type list of string.
      */
     public void addSeveralList(final List<String> lists) {
-        for (Iterator<String> it = lists.iterator(); it.hasNext(); ) {
+        for (Iterator<String> it = lists.iterator(); it.hasNext();) {
             addList(it.next());
         }
     }
