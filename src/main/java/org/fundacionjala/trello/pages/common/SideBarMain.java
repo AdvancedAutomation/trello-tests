@@ -1,6 +1,7 @@
 package org.fundacionjala.trello.pages.common;
 
 import org.fundacionjala.core.ui.AbstractPage;
+import org.fundacionjala.trello.pages.board.SelectedBoard;
 import org.fundacionjala.trello.pages.team.SelectedTeam;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -23,6 +24,9 @@ public class SideBarMain extends AbstractPage {
     @FindBy(css = "a.link-item")
     private WebElement teamResult;
 
+    @FindBy(xpath = "//*[@class=\"board-results-list js-list\"]/child::li[@class=\"compact-board-tile\"]")
+    private WebElement boardResult;
+
     /**
      * Method for select team of the side bar.
      *
@@ -43,6 +47,7 @@ public class SideBarMain extends AbstractPage {
      * @return Selected Team Page Object.
      */
     public SelectedTeam searchTeam(final String teamName) {
+        action.waitVisibility(searchInputText);
         action.setValue(searchInputText, teamName);
         action.waitVisibility(teamResult);
         action.click(teamResult);
@@ -56,5 +61,14 @@ public class SideBarMain extends AbstractPage {
     public void goTeamSettings() {
         action.pause();
         action.click(teamSettingSideBar);
+    }
+
+    public SelectedBoard searchBoard(final String boardName) {
+        action.waitVisibility(searchInputText);
+        action.setValue(searchInputText, boardName);
+        action.waitVisibility(boardResult);
+        action.click(boardResult);
+        action.pause();
+        return new SelectedBoard();
     }
 }

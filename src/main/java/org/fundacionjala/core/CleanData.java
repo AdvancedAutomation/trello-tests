@@ -4,6 +4,10 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.fundacionjala.trello.pages.Navigator;
+import org.fundacionjala.trello.pages.board.CloseBoardWraper;
+import org.fundacionjala.trello.pages.board.MenuBoard;
+import org.fundacionjala.trello.pages.board.MenuMoreBoard;
+import org.fundacionjala.trello.pages.board.SelectedBoard;
 import org.fundacionjala.trello.pages.common.Login;
 import org.fundacionjala.trello.pages.common.SideBarMain;
 import org.fundacionjala.trello.pages.team.SelectedTeam;
@@ -35,6 +39,24 @@ public class CleanData {
             SelectedTeam selectedTeam = sideBarMain.searchTeam(team.toString());
             TabSettings tabSettings = selectedTeam.openTabSettings();
             tabSettings.deleteTeam();
+            navigator.goToMainPage();
+        }
+    }
+
+    public void cleanAllBoards(final String userKey) {
+        Login login = new Login();
+        String userNameKey = String.format("$['credentials']['%s']['username']", userKey);
+        String passwordKey = String.format("$['credentials']['%s']['password']", userKey);
+        login.loginAs(environment.getValue(userNameKey), environment.getValue(passwordKey));
+        Navigator navigator = new Navigator();
+        Object[] boardList = navigator.getAllBoards().stream().map(WebElement::getText).toArray();
+        for (Object board : boardList) {
+            SideBarMain sideBarMain = new SideBarMain();
+            SelectedBoard selectedBoard = sideBarMain.searchBoard(board.toString());
+            MenuBoard menuBoard = selectedBoard.clickShowMenu();
+            MenuMoreBoard menuMoreBoard = menuBoard.clickInLinkMore();
+            CloseBoardWraper closeBoardWraper = menuMoreBoard.selectLinkCloseBoard();
+            closeBoardWraper.selectPermanentlyCloseBoard();
             navigator.goToMainPage();
         }
     }
