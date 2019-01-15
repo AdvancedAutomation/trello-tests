@@ -110,7 +110,7 @@ public class SelectedCard extends AbstractPage {
     public boolean verifyMemberExist(final String memberName) {
         By member = By.xpath(String
                 .format("//*[contains(@class,'js-card-detail-members')]//*[contains(@title,'%s')]", memberName));
-        return action.existSelectorBy(member);
+        return action.isExistingSelector(member);
     }
 
     /**
@@ -134,7 +134,7 @@ public class SelectedCard extends AbstractPage {
      */
     public boolean getverifyLabelExist(final String color) {
         By element = By.cssSelector(String.format(".card-label-%s", color));
-        return action.existSelectorBy(element);
+        return action.isExistingSelector(element);
     }
 
 
@@ -166,7 +166,7 @@ public class SelectedCard extends AbstractPage {
         By element = By.xpath(String.format("//textarea[@aria-label='%s']/%s/%s, '%s')]",
                 listName, ancestor, descendent, cardName));
         action.waitVisibility(driver.findElement(element));
-        return action.existSelectorBy(element);
+        return action.isExistingSelector(element);
 
 
     }

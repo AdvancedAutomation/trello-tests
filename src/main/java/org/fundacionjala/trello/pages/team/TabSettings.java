@@ -31,7 +31,7 @@ public class TabSettings extends AbstractPage {
      * Method for delete the team.
      */
     public void deleteTeam() {
-        if (action.existSelectorBy(By.cssSelector("a[class='quiet-button']"))) {
+        if (action.isExistingSelector(By.cssSelector("a[class='quiet-button']"))) {
             action.waitVisibility(deleteButton);
             action.click(deleteButton);
             action.waitVisibility(confirmDeleteTeamButton);
@@ -63,7 +63,7 @@ public class TabSettings extends AbstractPage {
     public boolean verifyChangePrivacyToTeam(final String privacy) {
         By element = By.xpath(String.format(
                 "//div[@class='tabbed-pane-header-details-name']/descendant::*[@class='icon-sm icon-%s']", privacy));
-        return action.existSelectorBy(element);
+        return action.isExistingSelector(element);
     }
 
 }

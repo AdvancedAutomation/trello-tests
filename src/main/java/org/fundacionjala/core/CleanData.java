@@ -38,15 +38,18 @@ public final class CleanData {
         String passwordKey = String.format("$['credentials']['%s']['password']", userKey);
         login.loginAs(ENVIRONMENT.getValue(userNameKey), ENVIRONMENT.getValue(passwordKey));
         Navigator navigator = new Navigator();
-        List<String> teamsList = navigator.getAllTeams().stream()
-                .map(WebElement::getText)
-                .collect(Collectors.toList());
-        for (String team : teamsList) {
-            SideBarMain sideBarMain = new SideBarMain();
-            SelectedTeam selectedTeam = sideBarMain.searchTeam(team);
-            TabSettings tabSettings = selectedTeam.openTabSettings();
-            tabSettings.deleteTeam();
-            navigator.goToMainPage();
+        final List<WebElement> allTeams = navigator.getAllTeams();
+        if (allTeams != null) {
+            List<String> teamsList = allTeams.stream()
+                    .map(WebElement::getText)
+                    .collect(Collectors.toList());
+            for (String team : teamsList) {
+                SideBarMain sideBarMain = new SideBarMain();
+                SelectedTeam selectedTeam = sideBarMain.searchTeam(team);
+                TabSettings tabSettings = selectedTeam.openTabSettings();
+                tabSettings.deleteTeam();
+                navigator.goToMainPage();
+            }
         }
     }
 }

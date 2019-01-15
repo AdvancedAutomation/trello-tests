@@ -116,11 +116,11 @@ public class WebDriverAction {
      * @param element By type.
      * @return boolean if exist element.
      */
-    public boolean existSelectorBy(final By element) {
+    public boolean isExistingSelector(final By element) {
         try {
             driver.findElement(element);
         } catch (NoSuchElementException e) {
-            LOGGER.warn("Method  existSelectorBy -> FALSE");
+            LOGGER.warn("Method: isExistingSelectorBy -> FALSE");
             return false;
         }
         return true;

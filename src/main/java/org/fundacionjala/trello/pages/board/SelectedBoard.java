@@ -176,7 +176,7 @@ public class SelectedBoard extends AbstractPage {
      */
     public MenuBoard clickShowMenu() {
         By element = By.cssSelector(".board-menu.js-fill-board-menu.hide");
-        if (action.existSelectorBy(element)) {
+        if (action.isExistingSelector(element)) {
             action.click(linkShowMenu);
         }
         return new MenuBoard();
@@ -227,7 +227,7 @@ public class SelectedBoard extends AbstractPage {
      */
     public boolean verifyMemberExist(final String member) {
         By element = By.xpath(String.format("//*[contains(@title,'%s')]", member));
-        return action.existSelectorBy(element);
+        return action.isExistingSelector(element);
     }
 
     /**
@@ -255,7 +255,7 @@ public class SelectedBoard extends AbstractPage {
      */
     public boolean verifyListExist(final String nameList) {
         By element = By.xpath(String.format("//textarea[@aria-label='%s']", nameList));
-        return action.existSelectorBy(element);
+        return action.isExistingSelector(element);
     }
 
 }
