@@ -87,8 +87,8 @@ public class WebDriverAction {
      *
      * @param element Input WebElement.
      */
-    public void waitPresenceOfElement(final By element) {
-        wait.until(ExpectedConditions.presenceOfElementLocated(element));
+    public WebElement waitPresenceOfElement(final By element) {
+       return wait.until(ExpectedConditions.presenceOfElementLocated(element));
     }
 
     /**
@@ -112,7 +112,7 @@ public class WebDriverAction {
         try {
             driver.findElement(element);
         } catch (NoSuchElementException e) {
-            LOGGER.error("No such element: ", e);
+            LOGGER.error("Method existSelectorBy -> FALSE: ", e);
             return false;
         }
         return true;

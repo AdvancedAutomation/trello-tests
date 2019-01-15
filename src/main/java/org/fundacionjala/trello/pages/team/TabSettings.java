@@ -10,21 +10,30 @@ import org.openqa.selenium.support.FindBy;
  * PageObject of the Tab Settings inside of the Team page.
  */
 public class TabSettings extends AbstractPage {
+
     @FindBy(css = "a[class='quiet-button']")
     private WebElement deleteButton;
+
     @FindBy(css = ".js-confirm")
     private WebElement confirmDeleteTeamButton;
 
     @FindBy(css = ".setting-item-action")
     private WebElement changePrivacyButton;
 
+    @FindBy(css = ".home-left-sidebar-container")
+    private WebElement leftSideBarContainer;
 
     /**
      * Method for delete the team.
      */
     public void deleteTeam() {
-        action.click(deleteButton);
-        action.click(confirmDeleteTeamButton);
+        if (action.existSelectorBy(By.cssSelector("a[class='quiet-button']"))) {
+            action.waitVisibility(deleteButton);
+            action.click(deleteButton);
+            action.waitVisibility(confirmDeleteTeamButton);
+            action.click(confirmDeleteTeamButton);
+        }
+//        action.waitVisibility(leftSideBarContainer);
     }
 
     /**

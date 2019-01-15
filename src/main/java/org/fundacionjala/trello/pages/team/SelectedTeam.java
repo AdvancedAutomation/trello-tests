@@ -38,6 +38,7 @@ public class SelectedTeam extends AbstractPage {
     public TabSettings openTabSettings() {
         action.waitVisibility(tabSettings);
         action.click(tabSettings);
+        action.pause();
         return new TabSettings();
     }
 
