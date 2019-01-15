@@ -1,5 +1,8 @@
 package org.fundacionjala.trello.pages.team;
 
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.fundacionjala.core.ui.AbstractPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -10,21 +13,31 @@ import org.openqa.selenium.support.FindBy;
  * PageObject of the Tab Settings inside of the Team page.
  */
 public class TabSettings extends AbstractPage {
+    private static final Logger LOGGER = LogManager.getLogger(TabSettings.class.getName());
+
     @FindBy(css = "a[class='quiet-button']")
     private WebElement deleteButton;
+
     @FindBy(css = ".js-confirm")
     private WebElement confirmDeleteTeamButton;
 
     @FindBy(css = ".setting-item-action")
     private WebElement changePrivacyButton;
 
+    @FindBy(css = ".home-left-sidebar-container")
+    private WebElement leftSideBarContainer;
 
     /**
      * Method for delete the team.
      */
     public void deleteTeam() {
-        action.click(deleteButton);
-        action.click(confirmDeleteTeamButton);
+        if (action.isExistingSelector(By.cssSelector("a[class='quiet-button']"))) {
+            action.waitVisibility(deleteButton);
+            action.click(deleteButton);
+            action.waitVisibility(confirmDeleteTeamButton);
+            action.click(confirmDeleteTeamButton);
+            LOGGER.log(Level.INFO, "Deleted Team");
+        }
     }
 
     /**
@@ -50,7 +63,7 @@ public class TabSettings extends AbstractPage {
     public boolean verifyChangePrivacyToTeam(final String privacy) {
         By element = By.xpath(String.format(
                 "//div[@class='tabbed-pane-header-details-name']/descendant::*[@class='icon-sm icon-%s']", privacy));
-        return action.existSelectorBy(element);
+        return action.isExistingSelector(element);
     }
 
 }

@@ -2,10 +2,10 @@ package org.fundacionjala.trello.cucumber.runner;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.testng.AbstractTestNGCucumberTests;
+import org.fundacionjala.core.CleanData;
+import org.fundacionjala.core.ui.driver.DriverManager;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
-
-import org.fundacionjala.core.ui.driver.DriverManager;
 
 /**
  * Class which runs all features.
@@ -13,17 +13,18 @@ import org.fundacionjala.core.ui.driver.DriverManager;
 @CucumberOptions(
         features = "src/test/resources/features",
         glue = {"org.fundacionjala.trello.cucumber"},
-        plugin = {
-                "pretty"
-        })
+        plugin = {"pretty"},
+        tags = {"@bvt"}
+)
 public class RunCucumberTest extends AbstractTestNGCucumberTests {
+
 
     /**
      * this method execute before the tests.
      */
     @BeforeTest
     public void open() {
-        // implement
+        // Implement.
     }
 
     /**
@@ -31,6 +32,7 @@ public class RunCucumberTest extends AbstractTestNGCucumberTests {
      */
     @AfterTest
     public void close() {
+        CleanData.cleanAllTeams("owner1");
         DriverManager.getInstance().getDriver().quit();
     }
 }

@@ -72,7 +72,14 @@ public class WebDriverAction {
     public void waitVisibility(final WebElement element) {
         wait.until(ExpectedConditions.visibilityOf(element));
     }
-
+    /**
+     * Method for wait visibility of an element.
+     *
+     * @param element Input By locator.
+     */
+    public void waitVisibility(final By element) {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(element));
+    }
     /**
      * element stale .
      *
@@ -85,10 +92,11 @@ public class WebDriverAction {
     /**
      * Method for wait Presence of an element.
      *
-     * @param element Input WebElement.
+     * @param element Input By locator.
+     * @return Web Element.
      */
-    public void waitPresenceOfElement(final By element) {
-        wait.until(ExpectedConditions.presenceOfElementLocated(element));
+    public WebElement waitPresenceOfElement(final By element) {
+        return wait.until(ExpectedConditions.presenceOfElementLocated(element));
     }
 
     /**
@@ -108,11 +116,11 @@ public class WebDriverAction {
      * @param element By type.
      * @return boolean if exist element.
      */
-    public boolean existSelectorBy(final By element) {
+    public boolean isExistingSelector(final By element) {
         try {
             driver.findElement(element);
         } catch (NoSuchElementException e) {
-            LOGGER.error("No such element: ", e);
+            LOGGER.warn("Method: isExistingSelectorBy -> FALSE");
             return false;
         }
         return true;

@@ -34,6 +34,6 @@ public class CommonSteps {
     @And("I go to the trello page")
     public void iGoToTheTrelloPage() {
         Navigator navigator = new Navigator();
-        navigator.goMainPage();
+        navigator.goToMainPage();
     }
 }
