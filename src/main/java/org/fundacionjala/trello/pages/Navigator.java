@@ -59,6 +59,7 @@ public class Navigator extends AbstractPage {
     public List<WebElement> getAllTeams() {
         action.waitVisibility(teamSection);
         By teamItemsSection = By.xpath("//*[contains(@data-test-id,\"home-team-tab-section\")]");
+        action.waitVisibility(driver.findElement(teamItemsSection));
         return teamSection.findElements(teamItemsSection);
     }
 }
