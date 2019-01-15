@@ -10,29 +10,40 @@ import org.fundacionjala.trello.pages.team.SelectedTeam;
 import org.fundacionjala.trello.pages.team.TabSettings;
 import org.openqa.selenium.WebElement;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 /**
  * Class for Clean all the information generate by an account.
  */
-public class CleanData {
+public final class CleanData {
     private static final Logger LOGGER = LogManager.getLogger(CleanData.class.getName());
-    private Environment environment = Environment.getInstance();
+    private static final Environment ENVIRONMENT = Environment.getInstance();
+
+    /**
+     * Empty constructor.
+     */
+    private CleanData() {
+    }
 
     /**
      * This method cleans all the teams.
      *
      * @param userKey Key of the user.
      */
-    public void cleanAllTeams(final String userKey) {
+    public static void cleanAllTeams(final String userKey) {
         LOGGER.log(Level.INFO, String.format("Proceeding to clean all Teams of %s account", userKey));
         Login login = new Login();
         String userNameKey = String.format("$['credentials']['%s']['username']", userKey);
         String passwordKey = String.format("$['credentials']['%s']['password']", userKey);
-        login.loginAs(environment.getValue(userNameKey), environment.getValue(passwordKey));
+        login.loginAs(ENVIRONMENT.getValue(userNameKey), ENVIRONMENT.getValue(passwordKey));
         Navigator navigator = new Navigator();
-        Object[] teamsList = navigator.getAllTeams().stream().map(WebElement::getText).toArray();
-        for (Object team : teamsList) {
+        List<String> teamsList = navigator.getAllTeams().stream()
+                .map(WebElement::getText)
+                .collect(Collectors.toList());
+        for (String team : teamsList) {
             SideBarMain sideBarMain = new SideBarMain();
-            SelectedTeam selectedTeam = sideBarMain.searchTeam(team.toString());
+            SelectedTeam selectedTeam = sideBarMain.searchTeam(team);
             TabSettings tabSettings = selectedTeam.openTabSettings();
             tabSettings.deleteTeam();
             navigator.goToMainPage();

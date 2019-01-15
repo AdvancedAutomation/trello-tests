@@ -24,8 +24,7 @@ public class RunCucumberTest extends AbstractTestNGCucumberTests {
      */
     @BeforeTest
     public void open() {
-        CleanData cleanData = new CleanData();
-        cleanData.cleanAllTeams("owner1");
+        // Implement.
     }
 
     /**
@@ -33,6 +32,7 @@ public class RunCucumberTest extends AbstractTestNGCucumberTests {
      */
     @AfterTest
     public void close() {
+        CleanData.cleanAllTeams("owner1");
         DriverManager.getInstance().getDriver().quit();
     }
 }
