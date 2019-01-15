@@ -29,6 +29,13 @@ public class Board extends AbstractPage {
     @FindBy(xpath = "//*[@id=\"board\"]")
     private WebElement lists;
 
+
+    @FindBy(css = ".js-editing-target")
+    private WebElement listEdit;
+
+    @FindBy(css = ".list-header-name.mod-list-name.js-list-name-input")
+    private WebElement listEditText;
+
     @FindBy(css = "a.list-header-extras-menu.dark-hover.js-open-list-menu.icon-lg.icon-overflow-menu-horizontal")
     private WebElement menuList;
 
@@ -40,6 +47,18 @@ public class Board extends AbstractPage {
 
     @FindBy(css = ".search-results-section .compact-board-tile-link-text-name")
     private WebElement firstFoundFile;
+
+    /**
+     * Method to edit a list into board.
+     *
+     * @param name type String
+     */
+    public void editList(final String name) {
+        action.click(listEdit);
+        listEditText.clear();
+        action.setValue(listEditText, name);
+        action.click(buttonAddList);
+    }
 
 
     /**
