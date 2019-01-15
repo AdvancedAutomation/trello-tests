@@ -35,7 +35,7 @@ public class Boards extends AbstractPage {
     @FindBy(css = "[class='primary wide js-save']")
     private WebElement createTeamButton;
 
-    @FindBy(xpath = "//*[contains(text(),'Personal Boards')]/ancestor::div[contains(@class,'mod-no-sidebar')]"
+    @FindBy(xpath = "//*[@class='icon-lg icon-member']/ancestor::div[contains(@class,'mod-no-sidebar')]"
             + "/descendant::*[@class='board-tile mod-add']")
     private WebElement createBoardButton;
 

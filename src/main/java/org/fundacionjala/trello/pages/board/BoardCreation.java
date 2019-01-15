@@ -64,7 +64,6 @@ public class BoardCreation extends AbstractPage {
         }
         action.waitVisibility(createBoardButton);
         action.click(createBoardButton);
-        action.waitVisibility(windowOverlay);
         wait.until(ExpectedConditions.invisibilityOf(windowOverlay));
         return new SelectedBoard();
     }
