@@ -72,7 +72,14 @@ public class WebDriverAction {
     public void waitVisibility(final WebElement element) {
         wait.until(ExpectedConditions.visibilityOf(element));
     }
-
+    /**
+     * Method for wait visibility of an element.
+     *
+     * @param element Input By locator.
+     */
+    public void waitVisibility(final By element) {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(element));
+    }
     /**
      * element stale .
      *
