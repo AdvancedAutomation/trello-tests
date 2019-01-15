@@ -29,7 +29,6 @@ public class SideBarMain extends AbstractPage {
      * @param teamName Input String.
      */
     public void selectTeam(final String teamName) {
-        System.out.println("Enter to SelectTeam");
         action.pause();
         By teamXpath = By.xpath(
                 String.format("//*[contains(text(),'%s')]/ancestor::a[contains(@class,'tab__tabLink__3C9rw')]",
@@ -37,6 +36,12 @@ public class SideBarMain extends AbstractPage {
         action.click(driver.findElement(teamXpath));
     }
 
+    /**
+     * This method search a team using the header.
+     *
+     * @param teamName Input team name.
+     * @return Selected Team Page Object.
+     */
     public SelectedTeam searchTeam(final String teamName) {
         action.setValue(searchInputText, teamName);
         action.waitVisibility(teamResult);
@@ -45,17 +50,11 @@ public class SideBarMain extends AbstractPage {
         return new SelectedTeam();
     }
 
-
     /**
      * Method to click to the team settings.
      */
     public void goTeamSettings() {
         action.pause();
         action.click(teamSettingSideBar);
-    }
-
-    public void selectAnyTeam() {
-        action.click(teamSettingSideBar);
-        action.click(anyTeamSelected);
     }
 }

@@ -42,7 +42,20 @@ public class Navigator extends AbstractPage {
         driver.navigate().to("https://trello.com");
     }
 
+    /**
+     * This method goes to the page board of an specific user.
+     *
+     * @param user Input user.
+     */
+    public void goToPersonalPage(final String user) {
+        driver.navigate().to("https://trello.com/" + user + "/boards");
+    }
 
+    /**
+     * This method extract the list of all the teams who are inside an specific the web element.
+     *
+     * @return List of Elements.
+     */
     public List<WebElement> getAllTeams() {
         action.waitVisibility(teamSection);
         By teamItemsSection = By.xpath("//*[contains(@data-test-id,\"home-team-tab-section\")]");
