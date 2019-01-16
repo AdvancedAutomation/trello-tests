@@ -28,9 +28,6 @@ public class Navigator extends AbstractPage {
     @FindBy(xpath = "//span[@class=\"icon-lg icon-member\"]/ancestor::div[contains(@class,\"mod-no-sidebar\")]")
     private WebElement boardSection;
 
-    @FindBy(xpath = "//a[contains(@class,\"board-tile\")]/parent::li[@class=\"boards-page-board-section-list-item\"]")
-    private WebElement boards;
-
     /**
      * Method for go to the initial link.
      *
@@ -72,12 +69,19 @@ public class Navigator extends AbstractPage {
         return null;
     }
 
+    /**
+     * Method for get all board in a list.
+     *
+     * @return List of WebElements.
+     */
     public List<WebElement> getAllBoards() {
         action.waitVisibility(boardSection);
-        action.waitVisibility(boards);
-        String boardsLocator = "//a[contains(@class,\"board-tile\")]"
-                .concat("/parent::li[@class=\"boards-page-board-section-list-item\"]");
-        By boardsBy = By.xpath(boardsLocator);
-        return teamSection.findElements(boardsBy);
+        By boardsLocator = By.xpath("//a[contains(@class,\"board-tile\")]"
+                .concat("/parent::li[@class=\"boards-page-board-section-list-item\"]"));
+        if (action.isExistingSelector(boardsLocator)) {
+            action.waitVisibility(boardsLocator);
+            return boardSection.findElements(boardsLocator);
+        }
+        return null;
     }
 }

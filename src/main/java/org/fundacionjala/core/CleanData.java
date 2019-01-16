@@ -57,21 +57,30 @@ public final class CleanData {
         }
     }
 
-    public void cleanAllBoards(final String userKey) {
+    /**
+     * Method for clean all the board of an account.
+     *
+     * @param userKey Input user.
+     */
+    public static void cleanAllBoards(final String userKey) {
         Login login = new Login();
         String userNameKey = String.format("$['credentials']['%s']['username']", userKey);
         String passwordKey = String.format("$['credentials']['%s']['password']", userKey);
-        login.loginAs(environment.getValue(userNameKey), environment.getValue(passwordKey));
+        login.loginAs(ENVIRONMENT.getValue(userNameKey), ENVIRONMENT.getValue(passwordKey));
         Navigator navigator = new Navigator();
-        Object[] boardList = navigator.getAllBoards().stream().map(WebElement::getText).toArray();
-        for (Object board : boardList) {
-            SideBarMain sideBarMain = new SideBarMain();
-            SelectedBoard selectedBoard = sideBarMain.searchBoard(board.toString());
-            MenuBoard menuBoard = selectedBoard.clickShowMenu();
-            MenuMoreBoard menuMoreBoard = menuBoard.clickInLinkMore();
-            CloseBoardWraper closeBoardWraper = menuMoreBoard.selectLinkCloseBoard();
-            closeBoardWraper.selectPermanentlyCloseBoard();
-            navigator.goToMainPage();
+        final List<WebElement> allBoards = navigator.getAllBoards();
+        if (allBoards != null) {
+            List<String> boardList = allBoards.stream()
+                    .map(WebElement::getText)
+                    .collect(Collectors.toList());
+            for (String board : boardList) {
+                SideBarMain sideBarMain = new SideBarMain();
+                SelectedBoard selectedBoard = sideBarMain.searchBoard(board);
+                MenuBoard menuBoard = selectedBoard.clickShowMenu();
+                MenuMoreBoard menuMoreBoard = menuBoard.clickInLinkMore();
+                CloseBoardWraper closeBoardWraper = menuMoreBoard.selectLinkCloseBoard();
+                closeBoardWraper.selectPermanentlyCloseBoard();
+            }
         }
     }
 }

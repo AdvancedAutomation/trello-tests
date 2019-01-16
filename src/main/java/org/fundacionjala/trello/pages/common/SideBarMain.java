@@ -63,6 +63,12 @@ public class SideBarMain extends AbstractPage {
         action.click(teamSettingSideBar);
     }
 
+    /**
+     * Method for search an specific board.
+     *
+     * @param boardName Input board name.
+     * @return Selected Board PO.
+     */
     public SelectedBoard searchBoard(final String boardName) {
         action.waitVisibility(searchInputText);
         action.setValue(searchInputText, boardName);
