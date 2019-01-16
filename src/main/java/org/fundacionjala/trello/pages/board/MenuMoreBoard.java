@@ -19,22 +19,24 @@ public class MenuMoreBoard extends AbstractPage {
     @FindBy(css = ".js-open-settings")
     private WebElement linkSettingsBoard;
 
+    @FindBy(css = "input.js-confirm.full.negate")
+    private WebElement buttonConfirmClose;
+
     /**
      * Method for select link Close board in the object page MenuMoreBoard.
      *
      * @return page object CloseBoard.
      */
     public CloseBoardWraper selectLinkCloseBoard() {
+        action.waitVisibility(linkCloseBoard);
         action.click(linkCloseBoard);
-        WebElement btnConfirmClose;
-        btnConfirmClose = driver.findElement(By.cssSelector("input.js-confirm.full.negate"));
-        action.click(btnConfirmClose);
+        action.waitVisibility(buttonConfirmClose);
+        action.click(buttonConfirmClose);
         return new CloseBoardWraper();
     }
 
     /**
      * Method for select link Settings in the object page MenuMoreBoard.
-     *
      */
     public void clickInLinkSettings() {
         action.click(linkSettingsBoard);
@@ -42,6 +44,7 @@ public class MenuMoreBoard extends AbstractPage {
 
     /**
      * Method for get the commenting permission of the board.
+     *
      * @param permmission String type.
      * @return string type of actual permission.
      */

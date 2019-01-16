@@ -19,14 +19,17 @@ public class CloseBoardWraper extends AbstractPage {
     @FindBy(css = "a.js-reopen")
     private WebElement linkReOpen;
 
+    @FindBy(css = "input.js-confirm.full.negate")
+    private WebElement buttonConfirmDelete;
+
     /**
      * Method for select link Permanently Delete Board in the object page CloseBoardWraper.     *
      */
     public void selectPermanentlyCloseBoard() {
+        action.waitVisibility(linkPermanentlyDeleteBoard);
         action.click(linkPermanentlyDeleteBoard);
-        WebElement btnConfirmDelete;
-        btnConfirmDelete = driver.findElement(By.cssSelector("input.js-confirm.full.negate"));
-        action.click(btnConfirmDelete);
+        action.waitVisibility(buttonConfirmDelete);
+        action.click(buttonConfirmDelete);
         By boardNotFoundMessage = By.xpath("//*[contains(text(),\"Board not found\")]");
         action.waitVisibility(boardNotFoundMessage);
     }

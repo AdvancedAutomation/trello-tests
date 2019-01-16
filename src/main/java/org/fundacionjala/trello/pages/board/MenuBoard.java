@@ -22,6 +22,7 @@ public class MenuBoard extends AbstractPage {
      * @return page object MenuMoreBoard.
      */
     public MenuMoreBoard clickInLinkMore() {
+        action.waitVisibility(linkMore);
         action.click(linkMore);
         return new MenuMoreBoard();
     }
