@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  */
 public final class DriverManager {
     private static DriverManager ourInstance = new DriverManager();
-    private static final int TIME_OUT_IN_SECONDS = 60;
+    private static final int TIME_OUT_IN_SECONDS = 30;
     private WebDriver driver;
     private WebDriverWait wait;
 

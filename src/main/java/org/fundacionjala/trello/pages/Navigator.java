@@ -77,8 +77,9 @@ public class Navigator extends AbstractPage {
      */
     public List<WebElement> getAllBoards() {
         action.waitVisibility(boardSection);
-        By boardsLocator = By.xpath("//a[contains(@class,\"board-tile\")]"
-                .concat("/parent::li[@class=\"boards-page-board-section-list-item\"]"));
+        By boardsLocator = By.xpath("//*[@class=\"icon-lg icon-member\"]"
+                .concat("/ancestor::div[contains(@class,\"mod-no-sidebar\")]")
+                .concat("/descendant::a[contains(@class,\"board-tile\")]"));
         if (action.isExistingSelector(boardsLocator)) {
             action.waitVisibility(boardsLocator);
             return boardSection.findElements(boardsLocator);
