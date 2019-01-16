@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -24,6 +25,9 @@ public class Navigator extends AbstractPage {
 
     @FindBy(xpath = "//div[contains(@class,\"section-header\")]/ancestor::div[contains(@class,\"tab__tabSection\")]")
     private WebElement teamSection;
+
+    @FindBy(xpath = "//span[@class=\"icon-lg icon-member\"]/ancestor::div[contains(@class,\"mod-no-sidebar\")]")
+    private WebElement boardSection;
 
     /**
      * Method for go to the initial link.
@@ -63,6 +67,22 @@ public class Navigator extends AbstractPage {
             action.waitVisibility(teamItemsSection);
             return teamSection.findElements(teamItemsSection);
         }
-        return null;
+        return Collections.emptyList();
+    }
+
+    /**
+     * Method for get all board in a list.
+     *
+     * @return List of WebElements.
+     */
+    public List<WebElement> getAllBoards() {
+        action.waitVisibility(boardSection);
+        By boardsLocator = By.xpath("//a[contains(@class,\"board-tile\")]"
+                .concat("/parent::li[@class=\"boards-page-board-section-list-item\"]"));
+        if (action.isExistingSelector(boardsLocator)) {
+            action.waitVisibility(boardsLocator);
+            return boardSection.findElements(boardsLocator);
+        }
+        return Collections.emptyList();
     }
 }

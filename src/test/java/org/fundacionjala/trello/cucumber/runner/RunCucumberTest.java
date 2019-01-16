@@ -33,6 +33,7 @@ public class RunCucumberTest extends AbstractTestNGCucumberTests {
     @AfterTest
     public void close() {
         CleanData.cleanAllTeams("owner1");
+        CleanData.cleanAllBoards("owner1");
         DriverManager.getInstance().getDriver().quit();
     }
 }
