@@ -175,8 +175,9 @@ public class SelectedBoard extends AbstractPage {
      * @return page object MenuBoard.
      */
     public MenuBoard clickShowMenu() {
-        By element = By.cssSelector(".board-menu.js-fill-board-menu.hide");
+        By element = By.cssSelector("[class='board-menu js-fill-board-menu hide']");
         if (action.isExistingSelector(element)) {
+            action.waitVisibility(linkShowMenu);
             action.click(linkShowMenu);
         }
         return new MenuBoard();
