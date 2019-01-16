@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -66,7 +67,7 @@ public class Navigator extends AbstractPage {
             action.waitVisibility(teamItemsSection);
             return teamSection.findElements(teamItemsSection);
         }
-        return null;
+        return Collections.emptyList();
     }
 
     /**
@@ -82,6 +83,6 @@ public class Navigator extends AbstractPage {
             action.waitVisibility(boardsLocator);
             return boardSection.findElements(boardsLocator);
         }
-        return null;
+        return Collections.emptyList();
     }
 }

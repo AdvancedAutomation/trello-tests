@@ -42,18 +42,15 @@ public final class CleanData {
         String passwordKey = String.format("$['credentials']['%s']['password']", userKey);
         login.loginAs(ENVIRONMENT.getValue(userNameKey), ENVIRONMENT.getValue(passwordKey));
         Navigator navigator = new Navigator();
-        final List<WebElement> allTeams = navigator.getAllTeams();
-        if (allTeams != null) {
-            List<String> teamsList = allTeams.stream()
-                    .map(WebElement::getText)
-                    .collect(Collectors.toList());
-            for (String team : teamsList) {
-                SideBarMain sideBarMain = new SideBarMain();
-                SelectedTeam selectedTeam = sideBarMain.searchTeam(team);
-                TabSettings tabSettings = selectedTeam.openTabSettings();
-                tabSettings.deleteTeam();
-                navigator.goToMainPage();
-            }
+        List<String> teamsList = navigator.getAllTeams().stream()
+                .map(WebElement::getText)
+                .collect(Collectors.toList());
+        for (String team : teamsList) {
+            SideBarMain sideBarMain = new SideBarMain();
+            SelectedTeam selectedTeam = sideBarMain.searchTeam(team);
+            TabSettings tabSettings = selectedTeam.openTabSettings();
+            tabSettings.deleteTeam();
+            navigator.goToMainPage();
         }
     }
 
@@ -68,19 +65,16 @@ public final class CleanData {
         String passwordKey = String.format("$['credentials']['%s']['password']", userKey);
         login.loginAs(ENVIRONMENT.getValue(userNameKey), ENVIRONMENT.getValue(passwordKey));
         Navigator navigator = new Navigator();
-        final List<WebElement> allBoards = navigator.getAllBoards();
-        if (allBoards != null) {
-            List<String> boardList = allBoards.stream()
-                    .map(WebElement::getText)
-                    .collect(Collectors.toList());
-            for (String board : boardList) {
-                SideBarMain sideBarMain = new SideBarMain();
-                SelectedBoard selectedBoard = sideBarMain.searchBoard(board);
-                MenuBoard menuBoard = selectedBoard.clickShowMenu();
-                MenuMoreBoard menuMoreBoard = menuBoard.clickInLinkMore();
-                CloseBoardWraper closeBoardWraper = menuMoreBoard.selectLinkCloseBoard();
-                closeBoardWraper.selectPermanentlyCloseBoard();
-            }
+        List<String> boardList = navigator.getAllBoards().stream()
+                .map(WebElement::getText)
+                .collect(Collectors.toList());
+        for (String board : boardList) {
+            SideBarMain sideBarMain = new SideBarMain();
+            SelectedBoard selectedBoard = sideBarMain.searchBoard(board);
+            MenuBoard menuBoard = selectedBoard.clickShowMenu();
+            MenuMoreBoard menuMoreBoard = menuBoard.clickInLinkMore();
+            CloseBoardWraper closeBoardWraper = menuMoreBoard.selectLinkCloseBoard();
+            closeBoardWraper.selectPermanentlyCloseBoard();
         }
     }
 }

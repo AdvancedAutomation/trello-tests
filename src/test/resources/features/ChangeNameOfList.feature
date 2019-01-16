@@ -1,4 +1,4 @@
-@bvt
+@wip
 Feature: Edit list name
 
   Background:
