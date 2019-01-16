@@ -37,6 +37,8 @@ public class TabSettings extends AbstractPage {
             action.waitVisibility(confirmDeleteTeamButton);
             action.click(confirmDeleteTeamButton);
             LOGGER.log(Level.INFO, "Deleted Team");
+            By homeLeftSideBar = By.cssSelector(".home-left-sidebar-container");
+            action.waitVisibility(homeLeftSideBar);
         }
     }
 

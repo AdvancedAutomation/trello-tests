@@ -50,7 +50,6 @@ public final class CleanData {
             SelectedTeam selectedTeam = sideBarMain.searchTeam(team);
             TabSettings tabSettings = selectedTeam.openTabSettings();
             tabSettings.deleteTeam();
-            navigator.goToMainPage();
         }
     }
 
