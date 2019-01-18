@@ -114,7 +114,6 @@ public class SelectedBoard extends AbstractPage {
      */
     public String getBG() {
         if (bg != null) {
-            action.waitVisibility(windowOverlay);
             wait.until(ExpectedConditions.invisibilityOf(windowOverlay));
             return driver.findElement(By.id("classic-body")).getCssValue("background-color");
         }
