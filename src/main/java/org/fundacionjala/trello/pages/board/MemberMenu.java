@@ -37,7 +37,8 @@ public class MemberMenu extends AbstractPage {
                 .format("//*[@class='js-select-locale'] [contains(text(),'%s')]", language));
         action.waitVisibility(labelColorButton);
         action.click(driver.findElement(labelColorButton));
-        action.pause();
+        final int timeOut = 1000;
+        action.pause(timeOut);
         By homeLeftSideBar = By.cssSelector(".home-left-sidebar-container");
         action.waitVisibility(homeLeftSideBar);
     }
