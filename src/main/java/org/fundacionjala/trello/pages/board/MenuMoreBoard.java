@@ -13,7 +13,7 @@ public class MenuMoreBoard extends AbstractPage {
     /**
      * Find span.
      */
-    @FindBy(css = ".board-menu-navigation-item-link.js-close-board")
+    @FindBy(xpath = "//a[contains(@class,\"js-close-board\")]")
     private WebElement linkCloseBoard;
 
     @FindBy(css = ".js-open-settings")
