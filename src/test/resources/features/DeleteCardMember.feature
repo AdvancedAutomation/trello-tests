@@ -1,4 +1,4 @@
-@bvt
+@wip
 Feature: Delete member to Card in Trello
 
   Background: Create list to board in Trello
@@ -9,7 +9,7 @@ Feature: Delete member to Card in Trello
       | Name | To Do |
     And I create a card with a:
       | card1 |
-    When I invite a member to the Board:
+    And I invite a member to the Board:
       | Member | "{credentials.member1}" |
     And I select the card:
       | List Name | To Do |

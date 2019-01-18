@@ -23,8 +23,8 @@ public class MenuSettingBoard extends AbstractPage {
      */
     public void changeCommentingPermmissionBoard(final String permmission) {
         action.click(linkCommentingPermissions);
-        WebElement linkPermmisions;
-        linkPermmisions = driver.findElement(By.xpath(String.format("//*[@name='%s']", permmission)));
-        action.click(linkPermmisions);
+        final By linkPermissionLocator = By.xpath(String.format("//*[@name='%s']", permmission));
+        action.waitVisibility(linkPermissionLocator);
+        action.click(linkPermissionLocator);
     }
 }

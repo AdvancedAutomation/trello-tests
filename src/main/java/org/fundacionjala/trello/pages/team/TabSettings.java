@@ -52,8 +52,8 @@ public class TabSettings extends AbstractPage {
         action.click(changePrivacyButton);
         By element = By.xpath(String.format("//ul[@class='pop-over-list']/descendant::*[@class='icon-sm icon-%s']",
                 privacy));
-        action.waitVisibility(driver.findElement(element));
-        action.click(driver.findElement(element));
+        action.waitVisibility(element);
+        action.click(element);
     }
 
     /**

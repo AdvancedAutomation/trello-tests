@@ -1,16 +1,14 @@
 package org.fundacionjala.trello.cucumber.steps.ui;
 
-import java.util.List;
-import java.util.Map;
-
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
-
 import cucumber.api.java.en.When;
-import org.fundacionjala.trello.pages.board.SelectedBoard;
 import org.fundacionjala.trello.pages.common.Board;
 import org.fundacionjala.trello.pages.common.SideBarMain;
+
+import java.util.List;
+import java.util.Map;
 
 import static org.testng.Assert.assertEquals;
 
