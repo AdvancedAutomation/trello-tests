@@ -94,7 +94,7 @@ public class SelectedBoard extends AbstractPage {
      * @return name.
      */
     public String getName() {
-        wait.until(ExpectedConditions.visibilityOf(name));
+        action.waitVisibility(name);
         return name.getText();
     }
 
@@ -103,7 +103,7 @@ public class SelectedBoard extends AbstractPage {
      */
     public String getPrivacy() {
         if (privacy != null) {
-            wait.until(ExpectedConditions.visibilityOf(privacyName));
+            action.waitVisibility(privacyName);
             return privacyName.getText().toLowerCase();
         }
         return null;
@@ -115,7 +115,9 @@ public class SelectedBoard extends AbstractPage {
     public String getBG() {
         if (bg != null) {
             wait.until(ExpectedConditions.invisibilityOf(windowOverlay));
-            return driver.findElement(By.id("classic-body")).getCssValue("background-color");
+            By body = By.id("classic-body");
+            action.waitVisibility(body);
+            return driver.findElement(body).getCssValue("background-color");
         }
         return null;
     }
