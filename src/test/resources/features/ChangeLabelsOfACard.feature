@@ -1,4 +1,4 @@
-@wip
+@bvt
 Feature: Change labels of a card
 
   Background: Create board in Trello

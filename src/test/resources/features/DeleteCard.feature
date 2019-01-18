@@ -1,4 +1,4 @@
-@wip
+@bvt
 Feature: Delete card of a list
 
   Background: Create card to board in Trello

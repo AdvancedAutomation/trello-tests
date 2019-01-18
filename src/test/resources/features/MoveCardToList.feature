@@ -1,4 +1,4 @@
-@wip
+@bvt
 Feature: Change card position.
 
   Background:
