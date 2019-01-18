@@ -44,7 +44,7 @@ public class ListSteps {
      */
     @Then("I should see the list")
     public void iShouldSeeTheList() {
-        assertEquals(selectedBoard.getTitleList(), listName);
+        assertEquals(selectedBoard.getTitleList(listName), listName);
     }
 
     /**
