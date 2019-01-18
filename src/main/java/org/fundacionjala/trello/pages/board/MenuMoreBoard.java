@@ -28,6 +28,7 @@ public class MenuMoreBoard extends AbstractPage {
      * @return page object CloseBoard.
      */
     public CloseBoardWraper selectLinkCloseBoard() {
+        action.pause();
         action.waitVisibility(linkCloseBoard);
         action.click(linkCloseBoard);
         action.waitVisibility(buttonConfirmClose);
