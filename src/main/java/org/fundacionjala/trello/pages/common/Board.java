@@ -4,10 +4,8 @@ import org.fundacionjala.core.ui.AbstractPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -28,7 +26,6 @@ public class Board extends AbstractPage {
 
     @FindBy(xpath = "//*[@id=\"board\"]")
     private WebElement lists;
-
 
     @FindBy(css = ".js-editing-target")
     private WebElement listEdit;
@@ -67,7 +64,13 @@ public class Board extends AbstractPage {
      * @param name type String
      */
     public void addList(final String name) {
+        By addAnotherList = By.cssSelector("[class=\"js-add-list list-wrapper mod-add is-idle\"]");
+        if (action.isExistingSelector(addAnotherList)) {
+            action.click(driver.findElement(addAnotherList));
+        }
+        action.waitVisibility(listName);
         action.setValue(listName, name);
+        action.waitVisibility(buttonAddList);
         action.click(buttonAddList);
     }
 
@@ -77,20 +80,23 @@ public class Board extends AbstractPage {
      * @param lists type list of string.
      */
     public void addSeveralList(final List<String> lists) {
-        for (Iterator<String> it = lists.iterator(); it.hasNext();) {
-            addList(it.next());
+        for (String list : lists) {
+            addList(list);
         }
     }
 
     /**
      * Method to return title list.
      *
+     * @param listName Input name of an specific list.
      * @return tittle list.
      */
-    public String getTitleList() {
-        wait.until(ExpectedConditions.visibilityOf(headerList));
-        String selector = "textarea.list-header-name.mod-list-name.js-list-name-input";
-        return headerList.findElement(By.cssSelector(selector)).getText();
+    public String getTitleList(final String listName) {
+        action.waitVisibility(headerList);
+        String listXpath = String.format("//*[text()=\"%s\" and contains(@class,\"js-list-name-input\")]", listName);
+        By listSelectorName = By.xpath(listXpath);
+        action.waitVisibility(listSelectorName);
+        return headerList.findElement(listSelectorName).getText();
     }
 
     /**

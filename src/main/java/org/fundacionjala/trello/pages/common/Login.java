@@ -1,23 +1,17 @@
 package org.fundacionjala.trello.pages.common;
 
 import org.fundacionjala.core.ui.AbstractPage;
+import org.fundacionjala.trello.pages.Navigator;
 import org.fundacionjala.trello.pages.board.Boards;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /**
  * this class represented a login page.
  */
 public class Login extends AbstractPage {
-
-    /**
-     * Constructor of the page object of Login.
-     */
-    public Login() {
-        driver.get("https://trello.com/login");
-    }
 
     /**
      * Find user name text field of page.
@@ -44,6 +38,7 @@ public class Login extends AbstractPage {
      * @param strUserName value of input.
      */
     protected void setUserNameTextField(final String strUserName) {
+        action.waitVisibility(userNameTextField);
         action.setValue(userNameTextField, strUserName);
     }
 
@@ -53,6 +48,7 @@ public class Login extends AbstractPage {
      * @param strPassword value of input.
      */
     protected void setPasswordTextField(final String strPassword) {
+        action.waitVisibility(passwordTextField);
         action.setValue(passwordTextField, strPassword);
     }
 
@@ -62,6 +58,7 @@ public class Login extends AbstractPage {
      * @return value of Boards type.
      */
     protected Boards clickLoginButton() {
+        action.waitVisibility(loginButton);
         action.click(loginButton);
         return new Boards();
     }
@@ -74,7 +71,11 @@ public class Login extends AbstractPage {
      * @return value of board type.
      */
     public Boards loginAs(final String strUserName, final String strPasword) {
-        if (wait.until(ExpectedConditions.visibilityOf(loginButton)).isDisplayed()) {
+        By loggedIcon = By.xpath(String.format("//*[@class=\"member-initials\" and contains(@title,\"%s\")]",
+                strUserName));
+        if (action.isExistingSelector(loggedIcon)) {
+            new Navigator().goToPersonalPage(strUserName);
+        } else {
             //Fill user name
             this.setUserNameTextField(strUserName);
             //Fill passwordTextField
