@@ -72,6 +72,7 @@ public class WebDriverAction {
     public void waitVisibility(final WebElement element) {
         wait.until(ExpectedConditions.visibilityOf(element));
     }
+
     /**
      * Method for wait visibility of an element.
      *
@@ -80,6 +81,7 @@ public class WebDriverAction {
     public void waitVisibility(final By element) {
         wait.until(ExpectedConditions.visibilityOfElementLocated(element));
     }
+
     /**
      * element stale .
      *
@@ -133,6 +135,20 @@ public class WebDriverAction {
         final int time = 500;
         try {
             Thread.sleep(time);
+        } catch (InterruptedException e) {
+            LOGGER.error("Error in the sleep: ", e);
+            Thread.currentThread().interrupt();
+        }
+    }
+
+    /**
+     * This element make to pause.
+     *
+     * @param timeOut Input time to wait.
+     */
+    public void pause(final int timeOut) {
+        try {
+            Thread.sleep(timeOut);
         } catch (InterruptedException e) {
             LOGGER.error("Error in the sleep: ", e);
             Thread.currentThread().interrupt();

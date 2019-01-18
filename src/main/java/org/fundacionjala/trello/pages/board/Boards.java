@@ -3,6 +3,7 @@ package org.fundacionjala.trello.pages.board;
 import org.fundacionjala.core.ui.AbstractPage;
 import org.fundacionjala.trello.pages.common.ISteps;
 import org.fundacionjala.trello.pages.team.TeamCreation;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -26,7 +27,7 @@ public class Boards extends AbstractPage {
     @FindBy(css = "a.js-new-board")
     private WebElement linkCreateNewBoard;
 
-    @FindBy(css = "a.header-btn.js-open-add-menu")
+    @FindBy(css = "[class=\"header-btn js-open-add-menu\"]")
     private WebElement btnPlus;
 
     @FindBy(css = "input#org-display-name.js-autofocus.js-display-name")
@@ -72,6 +73,8 @@ public class Boards extends AbstractPage {
      * Way to create a Board by Quick Add from Header.
      */
     private void createBoardByQuickAdd() {
+        By homeLeftSideBar = By.cssSelector(".home-left-sidebar-container");
+        action.waitVisibility(homeLeftSideBar);
         action.waitVisibility(btnPlus);
         action.click(btnPlus);
         action.waitVisibility(linkCreateNewBoard);
