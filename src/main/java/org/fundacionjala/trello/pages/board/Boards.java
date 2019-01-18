@@ -62,7 +62,9 @@ public class Boards extends AbstractPage {
      * Way to create a Board from Board Drawer.
      */
     private void createBoardByBoardDrawer() {
+        action.waitVisibility(btnTableros);
         action.click(btnTableros);
+        action.waitVisibility(linkCreateNewTablero);
         action.click(linkCreateNewTablero);
     }
 
@@ -70,7 +72,9 @@ public class Boards extends AbstractPage {
      * Way to create a Board by Quick Add from Header.
      */
     private void createBoardByQuickAdd() {
+        action.waitVisibility(btnPlus);
         action.click(btnPlus);
+        action.waitVisibility(linkCreateNewBoard);
         action.click(linkCreateNewBoard);
     }
 
