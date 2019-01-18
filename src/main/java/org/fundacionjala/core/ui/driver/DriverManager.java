@@ -30,6 +30,7 @@ public final class DriverManager {
         driver = DriverFactory.getDriverManager(DriverType.valueOf(browser));
         driver.manage().window().maximize();
         wait = new WebDriverWait(driver, TIME_OUT_IN_SECONDS);
+        driver.get("https://trello.com/login");
     }
 
     /**

@@ -52,7 +52,10 @@ public class Navigator extends AbstractPage {
      * @param user Input user.
      */
     public void goToPersonalPage(final String user) {
-        driver.navigate().to("https://trello.com/" + user + "/boards");
+        By homeLeftSideBar = By.cssSelector(".home-left-sidebar-container");
+        if (!action.isExistingSelector(homeLeftSideBar)) {
+            driver.navigate().to("https://trello.com/" + user + "/boards");
+        }
     }
 
     /**

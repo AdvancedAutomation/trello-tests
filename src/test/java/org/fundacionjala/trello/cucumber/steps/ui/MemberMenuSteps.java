@@ -40,6 +40,6 @@ public class MemberMenuSteps {
      */
     @Then("I should see the page in {string}")
     public void iShouldSeeThePageIn(final String language) {
-        //WIP
+        memberMenu.verifyLanguage(language);
     }
 }
