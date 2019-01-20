@@ -154,7 +154,8 @@ public class SelectedCard extends AbstractPage {
     public void moveCard(final String card) {
         action.waitVisibility(moveCardButton);
         action.click(moveCardButton);
-        Select dropdown = new Select(driver.findElement(By.cssSelector("select.js-select-list")));
+        By listLocator = By.cssSelector("select.js-select-list");
+        Select dropdown = new Select(driver.findElement(listLocator));
         dropdown.selectByVisibleText(card);
         By moveButton = By.xpath("//*[@class='primary wide js-submit']");
         action.waitVisibility(moveButton);

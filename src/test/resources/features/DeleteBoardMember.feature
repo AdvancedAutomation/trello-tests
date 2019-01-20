@@ -1,4 +1,4 @@
-@bvt
+@wip
 Feature: Delete member to Board in Trello
 
   Background: Create list to board in Trello
