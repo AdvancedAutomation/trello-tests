@@ -66,7 +66,7 @@ public class Board extends AbstractPage {
     public void addList(final String name) {
         By addAnotherList = By.cssSelector("[class=\"js-add-list list-wrapper mod-add is-idle\"]");
         if (action.isExistingSelector(addAnotherList)) {
-            action.click(driver.findElement(addAnotherList));
+            action.click(addAnotherList);
         }
         action.waitVisibility(listName);
         action.setValue(listName, name);
@@ -114,13 +114,17 @@ public class Board extends AbstractPage {
      * @param board type String board destination.
      */
     public void changeListToBoard(final String board) {
+        action.waitVisibility(menuList);
         action.click(menuList);
+        action.waitVisibility(moveList);
         action.click(moveList);
-        Select dropdown = new Select(driver.findElement(By.cssSelector("select.js-select-board")));
+        By selectBoard = By.cssSelector("select.js-select-board");
+        Select dropdown = new Select(driver.findElement(selectBoard));
         dropdown.selectByVisibleText(board);
         By moveButton = By.xpath("//*[@class='primary wide js-commit-position']");
-        action.waitVisibility(driver.findElement(moveButton));
-        action.click(driver.findElement(moveButton));
+        action.waitVisibility(moveButton);
+        action.click(moveButton);
+        action.pause();
     }
 
     /**

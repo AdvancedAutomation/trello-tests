@@ -1,4 +1,4 @@
-@wip
+@bvt
 Feature: Delete team member
 
   Background:

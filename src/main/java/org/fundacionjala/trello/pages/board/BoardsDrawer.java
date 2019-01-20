@@ -26,18 +26,20 @@ public class BoardsDrawer extends AbstractPage {
 
     /**
      * Method for select a board.
+     *
      * @param titleBoard input String.
      * @return the PO of Selected Board.
      */
     public SelectedBoard clickBoardInBoardsDrawer(final String titleBoard) {
-        WebElement board = driver.findElement(
-                By.cssSelector(String.format(".js-all-boards span[title='%s']", titleBoard)));
-        action.click(board);
+        By boardLocator = By.cssSelector(String.format(".js-all-boards span[title='%s']", titleBoard));
+        action.waitVisibility(boardLocator);
+        action.click(boardLocator);
         return new SelectedBoard();
     }
 
     /**
      * Method Is Displayed Board.
+     *
      * @param titleBoard String.
      * @return boolean is displayed.
      */
@@ -48,6 +50,7 @@ public class BoardsDrawer extends AbstractPage {
 
     /**
      * Method Is obtein Board.
+     *
      * @return String is displayed.
      */
     public String getTitle() {

@@ -128,9 +128,13 @@ public class SelectedBoard extends AbstractPage {
      * @param data is name of card.
      */
     public void clickAddCard(final String data) {
+        action.waitVisibility(menuList);
         action.click(menuList);
+        action.waitVisibility(addCardList);
         action.click(addCardList);
+        action.waitVisibility(inputTitleCardTextfield);
         action.setValue(inputTitleCardTextfield, data);
+        action.waitVisibility(addCardButton);
         action.click(addCardButton);
     }
 
@@ -146,8 +150,8 @@ public class SelectedBoard extends AbstractPage {
         String secondLevel = "/ancestor::div[contains(@class, 'js-list-content')]";
         String thirdLevel = String.format("/descendant::span[contains(text(), '%s')]", cardName);
         String cardXpath = firstLevel.concat(secondLevel).concat(thirdLevel);
-        WebElement buttonOpenCard = driver.findElement(By.xpath(cardXpath));
-
+        By buttonOpenCard = By.xpath(cardXpath);
+        action.waitVisibility(buttonOpenCard);
         action.click(buttonOpenCard);
         return new SelectedCard();
     }
@@ -190,10 +194,13 @@ public class SelectedBoard extends AbstractPage {
      * @param memberName Input name of the member.
      */
     public void inviteMember(final String memberName) {
+        action.waitVisibility(inviteMemberButton);
         action.click(inviteMemberButton);
+        action.waitVisibility(searchMemberInputText);
         action.setValue(searchMemberInputText, memberName);
         action.waitVisibility(memberItem);
         action.click(memberItem);
+        action.waitVisibility(sendInvitationButton);
         action.click(sendInvitationButton);
     }
 
@@ -208,8 +215,8 @@ public class SelectedBoard extends AbstractPage {
         action.click(boardMembers);
         By member = By.xpath(String.format("//*[contains(@class,'board-header-popover')] //*[contains(@title,'%s')]",
                 accountKey));
-        action.waitVisibility(driver.findElement(member));
-        action.click(driver.findElement(member));
+        action.waitVisibility(member);
+        action.click(member);
         return action.getValue(memberAccountTextField);
     }
 
@@ -244,7 +251,8 @@ public class SelectedBoard extends AbstractPage {
         By nameListSelected = By.xpath(String.format(
                 "//textarea[@aria-label='%s']/%s/%s",
                 nameList, ancestor, descendant));
-        action.click(driver.findElement(nameListSelected));
+        action.waitVisibility(nameListSelected);
+        action.click(nameListSelected);
         return new ListAction();
     }
 

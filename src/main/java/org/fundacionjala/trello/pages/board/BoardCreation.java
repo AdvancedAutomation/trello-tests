@@ -1,16 +1,16 @@
 package org.fundacionjala.trello.pages.board;
 
-import java.util.Collections;
-import java.util.EnumMap;
-import java.util.HashMap;
-import java.util.Map;
-
 import org.fundacionjala.core.ui.AbstractPage;
 import org.fundacionjala.trello.pages.common.ISteps;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import java.util.Collections;
+import java.util.EnumMap;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Page object of the Creation page for boards.
@@ -77,8 +77,9 @@ public class BoardCreation extends AbstractPage {
         backgroundString = data.get(BoardFields.BACKGROUND);
         final String locatorColorBackgroundButton = String.format("[class='background-grid-trigger'][title='%s']",
                 backgroundString);
-        WebElement selectColorBgButton = driver.findElement(By.cssSelector(locatorColorBackgroundButton));
-        action.click(selectColorBgButton);
+        By colorBgButton = By.cssSelector(locatorColorBackgroundButton);
+        action.waitVisibility(colorBgButton);
+        action.click(colorBgButton);
     }
 
     /**
@@ -90,11 +91,13 @@ public class BoardCreation extends AbstractPage {
         privacyString = data.get(BoardFields.PRIVACY).toLowerCase();
         if (privacyString.equals("public")) {
             action.click(selectPrivacyButton);
-            final String locatorPrivacyButton = String.format("[class$='icon-%s']", privacyString);
-            WebElement selectPrivacyList = driver.findElement(By.cssSelector(locatorPrivacyButton));
-            action.click(selectPrivacyList);
-            WebElement confirmPublicButton = driver.findElement(By.cssSelector("[class='js-confirm full primary']"));
-            action.click(confirmPublicButton);
+            String privacyButtonString = String.format("[class$='icon-%s']", privacyString);
+            By privacyButtonLocator = By.cssSelector(privacyButtonString);
+            action.waitVisibility(privacyButtonLocator);
+            action.click(privacyButtonLocator);
+            By confirmPublicButtonLocator = By.cssSelector("[class='js-confirm full primary']");
+            action.waitVisibility(confirmPublicButtonLocator);
+            action.click(confirmPublicButtonLocator);
         }
     }
 

@@ -37,7 +37,8 @@ public class SideBarMain extends AbstractPage {
         By teamXpath = By.xpath(
                 String.format("//*[contains(text(),'%s')]/ancestor::a[contains(@class,'tab__tabLink__3C9rw')]",
                         teamName));
-        action.click(driver.findElement(teamXpath));
+        action.waitVisibility(teamXpath);
+        action.click(teamXpath);
     }
 
     /**

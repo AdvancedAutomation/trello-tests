@@ -83,10 +83,15 @@ public class SelectedCard extends AbstractPage {
      * @param memberName Input string of member name.
      */
     public void assignMemberToCard(final String memberName) {
+        final int timeOutForRefresh = 2000;
+        action.pause(timeOutForRefresh);
+        action.waitVisibility(membersButton);
         action.click(membersButton);
+        action.waitVisibility(searchMemberInputText);
         action.setValue(searchMemberInputText, memberName);
         By member = By.xpath(String.format("//*[contains(text(),'%s')]/ancestor::a", memberName));
-        action.click(driver.findElement(member));
+        action.waitVisibility(member);
+        action.click(member);
     }
 
     /**
@@ -97,7 +102,9 @@ public class SelectedCard extends AbstractPage {
     public void removeMember(final String memberName) {
         By member = By.xpath(String
                 .format("//*[contains(@class,'js-card-detail-members')]//*[contains(@title,'%s')]", memberName));
-        action.click(driver.findElement(member));
+        action.waitVisibility(member);
+        action.click(member);
+        action.waitVisibility(removeFromCardButton);
         action.click(removeFromCardButton);
     }
 
@@ -122,7 +129,8 @@ public class SelectedCard extends AbstractPage {
         action.click(labelsCardButton);
         By labelColorButton = By.xpath(String
                 .format("//*[contains(@class,'od-selectable card-label-%s')]", data.get("Color")));
-        action.click(driver.findElement(labelColorButton));
+        action.waitVisibility(labelColorButton);
+        action.click(labelColorButton);
         action.click(closePanelLabel);
     }
 
@@ -144,12 +152,14 @@ public class SelectedCard extends AbstractPage {
      * @param card type String board destination.
      */
     public void moveCard(final String card) {
+        action.waitVisibility(moveCardButton);
         action.click(moveCardButton);
-        Select dropdown = new Select(driver.findElement(By.cssSelector("select.js-select-list")));
+        By listLocator = By.cssSelector("select.js-select-list");
+        Select dropdown = new Select(driver.findElement(listLocator));
         dropdown.selectByVisibleText(card);
         By moveButton = By.xpath("//*[@class='primary wide js-submit']");
-        action.waitVisibility(driver.findElement(moveButton));
-        action.click(driver.findElement(moveButton));
+        action.waitVisibility(moveButton);
+        action.click(moveButton);
     }
 
     /**
@@ -165,7 +175,7 @@ public class SelectedCard extends AbstractPage {
         final String descendent = "descendant::span[contains(text()";
         By element = By.xpath(String.format("//textarea[@aria-label='%s']/%s/%s, '%s')]",
                 listName, ancestor, descendent, cardName));
-        action.waitVisibility(driver.findElement(element));
+        action.waitVisibility(element);
         return action.isExistingSelector(element);
 
 

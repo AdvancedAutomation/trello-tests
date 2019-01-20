@@ -9,14 +9,14 @@ import org.openqa.selenium.support.FindBy;
  */
 public class ListAction extends AbstractPage {
     @FindBy(css = ".js-close-list")
-    private WebElement arciveListButton;
+    private WebElement archiveListButton;
 
 
     /**
      * Method to archive list.
      */
     public void archiveList() {
-        action.waitVisibility(arciveListButton);
-        action.click(arciveListButton);
+        action.waitVisibility(archiveListButton);
+        action.click(archiveListButton);
     }
 }

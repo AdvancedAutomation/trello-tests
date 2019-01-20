@@ -65,6 +65,15 @@ public class WebDriverAction {
     }
 
     /**
+     * Click event with By.
+     *
+     * @param locator Input By.
+     */
+    public void click(final By locator) {
+        wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
+    }
+
+    /**
      * Method for wait visibility of an element.
      *
      * @param element Input WebElement.

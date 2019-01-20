@@ -5,8 +5,8 @@ import cucumber.api.java.en.Then;
 import org.fundacionjala.trello.pages.board.Boards;
 import org.fundacionjala.trello.pages.board.BoardsDrawer;
 
-import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertFalse;
 
 /**
  * Step definitions for Delete dashboard.
@@ -48,6 +48,7 @@ public class SelectBoardStep {
         boards.clickBtnHeaderBoard();
         assertFalse(boardsDrawer.doIsExistBoard(titleBoard));
     }
+
     /**
      * Verify if board is close.
      *
