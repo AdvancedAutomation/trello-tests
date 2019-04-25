@@ -2,6 +2,8 @@ package org.fundacionjala.trello.cucumber.steps.ui;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import org.fundacionjala.core.Environment;
 import org.fundacionjala.core.ui.Commons;
 import org.fundacionjala.trello.pages.Navigator;
@@ -13,14 +15,9 @@ import org.fundacionjala.trello.pages.common.Login;
 public class CommonSteps {
 
     private static final Environment ENVIRONMENT = Environment.getInstance();
-    private Login login;
 
-    /**
-     * Constructor of Common steps.
-     */
-    public CommonSteps() {
-        login = new Login();
-    }
+    @Autowired
+    private Login login;
 
     /**
      * Given of in page of trello.

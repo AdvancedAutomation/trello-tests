@@ -131,7 +131,7 @@ public class WebDriverAction {
         try {
             driver.findElement(element);
         } catch (NoSuchElementException e) {
-            LOGGER.warn("Method: isExistingSelectorBy -> FALSE");
+            LOGGER.warn(String.format("Method: isExistingSelectorBy -> FALSE %s", element));
             return false;
         }
         return true;

@@ -1,4 +1,4 @@
-package org.fundacionjala.trello.cucumber.steps;
+package org.fundacionjala.core;
 
 import java.util.HashMap;
 import java.util.Map;

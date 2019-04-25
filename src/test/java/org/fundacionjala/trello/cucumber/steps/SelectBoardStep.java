@@ -2,6 +2,8 @@ package org.fundacionjala.trello.cucumber.steps;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import org.fundacionjala.trello.pages.board.Boards;
 import org.fundacionjala.trello.pages.board.BoardsDrawer;
 
@@ -13,19 +15,11 @@ import static org.testng.Assert.assertFalse;
  */
 public class SelectBoardStep {
 
+    @Autowired
     private Boards boards;
-    private BoardsDrawer boardsDrawer;
 
-    /**
-     * Constructor Delete Board.
-     *
-     * @param boards       Boards.
-     * @param boardsDrawer BoardsDrawer.     *
-     */
-    public SelectBoardStep(final Boards boards, final BoardsDrawer boardsDrawer) {
-        this.boards = boards;
-        this.boardsDrawer = boardsDrawer;
-    }
+    @Autowired
+    private BoardsDrawer boardsDrawer;
 
     /**
      * Select Board by title.

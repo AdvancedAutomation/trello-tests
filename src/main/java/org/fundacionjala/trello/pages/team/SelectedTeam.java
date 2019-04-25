@@ -1,13 +1,16 @@
 package org.fundacionjala.trello.pages.team;
 
-import org.fundacionjala.core.ui.AbstractPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.springframework.stereotype.Component;
+
+import org.fundacionjala.core.ui.AbstractPage;
 
 /**
  * this class represent a selected card page.
  */
+@Component
 public class SelectedTeam extends AbstractPage {
 
     @FindBy(css = ".js-org-members")

@@ -1,13 +1,16 @@
 package org.fundacionjala.trello.pages.board;
 
-import org.fundacionjala.core.ui.AbstractPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.springframework.stereotype.Component;
+
+import org.fundacionjala.core.ui.AbstractPage;
 
 /**
  * This class represent the page object Close Board Wraper.
  */
+@Component
 public class CloseBoardWraper extends AbstractPage {
 
     /**

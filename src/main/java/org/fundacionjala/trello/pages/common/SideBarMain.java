@@ -1,15 +1,18 @@
 package org.fundacionjala.trello.pages.common;
 
-import org.fundacionjala.core.ui.AbstractPage;
-import org.fundacionjala.trello.pages.board.SelectedBoard;
-import org.fundacionjala.trello.pages.team.SelectedTeam;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.springframework.stereotype.Component;
+
+import org.fundacionjala.core.ui.AbstractPage;
+import org.fundacionjala.trello.pages.board.SelectedBoard;
+import org.fundacionjala.trello.pages.team.SelectedTeam;
 
 /**
  * Class of the SideBard of Main page.
  */
+@Component
 public class SideBarMain extends AbstractPage {
 
     @FindBy(xpath = "//*[contains(text(),'Settings')]")

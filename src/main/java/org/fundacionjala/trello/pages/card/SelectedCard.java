@@ -1,16 +1,19 @@
 package org.fundacionjala.trello.pages.card;
 
-import org.fundacionjala.core.ui.AbstractPage;
+import java.util.Map;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
+import org.springframework.stereotype.Component;
 
-import java.util.Map;
+import org.fundacionjala.core.ui.AbstractPage;
 
 /**
  * this class represent a selected card page.
  */
+@Component
 public class SelectedCard extends AbstractPage {
 
     @FindBy(css = ".js-archive-card")

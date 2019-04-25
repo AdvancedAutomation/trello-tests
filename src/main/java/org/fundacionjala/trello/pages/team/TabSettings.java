@@ -3,15 +3,17 @@ package org.fundacionjala.trello.pages.team;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.fundacionjala.core.ui.AbstractPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.springframework.stereotype.Component;
 
+import org.fundacionjala.core.ui.AbstractPage;
 
 /**
  * PageObject of the Tab Settings inside of the Team page.
  */
+@Component
 public class TabSettings extends AbstractPage {
     private static final Logger LOGGER = LogManager.getLogger(TabSettings.class.getName());
 

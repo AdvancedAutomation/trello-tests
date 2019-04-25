@@ -1,7 +1,11 @@
 package org.fundacionjala.trello.cucumber.steps.ui;
 
+import java.util.Map;
+
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.When;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import org.fundacionjala.trello.pages.board.BoardCreation;
 import org.fundacionjala.trello.pages.board.BoardFields;
 import org.fundacionjala.trello.pages.board.SelectedBoard;
@@ -9,29 +13,19 @@ import org.fundacionjala.trello.pages.team.TabBoards;
 import org.fundacionjala.trello.pages.team.TabMembers;
 import org.fundacionjala.trello.pages.team.TabSettings;
 
-import java.util.Map;
-
 /**
  * Step definitions for the Team taps Step.
  */
 public class TeamTabsSteps {
-    private TabSettings tabSettings;
-    private TabBoards tabBoards;
-    private TabMembers tabMembers;
 
-    /**
-     * Constructor BoardSteps.
-     *
-     * @param tabSettings Tab Settings.
-     * @param tabMembers  Tab Members.
-     * @param tabBoards   Tab Boards.
-     */
-    public TeamTabsSteps(final TabSettings tabSettings,
-                         final TabMembers tabMembers, final TabBoards tabBoards) {
-        this.tabSettings = tabSettings;
-        this.tabBoards = tabBoards;
-        this.tabMembers = tabMembers;
-    }
+    @Autowired
+    private TabSettings tabSettings;
+
+    @Autowired
+    private TabBoards tabBoards;
+
+    @Autowired
+    private TabMembers tabMembers;
 
     /**
      * Step for delete a team.

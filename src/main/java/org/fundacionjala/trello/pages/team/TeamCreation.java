@@ -1,17 +1,20 @@
 package org.fundacionjala.trello.pages.team;
 
+import java.util.EnumMap;
+import java.util.Map;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.springframework.stereotype.Component;
+
 import org.fundacionjala.core.ui.AbstractPage;
 import org.fundacionjala.core.ui.Commons;
 import org.fundacionjala.trello.pages.common.ISteps;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-
-import java.util.EnumMap;
-import java.util.Map;
 
 /**
  * Page object of the TeamCreation page from Trello.
  */
+@Component
 public class TeamCreation extends AbstractPage {
 
     private String uniqueNameTeam;

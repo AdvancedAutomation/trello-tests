@@ -1,20 +1,23 @@
 package org.fundacionjala.trello.pages.board;
 
-import org.fundacionjala.core.ui.AbstractPage;
-import org.fundacionjala.trello.pages.common.ISteps;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-
 import java.util.Collections;
 import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.springframework.stereotype.Component;
+
+import org.fundacionjala.core.ui.AbstractPage;
+import org.fundacionjala.trello.pages.common.ISteps;
+
 /**
  * Page object of the Creation page for boards.
  */
+@Component
 public class BoardCreation extends AbstractPage {
 
     @FindBy(css = "input.subtle-input")

@@ -1,17 +1,20 @@
 package org.fundacionjala.trello.pages.board;
 
-import org.fundacionjala.core.ui.AbstractPage;
-import org.fundacionjala.trello.pages.common.ISteps;
-import org.fundacionjala.trello.pages.team.TeamCreation;
+import java.util.HashMap;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
+import org.fundacionjala.core.ui.AbstractPage;
+import org.fundacionjala.trello.pages.common.ISteps;
+import org.fundacionjala.trello.pages.team.TeamCreation;
 
 /**
  * Page object of the Boards page from Trello.
  */
+@Component
 public class Boards extends AbstractPage {
 
     @FindBy(xpath = "//*[contains(@class,'quiet-button js-add-board')]")

@@ -1,16 +1,19 @@
 package org.fundacionjala.trello.pages.common;
 
-import org.fundacionjala.core.ui.AbstractPage;
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
+import org.springframework.stereotype.Component;
 
-import java.util.List;
+import org.fundacionjala.core.ui.AbstractPage;
 
 /**
  * Class board.
  */
+@Component
 public class Board extends AbstractPage {
     @FindBy(css = ".list-name-input")
     private WebElement listName;

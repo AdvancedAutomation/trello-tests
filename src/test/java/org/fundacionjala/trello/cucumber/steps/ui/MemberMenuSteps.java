@@ -2,21 +2,18 @@ package org.fundacionjala.trello.cucumber.steps.ui;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import org.fundacionjala.trello.pages.board.MemberMenu;
 
 /**
  * Step definitions for the Member Menu.
  */
 public class MemberMenuSteps {
+
+    @Autowired
     private MemberMenu memberMenu;
 
-    /**
-     * Contructor of MemberMenuSteps.
-     * @param memberMenu menu Menber.
-     */
-    public MemberMenuSteps(final MemberMenu memberMenu) {
-        this.memberMenu = memberMenu;
-    }
     /**
      * Step to go open header member menu.
      */

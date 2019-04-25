@@ -1,15 +1,17 @@
 package org.fundacionjala.trello.cucumber.steps.ui;
 
+import java.util.Map;
+
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import org.fundacionjala.core.Environment;
 import org.fundacionjala.core.ui.Commons;
 import org.fundacionjala.trello.pages.board.SelectedBoard;
 import org.fundacionjala.trello.pages.card.SelectedCard;
-
-import java.util.Map;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertFalse;
@@ -19,23 +21,19 @@ import static org.testng.Assert.assertTrue;
 /**
  * Step definitions for the Dashboard Creation.
  */
+
 public class CardSteps {
 
     private static final Environment ENVIRONMENT = Environment.getInstance();
+
+    @Autowired
     private SelectedBoard board;
+
+    @Autowired
     private SelectedCard card;
 
     private String member = "Member";
     private String readJsonUsername = "$['credentials']['%s']['username']";
-
-    /**
-     * Constructor CardSteps.
-     *
-     * @param board SelectedDashBoard.
-     */
-    public CardSteps(final SelectedBoard board) {
-        this.board = board;
-    }
 
     /**
      * Creation of a card with a specs.

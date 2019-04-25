@@ -1,17 +1,19 @@
 package org.fundacionjala.trello.cucumber.steps.ui;
 
+import java.util.Map;
+
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.fundacionjala.trello.cucumber.steps.NamesStorage;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import org.fundacionjala.core.NamesStorage;
 import org.fundacionjala.trello.pages.board.Boards;
 import org.fundacionjala.trello.pages.common.SideBarMain;
 import org.fundacionjala.trello.pages.team.SelectedTeam;
 import org.fundacionjala.trello.pages.team.TabSettings;
 import org.fundacionjala.trello.pages.team.TeamCreation;
 import org.fundacionjala.trello.pages.team.TeamFields;
-
-import java.util.Map;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
@@ -22,27 +24,21 @@ import static org.testng.Assert.assertTrue;
 public class TeamSteps {
 
     private static final NamesStorage NAMES_STORAGE = NamesStorage.getInstance();
-    private Boards boards;
-    private SelectedTeam team;
-    private TeamCreation newTeam;
-    private SideBarMain sideBarMain;
-    private TabSettings tabSettings;
 
-    /**
-     * Constructor BoardSteps.
-     *
-     * @param boards      Boards.
-     * @param team        SelectedTeam.
-     * @param sideBarMain Side Bar Main.
-     * @param tabSettings Tab Settings.
-     */
-    public TeamSteps(final Boards boards, final SelectedTeam team,
-                     final SideBarMain sideBarMain, final TabSettings tabSettings) {
-        this.boards = boards;
-        this.team = team;
-        this.sideBarMain = sideBarMain;
-        this.tabSettings = tabSettings;
-    }
+    @Autowired
+    private Boards boards;
+
+    @Autowired
+    private SelectedTeam team;
+
+    @Autowired
+    private TeamCreation newTeam;
+
+    @Autowired
+    private SideBarMain sideBarMain;
+
+    @Autowired
+    private TabSettings tabSettings;
 
     /**
      * Creation of a Team with a specs.

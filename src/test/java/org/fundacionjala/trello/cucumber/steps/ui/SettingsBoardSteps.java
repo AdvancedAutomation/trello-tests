@@ -3,6 +3,8 @@ package org.fundacionjala.trello.cucumber.steps.ui;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import org.fundacionjala.trello.pages.board.MenuBoard;
 import org.fundacionjala.trello.pages.board.MenuMoreBoard;
 import org.fundacionjala.trello.pages.board.MenuSettingBoard;
@@ -16,26 +18,17 @@ import static org.testng.Assert.assertEquals;
  */
 public class SettingsBoardSteps {
 
+    @Autowired
     private SelectedBoard selectedBoard;
+
+    @Autowired
     private MenuBoard menuBoard;
+
+    @Autowired
     private MenuMoreBoard menuMoreBoard;
+
+    @Autowired
     private MenuSettingBoard menuSettingBoard;
-
-    /**
-     * Constructor Settings Board.
-     * @param selectedBoard selectedBoard.
-     * @param menuBoard menuBoard.
-     * @param menuMoreBoard menuMoreBoard.
-     * @param menuSettingBoard closeBoardWraper.
-     */
-
-    public SettingsBoardSteps(final SelectedBoard selectedBoard, final MenuBoard menuBoard,
-                              final MenuMoreBoard menuMoreBoard, final MenuSettingBoard menuSettingBoard) {
-        this.selectedBoard = selectedBoard;
-        this.menuBoard = menuBoard;
-        this.menuMoreBoard = menuMoreBoard;
-        this.menuSettingBoard = menuSettingBoard;
-    }
 
     /**
      * Method to I go to board settings.

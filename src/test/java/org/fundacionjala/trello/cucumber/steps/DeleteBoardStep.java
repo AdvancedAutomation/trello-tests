@@ -2,6 +2,8 @@ package org.fundacionjala.trello.cucumber.steps;
 
 
 import cucumber.api.java.en.And;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import org.fundacionjala.trello.pages.board.CloseBoardWraper;
 import org.fundacionjala.trello.pages.board.MenuBoard;
 import org.fundacionjala.trello.pages.board.MenuMoreBoard;
@@ -12,25 +14,17 @@ import org.fundacionjala.trello.pages.board.SelectedBoard;
  */
 public class DeleteBoardStep {
 
+    @Autowired
     private SelectedBoard selectedBoard;
-    private MenuBoard menuBoard;
-    private MenuMoreBoard menuMoreBoard;
-    private CloseBoardWraper closeBoardWraper;
 
-    /**
-     * Constructor Delete Board.
-     * @param selectedBoard selectedBoard.
-     * @param menuBoard menuBoard.
-     * @param menuMoreBoard menuMoreBoard.
-     * @param closeBoardWraper closeBoardWraper.
-     */
-    public DeleteBoardStep(final SelectedBoard selectedBoard, final MenuBoard menuBoard,
-                           final MenuMoreBoard menuMoreBoard, final CloseBoardWraper closeBoardWraper) {
-        this.selectedBoard = selectedBoard;
-        this.menuBoard = menuBoard;
-        this.menuMoreBoard = menuMoreBoard;
-        this.closeBoardWraper = closeBoardWraper;
-    }
+    @Autowired
+    private MenuBoard menuBoard;
+
+    @Autowired
+    private MenuMoreBoard menuMoreBoard;
+
+    @Autowired
+    private CloseBoardWraper closeBoardWraper;
 
     /**
      * Close open board.

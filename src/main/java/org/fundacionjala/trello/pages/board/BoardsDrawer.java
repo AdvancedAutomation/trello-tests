@@ -1,13 +1,16 @@
 package org.fundacionjala.trello.pages.board;
 
-import org.fundacionjala.core.ui.AbstractPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.springframework.stereotype.Component;
+
+import org.fundacionjala.core.ui.AbstractPage;
 
 /**
  * Page object of the Boards Drawer side bar page from Trello.
  */
+@Component
 public class BoardsDrawer extends AbstractPage {
 
     @FindBy(css = "a.quiet-button.js-add-board")

@@ -1,16 +1,19 @@
 package org.fundacionjala.trello.pages.common;
 
-import org.fundacionjala.core.ui.AbstractPage;
-import org.fundacionjala.trello.pages.Navigator;
-import org.fundacionjala.trello.pages.board.Boards;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
+import org.springframework.stereotype.Component;
+
+import org.fundacionjala.core.ui.AbstractPage;
+import org.fundacionjala.trello.pages.Navigator;
+import org.fundacionjala.trello.pages.board.Boards;
 
 /**
  * this class represented a login page.
  */
+@Component
 public class Login extends AbstractPage {
 
     /**

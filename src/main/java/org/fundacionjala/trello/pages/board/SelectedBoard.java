@@ -1,16 +1,19 @@
 package org.fundacionjala.trello.pages.board;
 
-import org.fundacionjala.core.ui.AbstractPage;
-import org.fundacionjala.trello.pages.card.SelectedCard;
-import org.fundacionjala.trello.pages.list.ListAction;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.springframework.stereotype.Component;
+
+import org.fundacionjala.core.ui.AbstractPage;
+import org.fundacionjala.trello.pages.card.SelectedCard;
+import org.fundacionjala.trello.pages.list.ListAction;
 
 /**
  * this class represent a selected board page.
  */
+@Component
 public class SelectedBoard extends AbstractPage {
 
     /**

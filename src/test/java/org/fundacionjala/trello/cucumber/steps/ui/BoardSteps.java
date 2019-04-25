@@ -1,8 +1,13 @@
 package org.fundacionjala.trello.cucumber.steps.ui;
 
+import java.util.Map;
+
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.junit.Assert;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import org.fundacionjala.core.Environment;
 import org.fundacionjala.core.ui.Commons;
 import org.fundacionjala.trello.pages.board.BoardCreation;
@@ -10,9 +15,6 @@ import org.fundacionjala.trello.pages.board.BoardFields;
 import org.fundacionjala.trello.pages.board.Boards;
 import org.fundacionjala.trello.pages.board.SelectedBoard;
 import org.fundacionjala.trello.pages.list.ListAction;
-import org.junit.Assert;
-
-import java.util.Map;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertFalse;
@@ -23,21 +25,15 @@ import static org.testng.Assert.assertFalse;
 public class BoardSteps {
 
     private static final Environment ENVIRONMENT = Environment.getInstance();
+
+    @Autowired
     private Boards boardsPage;
+
+    @Autowired
     private SelectedBoard board;
+
     private BoardCreation newBoardCreation;
     private String readJsonUsername = "$['credentials']['%s']['username']";
-
-    /**
-     * Constructor BoardSteps.
-     *
-     * @param boardsPage Boards.
-     * @param dashBoard  SelectedDashBoard.
-     */
-    public BoardSteps(final Boards boardsPage, final SelectedBoard dashBoard) {
-        this.boardsPage = boardsPage;
-        this.board = dashBoard;
-    }
 
     /**
      * Creation of a dashboard with a specs.

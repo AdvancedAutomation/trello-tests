@@ -1,14 +1,16 @@
 package org.fundacionjala.trello.cucumber.steps.ui;
 
+import java.util.List;
+import java.util.Map;
+
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import org.fundacionjala.trello.pages.common.Board;
 import org.fundacionjala.trello.pages.common.SideBarMain;
-
-import java.util.List;
-import java.util.Map;
 
 import static org.testng.Assert.assertEquals;
 
@@ -16,17 +18,10 @@ import static org.testng.Assert.assertEquals;
  * Class to run testing add list to an existing board.
  */
 public class ListSteps {
+
+    @Autowired
     private Board selectedBoard;
     private String listName;
-
-    /**
-     * Class constructor.
-     *
-     * @param board type Board.
-     */
-    public ListSteps(final Board board) {
-        this.selectedBoard = board;
-    }
 
     /**
      * Method to create a new list into board create above.
