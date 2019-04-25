@@ -16,8 +16,7 @@ public class ChromeHeadless implements Browser {
      */
     @Override
     public WebDriver getBrowser() {
-        WebDriverManager.chromedriver().clearPreferences();
-        WebDriverManager.chromedriver().setup();
+        WebDriverManager.chromedriver().version("73").setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("headless");
         options.addArguments("disable-gpu");
