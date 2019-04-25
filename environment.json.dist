@@ -12,7 +12,7 @@
   "url": {
     "trello": "https://trello.com/login?returnUrl=%2F"
   },
-  "tags": "(not @wip) and @bvt",
+  "tags": " --tags @bvt --tags ~@wip",
   "local": {
     "browser": "chrome"
   },

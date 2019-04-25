@@ -1,4 +1,4 @@
-@bvt
+@wip
 Feature: Change list to another board.
 
   Background:

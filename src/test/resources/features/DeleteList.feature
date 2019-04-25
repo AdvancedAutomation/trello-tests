@@ -1,3 +1,4 @@
+@wip
 Feature: Delete list to an existing board.
   As a user owner I want to delete list to my board.
 
