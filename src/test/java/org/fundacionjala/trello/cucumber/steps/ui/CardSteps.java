@@ -1,15 +1,16 @@
 package org.fundacionjala.trello.cucumber.steps.ui;
 
+import java.util.Map;
+
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.fundacionjala.core.Environment;
 import org.fundacionjala.core.ui.Commons;
+import org.fundacionjala.core.ui.driver.SharedDriver;
 import org.fundacionjala.trello.pages.board.SelectedBoard;
 import org.fundacionjala.trello.pages.card.SelectedCard;
-
-import java.util.Map;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertFalse;
@@ -31,9 +32,10 @@ public class CardSteps {
     /**
      * Constructor CardSteps.
      *
+     * @param sharedDriver sharedDriver.
      * @param board SelectedDashBoard.
      */
-    public CardSteps(final SelectedBoard board) {
+    public CardSteps(final SharedDriver sharedDriver, final SelectedBoard board) {
         this.board = board;
     }
 

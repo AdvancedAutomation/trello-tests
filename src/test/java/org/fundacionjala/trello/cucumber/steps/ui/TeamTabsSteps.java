@@ -1,15 +1,16 @@
 package org.fundacionjala.trello.cucumber.steps.ui;
 
+import java.util.Map;
+
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.When;
+import org.fundacionjala.core.ui.driver.SharedDriver;
 import org.fundacionjala.trello.pages.board.BoardCreation;
 import org.fundacionjala.trello.pages.board.BoardFields;
 import org.fundacionjala.trello.pages.board.SelectedBoard;
 import org.fundacionjala.trello.pages.team.TabBoards;
 import org.fundacionjala.trello.pages.team.TabMembers;
 import org.fundacionjala.trello.pages.team.TabSettings;
-
-import java.util.Map;
 
 /**
  * Step definitions for the Team taps Step.
@@ -22,11 +23,12 @@ public class TeamTabsSteps {
     /**
      * Constructor BoardSteps.
      *
+     * @param sharedDriver sharedDriver.
      * @param tabSettings Tab Settings.
      * @param tabMembers  Tab Members.
      * @param tabBoards   Tab Boards.
      */
-    public TeamTabsSteps(final TabSettings tabSettings,
+    public TeamTabsSteps(final SharedDriver sharedDriver, final TabSettings tabSettings,
                          final TabMembers tabMembers, final TabBoards tabBoards) {
         this.tabSettings = tabSettings;
         this.tabBoards = tabBoards;

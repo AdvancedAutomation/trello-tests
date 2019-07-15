@@ -1,17 +1,18 @@
 package org.fundacionjala.trello.cucumber.steps.ui;
 
+import java.util.Map;
+
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.fundacionjala.core.ScenarioContext;
+import org.fundacionjala.core.ui.driver.SharedDriver;
 import org.fundacionjala.trello.pages.board.Boards;
 import org.fundacionjala.trello.pages.common.SideBarMain;
 import org.fundacionjala.trello.pages.team.SelectedTeam;
 import org.fundacionjala.trello.pages.team.TabSettings;
 import org.fundacionjala.trello.pages.team.TeamCreation;
 import org.fundacionjala.trello.pages.team.TeamFields;
-
-import java.util.Map;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
@@ -31,12 +32,13 @@ public class TeamSteps {
     /**
      * Constructor BoardSteps.
      *
+     * @param sharedDriver sharedDriver.
      * @param boards      Boards.
      * @param team        SelectedTeam.
      * @param sideBarMain Side Bar Main.
      * @param tabSettings Tab Settings.
      */
-    public TeamSteps(final Boards boards, final SelectedTeam team,
+    public TeamSteps(final SharedDriver sharedDriver, final Boards boards, final SelectedTeam team,
                      final SideBarMain sideBarMain, final TabSettings tabSettings) {
         this.boards = boards;
         this.team = team;

@@ -1,14 +1,15 @@
 package org.fundacionjala.trello.cucumber.steps.ui;
 
+import java.util.List;
+import java.util.Map;
+
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.fundacionjala.core.ui.driver.SharedDriver;
 import org.fundacionjala.trello.pages.common.Board;
 import org.fundacionjala.trello.pages.common.SideBarMain;
-
-import java.util.List;
-import java.util.Map;
 
 import static org.testng.Assert.assertEquals;
 
@@ -16,16 +17,20 @@ import static org.testng.Assert.assertEquals;
  * Class to run testing add list to an existing board.
  */
 public class ListSteps {
-    private Board selectedBoard;
+    private Board board;
+    private SideBarMain sideBarMain;
     private String listName;
 
     /**
      * Class constructor.
      *
+     * @param sharedDriver sharedDriver.
      * @param board type Board.
+     * @param sideBarMain SideBarMain.
      */
-    public ListSteps(final Board board) {
-        this.selectedBoard = board;
+    public ListSteps(final SharedDriver sharedDriver, final Board board, final SideBarMain sideBarMain) {
+        this.board = board;
+        this.sideBarMain = sideBarMain;
     }
 
     /**
@@ -36,7 +41,7 @@ public class ListSteps {
     @And("I add new list into board")
     public void iAddNewListIntoBoard(final Map<String, String> table) {
         listName = table.get("Name");
-        selectedBoard.addList(listName);
+        board.addList(listName);
     }
 
     /**
@@ -44,7 +49,7 @@ public class ListSteps {
      */
     @Then("I should see the list")
     public void iShouldSeeTheList() {
-        assertEquals(selectedBoard.getTitleList(listName), listName);
+        assertEquals(board.getTitleList(listName), listName);
     }
 
     /**
@@ -54,7 +59,7 @@ public class ListSteps {
      */
     @And("I add several lists into board")
     public void iAddSeveralListsIntoBoard(final List<String> lists) {
-        selectedBoard.addSeveralList(lists);
+        board.addSeveralList(lists);
     }
 
     /**
@@ -64,7 +69,7 @@ public class ListSteps {
      */
     @Then("I should see these {int} lists")
     public void iShouldSeeTheseLists(final int expectedListCreated) {
-        assertEquals(selectedBoard.getSizeList(), expectedListCreated);
+        assertEquals(board.getSizeList(), expectedListCreated);
     }
 
     /**
@@ -74,7 +79,7 @@ public class ListSteps {
      */
     @When("I select and edit the list")
     public void iSelectTheList(final Map<String, String> table) {
-        selectedBoard.editList(table.get("Name"));
+        board.editList(table.get("Name"));
     }
 
     /**
@@ -84,7 +89,7 @@ public class ListSteps {
      */
     @Given("I change the list to other board:")
     public void iChangeTheListToOtherBoard(final Map<String, String> data) {
-        selectedBoard.changeListToBoard(data.get("Board"));
+        board.changeListToBoard(data.get("Board"));
     }
 
     /**
@@ -94,7 +99,6 @@ public class ListSteps {
      */
     @When("I open the board")
     public void iOpenTheBoard(final Map<String, String> data) {
-        SideBarMain sideBarMain = new SideBarMain();
         sideBarMain.searchBoard(data.get("Board"));
     }
 

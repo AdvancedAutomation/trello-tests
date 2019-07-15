@@ -4,6 +4,7 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import org.fundacionjala.core.Environment;
 import org.fundacionjala.core.ui.Commons;
+import org.fundacionjala.core.ui.driver.SharedDriver;
 import org.fundacionjala.trello.pages.Navigator;
 import org.fundacionjala.trello.pages.common.Login;
 
@@ -14,12 +15,18 @@ public class CommonSteps {
 
     private static final Environment ENVIRONMENT = Environment.getInstance();
     private Login login;
+    private Navigator navigator;
 
     /**
      * Constructor of Common steps.
+     *
+     * @param sharedDriver sharedDriver.
+     * @param login Login.
+     * @param navigator Navigator.
      */
-    public CommonSteps() {
-        login = new Login();
+    public CommonSteps(final SharedDriver sharedDriver, final Login login, final Navigator navigator) {
+        this.login = login;
+        this.navigator = navigator;
     }
 
     /**
@@ -39,7 +46,6 @@ public class CommonSteps {
      */
     @And("I go to the trello page")
     public void iGoToTheTrelloPage() {
-        Navigator navigator = new Navigator();
         navigator.goToMainPage();
     }
 }

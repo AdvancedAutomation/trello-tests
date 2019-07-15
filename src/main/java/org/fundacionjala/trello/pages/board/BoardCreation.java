@@ -1,16 +1,16 @@
 package org.fundacionjala.trello.pages.board;
 
+import java.util.Collections;
+import java.util.EnumMap;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.fundacionjala.core.ui.AbstractPage;
 import org.fundacionjala.trello.pages.common.ISteps;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-
-import java.util.Collections;
-import java.util.EnumMap;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Page object of the Creation page for boards.
@@ -20,7 +20,7 @@ public class BoardCreation extends AbstractPage {
     @FindBy(css = "input[data-test-id='header-create-board-title-input']")
     private WebElement titleTextInputField;
 
-    @FindBy(css = "button[data-test-id='header-create-board-submit-button']")
+    @FindBy(css = "div[role='dialog'] button[data-test-id='header-create-board-submit-button']")
     private WebElement createBoardButton;
 
     @FindBy(css = "span[name='private']")
@@ -62,7 +62,6 @@ public class BoardCreation extends AbstractPage {
         for (BoardFields key : data.keySet()) {
             boardSteps.get(key).run();
         }
-        action.waitVisibility(createBoardButton);
         action.click(createBoardButton);
         wait.until(ExpectedConditions.invisibilityOf(windowOverlay));
         return new SelectedBoard();

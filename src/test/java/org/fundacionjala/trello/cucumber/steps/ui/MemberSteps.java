@@ -3,13 +3,13 @@ package org.fundacionjala.trello.cucumber.steps.ui;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-
-import static org.testng.Assert.assertEquals;
-
 import org.fundacionjala.core.Environment;
 import org.fundacionjala.core.ui.Commons;
+import org.fundacionjala.core.ui.driver.SharedDriver;
 import org.fundacionjala.trello.pages.team.SelectedTeam;
 import org.fundacionjala.trello.pages.team.TabMembers;
+
+import static org.testng.Assert.assertEquals;
 
 
 /**
@@ -24,10 +24,13 @@ public class MemberSteps {
     /**
      * Class constructor.
      *
+     * @param sharedDriver sharedDriver.
      * @param team type SelectedTeam.
+     * @param tabMembers TabMembers.
      */
-    public MemberSteps(final SelectedTeam team) {
+    public MemberSteps(final SharedDriver sharedDriver, final SelectedTeam team, final TabMembers tabMembers) {
         this.selectedTeam = team;
+        this.tabMembers = tabMembers;
     }
 
     /**
@@ -35,7 +38,7 @@ public class MemberSteps {
      */
     @Given("I select tab members")
     public void iSelectTabMembers() {
-        tabMembers = selectedTeam.openTabMembers();
+        selectedTeam.openTabMembers();
     }
 
     /**

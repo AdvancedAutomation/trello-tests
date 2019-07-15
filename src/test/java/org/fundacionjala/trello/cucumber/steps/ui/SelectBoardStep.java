@@ -2,6 +2,7 @@ package org.fundacionjala.trello.cucumber.steps.ui;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
+import org.fundacionjala.core.ui.driver.SharedDriver;
 import org.fundacionjala.trello.pages.board.Boards;
 import org.fundacionjala.trello.pages.board.BoardsDrawer;
 
@@ -19,10 +20,11 @@ public class SelectBoardStep {
     /**
      * Constructor Delete Board.
      *
+     * @param sharedDriver sharedDriver.
      * @param boards       Boards.
      * @param boardsDrawer BoardsDrawer.     *
      */
-    public SelectBoardStep(final Boards boards, final BoardsDrawer boardsDrawer) {
+    public SelectBoardStep(final SharedDriver sharedDriver, final Boards boards, final BoardsDrawer boardsDrawer) {
         this.boards = boards;
         this.boardsDrawer = boardsDrawer;
     }

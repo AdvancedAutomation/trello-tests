@@ -2,6 +2,7 @@ package org.fundacionjala.trello.cucumber.steps.ui;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
+import org.fundacionjala.core.ui.driver.SharedDriver;
 import org.fundacionjala.trello.pages.board.MemberMenu;
 
 /**
@@ -11,10 +12,12 @@ public class MemberMenuSteps {
     private MemberMenu memberMenu;
 
     /**
-     * Contructor of MemberMenuSteps.
+     * Constructor of MemberMenuSteps.
+     *
+     * @param sharedDriver sharedDriver.
      * @param memberMenu menu Menber.
      */
-    public MemberMenuSteps(final MemberMenu memberMenu) {
+    public MemberMenuSteps(final SharedDriver sharedDriver, final MemberMenu memberMenu) {
         this.memberMenu = memberMenu;
     }
     /**

@@ -1,8 +1,6 @@
 package org.fundacionjala.trello.cucumber.runner;
 
 import cucumber.api.CucumberOptions;
-import cucumber.api.testng.AbstractTestNGCucumberTests;
-import org.fundacionjala.core.ui.driver.DriverManager;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
@@ -15,8 +13,7 @@ import org.testng.annotations.BeforeTest;
         plugin = {"pretty"},
         tags = {"@bvt"}
 )
-public class RunCucumberTest extends AbstractTestNGCucumberTests {
-
+public class RunParallelCucumberTest extends AbstractTestNGCucumberParallelTests {
 
     /**
      * this method execute before the tests.
@@ -24,6 +21,7 @@ public class RunCucumberTest extends AbstractTestNGCucumberTests {
     @BeforeTest
     public void open() {
         // Implement.
+        System.setProperty("dataproviderthreadcount", "5");
     }
 
     /**
@@ -31,6 +29,6 @@ public class RunCucumberTest extends AbstractTestNGCucumberTests {
      */
     @AfterTest
     public void close() {
-        DriverManager.getInstance().getDriver().quit();
+        // Implement.
     }
 }

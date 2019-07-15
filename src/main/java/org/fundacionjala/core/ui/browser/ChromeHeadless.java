@@ -16,6 +16,7 @@ public class ChromeHeadless implements Browser {
      */
     @Override
     public WebDriver getBrowser() {
+        WebDriverManager.chromedriver().clearPreferences();
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("headless");

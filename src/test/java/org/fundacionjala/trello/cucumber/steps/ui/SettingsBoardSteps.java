@@ -3,6 +3,7 @@ package org.fundacionjala.trello.cucumber.steps.ui;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.fundacionjala.core.ui.driver.SharedDriver;
 import org.fundacionjala.trello.pages.board.MenuBoard;
 import org.fundacionjala.trello.pages.board.MenuMoreBoard;
 import org.fundacionjala.trello.pages.board.MenuSettingBoard;
@@ -23,14 +24,17 @@ public class SettingsBoardSteps {
 
     /**
      * Constructor Settings Board.
+     *
+     * @param sharedDriver sharedDriver.
      * @param selectedBoard selectedBoard.
      * @param menuBoard menuBoard.
      * @param menuMoreBoard menuMoreBoard.
      * @param menuSettingBoard closeBoardWraper.
      */
 
-    public SettingsBoardSteps(final SelectedBoard selectedBoard, final MenuBoard menuBoard,
-                              final MenuMoreBoard menuMoreBoard, final MenuSettingBoard menuSettingBoard) {
+    public SettingsBoardSteps(final SharedDriver sharedDriver, final SelectedBoard selectedBoard,
+                              final MenuBoard menuBoard, final MenuMoreBoard menuMoreBoard,
+                              final MenuSettingBoard menuSettingBoard) {
         this.selectedBoard = selectedBoard;
         this.menuBoard = menuBoard;
         this.menuMoreBoard = menuMoreBoard;

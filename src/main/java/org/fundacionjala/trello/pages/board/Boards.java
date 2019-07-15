@@ -1,13 +1,13 @@
 package org.fundacionjala.trello.pages.board;
 
+import java.util.HashMap;
+
 import org.fundacionjala.core.ui.AbstractPage;
 import org.fundacionjala.trello.pages.common.ISteps;
 import org.fundacionjala.trello.pages.team.TeamCreation;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
-import java.util.HashMap;
 
 /**
  * Page object of the Boards page from Trello.
@@ -17,7 +17,7 @@ public class Boards extends AbstractPage {
     @FindBy(css = "button[data-test-id='header-boards-menu-create-board']")
     private WebElement linkCreateNewTablero;
 
-    @FindBy(css = "#header span[name='board']")
+    @FindBy(css = "button[data-test-id='header-boards-menu-button'] > span")
     private WebElement btnTableros;
 
     @FindBy(css = "button[data-test-id='header-create-team-button']")
