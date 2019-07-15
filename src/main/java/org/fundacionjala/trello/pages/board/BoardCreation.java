@@ -17,16 +17,16 @@ import java.util.Map;
  */
 public class BoardCreation extends AbstractPage {
 
-    @FindBy(css = "input.subtle-input")
+    @FindBy(css = "input[data-test-id='header-create-board-title-input']")
     private WebElement titleTextInputField;
 
-    @FindBy(css = "button.primary")
+    @FindBy(css = "button[data-test-id='header-create-board-submit-button']")
     private WebElement createBoardButton;
 
-    @FindBy(css = "[class='subtle-chooser-trigger unstyled-button vis-chooser-trigger']")
+    @FindBy(css = "span[name='private']")
     private WebElement selectPrivacyButton;
 
-    @FindBy(css = "[class='subtle-chooser-trigger unstyled-button org-chooser-trigger']")
+    @FindBy(css = "input[data-test-id='header-create-board-title-input'] + button > span")
     private WebElement selectTeamButton;
 
     private String titleString;
@@ -75,7 +75,7 @@ public class BoardCreation extends AbstractPage {
      */
     private void selectBackground(final Map<BoardFields, String> data) {
         backgroundString = data.get(BoardFields.BACKGROUND);
-        final String locatorColorBackgroundButton = String.format("[class='background-grid-trigger'][title='%s']",
+        final String locatorColorBackgroundButton = String.format("div[role='dialog'] li button[title='%s']",
                 backgroundString);
         By colorBgButton = By.cssSelector(locatorColorBackgroundButton);
         action.waitVisibility(colorBgButton);

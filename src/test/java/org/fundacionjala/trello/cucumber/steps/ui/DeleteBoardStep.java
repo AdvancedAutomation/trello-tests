@@ -1,4 +1,4 @@
-package org.fundacionjala.trello.cucumber.steps;
+package org.fundacionjala.trello.cucumber.steps.ui;
 
 
 import cucumber.api.java.en.And;

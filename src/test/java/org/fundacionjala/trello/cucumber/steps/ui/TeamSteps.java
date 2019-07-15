@@ -3,7 +3,7 @@ package org.fundacionjala.trello.cucumber.steps.ui;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.fundacionjala.trello.cucumber.steps.NamesStorage;
+import org.fundacionjala.core.ScenarioContext;
 import org.fundacionjala.trello.pages.board.Boards;
 import org.fundacionjala.trello.pages.common.SideBarMain;
 import org.fundacionjala.trello.pages.team.SelectedTeam;
@@ -21,7 +21,7 @@ import static org.testng.Assert.assertTrue;
  */
 public class TeamSteps {
 
-    private static final NamesStorage NAMES_STORAGE = NamesStorage.getInstance();
+    private static final ScenarioContext NAMES_STORAGE = ScenarioContext.getInstance();
     private Boards boards;
     private SelectedTeam team;
     private TeamCreation newTeam;

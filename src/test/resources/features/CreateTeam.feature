@@ -8,5 +8,4 @@ Feature: Create a Team in Trello
     When I create a team with a:
       | Name        | {dateTime.Team01} |
       | Description | any     |
-#    And I store as "Team01"
     Then I should see the team new "Team"

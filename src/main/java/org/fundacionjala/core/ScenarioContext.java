@@ -1,4 +1,4 @@
-package org.fundacionjala.trello.cucumber.steps;
+package org.fundacionjala.core;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,17 +6,17 @@ import java.util.Map;
 /**
  * Class for storage names.
  */
-public final class NamesStorage {
+public final class ScenarioContext {
     private Map<String, String> container;
-    private static NamesStorage ourInstance;
+    private static ScenarioContext ourInstance;
 
     /**
      * Method for return the instance dof environment.
      * @return the our instance.
      */
-    public static NamesStorage getInstance() {
+    public static ScenarioContext getInstance() {
         if (ourInstance == null) {
-            ourInstance = new NamesStorage();
+            ourInstance = new ScenarioContext();
         }
         return ourInstance;
     }
@@ -24,7 +24,7 @@ public final class NamesStorage {
     /**
      * Method for read the JSON file.
      */
-    private NamesStorage() {
+    private ScenarioContext() {
         container = new HashMap<>();
     }
 

@@ -3,8 +3,8 @@ Feature: Delete member to Card in Trello
 
   Background: Create list to board in Trello
     Given I Log in with user "{credentials.owner1}"
-    When I create a board from "board drawer" with a:
-      | Title | ATB |
+    And I create a board from "board drawer" with a:
+      | Title | ATB 09 |
     And I add new list into board
       | Name | To Do |
     And I create a card with a:
