@@ -14,20 +14,19 @@ import java.util.HashMap;
  */
 public class Boards extends AbstractPage {
 
-    @FindBy(xpath = "//*[contains(@class,'quiet-button js-add-board')]")
+    @FindBy(css = "button[data-test-id='header-boards-menu-create-board']")
     private WebElement linkCreateNewTablero;
 
-
-    @FindBy(css = "span.header-btn-text")
+    @FindBy(css = "#header span[name='board']")
     private WebElement btnTableros;
 
-    @FindBy(css = "a.js-new-org")
+    @FindBy(css = "button[data-test-id='header-create-team-button']")
     private WebElement linkCreateNewTeam;
 
-    @FindBy(css = "a.js-new-board")
+    @FindBy(css = "button[data-test-id='header-create-board-button']")
     private WebElement linkCreateNewBoard;
 
-    @FindBy(css = "[class=\"header-btn js-open-add-menu\"]")
+    @FindBy(css = "span[name='add']")
     private WebElement btnPlus;
 
     @FindBy(css = "input#org-display-name.js-autofocus.js-display-name")

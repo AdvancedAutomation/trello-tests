@@ -4,7 +4,7 @@ Feature: Archive list to an existing board.
 
   Background:
     Given I Log in with user "{credentials.owner1}"
-    When I create a board from "board drawer" with a:
+    And I create a board from "board drawer" with a:
       | Title      | abc1    |
       | Privacy    | private |
       | Background | green   |
@@ -12,7 +12,7 @@ Feature: Archive list to an existing board.
       | Name | new list |
 
   Scenario: I delete a list to board
-    And I archive the list:
+    When I archive the list:
       | Name | new list |
     Then I don't should see the list:
       | Name | new list |

@@ -13,7 +13,7 @@ Feature: Change card position.
       | Name | list 2 |
 
   Scenario: Change card to another list
-    Given I select the card:
+    When I select the card:
       | List Name | list 1 |
       | Card Name | card1  |
     And move card to list:

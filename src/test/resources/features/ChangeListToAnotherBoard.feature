@@ -1,4 +1,4 @@
-@bvt
+@wip
 Feature: Change list to another board.
 
   Background:
@@ -9,10 +9,11 @@ Feature: Change list to another board.
       | Title | first Board911 |
     And I add new list into board
       | Name | To Do |
+
   Scenario: As a user owner change list to other board
-    Given I change the list to other board:
+    When I change the list to other board:
       | Board | second Board911 |
-    When I open the board
+    And I open the board
       | Board | second Board911 |
     Then I should see the list in the board:
       | Board | second Board911 |

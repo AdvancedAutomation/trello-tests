@@ -16,10 +16,10 @@ public class TeamCreation extends AbstractPage {
 
     private String uniqueNameTeam;
 
-    @FindBy(css = "input#org-display-name.js-autofocus.js-display-name")
+    @FindBy(css = "input[data-test-id='header-create-team-name-input']")
     private WebElement nameTeamInputField;
 
-    @FindBy(css = "textarea#org-desc")
+    @FindBy(css = "textarea[name='desc']")
     private WebElement descriptionTeamInputField;
 
     @FindBy(css = "a.tabbed-pane-nav-item-button.js-org-members")
@@ -31,7 +31,7 @@ public class TeamCreation extends AbstractPage {
     @FindBy(css = "button.autocomplete-btn.primary")
     private WebElement buttonInvited;
 
-    @FindBy(css = "[class='primary wide js-save']")
+    @FindBy(css = "button[data-test-id='header-create-team-submit-button']")
     private WebElement createTeamButton;
 
     /**

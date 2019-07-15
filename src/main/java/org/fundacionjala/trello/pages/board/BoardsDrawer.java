@@ -10,6 +10,8 @@ import org.openqa.selenium.support.FindBy;
  */
 public class BoardsDrawer extends AbstractPage {
 
+    private static final String CSS_BOARD_LINK = "a[title='%s']";
+
     @FindBy(css = "a.quiet-button.js-add-board")
     private WebElement btnCreateNewBoard;
 
@@ -31,7 +33,7 @@ public class BoardsDrawer extends AbstractPage {
      * @return the PO of Selected Board.
      */
     public SelectedBoard clickBoardInBoardsDrawer(final String titleBoard) {
-        By boardLocator = By.cssSelector(String.format(".js-all-boards span[title='%s']", titleBoard));
+        By boardLocator = By.cssSelector(String.format(CSS_BOARD_LINK, titleBoard));
         action.waitVisibility(boardLocator);
         action.click(boardLocator);
         return new SelectedBoard();
@@ -44,7 +46,7 @@ public class BoardsDrawer extends AbstractPage {
      * @return boolean is displayed.
      */
     public boolean doIsExistBoard(final String titleBoard) {
-        By element = By.xpath(String.format(".js-all-boards span[title='%s']", titleBoard));
+        By element = By.xpath(String.format(CSS_BOARD_LINK, titleBoard));
         return action.isExistingSelector(element);
     }
 

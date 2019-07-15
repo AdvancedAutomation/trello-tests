@@ -1,9 +1,9 @@
-@bvt
+@wip
 Feature: Delete team member
 
   Background:
     Given I Log in with user "{credentials.owner1}"
-    When I create a team with a:
+    And I create a team with a:
       | Name        | {dateTime.Team01} |
       | Description | any               |
     And I select tab members

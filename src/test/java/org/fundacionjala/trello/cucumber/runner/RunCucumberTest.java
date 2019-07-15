@@ -2,7 +2,6 @@ package org.fundacionjala.trello.cucumber.runner;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.testng.AbstractTestNGCucumberTests;
-import org.fundacionjala.core.CleanData;
 import org.fundacionjala.core.ui.driver.DriverManager;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -32,8 +31,6 @@ public class RunCucumberTest extends AbstractTestNGCucumberTests {
      */
     @AfterTest
     public void close() {
-        CleanData.cleanAllTeams("owner1");
-        CleanData.cleanAllBoards("owner1");
         DriverManager.getInstance().getDriver().quit();
     }
 }

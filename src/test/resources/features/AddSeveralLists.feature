@@ -10,7 +10,7 @@ Feature: Add new list to an existing board.
       | Background | green     |
 
   Scenario: As a user owner logged into trello's home page
-    And I add several lists into board
+    When I add several lists into board
       | To Do       |
       | In Progress |
       | Done        |

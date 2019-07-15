@@ -31,10 +31,10 @@ public class SelectedBoard extends AbstractPage {
     /**
      * Find name .
      */
-    @FindBy(xpath = "//a[contains(@class,'board-header-btn board-header-btn-name js-rename-board')]")
+    @FindBy(css = ".board-header .js-board-editing-target")
     private WebElement name;
 
-    @FindBy(css = "a.list-header-extras-menu.dark-hover.js-open-list-menu.icon-lg.icon-overflow-menu-horizontal")
+    @FindBy(css = ".list-header-extras-menu.js-open-list-menu")
     private WebElement menuList;
 
     @FindBy(css = "a.js-add-card")

@@ -5,7 +5,7 @@ Feature: Add new list to an existing board.
   Background:
     Given I Log in with user "{credentials.owner1}"
     And I create a board from "board drawer" with a:
-      | Title      | Team Board |
+      | Title      | Team Stark |
       | Privacy    | private    |
       | Background | green      |
 

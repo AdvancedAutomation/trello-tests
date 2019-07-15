@@ -13,6 +13,8 @@ import org.openqa.selenium.support.FindBy;
  */
 public class Login extends AbstractPage {
 
+    private static final String CSS_PROFILE = "button[data-test-id='header-member-menu-button'] > div[title*='%s']";
+
     /**
      * Find user name text field of page.
      */
@@ -71,9 +73,7 @@ public class Login extends AbstractPage {
      * @return value of board type.
      */
     public Boards loginAs(final String strUserName, final String strPasword) {
-        By loggedIcon = By.xpath(String.format("//*[@class=\"member-initials\" and contains(@title,\"%s\")]",
-                strUserName));
-        if (action.isExistingSelector(loggedIcon)) {
+        if (action.isExistingSelector(By.cssSelector(String.format(CSS_PROFILE, strUserName)))) {
             new Navigator().goToPersonalPage(strUserName);
         } else {
             //Fill user name

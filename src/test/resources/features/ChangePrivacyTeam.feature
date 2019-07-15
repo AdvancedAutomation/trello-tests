@@ -1,4 +1,4 @@
-@bvt
+@wip
 Feature: change team privacy
 
   Background: Create a team in Trello
@@ -6,7 +6,6 @@ Feature: change team privacy
     When I create a team with a:
       | Name        | {dateTime.Team01} |
       | Description | any               |
-
 
   Scenario: change  team privacy
     When I go to tab setting

@@ -1,10 +1,10 @@
-@bvt
+@wip
 Feature: Change Commenting permissions to Board
 
   Background:
     Given I Log in with user "{credentials.owner1}"
     And I create a board from "board drawer" with a:
-      | Title | Version |
+      | Title | Version 64 |
 
   Scenario: Change Commenting permissions to Board
     When I go to board settings
