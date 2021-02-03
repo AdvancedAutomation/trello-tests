@@ -9,4 +9,4 @@ Feature: Delete board in Trello
   Scenario: I delete a board as owner user
     When I close Board
     And I delete Board
-    Then I don't should see the board "Chelsea board"
+    Then I shouldn't see the board "Chelsea board"

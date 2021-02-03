@@ -1,13 +1,10 @@
-group 'org.fundacionjala.trello'
+group 'org.example.trello'
 version '1.0'
 
 // Apply the java plugin to add support for Java
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'checkstyle'
-apply plugin: 'findbugs'
-
-sourceCompatibility = 1.8
 
 allprojects{
     repositories {
@@ -18,35 +15,25 @@ allprojects{
 // In this section you declare the dependencies for your production and test code
 dependencies {
     compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
-    compile group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '3.6.1'
-    compile group: 'io.rest-assured', name: 'rest-assured', version: '3.2.0'
+    compile group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '4.3.1'
+    compile group: 'io.rest-assured', name: 'rest-assured', version: '4.3.3'
     compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.11.0'
     compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.11.0'
     compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
-    compile group: 'com.jayway.jsonpath', name: 'json-path', version: '2.1.0'
+    compile group: 'com.jayway.jsonpath', name: 'json-path', version: '2.5.0'
 
-    testCompile group: 'io.cucumber', name: 'cucumber-java', version: '4.4.0'
-    testCompile group: 'io.cucumber', name: 'cucumber-testng', version: '4.4.0'
-    testCompile group: 'io.cucumber', name: 'cucumber-picocontainer', version: '4.4.0'
+    compile group: 'com.google.guava', name: 'guava', version: '30.1-jre'
+    compile group: 'io.cucumber', name: 'cucumber-java', version: '6.9.1'
+    compile group: 'io.cucumber', name: 'cucumber-testng', version: '6.9.1'
+    testCompile group: 'io.cucumber', name: 'cucumber-picocontainer', version: '6.9.1'
 }
 
 // Checkstyle configuration
 checkstyle {
-    toolVersion = '8.22'
+    toolVersion = '8.23'
 }
 
-// FindBugs configuration
-findbugs {
-    toolVersion = '3.0.1'
-}
-tasks.withType(FindBugs) {
-    reports {
-        xml.enabled = false
-        html.enabled = true
-    }
-}
-
-task executeFeatures(type: Test) {
+task runFeatures(type: Test) {
     doFirst {
         def jsonFile = file('environment.json')
         def parsedJson = new groovy.json.JsonSlurper().parseText(jsonFile.text)
@@ -55,13 +42,10 @@ task executeFeatures(type: Test) {
         options {
             useDefaultListeners = false
             jvmArgs = ['-Dcucumber.options= ' +
-                               '--glue org.fundacionjala ' +
+                               '--glue org.example ' +
                                '--plugin pretty ' +
                                parsedJson.tags]
         }
         testLogging.showStandardStreams = true
-        scanForTestClasses = false
-        ignoreFailures = false
-        reports.html.enabled = false
     }
 }
