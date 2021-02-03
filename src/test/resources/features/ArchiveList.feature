@@ -14,5 +14,5 @@ Feature: Archive list to an existing board.
   Scenario: I delete a list to board
     When I archive the list:
       | Name | new list |
-    Then I don't should see the list:
+    Then I shouldn't see the list:
       | Name | new list |

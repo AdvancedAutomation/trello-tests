@@ -12,4 +12,4 @@ Feature: Delete team board
   Scenario: I delete a board to team
     When I close Board
     And I delete Board
-    Then I don't should see the board "New Board 2"
+    Then I shouldn't see the board "New Board 2"

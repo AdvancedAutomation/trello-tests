@@ -11,4 +11,4 @@ Feature: Delete list to an existing board.
 
   Scenario: I delete a list to board
     And I delete the list
-    Then I don't should see the list
+    Then I shouldn't see the list
