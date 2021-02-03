@@ -20,6 +20,6 @@ script:
   - gradle compileJava compileTestJava
   - sonar-scanner
   - gradle check
-  - gradle executeFeatures
+  - gradle runFeatures
 notifications:
   email: true
