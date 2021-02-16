@@ -1,10 +1,10 @@
-@wip
+@bvt
 Feature: Delete card of a list
 
   Background: Create card to board in Trello
     Given I Log in with user "{credentials.owner1}"
     And I create a board from "board drawer" with a:
-      | Title | ATB 88 |
+      | Title | Board Martell |
     And I add new list into board
       | Name | List Test |
     And I create a card with a:
@@ -17,3 +17,5 @@ Feature: Delete card of a list
     And I archive the card
     And I delete the card
     Then I expect the card doesn't appear
+    And I close Board
+    And I delete Board

@@ -169,6 +169,7 @@ public class SelectedBoard extends AbstractPage {
      * @return page object MenuBoard.
      */
     public MenuBoard clickShowMenu() {
+        driver.navigate().refresh();
         By element = By.cssSelector("[class='board-menu js-fill-board-menu hide']");
         if (action.isExistingSelector(element)) {
             action.waitVisibility(linkShowMenu);
@@ -184,7 +185,7 @@ public class SelectedBoard extends AbstractPage {
      */
     public void inviteMember(final String memberName) {
         action.waitVisibility(inviteMemberButton);
-        action.click(inviteMemberButton);
+        action.jsClick(inviteMemberButton);
         action.waitVisibility(searchMemberInputText);
         action.setValue(searchMemberInputText, memberName);
         action.waitVisibility(memberItem);

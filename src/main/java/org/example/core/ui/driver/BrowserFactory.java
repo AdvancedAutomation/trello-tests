@@ -4,6 +4,8 @@ import java.util.EnumMap;
 import java.util.Map;
 import java.util.function.Supplier;
 
+import org.openqa.selenium.WebDriver;
+
 import org.example.core.ui.browser.Browser;
 import org.example.core.ui.browser.BrowserStack;
 import org.example.core.ui.browser.Chrome;
@@ -12,7 +14,6 @@ import org.example.core.ui.browser.DockerChrome;
 import org.example.core.ui.browser.DockerFirefox;
 import org.example.core.ui.browser.Firefox;
 import org.example.core.ui.browser.SauceLabs;
-import org.openqa.selenium.WebDriver;
 
 /**
  * Class created in order to recognize the org.example.core.ui.driver type.
