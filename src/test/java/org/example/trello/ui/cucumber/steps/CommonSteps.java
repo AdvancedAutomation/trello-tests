@@ -1,5 +1,6 @@
 package org.example.trello.ui.cucumber.steps;
 
+import io.cucumber.java.DataTableType;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 
@@ -7,7 +8,9 @@ import org.example.core.Environment;
 import org.example.core.ui.Commons;
 import org.example.core.ui.driver.SharedDriver;
 import org.example.trello.ui.pages.Navigator;
+import org.example.trello.ui.pages.board.BoardFields;
 import org.example.trello.ui.pages.common.Login;
+import org.example.trello.ui.pages.team.TeamFields;
 
 /**
  * Common steps.
@@ -28,6 +31,16 @@ public class CommonSteps {
     public CommonSteps(final SharedDriver sharedDriver, final Login login, final Navigator navigator) {
         this.login = login;
         this.navigator = navigator;
+    }
+
+    @DataTableType
+    public BoardFields boardMap(final String boardField) {
+        return BoardFields.valueOf(boardField.toUpperCase());
+    }
+
+    @DataTableType
+    public TeamFields teamMap(final String teamField) {
+        return TeamFields.valueOf(teamField.toUpperCase());
     }
 
     /**
