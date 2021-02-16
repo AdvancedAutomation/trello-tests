@@ -1,8 +1,9 @@
 package org.example.trello.ui.pages.list;
 
-import org.example.core.ui.AbstractPage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import org.example.core.ui.AbstractPage;
 
 /**
  * this class represented to list actions.

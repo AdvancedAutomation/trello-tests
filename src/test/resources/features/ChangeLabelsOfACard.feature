@@ -1,10 +1,10 @@
-@bvt
+@wip
 Feature: Change labels of a card
 
   Background: Create board in Trello
-    Given I Log in with user "{credentials.owner1}"
+    Given I Log in with user "{credentials.owner3}"
     And I create a board from "board drawer" with a:
-      | Title | ATB 12 |
+      | Title | Board Tyrell |
     And I add new list into board
       | Name | To Do |
     And I create a card with a:

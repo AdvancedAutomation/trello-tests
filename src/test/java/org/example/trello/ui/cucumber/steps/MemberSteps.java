@@ -3,6 +3,7 @@ package org.example.trello.ui.cucumber.steps;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+
 import org.example.core.Environment;
 import org.example.core.ui.Commons;
 import org.example.core.ui.driver.SharedDriver;
@@ -10,7 +11,6 @@ import org.example.trello.ui.pages.team.SelectedTeam;
 import org.example.trello.ui.pages.team.TabMembers;
 
 import static org.testng.Assert.assertEquals;
-
 
 /**
  * Class to run testing add list to an existing board.

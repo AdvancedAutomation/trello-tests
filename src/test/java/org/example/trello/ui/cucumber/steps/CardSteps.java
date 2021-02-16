@@ -6,6 +6,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+
 import org.example.core.Environment;
 import org.example.core.ui.Commons;
 import org.example.core.ui.driver.SharedDriver;
@@ -15,7 +16,6 @@ import org.example.trello.ui.pages.card.SelectedCard;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
-
 
 /**
  * Step definitions for the Dashboard Creation.

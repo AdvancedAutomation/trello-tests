@@ -1,10 +1,10 @@
-@bvt
+@wip
 Feature: Add member to Card in Trello
 
   Background: Create list to board in Trello
     Given I Log in with user "{credentials.owner1}"
     And I create a board from "board drawer" with a:
-      | Title | ATB 16 |
+      | Title | Board Lannister |
     And I add new list into board
       | Name | To Do |
     And I create a card with a:

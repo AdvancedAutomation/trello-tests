@@ -2,11 +2,12 @@ package org.example.trello.ui.pages.card;
 
 import java.util.Map;
 
-import org.example.core.ui.AbstractPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
+
+import org.example.core.ui.AbstractPage;
 
 /**
  * this class represent a selected card page.
@@ -19,7 +20,7 @@ public class SelectedCard extends AbstractPage {
     @FindBy(css = ".js-delete-card")
     private WebElement deleteCardButton;
 
-    @FindBy(css = ".js-confirm.full.negate")
+    @FindBy(css = ".js-confirm")
     private WebElement confirmDeleteCardButton;
 
     @FindBy(css = ".js-search-mem.js-autofocus")

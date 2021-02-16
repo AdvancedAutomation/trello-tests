@@ -64,6 +64,10 @@ public class WebDriverAction {
                 .click();
     }
 
+    public void jsClick(final WebElement webElement) {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", webElement);
+    }
+
     /**
      * Click event with By.
      *

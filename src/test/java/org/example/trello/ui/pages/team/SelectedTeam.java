@@ -1,9 +1,10 @@
 package org.example.trello.ui.pages.team;
 
-import org.example.core.ui.AbstractPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import org.example.core.ui.AbstractPage;
 
 /**
  * this class represent a selected card page.
