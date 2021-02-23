@@ -49,3 +49,14 @@ task runFeatures(type: Test) {
         testLogging.showStandardStreams = true
     }
 }
+
+task runCrossBrowser(type: Test){
+    outputs.upToDateWhen {false}
+    doFirst{
+        useTestNG()
+        options.suites("testng.xml")
+        testLogging.showStandardStreams = true
+        scanForTestClasses = true
+        ignoreFailures = false
+    }
+}

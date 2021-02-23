@@ -21,16 +21,17 @@ public final class Environment {
     private static final String CONF_FILE = "environment.json";
     private static Environment ourInstance;
     private DocumentContext jsonContext;
+    private static ThreadLocal<Environment> instance = new ThreadLocal<>();
 
     /**
      * Method for return the instance dof environment.
      * @return the our instance.
      */
     public static Environment getInstance() {
-        if (ourInstance == null) {
-            ourInstance = new Environment();
+        if (instance.get() == null) {
+            instance.set(new Environment());
         }
-        return ourInstance;
+        return instance.get();
     }
 
     /**
@@ -54,5 +55,9 @@ public final class Environment {
      */
     public String getValue(final String key) {
         return  jsonContext.read(key);
+    }
+
+    public void setBrowser(String browser){
+        jsonContext.set("$['local']['browser']", browser);
     }
 }
