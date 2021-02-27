@@ -8,7 +8,6 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-import org.example.core.ui.driver.SharedDriver;
 import org.example.trello.ui.pages.common.Board;
 import org.example.trello.ui.pages.common.SideBarMain;
 
@@ -25,11 +24,10 @@ public class ListSteps {
     /**
      * Class constructor.
      *
-     * @param sharedDriver sharedDriver.
      * @param board type Board.
      * @param sideBarMain SideBarMain.
      */
-    public ListSteps(final SharedDriver sharedDriver, final Board board, final SideBarMain sideBarMain) {
+    public ListSteps(final Board board, final SideBarMain sideBarMain) {
         this.board = board;
         this.sideBarMain = sideBarMain;
     }

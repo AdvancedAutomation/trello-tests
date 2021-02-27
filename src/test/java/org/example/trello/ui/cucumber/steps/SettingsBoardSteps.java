@@ -4,7 +4,6 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-import org.example.core.ui.driver.SharedDriver;
 import org.example.trello.ui.pages.board.MenuBoard;
 import org.example.trello.ui.pages.board.MenuMoreBoard;
 import org.example.trello.ui.pages.board.MenuSettingBoard;
@@ -26,14 +25,12 @@ public class SettingsBoardSteps {
     /**
      * Constructor Settings Board.
      *
-     * @param sharedDriver sharedDriver.
      * @param selectedBoard selectedBoard.
      * @param menuBoard menuBoard.
      * @param menuMoreBoard menuMoreBoard.
      * @param menuSettingBoard closeBoardWraper.
      */
-
-    public SettingsBoardSteps(final SharedDriver sharedDriver, final SelectedBoard selectedBoard,
+    public SettingsBoardSteps(final SelectedBoard selectedBoard,
                               final MenuBoard menuBoard, final MenuMoreBoard menuMoreBoard,
                               final MenuSettingBoard menuSettingBoard) {
         this.selectedBoard = selectedBoard;

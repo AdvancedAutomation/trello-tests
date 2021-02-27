@@ -126,13 +126,9 @@ public class SelectedBoard extends AbstractPage {
      * @param data is name of card.
      */
     public void clickAddCard(final String data) {
-        action.waitVisibility(menuList);
         action.click(menuList);
-        action.waitVisibility(addCardList);
         action.click(addCardList);
-        action.waitVisibility(inputTitleCardTextfield);
         action.setValue(inputTitleCardTextfield, data);
-        action.waitVisibility(addCardButton);
         action.click(addCardButton);
     }
 
@@ -237,8 +233,7 @@ public class SelectedBoard extends AbstractPage {
     public ListAction openMenuList(final String nameList) {
         final String ancestor = "ancestor::div[contains(@class,'list js-list-content')]";
         final String descendant = "descendant::*[@class='list-header-extras']";
-        By nameListSelected = By.xpath(String.format(
-                "//textarea[@aria-label='%s']/%s/%s",
+        By nameListSelected = By.xpath(String.format("//textarea[@aria-label='%s']/%s/%s",
                 nameList, ancestor, descendant));
         action.waitVisibility(nameListSelected);
         action.click(nameListSelected);

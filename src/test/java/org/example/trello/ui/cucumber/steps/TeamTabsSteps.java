@@ -5,7 +5,6 @@ import java.util.Map;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.When;
 
-import org.example.core.ui.driver.SharedDriver;
 import org.example.trello.ui.pages.board.BoardCreation;
 import org.example.trello.ui.pages.board.BoardFields;
 import org.example.trello.ui.pages.board.SelectedBoard;
@@ -24,12 +23,11 @@ public class TeamTabsSteps {
     /**
      * Constructor BoardSteps.
      *
-     * @param sharedDriver sharedDriver.
      * @param tabSettings Tab Settings.
      * @param tabMembers  Tab Members.
      * @param tabBoards   Tab Boards.
      */
-    public TeamTabsSteps(final SharedDriver sharedDriver, final TabSettings tabSettings,
+    public TeamTabsSteps(final TabSettings tabSettings,
                          final TabMembers tabMembers, final TabBoards tabBoards) {
         this.tabSettings = tabSettings;
         this.tabBoards = tabBoards;

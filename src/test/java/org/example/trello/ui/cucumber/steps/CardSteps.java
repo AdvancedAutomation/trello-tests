@@ -9,7 +9,6 @@ import io.cucumber.java.en.When;
 
 import org.example.core.Environment;
 import org.example.core.ui.Commons;
-import org.example.core.ui.driver.SharedDriver;
 import org.example.trello.ui.pages.board.SelectedBoard;
 import org.example.trello.ui.pages.card.SelectedCard;
 
@@ -32,10 +31,9 @@ public class CardSteps {
     /**
      * Constructor CardSteps.
      *
-     * @param sharedDriver sharedDriver.
      * @param board SelectedDashBoard.
      */
-    public CardSteps(final SharedDriver sharedDriver, final SelectedBoard board) {
+    public CardSteps(final SelectedBoard board) {
         this.board = board;
     }
 
