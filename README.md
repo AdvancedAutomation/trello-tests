@@ -8,7 +8,7 @@ Prerequistes
 
 You mus have installed following app:
 
-    Java JDK 8+
+    Java JDK 11+
     
 After cloning the repository, you must create a json file called :
 

@@ -31,7 +31,7 @@ public abstract class RemoteBrowser implements Browser {
      *
      * @param url url connection.
      */
-    public RemoteBrowser(final String url) {
+    protected RemoteBrowser(final String url) {
         this.url = url;
     }
 

@@ -6,10 +6,8 @@ apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'checkstyle'
 
-allprojects{
-    repositories {
-        mavenCentral()
-    }
+repositories {
+    mavenCentral()
 }
 
 // In this section you declare the dependencies for your production and test code
@@ -23,14 +21,22 @@ dependencies {
     compile group: 'com.jayway.jsonpath', name: 'json-path', version: '2.5.0'
 
     compile group: 'com.google.guava', name: 'guava', version: '30.1-jre'
-    compile group: 'io.cucumber', name: 'cucumber-java', version: '6.9.1'
-    compile group: 'io.cucumber', name: 'cucumber-testng', version: '6.9.1'
-    testCompile group: 'io.cucumber', name: 'cucumber-picocontainer', version: '6.9.1'
+    compile group: 'io.cucumber', name: 'cucumber-java', version: '6.10.0'
+    compile group: 'io.cucumber', name: 'cucumber-testng', version: '6.10.0'
+    testCompile group: 'io.cucumber', name: 'cucumber-picocontainer', version: '6.10.0'
 }
 
 // Checkstyle configuration
 checkstyle {
-    toolVersion = '8.23'
+    toolVersion = '8.40'
+    configFile file("config/checkstyle/checkstyle.xml")
+}
+
+tasks.withType(Checkstyle) {
+    reports {
+        xml.enabled false
+        html.enabled true
+    }
 }
 
 task runFeatures(type: Test) {

@@ -23,7 +23,7 @@ public class RunCucumber extends AbstractTestNGCucumberTests {
     @BeforeTest
     public void open() {
         // Implement.
-        System.setProperty("dataproviderthreadcount", "2");
+        System.setProperty("dataproviderthreadcount", "4");
     }
 
     @Override

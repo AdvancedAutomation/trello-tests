@@ -9,7 +9,6 @@ import org.junit.Assert;
 
 import org.example.core.Environment;
 import org.example.core.ui.Commons;
-import org.example.core.ui.driver.SharedDriver;
 import org.example.trello.ui.pages.board.BoardCreation;
 import org.example.trello.ui.pages.board.BoardFields;
 import org.example.trello.ui.pages.board.Boards;
@@ -34,13 +33,12 @@ public class BoardSteps {
     /**
      * Constructor BoardSteps.
      *
-     * @param sharedDriver sharedDriver.
      * @param boardsPage Boards.
      * @param dashBoard  SelectedDashBoard.
      * @param listAction  ListAction.
      * @param boardCreation  BoardCreation.
      */
-    public BoardSteps(final SharedDriver sharedDriver, final Boards boardsPage, final SelectedBoard dashBoard,
+    public BoardSteps(final Boards boardsPage, final SelectedBoard dashBoard,
                       final ListAction listAction, final BoardCreation boardCreation) {
         this.boardsPage = boardsPage;
         this.board = dashBoard;

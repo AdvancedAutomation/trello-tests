@@ -7,7 +7,6 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 import org.example.core.ScenarioContext;
-import org.example.core.ui.driver.SharedDriver;
 import org.example.trello.ui.pages.board.Boards;
 import org.example.trello.ui.pages.common.SideBarMain;
 import org.example.trello.ui.pages.team.SelectedTeam;
@@ -33,13 +32,12 @@ public class TeamSteps {
     /**
      * Constructor BoardSteps.
      *
-     * @param sharedDriver sharedDriver.
      * @param boards      Boards.
      * @param team        SelectedTeam.
      * @param sideBarMain Side Bar Main.
      * @param tabSettings Tab Settings.
      */
-    public TeamSteps(final SharedDriver sharedDriver, final Boards boards, final SelectedTeam team,
+    public TeamSteps(final Boards boards, final SelectedTeam team,
                      final SideBarMain sideBarMain, final TabSettings tabSettings) {
         this.boards = boards;
         this.team = team;

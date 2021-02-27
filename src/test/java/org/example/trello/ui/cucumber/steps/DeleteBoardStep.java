@@ -3,7 +3,6 @@ package org.example.trello.ui.cucumber.steps;
 
 import io.cucumber.java.en.And;
 
-import org.example.core.ui.driver.SharedDriver;
 import org.example.trello.ui.pages.board.CloseBoardWraper;
 import org.example.trello.ui.pages.board.MenuBoard;
 import org.example.trello.ui.pages.board.MenuMoreBoard;
@@ -22,13 +21,12 @@ public class DeleteBoardStep {
     /**
      * Constructor Delete Board.
      *
-     * @param sharedDriver sharedDriver.
      * @param selectedBoard selectedBoard.
      * @param menuBoard menuBoard.
      * @param menuMoreBoard menuMoreBoard.
      * @param closeBoardWraper closeBoardWraper.
      */
-    public DeleteBoardStep(final SharedDriver sharedDriver, final SelectedBoard selectedBoard,
+    public DeleteBoardStep(final SelectedBoard selectedBoard,
                            final MenuBoard menuBoard, final MenuMoreBoard menuMoreBoard,
                            final CloseBoardWraper closeBoardWraper) {
         this.selectedBoard = selectedBoard;

@@ -6,7 +6,6 @@ import io.cucumber.java.en.When;
 
 import org.example.core.Environment;
 import org.example.core.ui.Commons;
-import org.example.core.ui.driver.SharedDriver;
 import org.example.trello.ui.pages.team.SelectedTeam;
 import org.example.trello.ui.pages.team.TabMembers;
 
@@ -24,11 +23,10 @@ public class MemberSteps {
     /**
      * Class constructor.
      *
-     * @param sharedDriver sharedDriver.
      * @param team type SelectedTeam.
      * @param tabMembers TabMembers.
      */
-    public MemberSteps(final SharedDriver sharedDriver, final SelectedTeam team, final TabMembers tabMembers) {
+    public MemberSteps(final SelectedTeam team, final TabMembers tabMembers) {
         this.selectedTeam = team;
         this.tabMembers = tabMembers;
     }

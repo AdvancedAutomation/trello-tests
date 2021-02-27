@@ -6,7 +6,6 @@ import io.cucumber.java.en.Given;
 
 import org.example.core.Environment;
 import org.example.core.ui.Commons;
-import org.example.core.ui.driver.SharedDriver;
 import org.example.trello.ui.pages.Navigator;
 import org.example.trello.ui.pages.board.BoardFields;
 import org.example.trello.ui.pages.common.Login;
@@ -24,11 +23,10 @@ public class CommonSteps {
     /**
      * Constructor of Common steps.
      *
-     * @param sharedDriver sharedDriver.
      * @param login Login.
      * @param navigator Navigator.
      */
-    public CommonSteps(final SharedDriver sharedDriver, final Login login, final Navigator navigator) {
+    public CommonSteps(final Login login, final Navigator navigator) {
         this.login = login;
         this.navigator = navigator;
     }
