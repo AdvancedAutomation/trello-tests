@@ -10,7 +10,7 @@ public class SharedDriver {
     public SharedDriver() {
         WebDriver driverSession = DriverFactory.getDriver();
         if (driverSession == null || ((RemoteWebDriver) driverSession).getSessionId() == null) {
-            String browser = Environment.getInstance().getValue("$['local']['browser']").toUpperCase();
+            String browser = Environment.getInstance().getValue("local.browser").toUpperCase();
             WebDriver driver = BrowserFactory.getDriverManager(DriverType.valueOf(browser));
             driver.manage().window().maximize();
             DriverFactory.addDriver(driver);

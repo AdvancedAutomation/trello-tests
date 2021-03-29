@@ -1,12 +1,8 @@
-# trello-selenium-tests
+# trello-tests
 
-[![Build status](https://travis-ci.com/AT-08/trello-selenium-tests.svg?branch=develop)](https://travis-ci.com/AT-08/trello-selenium-tests) 
+Prerequisites
 
-[![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=AT-08_trello-selenium-tests&metric=alert_status)](https://sonarcloud.io/dashboard/index/AT-08_trello-selenium-tests)
-
-Prerequistes
-
-You mus have installed following app:
+You must have installed following app:
 
     Java JDK 11+
     
