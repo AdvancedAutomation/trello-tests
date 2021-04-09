@@ -55,4 +55,9 @@ public final class Environment {
     public String getValue(final String key) {
         return  jsonContext.read(key);
     }
+
+    public boolean isMobile() {
+        return "mobile".equalsIgnoreCase(getValue("resolution"));
+    }
+
 }

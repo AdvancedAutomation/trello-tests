@@ -1,9 +1,11 @@
 package org.example.core.ui;
 
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import org.example.core.Environment;
 import org.example.core.ui.driver.DriverFactory;
 
 /**
@@ -22,7 +24,13 @@ public abstract class AbstractPage {
      */
     protected AbstractPage() {
         this.driver = DriverFactory.getDriver();
-        driver.manage().window().maximize();
+        if (Environment.getInstance().isMobile()) {
+            final int width = 375;
+            final int height = 812;
+            driver.manage().window().setSize(new Dimension(width, height));
+        } else {
+            driver.manage().window().maximize();
+        }
         this.wait = new WebDriverWait(driver, TIME_OUT_IN_SECONDS);
         this.action = new WebDriverAction(driver, wait);
         PageFactory.initElements(this.driver, this);
