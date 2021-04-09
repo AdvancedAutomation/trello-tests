@@ -17,12 +17,12 @@ public abstract class AbstractPage {
     protected WebDriverWait wait;
     protected WebDriverAction action;
 
-
     /**
      * Constructor of class.
      */
     protected AbstractPage() {
         this.driver = DriverFactory.getDriver();
+        driver.manage().window().maximize();
         this.wait = new WebDriverWait(driver, TIME_OUT_IN_SECONDS);
         this.action = new WebDriverAction(driver, wait);
         PageFactory.initElements(this.driver, this);
