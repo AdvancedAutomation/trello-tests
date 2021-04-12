@@ -5,7 +5,7 @@ Feature: Add several list to an existing board.
   Background:
     Given I Log in with user "{credentials.owner2}"
     And I create a board from "board drawer" with a:
-      | Title      | Board Baratheon |
+      | Title      | Board fvtest    |
       | Privacy    | private         |
       | Background | green           |
 
@@ -13,7 +13,6 @@ Feature: Add several list to an existing board.
     When I add several lists into board
       | To Do       |
       | In Progress |
-      | Done        |
-    Then I should see these 3 lists
+    Then I should see these 2 lists
     And I close Board
     And I delete Board
