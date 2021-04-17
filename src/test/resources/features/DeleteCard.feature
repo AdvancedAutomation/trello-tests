@@ -2,7 +2,7 @@
 Feature: Delete card of a list
 
   Background: Create card to board in Trello
-    Given I Log in with user "{credentials.owner1}"
+    Given I Log in with user "{credentials.owner2}"
     And I create a board from "board drawer" with a:
       | Title | Board Martell |
     And I add new list into board

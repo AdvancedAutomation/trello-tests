@@ -17,6 +17,9 @@ public class MenuBoard extends AbstractPage {
     @FindBy(css = ".board-menu-navigation-item-link.js-open-more")
     private WebElement linkMore;
 
+    @FindBy(css = ".board-menu-header-close-button.icon-lg.icon-close.js-hide-sidebar")
+    private WebElement closeBoardMenuIcon;
+
     /**
      * Method for select link More in the object page Menuboard.
      *
@@ -26,5 +29,11 @@ public class MenuBoard extends AbstractPage {
         action.waitVisibility(linkMore);
         action.click(linkMore);
         return new MenuMoreBoard();
+    }
+
+    public SelectedBoard hideBoardMenu() {
+        action.waitVisibility(linkMore);
+        action.click(closeBoardMenuIcon);
+        return new SelectedBoard();
     }
 }
