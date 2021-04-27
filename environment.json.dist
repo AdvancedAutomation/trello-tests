@@ -26,7 +26,7 @@
     "browser": "chrome"
   },
   "docker": {
-    "host": "127.0.0.1"
+    "remoteServer": "http://localhost:4444/wd/hub"
   },
   "saucelabs": {
     "user": "",

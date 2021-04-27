@@ -5,7 +5,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 /**
  * This class allows to establish the connection in the remote browser through Browser Stack.
  */
-public class BrowserStack extends RemoteBrowser implements Browser {
+public class BrowserStack extends RemoteBrowser {
     private static final String URL = String.format("http://%s:%s@hub-cloud.browserstack.com/wd/hub",
             ENVIRONMENT.getValue("$['browserstack']['user']"),
             ENVIRONMENT.getValue("$['browserstack']['key']"));
@@ -25,7 +25,7 @@ public class BrowserStack extends RemoteBrowser implements Browser {
      * {@inheritDoc}
      */
     @Override
-    public DesiredCapabilities setCapabilities() {
+    public DesiredCapabilities buildCapabilities() {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability(OS, ENVIRONMENT.getValue("$['browserstack']['os']"));
         capabilities.setCapability(OS_VERSION, ENVIRONMENT.getValue("$['browserstack']['os_version']"));

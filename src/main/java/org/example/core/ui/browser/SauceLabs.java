@@ -5,7 +5,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 /**
  * This class allows to establish the connection in the remote browser through SauceLabs.
  */
-public class SauceLabs extends RemoteBrowser implements Browser {
+public class SauceLabs extends RemoteBrowser {
 
     private static final String URL = String.format("http://%s:%s@ondemand.saucelabs.com:80/wd/hub",
             ENVIRONMENT.getValue("$['saucelabs']['user']"),
@@ -25,7 +25,7 @@ public class SauceLabs extends RemoteBrowser implements Browser {
      * {@inheritDoc}
      */
     @Override
-    public DesiredCapabilities setCapabilities() {
+    public DesiredCapabilities buildCapabilities() {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability(BROWSER_NAME, ENVIRONMENT.getValue("$['saucelabs']['browserName']"));
         capabilities.setCapability(PLATFORM, ENVIRONMENT.getValue("$['saucelabs']['platform']"));
