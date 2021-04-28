@@ -9,6 +9,7 @@ public enum DriverType {
     CHROME_HEADLESS,
     DOCKER_CHROME,
     DOCKER_FIREFOX,
+    DOCKER_OPERA,
     SAUCE_LABS,
     BROWSER_STACK
 }

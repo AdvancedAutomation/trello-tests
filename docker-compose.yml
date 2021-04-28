@@ -1,33 +1,58 @@
 # https://github.com/SeleniumHQ/docker-selenium/wiki/Getting-Started-with-Docker-Compose
 version: "3"
 services:
-  hub:
+  selenium-hub:
     image: selenium/hub
-    environment:
-      SE_OPTS: "-port 7680"
     ports:
-      - "7680:7680"
+      - "4444:4444"
 
   chrome:
     image: selenium/node-chrome-debug
-    ports:
-      - 32769
-      - "5900:5900" # VPN
-    environment:
-      HUB_HOST: hub
-      NODE_MAX_INSTANCES: 5
-      NODE_MAX_SESSION: 5
+    volumes:
+      - /dev/shm:/dev/shm
     depends_on:
-      - hub
+      - selenium-hub
+#    ports:
+#      - "5900:5900"
+    environment:
+      - HUB_HOST=selenium-hub
+      - HUB_PORT=4444
+      - NODE_MAX_INSTANCES=5
+      - NODE_MAX_SESSION=5
+    deploy:
+      replicas: 2
+    entrypoint: bash -c 'SE_OPTS="-host $$HOSTNAME" /opt/bin/entry_point.sh'
 
   firefox:
     image: selenium/node-firefox-debug
-    ports:
-      - 32770
-      - "5901:5900" # VPN
-    environment:
-      HUB_HOST: hub
-      NODE_MAX_INSTANCES: 5
-      NODE_MAX_SESSION: 5
+    volumes:
+      - /dev/shm:/dev/shm
     depends_on:
-      - hub
+      - selenium-hub
+#    ports:
+#      - "5901:5900"
+    environment:
+      - HUB_HOST=selenium-hub
+      - HUB_PORT=4444
+      - NODE_MAX_INSTANCES=5
+      - NODE_MAX_SESSION=5
+    deploy:
+      replicas: 2
+    entrypoint: bash -c 'SE_OPTS="-host $$HOSTNAME" /opt/bin/entry_point.sh'
+
+  opera:
+    image: selenium/node-opera-debug
+    volumes:
+      - /dev/shm:/dev/shm
+    depends_on:
+      - selenium-hub
+    ports:
+      - "5902:5900"
+    environment:
+      - HUB_HOST=selenium-hub
+      - HUB_PORT=4444
+      - NODE_MAX_INSTANCES=5
+      - NODE_MAX_SESSION=5
+    deploy:
+      replicas: 1
+    entrypoint: bash -c 'SE_OPTS="-host $$HOSTNAME" /opt/bin/entry_point.sh'

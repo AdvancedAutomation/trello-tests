@@ -12,6 +12,7 @@ import org.example.core.ui.browser.Chrome;
 import org.example.core.ui.browser.ChromeHeadless;
 import org.example.core.ui.browser.DockerChrome;
 import org.example.core.ui.browser.DockerFirefox;
+import org.example.core.ui.browser.DockerOpera;
 import org.example.core.ui.browser.Firefox;
 import org.example.core.ui.browser.SauceLabs;
 
@@ -27,6 +28,7 @@ public final class BrowserFactory {
         BROWSERS.put(DriverType.CHROME_HEADLESS, ChromeHeadless::new);
         BROWSERS.put(DriverType.DOCKER_CHROME, DockerChrome::new);
         BROWSERS.put(DriverType.DOCKER_FIREFOX, DockerFirefox::new);
+        BROWSERS.put(DriverType.DOCKER_OPERA, DockerOpera::new);
         BROWSERS.put(DriverType.SAUCE_LABS, SauceLabs::new);
         BROWSERS.put(DriverType.BROWSER_STACK, BrowserStack::new);
     }
