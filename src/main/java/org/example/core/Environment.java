@@ -43,7 +43,7 @@ public final class Environment {
             JSONObject jsonObject = (JSONObject) parser.parse(fileReader);
             jsonContext = JsonPath.parse(jsonObject);
         } catch (IOException | ParseException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 

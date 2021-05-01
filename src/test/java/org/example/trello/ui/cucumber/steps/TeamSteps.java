@@ -22,23 +22,16 @@ import static org.testng.Assert.assertTrue;
  */
 public class TeamSteps {
 
-    private static final ScenarioContext NAMES_STORAGE = ScenarioContext.getInstance();
-    private Boards boards;
+    private final ScenarioContext context;
+    private final SideBarMain sideBarMain;
+    private final TabSettings tabSettings;
+    private final Boards boards;
     private SelectedTeam team;
     private TeamCreation newTeam;
-    private SideBarMain sideBarMain;
-    private TabSettings tabSettings;
 
-    /**
-     * Constructor BoardSteps.
-     *
-     * @param boards      Boards.
-     * @param team        SelectedTeam.
-     * @param sideBarMain Side Bar Main.
-     * @param tabSettings Tab Settings.
-     */
-    public TeamSteps(final Boards boards, final SelectedTeam team,
+    public TeamSteps(final ScenarioContext context, final Boards boards, final SelectedTeam team,
                      final SideBarMain sideBarMain, final TabSettings tabSettings) {
+        this.context = context;
         this.boards = boards;
         this.team = team;
         this.sideBarMain = sideBarMain;
@@ -54,7 +47,7 @@ public class TeamSteps {
     public void iCreateATeamWith(final Map<TeamFields, String> dataTable) {
         newTeam = boards.clickCreateTeam();
         team = newTeam.createTeam(dataTable);
-        NAMES_STORAGE.addName("Team", newTeam.getUniqueNameTeam());
+        context.setContext("Team", newTeam.getUniqueNameTeam());
     }
 
     /**
@@ -64,7 +57,7 @@ public class TeamSteps {
      */
     @When("I store as {string}")
     public void iStoreAs(final String value) {
-        NAMES_STORAGE.addName(value, newTeam.getUniqueNameTeam());
+        context.setContext(value, newTeam.getUniqueNameTeam());
     }
 
     /**
@@ -74,7 +67,7 @@ public class TeamSteps {
      */
     @Then("I should see the team new {string}")
     public void iShouldSeeTheTeamNew(final String expected) {
-        assertEquals(team.getValue(), NAMES_STORAGE.getName(expected));
+        assertEquals(team.getValue(), context.getContext(expected));
     }
 
     /**
@@ -84,7 +77,7 @@ public class TeamSteps {
      */
     @Given("I select the Team {string}")
     public void iSelectTheTeam(final String key) {
-        sideBarMain.selectTeam(NAMES_STORAGE.getName(key));
+        sideBarMain.selectTeam(context.getContext(key));
     }
 
     /**

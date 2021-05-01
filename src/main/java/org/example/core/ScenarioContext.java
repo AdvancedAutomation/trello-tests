@@ -7,24 +7,13 @@ import java.util.Map;
  * Class for storage names.
  */
 public final class ScenarioContext {
-    private Map<String, String> container;
-    private static ScenarioContext ourInstance;
 
-    /**
-     * Method for return the instance dof environment.
-     * @return the our instance.
-     */
-    public static ScenarioContext getInstance() {
-        if (ourInstance == null) {
-            ourInstance = new ScenarioContext();
-        }
-        return ourInstance;
-    }
+    private final Map<String, String> container;
 
     /**
      * Method for read the JSON file.
      */
-    private ScenarioContext() {
+    public ScenarioContext() {
         container = new HashMap<>();
     }
 
@@ -33,7 +22,7 @@ public final class ScenarioContext {
      * @param key type String
      * @param value type String
      */
-    public void addName(final String key, final String value) {
+    public void setContext(final String key, final String value) {
         container.put(key, value);
     }
 
@@ -42,7 +31,7 @@ public final class ScenarioContext {
      * @param key type String
      * @return the String of user.
      */
-    public String getName(final String key) {
+    public String getContext(final String key) {
         return container.get(key);
     }
 }
