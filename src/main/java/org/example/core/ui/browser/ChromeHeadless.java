@@ -17,9 +17,11 @@ public class ChromeHeadless implements Browser {
     @Override
     public WebDriver getBrowser() {
         WebDriverManager.chromedriver().setup();
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("headless");
-        options.addArguments("disable-gpu");
+        ChromeOptions options = new ChromeOptions()
+                .addArguments("headless")
+                .addArguments("disable-gpu")
+                .addArguments("no-sandbox")
+                .addArguments("disable-dev-shm-usage");
         return new ChromeDriver(options);
     }
 }
