@@ -26,7 +26,6 @@ hs_err_pid*
 .attach_*
 .gradle/
 .idea/
-gradle/
 out/
 /build/
 /.allure/
