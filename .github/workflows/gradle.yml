@@ -21,6 +21,10 @@ jobs:
       with:
         java-version: '11'
         distribution: 'adopt'
+    - name: Decrypt large secret
+      run: ./.github/scripts/decrypt_secret.sh
+      env:
+        LARGE_SECRET_PASSPHRASE: ${{ secrets.LARGE_SECRET_PASSPHRASE }}
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Run Checkstyle and Unit Tests
