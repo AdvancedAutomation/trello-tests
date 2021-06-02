@@ -126,10 +126,13 @@ public class SelectedBoard extends AbstractPage {
      * @param data is name of card.
      */
     public void clickAddCard(final String data) {
+        MenuBoard menuBoard = new MenuBoard();
+        menuBoard.hideBoardMenu();
         action.click(menuList);
         action.click(addCardList);
         action.setValue(inputTitleCardTextfield, data);
         action.click(addCardButton);
+        clickShowMenu();
     }
 
     /**
