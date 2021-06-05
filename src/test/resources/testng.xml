@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Cross-browser execution" parallel="tests" thread-count="3">
+    <test name="Chrome execution">
+        <parameter name="browser" value="DOCKER_CHROME"/>
+        <classes>
+            <class name="org.example.trello.ui.cucumber.runner.RunCucumber"/>
+        </classes>
+    </test>
+    <test name="Firefox execution">
+        <parameter name="browser" value="DOCKER_FIREFOX"/>
+        <classes>
+            <class name="org.example.trello.ui.cucumber.runner.RunCucumber"/>
+        </classes>
+    </test>
+    <test name="Opera execution">
+        <parameter name="browser" value="DOCKER_OPERA"/>
+        <classes>
+            <class name="org.example.trello.ui.cucumber.runner.RunCucumber"/>
+        </classes>
+    </test>
+</suite>
